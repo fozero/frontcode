@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>开始抢红包，h5红包雨活动</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<style type="text/css">
+*{padding: 0;margin: 0;}
+	ul{list-style: none;}
+	.time{
+		    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,50%);
+    font-size: 60px;
+	}
+	.redp{width: 300px;  
+    height: 400px;
+    margin: 180px auto 0;}
+	.redp li{position: absolute;bottom: 200px;-webkit-tap-highlight-color:  rgba(0, 0, 0, 0);}
+	.redp li a{    position: relative;}
+	.redp li a img{width: 50px;height: 60px;}
+	.amount{    position: absolute;
+    left: 0;
+    top: -80px;}
+    .dialog .dialog-mask{
+    	position: fixed;
+    	width: 100%;
+    	height: 100%;
+    	background: rgba(0,0,0,0.5);
+    	left: 0;
+    top: 0;
+    }
+    .dialog .dialog-main{
+    	    position: absolute;
+    background: #fff;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    width: 300px;
+    }
+</style>
+</head>
+<body>
+	<div class="time">3</div>	
+	<div style="text-align: center;">倒计时：<span id="numz">8</span></div>
+	<div>累计金额：<span id="totalAmount">0</span>&nbsp;&nbsp;最大金额：<span id="bigAmount">0</span>	</div>
+
+	<ul class="redp">
+<!-- <li><a href="javascript:;"><img src="../images/hb_1.png"><span class="amount">+100</span></a></li> -->
+	</ul>
+	<div class="dialog" style="display: none;">
+		<div class="dialog-mask"></div>
+		<div class="dialog-main">
+			<div class="dialog-content">
+				获得2000现金卡奖励
+			</div>
+			<div class="dialog-btns">
+				<span class="play" onclick="start()">再玩一次</span>
+				<span>现在就领</span>
+			</div>
+		</div>
+	</div>
+<!-- <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script> -->
+<script type="text/javascript">
+		var envTimeout = null,
+			envTimeout2 = null,
+			interval = null,
+			startInterval = null,
+			isOver = false,
+			numz = 8,
+			num = 0,
+			time = 3,
+			big = 0,
+			win,h;
+		window.onload = function(){
+			//获取div宽度及高度   也可以使用document.querySelector('.redp').style.width这获取，不过当样式写在外部或者嵌入样式获取不到
+			win = document.querySelector('.redp').offsetWidth;
+			h = document.querySelector('.redp').offsetHeight;
+			startInterval = setInterval(startTime,1000);
+		}
+
+		// 开始倒计时3秒
+		function startTime(){
+				time--;
+				if(time==0){
+					clearInterval(startInterval);
+					document.querySelector('.time').style.display = 'none';
+					interval = setInterval(jishi,1000);
+					envTimeout = setTimeout(add,1000);
+				}else{
+					document.querySelector('.time').innerText = time;
+				}
+		}
+
+		// 抢红包限时倒计时
+		function jishi(){
+				numz--;
+				if(numz==0){
+					document.getElementById('numz').innerText = numz;
+					clearInterval(interval);
+					stop();
+				}else{
+					document.getElementById('numz').innerText = numz;
+				}
+		}
+
+		// 增加红包
+		function add(obj) {
+			num++;
+			var Left = parseInt(Math.random() * win);
+			var Top = parseInt(Math.random() * h + 200);
+			var newLi = document.createElement('li');
+			// newLi.setAttribute('class','li'+num);
+			newLi.className = 'li'+num;
+			newLi.innerHTML = '<a href="javascript:;"><img src="./images/hb_1.jpg"><span class="amount"></span></a>';
+			var redp = document.querySelector('.redp');
+			redp.appendChild(newLi);
+
+			var obj = document.querySelector('.li'+num);
+			obj.style.left = Left+'px';
+			obj.style.top = Top+'px';
+			var r = setTimeout(function(){
+				if(!isOver){
+					redp.removeChild(obj);//删掉已经显示的红包
+				}
+			},2000);
+			obj.onclick = function(){
+				clearTimeout(r);
+				var amount = Math.floor(Math.random()*200)+200;
+				console.log(amount);
+
+				document.getElementById('totalAmount').innerText = parseInt(document.getElementById('totalAmount').innerText) + parseInt(amount);
+				if(amount>big){
+					big = amount;
+					document.getElementById('bigAmount').innerText = amount;
+				}
+				this.querySelector('.amount').innerText = '+'+amount;
+				var _this =this;
+				setTimeout(function(){
+					_this.remove();
+				},100);
+
+			}
+			envTimeout = setTimeout(add,300);
+		}
+
+		// 倒计时结束
+		function stop(){
+			isOver = true;
+			document.querySelector('.dialog').style.display = 'block';
+			clearTimeout(envTimeout)
+		}	
+		// 开始抢红包/再玩一次
+		function start(){
+			isOver = false;
+			numz = 8;
+			time = 3;
+			document.querySelector('.dialog').style.display = 'none';
+			document.querySelector('.redp').innerHTML = '';
+			document.getElementById('totalAmount').innerText = '0';
+			document.getElementById('numz').innerText = numz;
+			document.querySelector('.time').innerText = time;
+			document.querySelector('.time').style.display = 'block';
+			startInterval = setInterval(startTime,1000);
+		}
+</script>
+</body>
+</html>

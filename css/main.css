@@ -1,0 +1,36 @@
+/*
+-------------------------------------
+文件名：main.css
+说明:公共样式 
+创建时间：2018/4/14
+作者：fozero
+Github:https://github.com/fozero
+博客：https://www.cnblogs.com/fozero
+-------------------------------------
+*/
+*{padding: 0;margin: 0;}
+body{background: #f5f5f5;}
+ul{list-style: none;}
+img{vertical-align: middle;border: 0;}
+/*demo标题*/
+.fozero-demo{
+	    background: #fff;
+	    border: 1px dashed #dedede;
+	    text-align: left;
+	    margin: 20px auto;
+	    width: 500px;
+	    line-height: 28px;
+	    font-size: 14px;
+}
+.fozero-demo span{
+	border-bottom: 1px solid #eee;
+	font-size: 12px;
+}
+.fozero-demo .title{
+	    background: #747834;
+	    color: #fff;
+	    text-align: center;
+}
+.fozero-demo .item{
+	padding-left: 20px;
+}

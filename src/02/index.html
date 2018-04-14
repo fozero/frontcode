@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多图片上传</title>
+	<link rel="stylesheet" type="text/css" href="../../css/main.css?v=20180414">
+	<link rel="stylesheet" type="text/css" href="./css/index.css?v=20180414">
+</head>
+<body>
+	<div class="fozero-demo">
+			<div class="title"><b>Demo示例说明</b></div>
+			<div class="item">标题：<span>多文件上传</span></div>
+			<div class="item">描述：<span>1.支持图片上传预览 2.支持单个图片移除 3.支持图片格式及大小限制</span></div>
+			<div class="title"><b>作者信息</b></div>
+			<div class="item">作者：<span>fozero</span></div>
+			<div class="item">github：<span><a href="https://github.com/fozero" target="_blank">https://github.com/fozero</a></span></div>
+			<div class="item">博客：<span><a href="https://www.cnblogs.com/fozero" target="_blank">https://www.cnblogs.com/fozero</a></span></div>
+	</div>
+	<div class="upload-content">
+		<div class="content-img">
+        	<ul class="content-img-list">
+        		<!-- <li class="content-img-list-item"><img src="https://www.baidu.com/img/bd_logo1.png" alt=""><a class="delete-btn"><i class="ico-delete"></i></a></li> -->
+        	</ul>
+        	<div class="file">
+        		<i class="ico-plus"></i>上传图片，支持jpg/png<input type="file" name="file" accept="image/*" id="upload" >
+        	</div>	
+        </div>
+        <div class="upload-tips">
+        	最多上传4张图片，单张1M
+        </div>
+	</div>
+	<div class="upload-submit">
+         <a href="javascript:;" id="btn-submit-upload" class="btn-submit-upload">提交</a>
+    </div>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="./js/index.js"></script>
+</body>
+</html>
