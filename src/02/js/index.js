@@ -39,7 +39,6 @@ $(function(){
 
 		var imgBox = '.content-img-list';
 		var fileList = this.files;
-		
 		for(var i = 0; i < fileList.length; i++) {
 			var imgSrcI = getObjectURL(fileList[i]);
 			imgName.push(fileList[i].name);

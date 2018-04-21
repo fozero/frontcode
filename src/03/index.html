@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义checkbox及radio</title>
+	<link rel="stylesheet" type="text/css" href="../../css/main.css?v=20180414">
+</head>
+<body>
+	<div class="fozero-demo">
+			<div class="title"><b>Demo示例说明</b></div>
+			<div class="item">标题：<span>Css实现checkbox及radio样式美化</span></div>
+			<div class="item">描述：<span>1.checkbox及radio样式美化  2.获取checkbox及radio选中的值</span></div>
+			<div class="title"><b>作者信息</b></div>
+			<div class="item">作者：<span>fozero</span></div>
+			<div class="item">github：<span><a href="https://github.com/fozero" target="_blank">https://github.com/fozero</a></span></div>
+			<div class="item">博客：<span><a href="https://www.cnblogs.com/fozero" target="_blank">https://www.cnblogs.com/fozero</a></span></div>
+	</div>
+	<div class="fozero-demo-main">
+		<div class="radio-demo">
+			请选择反馈的问题：
+			<label>
+		    	<input type="radio" name="type" id="adviceRadio1" value="1" checked hidden/>
+			    <label for="adviceRadio1" class="advice"></label>
+			    <span class="radio-name">问题</span>
+		    </label>
+		    <label>
+		    	<input type="radio" name="type" id="adviceRadio2" value="2" hidden/>
+			    <label for="adviceRadio2" class="advice"></label>
+			    <span class="radio-name">建议</span>
+		    </label>
+		    <span id="result">1</span>
+		    <style type="text/css">
+		    	.advice{
+					height: 12px;
+			        width: 12px;
+				    display: inline-block;
+				    background-image: url('https://caiyunupload.b0.upaiyun.com/newweb/imgs/icon-unchecked.png');
+			        background-repeat: no-repeat;
+			        background-position: center;
+			        vertical-align: middle;
+			    	margin-top: -4px;
+				}
+				input[type="radio"]:checked + .advice{
+				    background-image: url('https://caiyunupload.b0.upaiyun.com/newweb/imgs/icon-checked.png');
+				}
+		    </style>
+		</div>
+
+		<div class="checkbox-demo" style="margin-top: 20px;">
+			请选择你的爱好（多选）：
+			<label>
+		    	<input type="checkbox" id="hobby1" name="hobby" value="1" hidden/>
+			    <label for="hobby1" class="hobby"></label>
+			    <span class="hobby-name">游泳</span>
+		    </label>
+		    <label>
+		    	<input type="checkbox" id="hobby2" name="hobby" value="2" hidden/>
+			    <label for="hobby2" class="hobby"></label>
+			    <span class="hobby-name">健身</span>
+		    </label>
+		    <span id="result2"></span>
+		    <style type="text/css">
+		    	.hobby{
+					height: 12px;
+			        width: 12px;
+				    display: inline-block;
+				    background-image: url('https://caiyunupload.b0.upaiyun.com/newweb/imgs/icon-unchecked.png');
+			        background-repeat: no-repeat;
+			        background-position: center;
+			        vertical-align: middle;
+			    	margin-top: -4px;
+				}
+				input[type="checkbox"]:checked + .hobby{
+				    background-image: url('https://caiyunupload.b0.upaiyun.com/newweb/imgs/icon-checked.png');
+				}
+		    </style>
+		</div>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			// radio选中的值
+			$('input[type=radio][name=type]').change(function() {
+		        $("#result").text(this.value);
+		    });
+			// checkbox选中的值
+		    $('input[type=checkbox][name=hobby]').change(function() {
+		         var obj = document.getElementsByName("hobby");
+		         var check_val = [];
+		         for(k in obj){
+		         	if(obj[k].checked){
+		         		check_val.push(obj[k].value);
+		         	}
+		         }
+		         $("#result2").text(check_val);
+		    });
+		});
+	</script>
+</body>
+</html>
