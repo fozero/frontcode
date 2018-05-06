@@ -185,3 +185,18 @@ gulp.task('A',['B'],function(){
 gulp.task('default', function() {
      console.log("执行第一个gulp任务")
 });
+
+
+
+
+// 实现头尾公共页面部分复用
+var fileinclude  = require('gulp-file-include');
+gulp.task('fileinclude', function() {
+    // 适配page中所有文件夹下的所有html，排除page下的include文件夹中html
+    gulp.src(['src/page/**/*.html','!src/page/include/**.html'])
+        .pipe(fileinclude({
+          prefix: '@@',
+          basepath: '@file'
+        }))
+    .pipe(gulp.dest('dist'));
+});
