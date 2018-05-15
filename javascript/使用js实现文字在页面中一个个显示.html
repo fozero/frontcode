@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="renderer" content="webkit" /> 
+<title>使用js实现文字在页面中一个个显示.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+</head>
+<body>
+<div class="wrap">
+	<p id="sto" style="display:none;">从前有座山，山里有座庙，庙里有个老和尚跟老尼姑，有一天....</p>
+	<p id="show"></p>
+</div>
+<script>
+	window.onload=function(){
+		var story = document.getElementById('sto');
+		var s = document.getElementById('show');
+//		var a = story.innerHTML.slice("");
+		var i = 0;
+		timer=setInterval(function(){
+			s.innerHTML=story.innerHTML.substring(0,i)
+			i++;
+			if(s.innerHTML==story.innerHTML){clearInterval(timer);};
+		},500);
+	}
+</script>
+</body>
+</html>

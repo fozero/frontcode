@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fullpage-animate动画库</title>
+	<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/fullPage.js/2.9.5/jquery.fullpage.css" rel="stylesheet">
+	<style type="text/css">
+		.section{text-align: center;}
+		.section1{background: url('./images/1.jpg') no-repeat center center;}
+		.section1 .block-1{font-size: 30px;color: #fff;}
+		.section1 .block-2{font-size: 30px;color: #fff;}
+		.section2{background: url('./images/2.jpg') no-repeat center center;}
+		.section3{background: url('./images/3.jpg') no-repeat center center;}
+		.section4{background: url('./images/4.jpg') no-repeat center center;}
+	</style>
+</head>
+<body>
+	<div id="fullpage">
+		<div class="section section1">
+			<div class="block-1 animated" data-an="bounceInLeft" data-delay="0">section1-block-1</div>
+			<div class="block-2 animated" data-an="bounceInLeft" data-delay="2">section1-block-2</div>
+		</div>
+		<div class="section section2">
+			<div class="block-1 animated" data-an="bounceInLeft" data-delay="0">section2-block-1</div>
+			<div class="block-2 animated" data-an="bounceInLeft" data-delay="2">section2-block-2</div>
+		</div>
+		<div class="section section3">
+			<div class="block-1 animated" data-an="bounceInLeft" data-delay="0">section3-block-1</div>
+			<div class="block-2 animated" data-an="bounceInLeft" data-delay="2">section3-block-2</div>
+		</div>
+		<div class="section section4">
+			<div class="block-1 animated" data-an="bounceInLeft" data-delay="0">section4-block-1</div>
+			<div class="block-2 animated" data-an="bounceInLeft" data-delay="2">section4-block-2</div>
+		</div>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script src="https://cdn.bootcss.com/fullPage.js/2.9.5/jquery.fullpage.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				anchors:['section1', 'section2', 'section3', 'section4'],
+				navigation: true,
+				navigationPosition: 'right',
+				//events
+				afterLoad: function(anchorLink, index){
+					var $el=$("."+anchorLink+" .animated");
+	                $el.each(function(i,item){
+	                    var _data_an=$(item).attr("data-an");
+	                    var _data_delay=$(item).attr("data-delay");
+	                    $(item).css({"animation-delay":_data_delay+"s","-webkit-animation-delay":_data_delay+"s","-moz-animation-delay":_data_delay+"s","-ms-animation-delay":_data_delay+"s"}).addClass(_data_an).css("opacity","1");
+	                });
+				},
+				onLeave: function(index, nextIndex, direction){
+					var $an_el=$(".animated");
+	                $an_el.each(function(j,item){
+	                    var _data_an=$(item).attr("data-an");
+	                    $(item).css("opacity","0").removeClass(_data_an);
+	                });
+				}
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型链继承理解</title>
+</head>
+<body>
+<script>
+
+	// 一个简单的原型链继承
+	var animal = function(){}
+	var dog = function(){}
+	animal.price = 2000;
+	dog.prototype = animal;//dog继承animal
+	var tidy = new dog();
+
+
+	console.log(dog.price);//undefined
+	console.log(tidy.price);//2000  实现了继承
+
+</script>
+	
+</body>
+</html>

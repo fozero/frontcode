@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="renderer" content="webkit" /> 
+<title>CSS实现图片模糊效果.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+</head>
+<style>
+	.blur {
+		filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+		-webkit-filter: blur(2px); /* Chrome, Opera */
+		-moz-filter: blur(2px);
+		-ms-filter: blur(2px);
+		filter: blur(2px);
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+	}
+</style>
+<body>
+<!--主要通过使用filter属性，设置blur的值  ，值越大图片越模糊-->
+<div class="wrap">
+	<img style="width:190px;height:190px;" src="http://a4.topitme.com/o/201101/09/12945864801998.jpg"/>
+	<img style="width:190px;height:190px;" src="http://a4.topitme.com/o/201101/09/12945864801998.jpg" class="blur" />
+</div>
+</body>
+</html>

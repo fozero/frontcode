@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>call()方法和apply()方法用法</title>
+</head>
+<body>
+<script>
+	/*
+1. 每个函数都包含两个非继承而来的方法：call()方法和apply()方法。
+2. 相同点：这两个方法的作用是一样的。
+都是在特定的作用域中调用函数，等于设置函数体内this对象的值，以扩充函数赖以运行的作用域。
+一般来说，this总是指向调用某个方法的对象，但是使用call()和apply()方法时，就会改变this的指向。
+
+不同之处：
+apply()方法 接收两个参数，一个是函数运行的作用域（this），另一个是参数数组。
+	*/
+
+// call方法例1
+		window.color = 'red';
+        document.color = 'yellow';
+        var s1 = {color: 'blue' };
+        function changeColor(){
+            console.log(this.color);
+        }
+
+        changeColor.call();         //red (默认传递参数)
+        changeColor.call(window);   //red
+        changeColor.call(document); //yellow
+        changeColor.call(this);     //red
+        changeColor.call(s1);       //blue
+
+
+// call方法例2
+	// var Pet = {
+ //        words : '...',
+ //        speak : function (say) {
+ //            console.log(say + ''+ this.words)
+ //        }
+ //    }
+ //    Pet.speak('Speak'); // 结果：Speak...
+ //    var Dog = {
+ //        words:'Wang'
+ //    }
+ //    //将this的指向改变成了Dog
+ //    Pet.speak.call(Dog, 'Speak'); //结果： SpeakWang
+
+
+// apply方法例1
+	function Pet(words){
+        this.words = words;
+        this.speak = function () {
+            console.log( this.words)
+        }
+    }
+    function Dog(words){
+    	console.log('--'+JSON.stringify(arguments)); //--{"0":"Wang"}
+        // Pet.call(this, words); //结果： Wang
+       Pet.apply(this, arguments); //结果： Wang
+    }
+    var dog = new Dog('Wang');
+    dog.speak();
+
+
+</script>	
+</body>
+</html>

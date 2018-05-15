@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装一个简单组件</title>
+</head>
+<body>
+
+
+<!-- 
+封装一个简单的组件 ，实现步骤
+1、定义一个类
+2、类中增加一个方法
+3、body中定义一个dom节点
+4、脚本中把dom节点和类定义结合起来，实现特定的组件功能 
+-->
+
+<input type='button' value='测试组件' onclick="Test()" />
+<div id='dv'>111</div>  <!-- 组件占位使用的dom节点 -->
+<script>
+	function TestWidegt(did){//定义一个组件类
+	   var _self = document.getElementById(did);//根据id获取dom节点
+	   this.addP=function(){//增加组件方法，这里就是添加一个节点
+	      _self.innerHTML = '<p>22222222222</p>';//在dom节点下添加节点p
+	   }
+	   return this;//返回当前组件
+	}
+	function Test(){
+	  var t = new TestWidegt('dv');//根据占位的dom节点定义组件
+	  t.addP();//在占位节点中增加显示内容
+	}
+</script>
+</body>
+</html>

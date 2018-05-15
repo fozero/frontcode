@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点赞功能组件封装</title>
+</head>
+<body>
+
+	<!-- 方式1一个普通的点赞功能    -->
+	 <!-- <div class='wrapper'>
+      <button class='like-btn'>
+        <span class='like-text'>点赞</span>
+        <span>👍</span>
+      </button>
+    </div> -->
+
+
+<!-- 方式2  对第一种方式改写，封装组件,实现组件复用 -->
+	<div class='wrapper'></div>
+    <script>
+    	// 方式1一个普通的点赞功能
+    // 	 const button = document.querySelector('.like-btn')
+		  // const buttonText = button.querySelector('.like-text')
+		  // let isLiked = false
+		  // button.addEventListener('click', () => {
+		  //   isLiked = !isLiked
+		  //   if (isLiked) {
+		  //     buttonText.innerHTML = '取消'
+		  //   } else {
+		  //     buttonText.innerHTML = '点赞'
+		  //   }
+		  // }, false)
+
+
+// 方式2  实现复用  组件封装
+// 写一个类，这个类有 render 方法，这个方法里面直接返回一个表示 HTML 结构的字符串
+		   class LikeButton {
+		    render () {
+		      return `
+		        <button id='like-btn'>
+		          <span class='like-text'>赞</span>
+		          <span>👍</span>
+		        </button>
+		      `
+		    }
+		  }
+
+// 用这个类来构建不同的点赞功能的实例，然后把它们插到页面中
+		  const wrapper = document.querySelector('.wrapper')
+		  const likeButton1 = new LikeButton()
+		  wrapper.innerHTML = likeButton1.render()
+		  
+		  const likeButton2 = new LikeButton()
+		  wrapper.innerHTML += likeButton2.render()
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js闭包的理解</title>
+</head>
+<body>
+<script>
+
+	// 以下实际就创建了一个闭包  
+	// 函数b嵌套在函数a内部；
+	// 函数a返回函数b。
+	// 这样在执行完var c=a()后，变量c实际上是指向了函数b，再执行c()后就会弹出一个窗口显示i的值(第一次为1)
+	// 当函数a的内部函数b被函数a外的一个变量引用的时候，就创建了一个闭包。 
+	function a() { 
+	 var i = 0; 
+	 function b() { 
+	 	alert(++i); 
+	 } 
+	 return b;
+	}
+	var c = a();
+	c();
+
+
+
+// 举个简单的闭包应用场景。
+// 利用闭包可以给对象设置私有属性并利用特权(Privileged)方法访问私有属性。
+var Foo = function(){
+      var name = 'fooname';
+      var age = 12;
+      this.getName = function(){
+          return name;
+      };
+      this.getAge = function(){
+          return age;
+      };
+  };
+  var foo = new Foo();
+
+  foo.name;        //  => undefined
+  foo.age;         //  => undefined
+  foo.getName();   //  => 'fooname'
+  foo.getAge();    //  => 12
+
+
+
+
+
+</script>
+</body>
+</html>

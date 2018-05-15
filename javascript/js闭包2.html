@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js闭包经典实例</title>
+</head>
+<body>
+	<ol>
+            <li>第一项</li>
+            <li>第二项</li>
+            <li>第三项</li>
+            <li>第四项</li>            
+        </ol>
+
+        <script type="text/javascript">
+
+
+// 当点击 <ol> 中各个<li> 时，页面会弹窗显示四个不同的数字
+// 但是实际的结果是，在不同的<li> 上点击时，弹出的窗口显示的数字都是4
+// 在鼠标点击这个事件调用函数之前，早在页面加载的过程中，for循环已经完成，得到的i都是值为4
+
+            /*window.onload = function () {
+                var lis = document.getElementsByTagName('li');
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].onclick = function () {
+                        alert(i);
+                    };
+                }
+            }*/
+
+
+
+// 为了使得原来的需求能够实现，我们可以使用函数闭包，将变量i加入到事件处理器onclick 的函数闭包之中，实现如下：
+/*window.onload = function () {
+                var lis = document.getElementsByTagName('li');
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].onclick = function (i) {
+                        return function () {
+                            alert(i);
+                        }
+                    } (i); //利用IIFE实现函数闭包，将i作为参数传入即可
+                }
+            }*/
+
+
+
+// 也可以使用es6方式解决   用let声明变量
+window.onload = function () {
+                var lis = document.getElementsByTagName('li');
+                for (let i = 0; i < lis.length; i++) {
+                    lis[i].onclick = function () {
+                         alert(i);
+                    }
+                }
+            }
+
+
+
+
+
+        </script>
+
+</body>
+</html>

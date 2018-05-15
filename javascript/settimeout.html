@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setTimeout实现setinterval定时器功能</title>
+</head>
+<body>
+<script>
+
+	// 简单实现
+	/*var fun1 = function(){
+        console.log('1');
+        setTimeout(fun1,100);
+    }
+    setTimeout(fun1,100);*/
+
+
+
+// 我们可以对上面代码进行优化一下 ， 使用参数形式，并且设置了一个执行次数 
+function interval(callback,t,time){
+	var fun1 = function(){
+		if(t-- > 0){
+			console.log(t);
+        	setTimeout(fun1,time);
+		}else{
+			callback('执行完毕');
+		}
+    }
+    setTimeout(fun1,time);
+}
+
+
+// 回调函数 、参数    执行10次 没1000毫秒执行一次
+interval(function(msg){
+	// dosomething
+	console.log(msg);
+},10,1000);
+
+	
+</script>
+</body>
+</html>
+
+	

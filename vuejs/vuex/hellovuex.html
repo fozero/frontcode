@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vuex全局状态管理  -简单计数</title>
+</head>
+<body>
+	<div id="app">
+  <p>{{ count }}</p>
+  
+  <p>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+  </p>
+  
+  
+  <p>{{ count2 }}</p>
+  <p>
+    <button @click="add">+</button>
+    <button @click="reduce">-</button>
+  </p>
+</div>
+<script src="https://unpkg.com/vue@2.5.11/dist/vue.js"></script>
+<script src="https://unpkg.com/vuex@3.0.1/dist/vuex.js"></script>
+<script>
+	// make sure to call Vue.use(Vuex) if using a module system
+
+const store = new Vuex.Store({
+  state: {
+    count: 0,
+    count2:10
+  },
+  mutations: {
+  	increment: state => state.count++,
+    decrement: state => state.count--,
+    add:state => state.count2++,
+    reduce:state => state.count2--
+  }
+})
+
+new Vue({
+  el: '#app',
+  computed: {
+    count () {
+	    return store.state.count
+    },
+    count2(){
+    	return store.state.count2
+    }
+  },
+  methods: {
+    increment () {
+      store.commit('increment')
+    },
+    decrement () {
+    	store.commit('decrement')
+    },
+    add(){
+    	store.commit('add')
+    },
+    reduce(){
+    	store.commit('reduce')
+    }
+  }
+})
+</script>
+</body>
+</html>

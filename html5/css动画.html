@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3动画</title>
+	<style>
+
+	/*transition 是一个简写属性
+transition-property	规定设置过渡效果的 CSS 属性的名称。
+transition-duration	规定完成过渡效果需要多少秒或毫秒。
+transition-timing-function	规定速度效果的速度曲线。
+transition-delay	定义过渡效果何时开始。
+其中transition-timing-function属性值有:linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n);
+
+
+transform
+对元素进行旋转、缩放、移动或倾斜
+常用方法 ：
+scale(x,y)	定义 2D 缩放转换
+rotate(angle)	定义 2D 旋转，在参数中规定角度。
+
+	*/
+		div{
+			display: inline-block;
+			margin: 20px;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		/*左右移动*/
+		.box1{
+			transition: width 1s ease-out 0s;
+		}
+		.box1:hover{/*鼠标移到box上面宽度设置200px*/
+			width: 200px;
+		}
+/*旋转*/
+		.box2{
+			transition: All 0.4s ease-out 0s;
+		}
+		.box2:hover{
+			transform: rotate(360deg);
+		}
+
+/*大小缩放*/
+		.box3{
+			transition: All 0.4s ease-out 0s;
+		}
+		.box3:hover{
+			transform: scale(1.2);
+		}
+
+
+		/*旋转缩放*/
+		.box4{
+			transition: All 0.4s ease-out 0s;
+		}
+		.box4:hover{
+			transform: rotate(360deg) scale(1.2);
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">移动</div>
+	<div class="box2">360度旋转</div>
+	<div class="box3">缩放</div>
+	<div class="box4">旋转缩放</div>
+</body>
+</html>

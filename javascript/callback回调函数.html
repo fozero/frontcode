@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>callback回调函数的使用</title>
+</head>
+<body>
+<script>
+
+// 一个简单的回调函数写法
+
+	// function fun1(msg,callback){
+	// 	console.log(msg);
+	// 	callback('这是回调返回结果');
+	// }
+	// fun1('回调函数',function(result){
+	// 	// dosomething
+	// 	console.log(result)
+	// });
+
+
+
+// 也可以写成以下形式
+	function fun1(msg,callback){
+		console.log(msg);
+		callback('这是回调返回结果');
+	}
+	// 回调结果方法
+	function result(result){
+		console.log(result)
+	}
+	fun1('回调函数',result);
+
+
+
+</script>
+</body>
+</html>

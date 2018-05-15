@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="renderer" content="webkit" /> 
+<title>CSS 实现三角形的2种方法2.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+</head>
+<style>
+	.message-box {
+		position:relative;
+		width:240px;
+		height:60px;
+		line-height:60px;
+		background:#E9FBE4;
+		box-shadow:1px 2px 3px #E9FBE4;
+		border:1px solid #C9E9C0;
+		border-radius:4px;
+		text-align:center;
+		color:#0C7823;
+	}
+	.triangle-css3 {
+		position:absolute;
+		bottom:-8px;
+		bottom:-6px;
+		left:30px;
+		overflow:hidden;
+		width:13px;
+		height:13px;
+		background:#E9FBE4;
+		border-bottom:1px solid #C9E9C0;
+		border-right:1px solid #C9E9C0;
+	}
+	.transform {
+		-webkit-transform:rotate(45deg);
+		-moz-transform:rotate(45deg);
+		-o-transform:rotate(45deg);
+		transform:rotate(45deg);
+	}
+	/*ie7-9*/
+	.ie-transform-filter {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(
+		M11=0.7071067811865475,
+				M12=-0.7071067811865477,
+				M21=0.7071067811865477,
+				M22=0.7071067811865475,
+				SizingMethod='auto expand')";
+	filter: progid:DXImageTransform.Microsoft.Matrix(
+	M11=0.7071067811865475,
+	M12=-0.7071067811865477,
+	M21=0.7071067811865477,
+	M22=0.7071067811865475,
+	SizingMethod='auto expand');
+	}
+</style>
+<body>
+<!--
+利用transform旋转 45 度实现三角形
+-->
+<div class="message-box">
+	<span>我是利用 css transfrom 实现的</span>
+	<div class="triangle-css3 transform ie-transform-filter"></div>
+</div>
+</body>
+</html>

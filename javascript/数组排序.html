@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组排序</title>
+</head>
+<body>
+
+<script>
+	// 1、sort函数对数组元素排序
+	// sort()方法会改变原来的数组，并且sort方法并不是严格按照数字大小排序的。 如果想对数组按照大小进行排序，则需要在sort()方法添加比较函数
+	// a代表数组的前一位，b代表数组的后一位。这样是升序排列。如果希望降序排列，就写成return b-a；
+var arr1 = [1,2,3,5,2,5,3,6,2,6,2,6,2,5,9,6,8,54,3,6,8];
+var res1 = arr1.sort(function(a,b){return a-b});
+console.log('sort函数对数组元素排序:'+res1);//1,2,2,2,2,2,3,3,3,5,5,5,6,6,6,6,6,8,8,9,54
+
+
+	// 2、sort函数对数组对象元素排序
+var arr2 = [
+    {name:'zopp',age:0},
+    {name:'gpp',age:18},
+    {name:'yjj',age:8}
+];
+function compare(property){
+	return function(a,b){
+		var val1 = a[property];
+		var val2 = b[property];
+		return val1 - val2;
+	}
+}
+var res2 = arr2.sort(compare('age'));
+console.log('sort函数对数组对象元素排序:'+JSON.stringify(res2));//[{"name":"zopp","age":0},{"name":"yjj","age":8},{"name":"gpp","age":18}]
+
+
+
+	// 3、使用冒泡或者快速排序算法对数组元素排序=
+	// 冒泡排序：每一次对比相邻两个数据的大小，小的排在前面，如果前面的数据比后面的大就交换这两个数的位置
+	// 用到两层for循环，外层从第一个数到倒数第二个数，内层从外层的后面一个数到最后一个数
+	// 特点：排序算法基础，简单实用易于理解，缺点是比较次数多，效率较低
+	// 效率 ：数组长度10，排序次数45次。
+var times=0;  
+var bubbleSort=function(arr){  
+    for(var i=0;i<arr.length-1;i++){  
+        for(var j=i+1;j<arr.length;j++){  
+            if(arr[i]>arr[j]){//如果前面的数据比后面的大就交换  
+                var temp=arr[i];  
+                arr[i]=arr[j];  
+                arr[j]=temp;  
+            }  
+        console.log("第"+(++times)+"次排序后："+arr);  
+        } 
+    }   
+    return arr;  
+}  
+var arr=[2,5,4,1,7,3,8,6,9,0];
+console.log("The result is:"+bubbleSort(arr));  //0,1,2,3,4,5,6,7,8,9
+
+
+
+</script>
+	
+</body>
+</html>

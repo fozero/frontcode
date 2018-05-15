@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>map数组遍历</title>
+</head>
+<body>
+<script>
+
+	/*
+[].map(); 基本用法跟forEach方法类似
+array.map(callback,[ thisObject]);
+callback的参数也类似：
+[].map(function(value, index, array) {
+    // ...
+});
+	*/
+
+// 以下是一个数值项求平方   会返回一个新的数组
+	/*var arr = [1,2,3];
+	var _arr = arr.map(function(value,index){//index索引
+		return value * value;
+	});
+	console.log(_arr);*/
+
+
+// 可以利用map方法方便获得对象数组中的特定属性值们
+var users = [
+  {name: "张含韵", "email": "zhang@email.com"},
+  {name: "江一燕",   "email": "jiang@email.com"},
+  {name: "李小璐",  "email": "li@email.com"}
+];
+
+var emails = users.map(function (user) { return user.email; });
+console.log(emails.join(", ")); // zhang@email.com, jiang@email.com, li@email.com
+
+
+
+
+
+	// Array.prototype扩展可以让IE6-IE8浏览器也支持map方法：
+if (typeof Array.prototype.map != "function") {
+  Array.prototype.map = function (fn, context) {
+    var arr = [];
+    if (typeof fn === "function") {
+      for (var k = 0, length = this.length; k < length; k++) {      
+         arr.push(fn.call(context, this[k], k, this));
+      }
+    }
+    return arr;
+  };
+}
+
+
+
+
+
+
+// 参考 ：
+// js 数组 map方法 https://www.cnblogs.com/xuan52rock/p/4460949.html
+
+</script>
+</body>
+</html>

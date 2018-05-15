@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flatten嵌套数组扁平化处理.html</title>
+</head>
+<body>
+<script>
+
+	/*
+	实验目的 ：
+使用flatten对嵌套数组扁平化处理
+例如将 [1,2,3,[4,5, [6,7]], [[[8]]]] 这样一个 Array 变成 [1,2,3,4,5, 6,7,8] 
+	*/
+
+
+
+	// 方式2   使用reduce  isArray等高版本es api
+	// function flatten(arr) {
+	//     return arr.reduce((a, b) => [].concat(Array.isArray(a) && a ? flatten(a) : a, Array.isArray(b) && b ? flatten(b) : b), [])
+	// }
+
+
+
+	// 方式1
+	function flatten(array){  
+	    var result = [];  
+	    for(var i=0;i<array.length;i++){  
+	        var element = array[i];  
+	        // 这里的Object.prototype.toString.call(element)用来判断element的数据类型
+	        if(Object.prototype.toString.call(element) === "[object Array]"){  
+	            result = result.concat(flatten(element));  //通过concat合并数组
+	        } else{  
+	            result.push(element);  
+	        }  
+	    }  
+	    return result;  
+	}  
+
+	var arr = [1, [2], [3, [[4]]]];
+	console.log(flatten(arr));
+</script>
+</body>
+</html>

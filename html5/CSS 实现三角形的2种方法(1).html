@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="renderer" content="webkit" /> 
+<title>CSS 实现三角形的2种方法1.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+</head>
+<style>
+	#first {
+		width: 20px;
+		height: 20px;
+		border-width: 10px;
+		border-style: solid;
+		border-color: red green blue brown;
+	}
+	#second {
+		width: 0;
+		height: 0;
+		border-width: 10px;
+		border-style: solid;
+		border-color: red green blue brown;
+	}
+	#third {
+		width: 0;
+		height: 0;
+		border-width: 10px;
+		border-style: solid;
+		border-color: red transparent transparent transparent;
+	}
+</style>
+<body>
+<!--
+利用border
+ 1、元素本身的长宽为0
+ 2、将不需要的部分通过 border-color 来设置隐藏
+-->
+<div class="wrap">
+	<div id="first"></div>
+	<div id="second"></div>
+	<div id="third"></div>
+</div>
+</body>
+</html>

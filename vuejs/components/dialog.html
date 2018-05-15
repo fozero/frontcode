@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>dialog对话框组件</title>
+	<style type="text/css">
+	*{padding: 0;margin: 0;}
+	html,body{
+		height: 100%;
+	}
+	.main{
+		    height: 100%;
+	}
+		.amount{
+			padding-top: 100px;
+			text-align: center;
+		}
+		.amount input{
+			border: 1px solid #eee;
+			width: 300px;
+			padding: 18px 5px;
+		}
+		.btn_submit{
+			background: yellow;
+			color:#fff;
+			width:200px;
+			height: 48px;
+			line-height: 48px;
+			margin: 20px auto;
+			text-align: center;
+			border-radius: 10px;
+		}
+
+		/*对话框style*/
+		.dialog{
+		}
+		.dialog_mask{
+			position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+		}
+		.dialog_container{
+			    background: #fff;
+    width: 300px;
+    height: 120px;
+    position: relative;
+    border-radius: 10px;
+    margin: 0 auto;
+		}
+		.dialog_content{
+			text-align: center;
+    padding-top: 30px;
+		}
+		.dialog_btn{
+			margin-top: 20px;
+		}
+		.dialog_btn a{
+			background: yellow;
+			    padding: 2px 30px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+        width: 50px;
+    display: inline-block;
+		}
+		.dialog_btn a:nth-child(2){
+			    margin-left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+	使用props传递数据到子组件
+	1.在引入组件的地方添加 msg="111"
+	<v-dialog msg="111"></v-dialog>
+	然后在子组件中通过props获取
+	props:['msg'],
+	最后直接将msg显示  显示值111
+
+	2.动态prop
+	如果是传递动态数据  ，则通过v-bind:msg="msg"这种形式  ，简写:msg="msg"
+	在data中定义msg数据变量
+
+	3.传递对象过去
+	先在data里面定义一个对象 ，例如
+	todo: {
+				  text: 'Learn Vue',
+				  isComplete: false
+				}
+	然后使用v-bind="todo"即可，
+	也可以这样:todo="todo"
+	最后，在子组件中获取到这个对象props:['todo'],
+	然后通过todo.text获取
+
+
+	如果需要对todo数据做处理，可以在子组件data中定义一个变量 ,然后通过this.todo.text访问数据
+	 data:function(){
+                return {
+                	msg:this.todo.text.trim()
+                }
+            }
+
+
+      以上可以看到我们是通过字符串数组来定义prop的，除此之外我们还可以用对象的形式来定义prop，
+      用来为组件的 prop 指定验证规则，例如：
+      props: {
+        name: String,
+        showDialog: {
+            type: Boolean,
+            default: false
+        }
+      }
+
+      type的值可以是这些：String Number Boolean Function Object Array Symbol
+
+
+	在引入组件的地方 showDialog要写成show-dialog这种形式，例如
+<v-dialog :show-dialog="showDialog"></v-dialog>
+
+
+子类传递数据到父类
+主要通过$emit来触发父类事件，如：this.$emit('close-dialog');
+然后在父类通过v-on来监听子类触发的事件，v-on:close-dialog="closeDialog"  ,也可简写写成@close-dialog="closeDialog"
+
+slot用来分发内容，这样可以用来混合父组件的内容与子组件自己的模板
+查看文档https://cn.vuejs.org/v2/guide/components.html#使用插槽分发内容
+	 -->
+	<div id="app" class="main">
+		<div class="amount"><input type="tel" name="" v-model="amount"></div>
+		<div class="btn_submit" @click="submit">确定</div>
+		<v-dialog :show-dialog="showDialog" :msg="msg" :type="type" @close-dialog="closeDialog"></v-dialog>
+	</div>
+	<template id="dialog">
+		<div class="dialog" v-if="showDialog">
+			<div class="dialog_mask"></div>
+			<div class="dialog_container">
+				<div class="dialog_content">
+					<div class="dialog_content_top" v-text="msg">提示内容</div>
+					<div class="dialog_btn">
+						<a v-if="type==1" href="javascript:;" class="btn" @click="close">确定</a>
+						<a v-if="type==2" href="javascript:;" class="btn" @click="close">取消</a>
+						<a v-if="type==2" href="javascript:;" class="btn" @click="login">去登录</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+	<script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+	<script src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"></script>
+	<script type="text/javascript">
+		// 注册一个全局组件
+		Vue.component('v-dialog', {
+		    template: '#dialog',
+		    // props:['dialogShow','msg'],
+		    props:{
+		    	msg:String,
+		    	type:Number,
+		    	showDialog:{
+		    		type: Boolean,
+          			default: false
+		    	}
+		    },
+		    data:function(){
+                return {
+                }
+            },
+            methods:{
+            	close:function(){
+            		// 触发父类关闭窗口事件
+            		this.$emit('close-dialog');
+            	},
+            	login:function(){
+            		console.log("登录跳转中...");
+            		this.$emit('close-dialog');
+            	}
+            },
+            created:function(){
+            	// alert(this.obj.dialogShow)
+            },
+            watch:{
+            }
+		})
+		// vue实例
+		var vm = new Vue({
+			el: '#app',
+		  	data: {
+		  		amount:'',
+		  		msg:'',
+		  		showDialog:false,
+		  		type:1,// 提示类型  1单按钮提示框  2双按钮提示框
+		  		isLogin:false
+			},
+			methods:{
+				submit:function(){
+					//弹出对话框组件
+					if(!this.isLogin){//未登录
+						this.msg = "请先去登录再领取金额";
+						this.showDialog = !this.showDialog;
+						this.type = 2;
+						return;
+					}
+					if(this.amount){
+						if(this.amount<1 || this.amount>1000){
+							this.msg = "输入金额不能低于1元大于1000";
+							this.showDialog = !this.showDialog;
+							this.type = 1;
+						}else{
+							this.msg = "领取成功，请在账户中心查看";
+							this.showDialog = !this.showDialog;
+							this.type = 1;
+						}
+					}else{
+						this.msg = "领取金额不能为空";
+						this.showDialog = !this.showDialog;
+							this.type = 1;
+					}
+				},
+				closeDialog:function(){//关闭对话框
+					this.showDialog = false;
+				}
+			},
+			mounted:function(){
+				console.log("mounted")
+			},
+			created:function(){
+				console.log("created")
+			},
+			watch:{
+				count:function(){
+					console.log("count")
+				}
+			}
+		})
+	</script>
+</body>
+</html>

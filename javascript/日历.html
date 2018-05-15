@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="Generator" content="EditPlus®">
+ <meta name="Author" content="">
+ <meta name="Keywords" content="">
+ <meta name="Description" content="">
+ <title>calendar</title>
+ <style>
+ .clear:after{
+ content:"";
+ display:table;
+ clear:both;
+ }
+ .left{
+ float:left;
+ }
+ ul{
+ padding:0px;
+ margin-top:5px;
+ margin-bottom:0px;
+ }
+ ul>li{
+ float:left;
+ list-style:none;
+ width:30px;
+ height: 21px;
+ border: 1px solid #ccc;
+ text-align:center;
+ }
+ .gray{
+ color:#766565;
+ }
+ .top {
+ height:25px;
+ }
+ .top .lf-tri{
+ border:10px solid transparent;
+ border-right-color:black;
+ margin-top:4px;
+ }
+ .top .rf-tri{
+ border:10px solid transparent;
+ border-left-color:black;
+ margin-top:4px;
+ }
+ .top .content{
+ width:185px;
+ height:5px;
+ text-align:center;
+ }
+ </style>
+ </head>
+ <body> 
+ <div class="top clear">
+ <div class="left lf-tri" onclick="lastMonth()"></div>
+ <div class="left content">2017年2月1日</div>
+ <div class="left rf-tri" onclick=" nextMonth()"></div>
+ </div>
+ <div>
+ <div id="week">
+ <ul class="clear">
+ <li>日</li>
+ <li>一</li>
+ <li>二</li>
+ <li>三</li>
+ <li>四</li>
+ <li>五</li>
+ <li>六</li>
+ <ul>
+ </div>
+ <div id="date" onclick='getDateNum(event)'>
+ <ul class="clear">
+ <li>30</li>
+ <li>31</li>
+ <li>1</li>
+ <li>2</li>
+ <li>3</li>
+ <li>4</li>
+ <li>5</li>
+ </ul>
+ <ul class="clear">
+ <li>6</li>
+ <li>7</li>
+ <li>8</li>
+ <li>9</li>
+ <li>10</li>
+ <li>11</li>
+ <li>12</li>
+ </ul>
+ <ul class="clear">
+ <li>13</li>
+ <li>14</li>
+ <li>15</li>
+ <li>16</li>
+ <li>17</li>
+ <li>18</li>
+ <li>19</li>
+ </ul>
+ <ul class="clear">
+ <li>20</li>
+ <li>21</li>
+ <li>22</li>
+ <li>23</li>
+ <li>24</li>
+ <li>25</li>
+ <li>26</li>
+ </ul>
+ <ul class="clear">
+ <li>27</li>
+ <li>28</li>
+ <li>1</li>
+ <li>2</li>
+ <li>3</li>
+ <li>4</li>
+ <li>5</li>
+ </ul>
+ <ul class="clear">
+ <li>27</li>
+ <li>28</li>
+ <li>1</li>
+ <li>2</li>
+ <li>3</li>
+ <li>4</li>
+ <li>5</li>
+ </ul>
+ </div>
+ <div>
+ <script>
+ function $(id){
+ return document.getElementById(id);
+ }
+ function change(cls){
+ return document.getElementsByClassName(cls);
+ }
+ function getDateNum(e) {
+ console.log(e && e.target.nodeName)//打印发生事件的元素，再获取元素nodeName
+ if(e.target.nodeName=="LI"){//先判断nodeName是LI
+ if(e.target.className!="gray"){//点击本月的日期，显示在日期栏
+ change("content")[0].innerHTML = year+'年'+(month+1)+'月'+e.target.innerHTML+'日';
+ }else{//点击灰色日期即（上个月或者下个月日期）切换到当月
+ if(e.target.innerHTML>14){
+ lastMonth();
+ }else {
+ nextMonth();
+ }
+ }
+ }
+ }
+ //获取年、月
+ var today = new Date();
+ var year=today.getFullYear(), month = today.getMonth();
+ var totalDay;
+ var uls=$("date").children,list;
+ function loadCalendar(){
+ totalDay=getMonthDays(year,month+1);//计算一个月的天数
+ var firstDay = (new Date(year,month,1)).getDay();//计算每个月1号在星期几
+ var lastMonthDay=getMonthDays(year,month);
+ var lastDayCal=lastMonthDay-firstDay+1;//计算上个月在第一行显示的天数
+ //获取ul元素
+ var num=1 ,nextNum=1;//日期显示
+ // 类数组对象 转 数组
+ //uls = Array.prototype.slice.call(uls)
+ //获取li元素 填充
+ for(var r=0;r<uls.length;r++){
+ list=uls[r].children;//遍历ul,获得li
+ for(var line=0;line<list.length;line++){
+ if(r==0){//在第一行 与第一天进行判断 大于等于第一天时载入日期
+ if(line>=firstDay){
+ list[line].innerHTML=num++;
+ list[line].setAttribute("class","");
+ }else {
+ list[line].innerHTML=lastDayCal++;//第一行的上个月天数显示
+ list[line].setAttribute("class","gray");
+ }
+ }else {
+ //判断是否超出天数 ,不超出则继续加，超出则显示下个月日期
+ if(num<=totalDay){
+ list[line].setAttribute("class","");
+ list[line].innerHTML=num++;
+ }else {
+ list[line].innerHTML=nextNum++;//下个月日期显示
+ list[line].setAttribute("class","gray");
+ }
+ }
+ }
+ }
+ }
+ loadCalendar();
+ function getMonthDays(year,month){
+ //判断2月份天数
+ if(month==2){
+ days= (year%4==0)&&(year%100!=0)||(year%400==0)? 29:28;
+ }else {
+ //1-7月 单数月为31日 
+ if(month<7){
+ days= month%2==1?31:30;
+ }else {
+ //8-12月 双月为31日
+ days = month%2==0?31:30;
+ }
+ }
+ return days; 
+ }
+ //右击箭头下个月
+ //change("rf-tri")[0].onclick =
+ function nextMonth() {
+ month++;
+ if(month>11){
+ year+=1;
+ month=0;
+ }
+ change("content")[0].innerHTML=year+"年"+(month+1)+"月"+"1日";
+ //console.log(month+1);
+ loadCalendar();
+ }
+ //左击箭头上个月
+ //change("lf-tri")[0].onclick =
+ function lastMonth() {
+ month--;
+ if(month<0){
+ month=11;
+ year-=1;
+ }
+ change("content")[0].innerHTML=year+"年"+(month+1)+"月"+"1日";
+ //console.log(month+1);
+ loadCalendar();
+ }
+ </script>
+ </body>
+</html>
