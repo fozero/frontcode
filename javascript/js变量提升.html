@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>js 函数的参数声明中用 var 与不用 var的区别</title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+		
+			//var 声明的变量,作用域是当前 function 
+			//没有声明的变量,直接赋值的话, 会自动创建变量 
+			//但作用域是全局的. 
+		
+		
+			function doSth() { 
+				a = "AAA"; 
+			} 
+			doSth(); // 执行一次 doSth 
+			alert(a); // 可以看到 "AAA" 
+			
+			//-------------------------------------------------
+			
+			function doSth() { 
+				var a = "AAA"; 
+			} 
+			doSth(); // 执行一次 doSth 
+			alert(a); //出错!!! 变量未定义, 因为 doSth 中声明的变量作用域只是 doSth 函数. 
+			
+			
+		</script>
+	</body>
+</html>
