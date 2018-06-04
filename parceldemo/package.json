@@ -9,5 +9,13 @@
     "build": "parcel build index.html"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^8.6.0",
+    "postcss-modules": "^1.1.0"
+  }
 }
