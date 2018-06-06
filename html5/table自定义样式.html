@@ -397,5 +397,95 @@
 			</div>
 		</div>
 
+		<h4>div模拟table&自定义样式&tbody内容滚动</h4>
+		<div>
+			<style>
+				.table6{
+					width: 618px;
+				    margin: 0 auto;
+				    display: table;
+				        border-collapse: separate; /*使用默认的  避免与border-radius冲突*/
+				            border-top: 1px solid #0ecaed;
+				    border-top-left-radius: 10px;
+				    border-top-right-radius: 10px;
+		}
+		.table6 .thead{
+			background: #ddd;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+		}
+		.table6 .tbody{
+			    height: 100px;
+    			/*overflow-y: scroll;*/
+    			overflow: hidden;
+    			    border-bottom: 1px solid #0ecaed;
+    			        border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+		}
+		.table6 .tr {
+			height: 38px;
+			line-height: 38px;
+			display: table-row;
+		}
+		.table6 .tr .td{
+			display: table-cell;
+		        width: 309px;
+		    text-align: center;
+    		border-right: 1px solid #0ecaed;
+    		border-bottom: 1px solid #0ecaed;
+		}
+		.table6 .tr .td:first-child{
+			    border-left: 1px solid #0ecaed;
+		}
+		.table6 .thead .tr .td:first-child{
+			    border-top-left-radius: 10px;
+		}
+		.table6 .thead .tr .td:last-child{
+     border-top-right-radius: 10px; 
+		}
+			</style>
+			<div class="table6">
+				<div class="thead">
+					<div class="tr">
+						<div class="td">t1</div>
+						<div class="td">t2</div>
+					</div>
+				</div>
+				<div class="tbody" id="scrol-content">
+					<div class="tr">
+						<div class="td">aaaa</div>
+						<div class="td">aaaa</div>
+					</div>
+					<div class="tr">
+						<div class="td">aaaa</div>
+						<div class="td">aaaa</div>
+					</div>
+					<div class="tr">
+						<div class="td">aaaa</div>
+						<div class="td">aaaa</div>
+					</div>
+					<div class="tr">
+						<div class="td">aaaa</div>
+						<div class="td">aaaa</div>
+					</div>
+					<div class="tr">
+						<div class="td">aaaa</div>
+						<div class="td">aaaa</div>
+					</div>
+					<div class="tr">
+						<div class="td">aaaa</div>
+						<div class="td">aaaa</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://static.yindou.com/web/js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="https://static.yindou.com/web/js/jquery.slimscroll.min.js"></script>
+		<script type="text/javascript">
+			// $(function(){})    slimscroll插件  用于使一个div内容区域变成可滚动的
+			$(document).ready(function(){
+				$("#scrol-content").slimScroll({ height: '100px' });
+			});
+		</script>
 </body>
 </html>
