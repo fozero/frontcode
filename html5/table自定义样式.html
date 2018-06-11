@@ -4,14 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
-		*{box-sizing: border-box;}
+	*{box-sizing: border-box;}
 		/*.main{
 			padding-top: 442px;
 			margin:100px auto;
 			width: 1003px;
 			min-height: 837px;
 			background: url('./img/b.png') no-repeat center/1003px auto;
-		}*/
+			}*/
 		/*
 		table tbody设置滚动条
 		1、thead、tbody设置display: block;
@@ -19,430 +19,512 @@
 		3、手动设置td宽度width: 300px;
 		*/
 		h4{text-align: center;}
-
-		/*默认的table*/
-		.table1{
-		    width: 500px;
-		    margin: 0 auto;
-	        border-collapse: collapse;
-	            text-align: center;
-	            border-color:#0ecaed;
-		}
-		.table1 thead{
-			display: block;
-		}
-		.table1 tbody{
-			display: block;
-			height:100px;
-			overflow-y: scroll;
-		}
-		.table1 tr{
-			    height: 38px;
-    			line-height: 38px;
-		}
-		.table1 tr td{
-			width: 300px;
-		}
-
-
-		/*自定义table样式*/
-		.table2{
-		    width: 500px;
-		    margin: 0 auto;
-	            text-align: center;
-    border-collapse: separate;
-		}
-		.table2 thead tr td{
-			border-top: 1px solid #0ecaed;
-		}
-		.table2 thead tr td:first-child{
-			    border-top-left-radius: 10px;
-		}
-		.table2 thead tr td:last-child{
-    border-top-right-radius: 10px;
-		}
-		.table2 tbody tr:last-child td:first-child{
-			    border-bottom-left-radius: 10px;
-		}
-		.table2 tbody tr:last-child td:last-child{
-    border-bottom-right-radius: 10px;
-		}
-		table tr td:first-child{
-			border-left: 1px solid #0ecaed;
-		}
-		.table2 tr td{
-			border-right: 1px solid #0ecaed;
-			border-bottom: 1px solid #0ecaed;
-			padding: 5px;
-		}
-
-
-
-		/*div模拟table*/
-		.table3{
-			width: 618px;
-			    margin: 0 auto;
-			    display: table;
-			    /*为表格设置合并边框模型*/
-			        border-collapse: collapse;
-		}
-		.table3 .thead{
-			
-		}
-		.table3 .tbody{
-			    height: 100px;
-    overflow-y: scroll;
-		}
-		.table3 .tr {
-			height: 38px;
-			line-height: 38px;
-			display: table-row;
-		}
-		.table3 .tr .td{
-			display: table-cell;
-    width: 30%;
-    text-align: center;
-    border:1px solid #0ecaed;
-		}
-
-
-		/*div模拟table自定义样式*/
-		.table4{
-			width: 618px;
-			    margin: 0 auto;
-			    display: table;
-			        border-collapse: separate; /*使用默认的  避免与border-radius冲突*/
-			            border-top: 1px solid #0ecaed;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-		}
-		.table4 .thead{
-			
-		}
-		.table4 .tbody{
-			    height: 100px;
-    overflow-y: scroll;
-		}
-		.table4 .tr {
-			height: 38px;
-			line-height: 38px;
-			display: table-row;
-		}
-		.table4 .tr .td{
-			display: table-cell;
-    width: 30%;
-    text-align: center;
-    		border-right: 1px solid #0ecaed;
-    		border-bottom: 1px solid #0ecaed;
-		}
-		.table4 .tr .td:first-child{
-			border-left: 1px solid #0ecaed;
-		}
-		.table4 .tr:first-child .td:first-child{
-			    border-top-left-radius: 10px;
-		}
-		.table4 .tr:first-child .td:last-child{
-			    border-top-right-radius: 10px;
-		}
-
-		.table4 .tr:last-child .td:first-child{
-			    border-bottom-left-radius: 10px;
-		}
-		.table4 .tr:last-child .td:last-child{
-			    border-bottom-right-radius: 10px;
-		}
-
-
-
-		/*div模拟table自定义样式&滚动条*/
-		.table5{
-			width: 618px;
-			    margin: 0 auto;
-			    display: table;
-			        border-collapse: separate; /*使用默认的  避免与border-radius冲突*/
-			            border-top: 1px solid #0ecaed;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-
-
-    border-bottom: 1px solid #0ecaed;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-		}
-		.table5 .thead{
-			
-		}
-		.table5 .tbody{
-			    height: 100px;
-    overflow-y: scroll;
-        border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-		}
-		.table5 .tr {
-			height: 38px;
-			line-height: 38px;
-			display: table-row;
-		}
-		.table5 .tr .td{
-			display: table-cell;
-     width: 309px;
-    text-align: center;
-    		border-right: 1px solid #0ecaed;
-    		border-bottom: 1px solid #0ecaed;
-		}
-		.table5 .tr .td:first-child{
-			border-left: 1px solid #0ecaed;
-		}
-
-		.table5 .thead .tr .td:first-child{
-			    border-top-left-radius: 10px;
-		}
-		.table5 .thead .tr .td:last-child{
-			    border-top-right-radius: 10px;
-		}
-
-		.table5 .tbody .tr:last-child .td:first-child{
-			    border-bottom-left-radius: 10px;
-		}
-		.table5 .tbody .tr:last-child .td:last-child{
-			    border-bottom-right-radius: 10px;
-		}
-
 	</style>
 </head>
 <body>
-	<h4>1、默认的table固定高度滚动条</h4>
-		<table class="table1" border="1">
-			<thead>
-				<tr>
-					<td>t1</td>
-					<td>t2</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>aaaa</td>
-					<td>aaaa</td>
-				</tr>
-				<tr>
-					<td>aaaa</td>
-					<td>aaaa</td>
-				</tr>
-				<tr>
-					<td>t1</td>
-					<td>t2</td>
-				</tr>
-				<tr>
-					<td>aaaa</td>
-					<td>aaaa</td>
-				</tr>
-				<tr>
-					<td>aaaa</td>
-					<td>aaaa</td>
-				</tr>
-				<tr>
-					<td>t1</td>
-					<td>t2</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<h4>2、自定义table样式</h4>
-		<table class="table2" cellspacing="0">
-			<thead>
-				<tr>
-					<td>t1</td>
-					<td>t2</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>aaaa</td>
-					<td>aaaa</td>
-				</tr>
-				<tr>
-					<td>aaaa</td>
-					<td>aaaa</td>
-				</tr>
-				<tr>
-					<td>t1</td>
-					<td>t2</td>
-				</tr>
-				<tr>
-					<td>aaaa</td>
-					<td>aaaa</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<h4>3、div模拟table</h4>
-		<div class="table3">
-			<div class="tr">
-				<div class="td">t1</div>
-				<div class="td">t2</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-		</div>
-
-		<h4>4、div模拟table&自定义样式</h4>
-		<div class="table4">
-			<div class="tr">
-				<div class="td">t1</div>
-				<div class="td">t2</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-			<div class="tr">
-				<div class="td">aaaa</div>
-				<div class="td">aaaa</div>
-			</div>
-		</div>
-
-
-		<h4>5、div模拟table&自定义样式&滚动条</h4>
-		<div class="table5">
-			<div class="thead">
-				<div class="tr">
-					<div class="td">t1</div>
-					<div class="td">t2</div>
-				</div>
-			</div>
-			<div class="tbody">
-				<div class="tr">
-					<div class="td">aaaa</div>
-					<div class="td">aaaa</div>
-				</div>
-				<div class="tr">
-					<div class="td">aaaa</div>
-					<div class="td">aaaa</div>
-				</div>
-				<div class="tr">
-					<div class="td">aaaa</div>
-					<div class="td">aaaa</div>
-				</div>
-				<div class="tr">
-					<div class="td">aaaa</div>
-					<div class="td">aaaa</div>
-				</div>
-				<div class="tr">
-					<div class="td">aaaa</div>
-					<div class="td">aaaa</div>
-				</div>
-				<div class="tr">
-					<div class="td">aaaa</div>
-					<div class="td">aaaa</div>
-				</div>
-			</div>
-		</div>
-
-		<h4>div模拟table&自定义样式&tbody内容滚动</h4>
-		<div>
+	<div class="wrap">
+			<h4>默认的table固定高度滚动条</h4>
 			<style>
-				.table6{
-					width: 618px;
-				    margin: 0 auto;
-				    display: table;
-				        border-collapse: separate; /*使用默认的  避免与border-radius冲突*/
-				            border-top: 1px solid #0ecaed;
-				    border-top-left-radius: 10px;
-				    border-top-right-radius: 10px;
-		}
-		.table6 .thead{
-			background: #ddd;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-		}
-		.table6 .tbody{
-			    height: 100px;
-    			/*overflow-y: scroll;*/
-    			overflow: hidden;
-    			    border-bottom: 1px solid #0ecaed;
-    			        border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-		}
-		.table6 .tbody .no_data .td{
-			width: 618px;
-			height: 100px;
-			line-height: 100px;
-		}
-		.table6 .tr {
-			height: 50px;
-			line-height: 50px;
-			display: table-row;
-		}
-		.table6 .tr .td{
-			display: table-cell;
-		        width: 309px;
-		    text-align: center;
-    		border-right: 1px solid #0ecaed;
-    		border-bottom: 1px solid #0ecaed;
-		}
-		.table6 .tr .td:first-child{
-			    border-left: 1px solid #0ecaed;
-		}
-		.table6 .thead .tr .td:first-child{
-			    border-top-left-radius: 10px;
-		}
-		.table6 .thead .tr .td:last-child{
-     border-top-right-radius: 10px; 
-		}
+				/*默认的table*/
+				.table1{
+					width: 500px;
+					margin: 0 auto;
+					border-collapse: collapse;
+					text-align: center;
+					border-color:#0ecaed;
+				}
+				.table1 thead{
+					display: block;
+				}
+				.table1 tbody{
+					display: block;
+					height:100px;
+					overflow-y: scroll;
+				}
+				.table1 tr{
+					height: 38px;
+					line-height: 38px;
+				}
+				.table1 tr td{
+					width: 300px;
+				}
 			</style>
-			<div class="table6">
-				<div class="thead">
-					<div class="tr">
-						<div class="td">t1</div>
-						<div class="td">t2</div>
-					</div>
+			<table class="table1" border="1">
+				<thead>
+					<tr>
+						<td>t1</td>
+						<td>t2</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>aaaa</td>
+						<td>aaaa</td>
+					</tr>
+					<tr>
+						<td>aaaa</td>
+						<td>aaaa</td>
+					</tr>
+					<tr>
+						<td>t1</td>
+						<td>t2</td>
+					</tr>
+					<tr>
+						<td>aaaa</td>
+						<td>aaaa</td>
+					</tr>
+					<tr>
+						<td>aaaa</td>
+						<td>aaaa</td>
+					</tr>
+					<tr>
+						<td>t1</td>
+						<td>t2</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h4>自定义table样式</h4>
+			<style>
+				/*自定义table样式*/
+				.table2{
+					width: 500px;
+					margin: 0 auto;
+					text-align: center;
+					border-collapse: separate;
+				}
+				.table2 thead tr td{
+					border-top: 1px solid #0ecaed;
+				}
+				.table2 thead tr td:first-child{
+					border-top-left-radius: 10px;
+				}
+				.table2 thead tr td:last-child{
+					border-top-right-radius: 10px;
+				}
+				.table2 tbody tr:last-child td:first-child{
+					border-bottom-left-radius: 10px;
+				}
+				.table2 tbody tr:last-child td:last-child{
+					border-bottom-right-radius: 10px;
+				}
+				table tr td:first-child{
+					border-left: 1px solid #0ecaed;
+				}
+				.table2 tr td{
+					border-right: 1px solid #0ecaed;
+					border-bottom: 1px solid #0ecaed;
+					padding: 5px;
+				}
+			</style>
+			<table class="table2" cellspacing="0">
+				<thead>
+					<tr>
+						<td>t1</td>
+						<td>t2</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>aaaa</td>
+						<td>aaaa</td>
+					</tr>
+					<tr>
+						<td>aaaa</td>
+						<td>aaaa</td>
+					</tr>
+					<tr>
+						<td>t1</td>
+						<td>t2</td>
+					</tr>
+					<tr>
+						<td>aaaa</td>
+						<td>aaaa</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+			<h4>自定义table样式固定高度超出可滚动</h4>
+			<style>
+				.record_table{
+					border-collapse: separate; /*使用默认的  避免与border-radius冲突*/
+					border-top-left-radius: 10px;
+					border-top-right-radius: 10px;
+
+				}
+				.record_table tr{
+					height: 48px;
+					line-height: 48px;
+
+				}
+				.record_table tr td{
+					width: 309px;
+					text-align: center;
+					border-right: 1px solid #0ecaed;
+					border-bottom: 1px solid #0ecaed;
+
+				}
+				.record_table tr td:first-child{
+					border-left: 1px solid #0ecaed;
+				}
+
+				.thead tr td:first-child{
+					border-top-left-radius: 10px;
+				}
+				.thead tr td:last-child{
+					border-top-right-radius: 10px;
+				}
+				.tbody td{
+					width: 309px;
+					height: 48px;
+					line-height:  48px;
+				}
+				.record_table_wrap_record{
+					width: 618px;
+					margin: 0 auto;
+				}
+				.record_table_wrap_title .record_table{
+					border-top: 1px solid #0ecaed;
+				}
+				.record_table_wrap_content{
+					height: 1.813333rem;
+					overflow: hidden;
+					border-bottom: 1px solid #0ecaed;
+					border-bottom-left-radius: 10px;
+					border-bottom-right-radius: 10px;
+				}
+			</style>
+			<div class="record_table_wrap_record">
+				<div class="record_table_wrap_title">
+					<table class="record_table" cellspacing="0">
+						<thead class="thead">
+							<tr>
+								<td>单笔出借金额（元）</td>
+								<td>返现金额（元）</td>
+							</tr>
+						</thead>
+					</table>
 				</div>
-				<div class="tbody" id="scrol-content">
-					<div class="tr no_data">
-						<div class="td">暂无数据</div>
-					</div>
-					<!-- <div class="tr">
-						<div class="td">aaaa</div>
-						<div class="td">aaaa</div>
-					</div>
+				<div class="record_table_wrap_content" id="scrol-content">
+					<table class="record_table" cellspacing="0">
+						<tbody class="tbody">
+							<tr>
+								<td>10000</td>
+								<td>200</td>
+							</tr>
+							<tr>
+								<td>10000</td>
+								<td>200</td>
+							</tr>
+							<tr>
+								<td>10000</td>
+								<td>200</td>
+							</tr>
+							<tr>
+								<td>10000</td>
+								<td>200</td>
+							</tr>
+		                    <!-- <tr class="no_data">
+		                        <td>暂无数据</td>
+		                    </tr> -->
+		                </tbody>
+		            </table>
+		        </div>
+		    </div>
+
+            <h4>div模拟table</h4>
+            <style>
+            	/*div模拟table*/
+				.table3{
+					width: 618px;
+					margin: 0 auto;
+					display: table;
+					/*为表格设置合并边框模型*/
+					border-collapse: collapse;
+				}
+				.table3 .thead{
+					
+				}
+				.table3 .tbody{
+					height: 100px;
+					overflow-y: scroll;
+				}
+				.table3 .tr {
+					height: 38px;
+					line-height: 38px;
+					display: table-row;
+				}
+				.table3 .tr .td{
+					display: table-cell;
+					width: 30%;
+					text-align: center;
+					border:1px solid #0ecaed;
+				}
+            </style>
+            <div class="table3">
+            	<div class="tr">
+            		<div class="td">t1</div>
+            		<div class="td">t2</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            </div>
+
+            <h4>div模拟table&自定义样式</h4>
+            <style>
+            	/*div模拟table自定义样式*/
+				.table4{
+					width: 618px;
+					margin: 0 auto;
+					display: table;
+					border-collapse: separate; /*使用默认的  避免与border-radius冲突*/
+					border-top: 1px solid #0ecaed;
+					border-top-left-radius: 10px;
+					border-top-right-radius: 10px;
+				}
+				.table4 .thead{
+					
+				}
+				.table4 .tbody{
+					height: 100px;
+					overflow-y: scroll;
+				}
+				.table4 .tr {
+					height: 38px;
+					line-height: 38px;
+					display: table-row;
+				}
+				.table4 .tr .td{
+					display: table-cell;
+					width: 30%;
+					text-align: center;
+					border-right: 1px solid #0ecaed;
+					border-bottom: 1px solid #0ecaed;
+				}
+				.table4 .tr .td:first-child{
+					border-left: 1px solid #0ecaed;
+				}
+				.table4 .tr:first-child .td:first-child{
+					border-top-left-radius: 10px;
+				}
+				.table4 .tr:first-child .td:last-child{
+					border-top-right-radius: 10px;
+				}
+
+				.table4 .tr:last-child .td:first-child{
+					border-bottom-left-radius: 10px;
+				}
+				.table4 .tr:last-child .td:last-child{
+					border-bottom-right-radius: 10px;
+				}
+            </style>
+            <div class="table4">
+            	<div class="tr">
+            		<div class="td">t1</div>
+            		<div class="td">t2</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            	<div class="tr">
+            		<div class="td">aaaa</div>
+            		<div class="td">aaaa</div>
+            	</div>
+            </div>
+
+
+            <h4>div模拟table&自定义样式&滚动条</h4>
+            <style>
+            	/*div模拟table自定义样式&滚动条*/
+				.table5{
+					width: 618px;
+					margin: 0 auto;
+					display: table;
+					border-collapse: separate; /*使用默认的  避免与border-radius冲突*/
+					border-top: 1px solid #0ecaed;
+					border-top-left-radius: 10px;
+					border-top-right-radius: 10px;
+					border-bottom: 1px solid #0ecaed;
+					border-bottom-left-radius: 10px;
+					border-bottom-right-radius: 10px;
+				}
+				.table5 .thead{
+					
+				}
+				.table5 .tbody{
+					height: 100px;
+					overflow-y: scroll;
+					border-bottom-left-radius: 10px;
+					border-bottom-right-radius: 10px;
+				}
+				.table5 .tr {
+					height: 38px;
+					line-height: 38px;
+					display: table-row;
+				}
+				.table5 .tr .td{
+					display: table-cell;
+					width: 309px;
+					text-align: center;
+					border-right: 1px solid #0ecaed;
+					border-bottom: 1px solid #0ecaed;
+				}
+				.table5 .tr .td:first-child{
+					border-left: 1px solid #0ecaed;
+				}
+
+				.table5 .thead .tr .td:first-child{
+					border-top-left-radius: 10px;
+				}
+				.table5 .thead .tr .td:last-child{
+					border-top-right-radius: 10px;
+				}
+
+				.table5 .tbody .tr:last-child .td:first-child{
+					border-bottom-left-radius: 10px;
+				}
+				.table5 .tbody .tr:last-child .td:last-child{
+					border-bottom-right-radius: 10px;
+				}
+            </style>
+            <div class="table5">
+            	<div class="thead">
+            		<div class="tr">
+            			<div class="td">t1</div>
+            			<div class="td">t2</div>
+            		</div>
+            	</div>
+            	<div class="tbody">
+            		<div class="tr">
+            			<div class="td">aaaa</div>
+            			<div class="td">aaaa</div>
+            		</div>
+            		<div class="tr">
+            			<div class="td">aaaa</div>
+            			<div class="td">aaaa</div>
+            		</div>
+            		<div class="tr">
+            			<div class="td">aaaa</div>
+            			<div class="td">aaaa</div>
+            		</div>
+            		<div class="tr">
+            			<div class="td">aaaa</div>
+            			<div class="td">aaaa</div>
+            		</div>
+            		<div class="tr">
+            			<div class="td">aaaa</div>
+            			<div class="td">aaaa</div>
+            		</div>
+            		<div class="tr">
+            			<div class="td">aaaa</div>
+            			<div class="td">aaaa</div>
+            		</div>
+            	</div>
+            </div>
+
+            <h4>div模拟table&自定义样式&tbody内容滚动</h4>
+            <div>
+            	<style>
+            	.table6{
+            		width: 618px;
+            		margin: 0 auto;
+            		display: table;
+            		border-collapse: separate; /*使用默认的  避免与border-radius冲突*/
+            		border-top: 1px solid #0ecaed;
+            		border-top-left-radius: 10px;
+            		border-top-right-radius: 10px;
+            	}
+            	.table6 .thead{
+            		background: #ddd;
+            		border-top-left-radius: 10px;
+            		border-top-right-radius: 10px;
+            	}
+            	.table6 .tbody{
+            		height: 100px;
+            		/*overflow-y: scroll;*/
+            		overflow: hidden;
+            		border-bottom: 1px solid #0ecaed;
+            		border-bottom-left-radius: 10px;
+            		border-bottom-right-radius: 10px;
+            	}
+            	.table6 .tbody .no_data .td{
+            		width: 618px;
+            		height: 100px;
+            		line-height: 100px;
+            	}
+            	.table6 .tr {
+            		height: 50px;
+            		line-height: 50px;
+            		display: table-row;
+            	}
+            	.table6 .tr .td{
+            		display: table-cell;
+            		width: 309px;
+            		text-align: center;
+            		border-right: 1px solid #0ecaed;
+            		border-bottom: 1px solid #0ecaed;
+            	}
+            	.table6 .tr .td:first-child{
+            		border-left: 1px solid #0ecaed;
+            	}
+            	.table6 .thead .tr .td:first-child{
+            		border-top-left-radius: 10px;
+            	}
+            	.table6 .thead .tr .td:last-child{
+            		border-top-right-radius: 10px; 
+            	}
+            </style>
+            <div class="table6">
+            	<div class="thead">
+            		<div class="tr">
+            			<div class="td">t1</div>
+            			<div class="td">t2</div>
+            		</div>
+            	</div>
+            	<div class="tbody" id="scrol-content2">
+            		<!-- <div class="tr no_data">
+            			<div class="td">暂无数据</div>
+            		</div> -->
 					<div class="tr">
 						<div class="td">aaaa</div>
 						<div class="td">aaaa</div>
@@ -458,17 +540,23 @@
 					<div class="tr">
 						<div class="td">aaaa</div>
 						<div class="td">aaaa</div>
-					</div> -->
+					</div>
+					<div class="tr">
+						<div class="td">aaaa</div>
+						<div class="td">aaaa</div>
+					</div>
 				</div>
 			</div>
 		</div>
+
 		<script type="text/javascript" src="https://static.yindou.com/web/js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="https://static.yindou.com/web/js/jquery.slimscroll.min.js"></script>
 		<script type="text/javascript">
 			// $(function(){})    slimscroll插件  用于使一个div内容区域变成可滚动的
 			$(document).ready(function(){
 				$("#scrol-content").slimScroll({ height: '100px' });
+				$("#scrol-content2").slimScroll({ height: '100px' });
 			});
 		</script>
-</body>
-</html>
+	</body>
+	</html>
