@@ -184,7 +184,7 @@
 			<div class="turnplate">
 				<div class="turnplateborder default"></div>
 				<div class="turnplateborder change"></div>
-				<div class="core">
+				<div class="core" id="core">
 					<div class="core-box">
 						<div class="prize">
 							<div class="prize-dialog">
@@ -225,35 +225,48 @@
 					</div>
 				</div>
 			</div>
-			<div class="start" onclick="start();"></div>
+			<div class="start" id="start"></div>
 		</div>
 	</div>
 	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="./js/jquery.rotate.min.js"></script>
 	<script type="text/javascript">
 		function start(){
-			document.querySelector('.result').style.display="block";
-			document.querySelector('.turnplate').style.transform="rotate3d(0, 4, 25, 400deg)";
+			// document.querySelector('.result').style.display="block";
+			// document.querySelector('.turnplate').style.transform="rotate3d(0, 4, 25, 400deg)";
 		}
-		function hideMask(){
-			document.querySelector('.result').style.display="none";
-		}
-		// time();
-		// var countTime = 6;
-		// var out;
-		// function time(){
-		// 	countTime--;
-		// 	out = setTimeout(time,1000);
-		// 		if(countTime<3){
-		// 			var countTime1 = countTime+1;
-		// 			$('.turnplateborder').removeClass('change');
-		// 			$('.turnplateborder').addClass('change');
-		// 			if(countTime1<=0){
-		// 				countTime = 6;
-		// 				$('.turnplateborder').addClass('change');
-		// 				$('.turnplateborder').removeClass('change');
-		// 			}
-		// 		}
+		// function hideMask(){
+		// 	document.querySelector('.result').style.display="none";
 		// }
+		var rotateFunc = function(awards,angle,text){  //awards:奖项，angle:奖项对应的角度
+	        $('#core').stopRotate();
+	        $("#core").rotate({
+	            angle:0, 
+	            duration: 5000, 
+	            animateTo: angle+1440, //angle是图片上各奖项对应的角度，1440是我要让指针旋转4圈。所以最后的结束的角度就是这样子^^
+	            callback:function(){
+	                alert(text)
+	            }
+	        }); 
+	    };
+		$('#start').click(function(){
+			var data = [1,2,3,0]; //返回的数组
+                data = data[Math.floor(Math.random()*data.length)];
+            if(data==1){
+				rotateFunc(1,100,'一等奖');
+            }
+            if(data==2){
+				rotateFunc(2,160,'二等奖');
+            }
+            if(data==3){
+				rotateFunc(3,130,'三等奖');
+            }
+            if(data==0){
+            	var angle = [67,112,202,292,337];
+                    angle = angle[Math.floor(Math.random()*angle.length)]
+                rotateFunc(0,angle,'很遗憾，这次您未抽中奖')
+            }
+		});
 	</script>
 </body>
 </html>
