@@ -1,0 +1,302 @@
+/**
+ *
+ * @authors fozero (fozero@126.com)
+ * @date    2018-06-13
+ */
+
+
+@import "../normalize/index.less";  /* resets */
+@import "../base/index.less";  /* base */
+
+.go-index{
+	display: block;
+	width: 55px;
+	padding: 8px 8px;
+	line-height: 18px;
+	font-size: 14px;
+	text-decoration: none;
+	color: #fcf6b8;
+	// background: #fa5d36;
+	    background: #16a1d0;
+	border-radius: 5px;
+	text-align: center;
+	position: fixed;
+	top: 26px;
+	left: 50%;
+	margin-left: 502px;
+	z-index: 100;
+}
+.month6-xxbt{
+	// background: #357ead;
+	// padding-top:794px;
+	padding-top: 122px;
+	height: 3497px;
+	min-height: 1080px;
+	position: relative;
+	min-width: 1000px;
+	font-size: 18px;
+	    color: #fff;
+    font-weight: 200;
+        // 设置div多个背景图  显示顺序 第一个显示在最上面
+  //       background-image:url("https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/title_bg.png"),url("https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/bg.jpg");
+		// background-repeat: no-repeat, no-repeat;  
+		// background-position:0 0,0 0;
+		// 简写成
+		background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/title_bg.png') no-repeat center top/auto,
+		url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/bg.jpg') no-repeat center/100% 100%;
+		&__title{
+			width: 926px;
+			height: 502px;
+			display: block;
+			margin: 0 auto;
+		}
+		&__block1{
+			width: 1003px;
+			height:  837px;
+			margin: 150px auto 0;
+			position: relative;
+			padding-top: 60px;
+			background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/block1_bg.png') no-repeat center/1003px 837px;
+			&__title{
+				width: 632px;
+				height: 86px;
+				position: absolute;
+				left: 40px;
+				top: -36px;
+			}
+			&__desc{    
+				text-align: center;
+				line-height: 50px;
+			}
+			&__record{
+				width: 977px;
+				height: 374px;
+				margin: 170px auto 0;
+				padding-top: 120px;
+				background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/block1_bg2.png') no-repeat center/977px 374px;
+				position: relative;
+				.record_table{
+					width: 618px;
+					margin: 0 auto;
+					display: table;
+					border-collapse: separate; /*使用默认的  避免与border-radius冲突*/
+					border-top: 1px solid #0ecaed;
+					border-top-left-radius: 10px;
+					border-top-right-radius: 10px;
+					.thead{
+						font-size: 20px;
+						color: #fff;
+						.tr{
+							.td:first-child{
+								border-top-left-radius: 10px;
+							}
+							.td:last-child{
+								border-top-right-radius: 10px; 
+							}
+						}
+					}
+					.tbody{
+						height: 122px;
+						overflow: hidden;
+						border-bottom: 1px solid #0ecaed;
+						border-bottom-left-radius: 10px;
+						border-bottom-right-radius: 10px;
+						.no_data{
+							.td{
+								width: 618px;
+								height: 122px;
+    							line-height: 122px;
+							}
+						}
+					}
+					.tr{
+						height: 60px;
+						line-height: 60px;
+						display: table-row;
+						.td{
+							display: table-cell;
+							width: 309px;
+							text-align: center;
+							border-right: 1px solid #0ecaed;
+							border-bottom: 1px solid #0ecaed;
+							&:first-child{
+								border-left: 1px solid #0ecaed;
+							}
+							.award_ic{
+								width:47px;
+								height:42px;
+								display: inline-block;
+								vertical-align: middle;
+								margin-right: 20px;
+								background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/block2_award_ic.png') no-repeat center/47px 42px;
+							}
+						}
+					}
+				}
+				.no_login_bg{
+					width: 358px;
+					height: 139px;
+					position: absolute;
+					right: 70px;
+					bottom: 20px;
+					background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/block1_bg3.png') no-repeat center/358px 139px;
+				}
+				.no_login{
+					text-align: center;
+					margin-top: 60px;
+					.login_btn{
+						width: 108px;
+						height: 35px;
+						display: inline-block;
+						vertical-align: middle;
+						margin: 0 5px;
+						    cursor: pointer;
+						background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/login_btn.png') no-repeat center/108px 35px;
+					}
+				}
+				.t_amount{
+					position: absolute;
+					top:0;
+					right: 0;
+					color:#fafdea;
+					top: 66px;
+					right: 122px;
+					font-size: 27px;
+				}
+			}
+			&__btn{
+				margin-top: 15px;
+				.borrow_btn{
+					width: 149px;
+					height: 60px;
+					display: block;
+					margin: 0 auto;
+					cursor: pointer;
+					background:url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/btn_borrow.png') no-repeat center/149px 60px;
+				}
+			}
+		}
+		&__block2{
+			width: 1009px;
+			height:  830px;
+			margin: 150px auto 0;
+			position: relative;
+			padding-top: 100px;
+			background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/block2_bg.png') no-repeat center/1009px 830px;
+			.ic1{
+				position: absolute;
+				left: 0;
+				top: -68px;
+				width: 80px;
+				height: 79px;
+				display: block;
+				background:url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/block2_ic1.png') no-repeat center/80px 79px;
+			}
+			.ic2{
+				position: absolute;
+				top: -22px;
+				right: -86px;
+				width: 186px;
+				height: 140px;
+				display: block;
+				background:url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/block2_ic2.png') no-repeat center/186px 140px;
+			}
+			&__desc{    
+				text-align: center;
+				line-height: 50px;
+			}
+			.amount{
+				width: 412px;
+				margin: 20px auto 0;
+				.title{
+					width: 345px;
+					height: 40px;
+					display: block;
+					margin-left: 10px;
+				}
+				.border{
+					width: 412px;
+					height: 4px;
+					display: block;
+					background:url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/block2_money_border.png') no-repeat center/412px 4px;
+				}
+				.total_amount{
+					span{
+						display: inline-block;
+						margin-left: 15px;
+						padding: 5px 0;
+						color: #fde36c;
+						font-size: 23px;
+						letter-spacing: 2px;
+						text-shadow: 2px 5px 3px #333;
+					}
+				}
+				.no_login{
+					text-align: center;
+					margin-top: 15px;
+					.login_btn{
+						width: 108px;
+						height: 35px;
+						display: inline-block;
+						vertical-align: middle;
+						margin: 0 5px;
+						    cursor: pointer;
+						background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/login_btn.png') no-repeat center/108px 35px;
+					}
+				}
+			}
+			.table{
+				width: 681px;
+				height: 354px;
+				margin: 60px auto 0;
+				text-align: center;
+				padding-top: 10px;
+				color: #fff;
+				font-size: 20px;
+				background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/block2_award_bg.png') no-repeat center/681px 354px;
+				.thead{
+					font-weight: bold;
+					font-size: 22px;
+				}
+				tr{
+					height: 68px;
+					line-height: 68px;
+					td{
+						width: 50%;
+						.award_ic{
+							width:47px;
+							height:42px;
+							display: inline-block;
+							vertical-align: middle;
+							margin-right: 40px;
+							background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/block2_award_ic.png') no-repeat center/47px 42px;
+						}
+					}
+				}
+			}
+			&__btn{
+				margin-top: 25px;
+				.borrow_btn{
+					width: 149px;
+					height: 60px;
+					display: block;
+					margin: 0 auto;
+					cursor: pointer;
+					background:url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/btn_borrow.png') no-repeat center/149px 60px;
+				}
+			}
+		}
+		&__block3{
+			width: 1004px;
+			height:  538px;
+			margin: 150px auto 0;
+			position: relative;
+			padding-top: 166px;
+			background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/pc/block3_bg.png') no-repeat center/1004px 538px;
+			&__desc{    
+				line-height: 30px;
+				padding-left: 90px;
+			}
+		}
+		
+	}

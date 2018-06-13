@@ -1,0 +1,355 @@
+/**
+ *
+ * @authors fozero (fozero@126.com)
+ * @date    2018-06-13
+ */
+
+@import "../normalize/index.less";  /* resets */
+@import "../base/index.less";  /* base */
+
+
+.month6-xxbt{
+	width: 10.0rem;
+	height: 40.226667rem;
+	padding-top: 0.733333rem;
+	    font-weight: 200;
+	position: relative;
+	font-size: 0.293333rem;
+	color: #fff;
+		background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/title_bg.png') no-repeat center top/10.0rem 19.84rem,
+		url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/bg.jpg') no-repeat center/10.0rem 40.226667rem;
+		&__title{
+			width: 7.973333rem;
+			height: 4.386667rem;
+			display: block;
+			margin: 0 auto;
+		}
+		&__block1{
+			width: 10.0rem;
+			height:  13.386667rem;
+			margin: 1.2rem auto 0;
+			position: relative;
+			padding-top: 1.04rem;
+			background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/block1_bg1.png') no-repeat center/10.0rem 13.386667rem;
+			&__title{
+				width: 6.293333rem;
+				height: 0.853333rem;
+				position: absolute;
+				left: 0.4rem;
+				top: -0.266667rem;
+			}
+			&__desc{    
+				padding: 0 0.613333rem;
+				text-align: center;
+				line-height: 0.426667rem;
+			}
+			&__record{
+				width: 10.0rem;
+				height: 5.413333rem;
+				margin: 3.333333rem auto 0;
+				padding-top: 0.96rem;
+				background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/block1_bg2.png') no-repeat center/10.0rem 5.413333rem;
+				position: relative;
+				.record_table{
+					border-collapse: separate; /*使用默认的  避免与border-radius冲突*/
+					border-top-left-radius: 0.4rem;
+					border-top-right-radius: 0.4rem;
+					tr{
+						height: 0.906667rem;
+						line-height: 0.906667rem;
+						td{
+							width: 4.48rem;
+							text-align: center;
+							border-right: 1px solid #0ecaed;
+							border-bottom: 1px solid #0ecaed;
+							&:first-child{
+								border-left: 1px solid #0ecaed;
+							}
+						}
+					}
+					.thead{
+						color: #fff;
+						tr{
+							td:first-child{
+								border-top-left-radius: 0.4rem;
+							}
+							td:last-child{
+								border-top-right-radius: 0.4rem;
+							}
+						}
+					}
+					.tbody{
+						.no_data{
+							td{
+								width: 10.0rem;
+								height: 1.813333rem;
+								line-height:  1.813333rem;
+							}
+						}
+					}
+				}
+				.record_table_wrap{
+					width: 8.866667rem;
+					font-size: 0.266667rem;
+					margin: 0.4rem auto 0;
+					&_title{
+						.record_table{
+							border-top: 1px solid #0ecaed;
+						}
+					}
+					&_content{
+						height: 1.813333rem;
+						overflow: hidden;
+						    border-bottom: 1px solid #0ecaed;
+						border-bottom-left-radius: 0.4rem;
+						border-bottom-right-radius: 0.4rem;
+
+						.record_table{
+						}
+					}
+				}
+				.record_table2{
+					width: 8.866667rem;
+					font-size: 0.266667rem;
+					margin: 0.4rem auto 0;
+					display: table;
+					border-collapse: separate; /*使用默认的  避免与border-radius冲突*/
+					border-top: 1px solid #0ecaed;
+					border-top-left-radius: 10px;
+					border-top-right-radius: 10px;
+					.tr{
+						height: 0.906667rem;
+						line-height: 0.906667rem;
+						display: table-row;
+						.td{
+							display: table-cell;
+							width: 4.48rem;
+							text-align: center;
+							border-right: 1px solid #0ecaed;
+							border-bottom: 1px solid #0ecaed;
+							&:first-child{
+								border-left: 1px solid #0ecaed;
+							}
+							.award_ic{
+								width:0.6rem;
+								height:0.56rem;
+								display: inline-block;
+								vertical-align: middle;
+								margin-right: 0.4rem;
+								background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/money_ic.png') no-repeat center/0.6rem 0.56rem;
+							}
+						}
+					}
+					.thead{
+						// font-size: 20px;
+						color: #fff;
+						.tr{
+							.td:first-child{
+								border-top-left-radius: 0.133333rem;
+							}
+							.td:last-child{
+								border-top-right-radius: 0.133333rem; 
+							}
+						}
+					}
+					.tbody{
+						height: 1.786667rem;
+						overflow: hidden;
+						border-bottom: 1px solid #0ecaed;
+						border-bottom-left-radius: 0.133333rem;
+						border-bottom-right-radius: 0.133333rem;
+						.no_data{
+							.td{
+								width: 8.24rem;
+								height: 1.626667rem;
+    							line-height: 1.626667rem;
+							}
+						}
+					}
+				}
+				.no_login_bg{
+					width: 4.773333rem;
+					height: 1.666667rem;
+					position: absolute;
+					right: 0;
+					bottom: 0.506667rem;
+					background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/block1_login_bg.png') no-repeat center/4.773333rem 1.853333rem;
+				}
+				.no_login{
+					text-align: center;
+					margin-top: 1.146667rem;
+					font-weight: 500;
+					.login_btn{
+						width: 1.906667rem;
+						height: 0.626667rem;
+						display: inline-block;
+						vertical-align: middle;
+						margin: 0 5px;
+						    cursor: pointer;
+						background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/login_btn.png') no-repeat center/1.906667rem 0.626667rem;
+					}
+				}
+				.record_txt{
+					// display: flex;
+					// justify-content:space-between;
+					padding: 0 0.533333rem;
+					font-size: 0.32rem;
+					color: #fff;
+					.record_txt_lf{
+						float: left;
+					}
+					.t_amount{
+						float: right;
+					}
+				}
+			}
+			&__btn{
+				margin-top: 0.4rem;
+				.borrow_btn{
+					width: 2.173333rem;
+					height: 0.893333rem;
+					display: block;
+					margin: 0 auto;
+					cursor: pointer;
+					background:url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/borrow_btn.png') no-repeat center/2.173333rem 0.893333rem;
+				}
+			}
+		}
+		&__block2{
+			width: 9.986667rem;
+			height:  11.093333rem;
+			margin: 1.2rem auto 0;
+			position: relative;
+			padding-top: 1.066667rem;
+			background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/block2_bg.png') no-repeat center/9.986667rem 11.093333rem;
+			&__title{
+				width: 6.08rem;
+				height: 0.826667rem;
+				position: absolute;
+				left: 0.666667rem;
+				top: -0.333333rem;
+			}
+			.ic1{
+				position: absolute;
+				left: 0.4rem;
+				top: -1.013333rem;
+				width: 0.693333rem;
+				height: 0.693333rem;
+				display: block;
+				background:url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/block2_ic1.png') no-repeat center/0.693333rem 0.693333rem;
+			}
+			.ic2{
+				position: absolute;
+				top: -0.773333rem;
+				right: 0;
+				width: 1.613333rem;
+				height: 1.386667rem;
+				background:url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/block2_ic2.png') no-repeat center/1.613333rem 1.386667rem;
+			}
+			&__desc{    
+				padding: 0 0.613333rem;
+				text-align: center;
+				line-height: 0.426667rem;
+			}
+			.amount{
+				width: 6.573333rem;
+				margin: 0.266667rem auto 0;
+				.title{
+					width: 5.346667rem;
+					height: 0.64rem;
+					display: block;
+					margin-left: 0.133333rem;
+				}
+				.border{
+					width: 6.573333rem;
+					height: 0.066667rem;
+					display: block;
+					background:url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/block2_amount_border.png') no-repeat center/6.573333rem 0.066667rem;
+				}
+				.total_amount{
+					span{
+						display: inline-block;
+						margin-left: 0.2rem;
+						padding: 0.066667rem 0;
+						color: #e4ce74;
+						font-size: 0.373333rem;
+						font-weight: 200;
+						letter-spacing: 0.026667rem;
+						text-shadow: 0.026667rem 0.066667rem 0.04rem #333;
+					}
+				}
+				.no_login{
+					text-align: center;
+					margin-top: 0.2rem;
+					font-weight: 500;
+					.login_btn{
+						width: 1.906667rem;
+						height: 0.626667rem;
+						display: inline-block;
+						vertical-align: middle;
+						margin: 0 5px;
+						    cursor: pointer;
+						background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/login_btn.png') no-repeat center/1.906667rem 0.626667rem;
+					}
+				}
+			}
+			.table{
+				width: 8.92rem;
+				height: 4.626667rem;
+				margin: 0.4rem auto 0;
+				text-align: center;
+				padding-top: 0.133333rem;
+				color: #fff;
+				font-size: 0.266667rem;
+				font-weight: 200;
+				background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/block2_table_bg.png') no-repeat center/8.92rem 4.626667rem;
+				.thead{
+					font-weight: bold;
+					font-size: 0.293333rem;
+					td{
+							    padding-top: 0.133333rem;
+						}
+				}
+				tr{
+					height: 0.906667rem;
+					line-height: 0.906667rem;
+					td{
+						width: 50%;
+						.award_ic{
+							width:0.6rem;
+							height:0.56rem;
+							display: inline-block;
+							vertical-align: middle;
+							margin-right: 0.4rem;
+							background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/money_ic.png') no-repeat center/0.6rem 0.56rem;
+						}
+					}
+				}
+			}
+			&__btn{
+				margin-top: 25px;
+				.borrow_btn{
+					width: 2.173333rem;
+					height: 0.893333rem;
+					display: block;
+					margin: 0 auto;
+					cursor: pointer;
+					background:url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/borrow_btn.png') no-repeat center/2.173333rem 0.893333rem;
+				}
+			}
+		}
+		&__block3{
+			width: 10.0rem;
+			height:  6.973333rem;
+			margin: 0.533333rem auto 0;
+			position: relative;
+			padding-top: 1.693333rem;
+			background: url('https://caiyunupload.b0.upaiyun.com/ydimg/theme/2018/06/xxbt/app/block3_bg.png') no-repeat center/10.0rem 6.973333rem;
+			&__desc{    
+				line-height: 0.426667rem;
+				padding: 0 0.4rem;
+				font-weight: 200;
+			}
+		}
+		
+	}

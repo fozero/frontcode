@@ -1,12 +1,15 @@
 {
   "name": "parcel-vue",
   "version": "1.0.0",
-  "description": "零配置VUE开发模板，基于Parcel全新构建",
-  "author": "cheneyweb <457299596@qq.com>",
+  "description": "develop template use parcel",
+  "author": "fozero <fozero@126.com>",
   "main": "main.js",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel index.html",
+    "appdev": "parcel src/app/index.html",
+    "webdev": "parcel src/web/index.html",
+    "appex": "parcel src/examples/app/index.html",
+    "webex": "parcel src/examples/web/index.html",
     "build": "parcel build index.html --public-url /"
   },
   "dependencies": {
@@ -17,6 +20,7 @@
   "devDependencies": {
     "@vue/component-compiler-utils": "^1.0.0",
     "iview": "^2.11.0",
+    "less": "^3.0.4",
     "parcel-bundler": "^1.7.0",
     "vue": "^2.5.16",
     "vue-template-compiler": "^2.5.16"

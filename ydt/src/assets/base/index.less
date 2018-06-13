@@ -1,0 +1,39 @@
+
+
+/**
+ * base.less
+ * @authors fozero (fozero@126.com)
+ * @date    2018-06-13
+ */
+
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+html,body{
+	height: 100%;
+}
+.hide{
+	display: none !important;
+}
+.block{
+	display: block;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clearfix{
+	zoom:1;//为了兼容IE
+	.clearfix:after{
+		content: "";//设置内容为空
+		height: 0;//高度为0
+		line-height: 0;
+		display: block;
+		visibility: hidden;
+		clear: both;
+	}
+}
