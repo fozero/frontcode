@@ -29,14 +29,14 @@
 			display: inline-block;
 			width: 4px;
 			height: 80px;
-			background: red;
+			background: #dfdfdf;
 		}
 		.timeline1 ul li .cicle{
 			display: inline-block;
 			width: 20px;
 			height: 20px;
 			border-radius: 100%;
-			background: blue;
+			background: #dfdfdf;
 			position: absolute;
 			top:70px;
 			left: 50%;
@@ -68,7 +68,7 @@
 			width: 20px;
 			height: 20px;
 			border-radius: 100%;
-			background: blue;
+			background: #dfdfdf;
 			position: absolute;
 			top:5px;
 			left: 70px;
@@ -78,7 +78,7 @@
 			height: 4px;
 			width: 80px;
 			display: inline-block;
-			background: red;
+			background: #dfdfdf;
 		}
 		.timeline2 .money{
 			 position: absolute;
@@ -108,7 +108,7 @@
 			width: 20px;
 			height: 20px;
 			border-radius: 100%;
-			background: blue;
+			background: #dfdfdf;
 			position: absolute;
 			top:5px;
 			left: 70px;
@@ -118,7 +118,7 @@
 			height: 4px;
 			width: 80px;
 			display: inline-block;
-			background: red;
+			background: #dfdfdf;
 		}
 		.timeline3 .money{
 			 position: absolute;
@@ -145,11 +145,12 @@
 		}
 		/*激活状态*/
 		.timeline3 .list .active .ic_timeline{
-			background: yellow;
+			background: #845FFD;
 		}
 		.timeline3 .list .active .cicle{
-			background: yellow;
+			background: #845FFD;
 		}
+
 	</style>
 </head>
 <body>
@@ -248,5 +249,98 @@
 		<!-- <div class="timeline"></div> -->
 	</div>
 
+
+
+	<h6>时间轴-横轴-动态显示进度2</h6>
+	<style>
+		.timeline_box{
+			position: relative;
+			color: #845FFD;
+		}
+		.timeline4{
+			position: absolute;
+		    z-index: 1;
+		    left: 0;
+		    top: 49px;
+		    height: 10px;
+		    /*background: #dfdfdf;*/
+		    background: url('./images/line.png') no-repeat center/100% 100%;
+		        width: 600px;
+		}
+		.timeline4 .node{
+			    position: absolute;
+			    top: -40px;
+			    z-index: 2;
+		}
+		.timeline4 .money{
+    display: block;
+		}
+		.timeline4 .borrow{
+			    display: block;	
+			        margin-top: 40px;
+		}
+		.timeline4 .node:after{
+			position: absolute;
+			left: 0;
+			top:30px;
+			 content: '';
+			width: 20px;
+			height: 20px;
+			border-radius: 100%;
+			background: #fff;
+			 border: 2px solid #dfdfdf;
+		}
+		.timeline4 .selected:after{
+			background: #845FFD;
+		}
+		.timeline4 .filling_line{
+			position: absolute;
+		    z-index: 1;
+		    left: 0;
+		    top: 0;
+		    height: 100%;
+		    width: 100%;
+		    /*background-color: #845FFD;*/
+		    background: url('./images/line_active.png') no-repeat center/100% 100%;
+		    transform-origin: left center;
+		}
+	</style>
+	<div class="timeline_box">
+		<div class="timeline4">
+			<ul class="list">
+				<li class="item">
+					<a class="node" style="left: 10%;">
+						<span class="money">200元</span>
+						<span class="borrow">10万</span>
+					</a>
+				</li>
+				<li class="item">
+					<a class="node " style="left: 25%;">
+						<span class="money">300元</span>
+						<span class="borrow">20万</span>
+					</a>
+				</li>
+				<li class="item">
+					<a class="node selected" style="left: 40%;">
+						<span class="money">400元</span>
+						<span class="borrow">30万</span>
+					</a>
+				</li>
+				<li class="item">
+					<a class="node" style="left: 60%;">
+						<span class="money">500元</span>
+						<span class="borrow">40万</span>
+					</a>
+				</li>
+				<li class="item">
+					<a class="node" style="left: 80%;">
+						<span class="money">600元</span>
+						<span class="borrow">50万</span>
+					</a>
+				</li>
+			</ul>
+			<div class="filling_line" style="transform: scaleX(0.4);"></div>
+		</div>
+	</div>
 </body>
 </html>
