@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时间轴</title>
+	<style type="text/css">
+	*{
+		magin:0;
+		padding: 0;
+	}
+	.clearfix:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	ul{
+		list-style: none;
+	}
+		.timeline1 ul{
+			    width: 400px;
+    margin: 0 auto;
+		}
+		.timeline1 ul li{
+			    text-align: center;
+			        position: relative;
+			        /*height: 80px;*/
+		}
+		.timeline1 ul li .ic_timeline{
+			display: inline-block;
+			width: 4px;
+			height: 80px;
+			background: red;
+		}
+		.timeline1 ul li .cicle{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border-radius: 100%;
+			background: blue;
+			position: absolute;
+			top:70px;
+			left: 50%;
+			margin-left: -10px;
+			    z-index: 9999;
+		}
+		.timeline1 .money{
+			    position: absolute;
+			        left: 50%;
+    margin-left: -60px;
+			           top: 70px;
+		}
+		.timeline1 .borrow{
+			    position: absolute;
+    right: 50%;
+            top: 70px;
+    margin-right: -50px;
+		}
+		.timeline2 ul{
+			 width: 400px;
+    margin: 0 auto;
+		}
+		.timeline2 ul li{
+			position: relative;
+			float: left;
+		}
+		.timeline2 ul li .cicle{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border-radius: 100%;
+			background: blue;
+			position: absolute;
+			top:5px;
+			left: 70px;
+			    z-index: 9999;
+		}
+		.timeline2 ul li .ic_timeline{
+			height: 4px;
+			width: 80px;
+			display: inline-block;
+			background: red;
+		}
+		.timeline2 .money{
+			 position: absolute;
+			           top: -20px;
+			               left: 70px;
+			                   width: 60px;
+		}
+		.timeline2 .borrow{
+			 position: absolute;
+			           top: 30px;
+			              left: 70px;
+			                  width: 60px;
+		}
+
+
+			
+		.timeline3 .list{
+			 width: 400px;
+    margin: 0 auto;
+		}
+		.timeline3 .list .item{
+			position: relative;
+			float: left;
+		}
+		.timeline3 .list .item .cicle{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border-radius: 100%;
+			background: blue;
+			position: absolute;
+			top:5px;
+			left: 70px;
+			    z-index: 9999;
+		}
+		.timeline3 .list .item .ic_timeline{
+			height: 4px;
+			width: 80px;
+			display: inline-block;
+			background: red;
+		}
+		.timeline3 .money{
+			 position: absolute;
+			           top: -20px;
+			               left: 70px;
+			                   width: 60px;
+		}
+		.timeline3 .borrow{
+			 position: absolute;
+			           top: 30px;
+			              left: 70px;
+			                  width: 60px;
+		}
+		
+		/*首尾样式*/
+		.timeline3 .list .item:first-child .ic_timeline{
+			width: 40px;
+		}
+		.timeline3 .list .item:last-child .ic_timeline{
+			width: 40px;
+		}
+		.timeline3 .list .item:first-child .cicle,.timeline3 .list .item:first-child .money,.timeline3 .list .item:first-child .borrow{
+			left: 30px;
+		}
+		/*激活状态*/
+		.timeline3 .list .active .ic_timeline{
+			background: yellow;
+		}
+		.timeline3 .list .active .cicle{
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<h6>时间轴-纵轴</h6>
+	<div class="timeline1">
+		<ul>
+			<li>
+				<i class="ic_timeline"></i>
+				<i class="cicle"></i>
+				<span class="money">200元</span>
+				<span class="borrow">10万</span>
+			</li>
+			<li>
+				<i class="ic_timeline"></i>
+				<i class="cicle"></i>
+				<span class="money">400元</span>
+				<span class="borrow">20万</span>
+			</li>
+			<li>
+				<i class="ic_timeline"></i>
+				<i class="cicle"></i>
+				<span class="money">600元</span>
+				<span class="borrow">30万</span>
+			</li>
+			<li>
+				<i class="ic_timeline"></i>
+			</li>
+		</ul>
+	</div>
+	
+<h6>时间轴-横轴</h6>
+<div class="timeline2">
+		<ul class="clearfix">
+			<li>
+				<i class="ic_timeline"></i>
+				<i class="cicle"></i>
+				<span class="money">200元</span>
+				<span class="borrow">10万</span>
+			</li>
+			<li>
+				<i class="ic_timeline"></i>
+				<i class="cicle"></i>
+				<span class="money">400元</span>
+				<span class="borrow">20万</span>
+			</li>
+			<li>
+				<i class="ic_timeline"></i>
+				<i class="cicle"></i>
+				<span class="money">600元</span>
+				<span class="borrow">30万</span>
+			</li>
+			<li>
+				<i class="ic_timeline"></i>
+				<i class="cicle"></i>
+				<span class="money">800元</span>
+				<span class="borrow">40万</span>
+			</li>
+			<li>
+				<i class="ic_timeline"></i>
+			</li>
+		</ul>
+	</div>
+
+
+	<h6>时间轴-横轴-动态显示进度</h6>
+<div class="timeline3">
+		<ul class="list clearfix">
+			<li class="item active">
+				<i class="ic_timeline"></i>
+				<i class="cicle"></i>
+				<span class="money">200元</span>
+				<span class="borrow">10万</span>
+			</li>
+			<li class="item active">
+				<i class="ic_timeline"></i>
+				<i class="cicle"></i>
+				<span class="money">400元</span>
+				<span class="borrow">20万</span>
+			</li>
+			<li class="item active">
+				<i class="ic_timeline"></i>
+				<i class="cicle"></i>
+				<span class="money">600元</span>
+				<span class="borrow">30万</span>
+			</li>
+			<li class="item">
+				<i class="ic_timeline"></i>
+				<i class="cicle"></i>
+				<span class="money">800元</span>
+				<span class="borrow">40万</span>
+			</li>
+			<li class="item">
+				<i class="ic_timeline"></i>
+			</li>
+		</ul>
+		<!-- <div class="timeline"></div> -->
+	</div>
+
+</body>
+</html>
