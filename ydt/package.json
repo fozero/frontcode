@@ -10,7 +10,8 @@
     "webdev": "parcel src/web/index.html",
     "appex": "parcel src/examples/app/index.html",
     "webex": "parcel src/examples/web/index.html",
-    "build": "parcel build src/examples/web/index.html --no-minify --public-url ./"
+    "build:webex": "parcel build src/examples/web/index.html --no-minify --public-url ./",
+    "build:appex": "parcel build src/examples/app/index.html --no-minify --public-url ./"
   },
   "dependencies": {
     "axios": "^0.18.0",
