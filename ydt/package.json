@@ -6,6 +6,7 @@
   "main": "main.js",
   "license": "MIT",
   "scripts": {
+    "dev":"node mock/index.js",
     "appdev": "parcel src/app/index.html",
     "webdev": "parcel src/web/index.html",
     "appex": "parcel src/examples/app/index.html",
@@ -15,6 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "express": "^4.16.3",
     "vue-hot-reload-api": "^2.3.0",
     "vue-router": "^3.0.1"
   },
