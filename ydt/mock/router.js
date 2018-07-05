@@ -3,7 +3,8 @@
  * @authors fozero (fozero@126.com)
  * @date    2018-06-13
  */
-
+const Mock = require('mockjs');
+const data = require('./data.json');
 var express = require('express')
 var bodyParser = require('body-parser')
 
@@ -20,9 +21,10 @@ app.get('/', function (req, res) {
 
 
 app.post('/test', function (req, res) {
-	console.log('**********');
-  res.json({msg:'hello'})
-  // res.json(Mock.mock(cont))
+	console.log('**********req：'+JSON.stringify(req.body));
+  // res.json({code:0,msg:'success',data:{ user: 'tobi'} })
+  const content =  data.gameInfo;
+  res.json(Mock.mock(content))
 });
 
 

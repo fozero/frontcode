@@ -6,6 +6,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 
 // http request拦截器
 axios.interceptors.request.use((config) => {
+  alert(JSON.stringify(config.data))
   // POST传参序列化
   if (config.method === 'post') {
     config.data = qs.stringify(config.data);
@@ -17,6 +18,7 @@ axios.interceptors.request.use((config) => {
 
 // http response 拦截器
 axios.interceptors.response.use((res) => {
+  // alert(JSON.stringify(res))
   // 统一处理未登录
   if (res.data.code === 400135) {
     window.location.href = '/wx/index?goto_url=<{$g_www_domain}>/wx/xxxxxx';

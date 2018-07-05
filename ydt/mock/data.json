@@ -1,0 +1,73 @@
+{
+  "gameInfo": {
+    "code": 0,
+    "message": "成功",
+    "data": {
+      "invitation_id": "",
+      "openid": "oIqWiwXR1RubtgQJQEBdTnYCIqkQ",
+      "state": 0,
+      "result": {
+        "id": "26",
+        "u_id": "350",
+        "number|+2": 0,
+        "money": "1.50",
+        "dt": "2018-05-19 14:55:39"
+      },
+      "share_url": "http://songhwwww.yind123.com/wx/yaoyou_fuwu/invite?invitation_id=bCNIbilD2TA8C6EuT19Sog%3D%3D",
+      "fenxiang": true
+    }
+  },
+  "gamePkInfo": {
+    "code": 0,
+    "message": "成功",
+    "data": {
+      "invitation_id": "bCNIbilD2TA8C6EuT19Sog==",
+      "openid": "oIqWiwYcGxRj7ddnNz--1-j9i22M",
+      "state": 1,
+      "result": {
+          "master_number|+5": 0,
+          "id": "27",
+          "slave_number|+6": 0
+      },
+      "share_url": "http://songhwwww.yind123.com/wx/yaoyou_fuwu/invite?invitation_id=o0pUuyQqL8SuJt4tWbUGIg%3D%3D",
+      "fenxiang": true
+    }
+  },
+  "list": {
+    "code": 0,
+    "message": "成功",
+    "data": [
+      {
+        "dt": "2018-05-18 12:23:59",
+        "money": "1",
+        "state": 2
+      },
+      {
+        "dt": "2018-05-19 16:23:09",
+        "money": "0.5",
+        "state": 1
+      },
+      {
+        "dt": "2018-05-19 12:29:41",
+        "money": "1",
+        "state": 2
+      }
+    ]
+  },
+  "shakeNum": {
+    "code": 0,
+    "message": "成功",
+    "data": {
+      "number": 2
+    }
+  },
+  "shakePkNum": {
+    "code": 0,
+    "message": "成功",
+    "data": {
+      "number": "2",
+      "s_number": 1,
+      "is_win": "n"
+    }
+  }
+}

@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="month6-xxbt__block1__btn">
-          <i class="borrow_btn" onclick="borrowe();"></i>
+          <i class="borrow_btn" @click="borrowe();"></i>
         </div>
       </div>
       <div class="month6-xxbt__block2">
@@ -131,6 +131,15 @@ export default {
   methods: {
     showClick() {
       this.showTip = true;
+    },
+    borrowe(){
+      const data = {
+        id:1,
+        name:'小明'
+      }
+      this.$axios.test(data).then((res) => {
+        console.log(JSON.stringify(res))
+      });
     }
   }
 };

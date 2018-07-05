@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+
+import axios from '../../api/index';
 // import iView from 'iview'
 // import 'iview/dist/styles/iview.css'
 
@@ -9,6 +11,7 @@ import router from './router'
 // Vue.component('Col', Col)
 // Vue.component('Icon', Icon)
 // Vue.component('Card', Card)
+Vue.prototype.$axios = axios;
 
 const isDebug_mode = process.env.NODE_ENV !== 'production'
 Vue.config.debug = isDebug_mode
