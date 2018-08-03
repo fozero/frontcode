@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hello</title>
+</head>
+<body>
+
+
+
+
+
+<h1>hello xinyu~</h1>
+
+<div id="div1" style="width: 100px;height: 100px;background: black;margin-left: 100px;">
+	
+</div>
+
+		<script type="text/javascript" src="https://static.yindou.com/web/js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript">
+			// 获取div元素在浏览器中的位置元素宽度
+			var obj = $('#div1');
+			var offset = obj.offset();
+			var left = offset.left;
+			// var right = offset.right;
+			console.log('left:'+left)
+			console.log('right:'+(parseInt(left)+parseInt(obj.width())))
+			console.log('width:'+obj.width())
+		</script>
+
+</body>
+</html>
+
+
+<!-- 
+
+1、解决图片变形的问题
+一般设计给我们的图都特别的大，假如一个banner我们设置width为100%时，那么在低分辨率的电脑上显示就会变形，
+可以通过background-size设置cover或者contain值来裁剪，这样就不会造成图片变形了，当然还有其他办法，比如响应式设置媒体查询，但这样无疑增加了工作量，还是比较麻烦
+
+
+
+2、图片如何切图及布局
+
+如果一个body的背景被它的子类的一个背景覆盖了，层级可能是背景在上面 。可以通过单独设置这两个背景为绝对定位，然后设置他们的z-index属性就能解决
+
+
+
+
+
+
+
+
+
+ -->
