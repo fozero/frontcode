@@ -1,0 +1,117 @@
+/* common reset */
+.school-box-wrapper .inline-block{
+    display: inline-block;
+}
+.school-box-wrapper .text-error{
+    color: #b94a48;
+}
+.school-box-wrapper ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* SchoolBox STARTS */
+.school-box-wrapper{
+    margin-top: 10px;
+    width: 652px;
+}
+.school-box{
+    background-color: white;
+    border: 1px solid #005EAC;
+    width: 650px;
+}
+.school-box-header{
+    background: #3777BC;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 4px 8px 5px 10px;
+    *zoom: 1;
+}
+.school-box-provinces,
+.school-box-schools{
+    border: 1px solid #C3C3C3;
+    margin: 5px 8px 10px 8px;
+}
+.school-box-schools{
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.school-box-provinces a,
+.school-box-schools a{
+    color: #005EAC;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    height: 18px;
+    line-height: 18px;
+    text-decoration: none;
+}
+.school-box-provinces a{
+    margin: 2px 5px;
+    padding: 1px;
+}
+.school-box-provinces a:hover{
+    text-decoration: underline;
+}
+.school-box-provinces a.chosen{
+    background-color: #005EAC;
+    color: white;
+}
+.school-box-schools a{
+    margin: 4px 12px;
+    overflow: hidden;
+    padding-left: 10px;
+    width: 160px;
+}
+.school-box-schools a:hover{
+    background-color: #005EAC;
+    color: white;
+}
+/* SchoolBox ENDS */
+
+/* search school */
+.search-school-wrapper{
+    float: right;
+    font-size: 12px;
+}
+.search-school-input{
+    padding: 2px 4px;
+    width: 180px;
+}
+.search-school-div{
+    background-color: #fff;
+    border: 1px solid #C3C3C3;
+    border-top: none;
+    color: #005EAC;
+    display: none;
+    font-size: 12px;
+    font-weight: normal;
+    max-height: 200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    width: 188px;
+}
+.search-school-list li{
+    cursor: pointer;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 5px;
+}
+.search-school-list li.active,
+.search-school-list li.hover,
+.search-school-list li:hover{
+    background-color: #005EAC;
+    color: white;
+}
+.search-school-empty{
+    display: none;
+    padding: 5px 0;
+    text-align: center;
+}

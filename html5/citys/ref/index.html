@@ -1,0 +1,217 @@
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>学校选择器v2</title>
+    <!-- 
+学校选择器(系列)
+https://segmentfault.com/a/1190000004102867
+     -->
+
+    <style type="text/css">
+    .hide{
+        display: none;
+    }
+    #mainContainer{
+        margin: 20px auto;
+        position: relative;
+        width: 1000px;
+    }
+    #formResult{
+        margin-bottom: 10px;
+    }
+
+
+    /* SchoolBox STARTS */
+    .school-box-wrapper{
+        margin: 10px 0;
+    }
+    .school-box{
+        background-color: white;
+        border: 1px solid #005EAC;
+        width: 650px;
+    }
+    .school-box-header{
+        background: #3777BC;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 10px;
+    }
+    .school-box-provinces,
+    .school-box-schools{
+        border: 1px solid #C3C3C3;
+        margin: 5px 10px 10px 10px;
+    }
+    .school-box-schools{
+        height: 200px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .school-box-provinces a,
+    .school-box-schools a{
+        color: #005EAC;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 12px;
+        height: 18px;
+        line-height: 18px;
+        text-decoration: none;
+    }
+    .school-box-provinces a{
+        margin: 2px 5px;
+        padding: 1px;
+    }
+    .school-box-provinces a:hover{
+        text-decoration: underline;
+    }
+    .school-box-provinces a.chosen{
+        background-color: #005EAC;
+        color: white;
+    }
+    .school-box-schools a{
+        margin: 4px 12px;
+        overflow: hidden;
+        padding-left: 10px;
+        width: 160px;
+    }
+    .school-box-schools a:hover{
+        background-color: #005EAC;
+        color: white;
+    }
+    /* SchoolBox ENDS */
+    </style>
+</head>
+<body>
+    <div id="mainContainer">
+        <div id="formResult">
+            <input type="text" id="schoolInput" readonly/>
+            <input type="text" id="schoolId" readonly>
+            <a href="javascript:void(0)" class="hide" id="openSchoolBoxLink">重新选择</a>
+        </div>
+
+        <div class="school-box-wrapper">
+            <div class="school-box">
+                <div class="school-box-header">选择学校</div>
+                <div class="school-box-provinces"></div>
+                <div class="school-box-schools"></div> 
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="school-list.js"></script>
+    <script type="text/javascript">
+    (function(){
+        // 目标元素
+        var $schoolInput = $('#schoolInput');
+        var $schoolId = $('#schoolId');
+
+        var $schoolBox = $('.school-box-wrapper');
+        var $schoolBoxLink = $('#openSchoolBoxLink');
+
+        var $provinceDiv = $('.school-box-provinces');
+        var $schoolDiv = $('.school-box-schools');
+
+        var $provinceCopy = $('<a href="javascript:void(0)" class="province-item"></a>');
+        var $schoolCopy = $('<a href="javascript:void(0)" class="school-item"></a>');
+
+        // 缓存
+        var provinces = SCHOOL_LIST;
+        var curProvince = -1;  //province id
+        var lastProvinceIndex = 0;  //最后一次点击的index，用于初始化选中
+
+
+        var getProvinceById = function(pid){
+            for(var i=0; i<provinces.length; i++){
+                // NOTE: 前置条件province id可以转成数字
+                if(Number(provinces[i]['id']) == Number(pid)){
+                    return provinces[i];
+                }
+            }
+            return undefined;
+        };
+
+        var initProvinces = function(){
+            for(var i=0; i<provinces.length; i++){
+                var province = provinces[i];
+                var $province = $provinceCopy.clone();
+                $province.attr('data-province', province['id'])
+                            .text(province['name']);
+                $provinceDiv.append($province);
+            }
+        };
+
+        var initSchools = function(provinceId){
+            var province = getProvinceById(provinceId);
+            if(typeof province !== 'undefined'){
+                var schools = province['school'];
+                $schoolDiv.empty();
+
+                for(var i=0; i<schools.length; i++){
+                    var school = schools[i];
+                    var $school = $schoolCopy.clone();
+                    $school.attr('data-school', school['id'])
+                            .text(school['name']);
+                    $schoolDiv.append($school);
+                }
+            }
+            return false;
+        };
+
+        var onProvinceClick = function(){
+            lastProvinceIndex = $(this).index();
+            var pid = $(this).attr('data-province');
+
+            if(curProvince != pid){
+                // set chosen
+                $provinceDiv.find('a[data-province="' + curProvince + '"]').removeClass('chosen');
+                $provinceDiv.find('a[data-province="' + pid + '"]').addClass('chosen');
+                // update
+                curProvince = pid;
+                initSchools(pid);
+            }
+            // 滚动条置顶
+            $schoolDiv.scrollTop(0);
+        };
+
+        var onSchoolClick = function(){
+            $schoolInput.val($(this).text());
+            $schoolId.val($(this).attr('data-school'));
+            hideSchoolBox();
+        };
+
+        var hideSchoolBox = function(){
+            $schoolBox.slideUp();
+            $schoolBoxLink.show();
+        };
+
+        var showSchoolBox = function(){
+            $schoolBox.slideDown();
+            $schoolBoxLink.hide();
+            // 默认选中最后一次点击的province
+            $provinceDiv.find('a').eq(lastProvinceIndex).click();
+        };
+
+        var init = function(){
+            initProvinces();
+            // bind events
+            $provinceDiv.find('a').click(onProvinceClick);
+            $schoolDiv.find('a').live('click', onSchoolClick);
+            $schoolBoxLink.click(showSchoolBox);
+            // execute
+            showSchoolBox();
+        };
+
+
+        // *********
+        // 执行
+        // *********
+        return init();
+
+    })();
+    </script>
+</body>
+</html>
