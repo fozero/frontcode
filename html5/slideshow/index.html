@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>轮播图</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.box{
+		position: relative;
+			overflow: hidden;
+			    height: 300px;
+	}
+		ul{
+			display: flex;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		ul>li{
+			list-style: none;
+		}
+		ul>li img{
+			height: 300px;
+			width:400px;
+		}
+		.box .btns{
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 20px;
+			display: flex;
+			padding-top: 310px;
+			    color: red;
+			    width: 140px;
+			    justify-content: space-between;
+		}
+		.box .btns .btn{
+			width: 50px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+			border-radius: 100%;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		https://blog.csdn.net/diligentkong/article/details/55209861
+原理 ：ul的宽度比box要大 ，通过overflow：hidden来隐藏图片
+设置ul为绝对定位 position: absolute;  然后通过动态修改left的值控制图片左右轮播
+	 -->
+	<div class="box">
+		<ul class="list" id="list">
+			<li><img src="./img/1.png" alt=""></li>
+			<li><img src="./img/2.png" alt=""></li>
+			<li><img src="./img/3.png" alt=""></li>
+		</ul>
+		<div class="btns">
+			<div class="btn btn1">向左</div>
+			<div class="btn btn2">向右</div>
+		</div>
+	</div>
+<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+<script>
+	// window.onload=function(){
+	// }
+	var list = document.getElementById("list"); // 获得ul
+		var liWidth = list.children[0].offsetWidth;// 获得每个li的宽度
+
+	$('.btns').on('click','.btn1',function(){
+       var leftv = list.offsetLeft-liWidth
+		$('.list').css({'left':leftv})
+	})
+	$('.btns').on('click','.btn2',function(){
+       var leftv = list.offsetLeft+liWidth
+		$('.list').css({'left':leftv})
+	})
+</script>
+</body>
+</html>
