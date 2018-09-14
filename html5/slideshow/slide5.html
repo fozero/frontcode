@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.news-slide{
+  position: relative;
+  overflow: hidden;
+  min-height: 900px;
+  background: #f6f6f6;
+  .news{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    left: -406px;
+    top: 0;
+    width: 2564px;
+    height: 100%;
+    padding-top: 120px;
+    .news-item{
+      list-style: none;
+      float: left;
+      height: 100%;
+      width: 508px;
+      &.active{
+        .pic{
+          box-shadow: 0 14px 40px 0 rgba(0,0,0,.3);
+        }
+      }
+      &:nth-child(2){
+        margin: 0 20px;
+      }
+      .pic{
+        width: 508px;
+        height: 380px;
+        border-radius: 5px;
+      }
+    }
+  }
+  .news-intro{
+      position: absolute;
+      top: 546px;
+      left: 50%;
+      width: 508px;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: #999999;
+      padding: 0 10px;
+      .title{
+        font-size: 32px;
+        color: #000;
+      }
+      .extra{
+        margin-top: 12px;
+        .source{
+            margin-left: 20px;
+        }
+      }
+  }
+  .arrows{
+    position: absolute;
+    top: 768px;
+    left: 50%;
+    width: 160px;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #999999;
+    .arrow{
+      float: left;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      border-radius: 100%;
+      border: 1px solid #979797;
+      &.btn-disable{
+        background: #dddddd;
+        color: #fff;
+        border-color: #dddddd;
+      }
+      &:first-child{
+        margin-right: 40px;
+      }
+      span{
+        font-size: 28px;
+      }
+    }
+  }
+}
+</style>
+<body>
+	<div class="news-slide">
+     <ul class="news J_news clearfix">
+       {% for index,item in news %}
+       {% if(index<=2) %}
+       <li class="news-item" data-title='{{item.news_data.title}}' data-date='{{item.news_data.pub_date | date('Y年m月d日')}}' data-source='{{item.news_data.source}}'>
+          <img class="pic" src="{{item.news_data.img_thumb}}" alt="">
+       </li> 
+       {% endif %}
+       {% endfor %}
+     </ul>
+     <div class="news-intro">
+        <div class="title J_title"></div>
+        <div class="extra">
+          <span class="date J_date"></span>
+          <span class="source J_source"></span>
+        </div>
+     </div>
+     <div class="arrows clearfix">
+      <div class="arrow arrow-left J_news_left">
+        <span class="icon icon-forward-left"></span>
+      </div>
+      <div class="arrow arrow-right J_news_right">
+        <span class="icon icon-forward-right"></span>
+      </div>
+    </div>
+  </div>
+  <script>
+  	  var $JNews = $('.J_news');
+	  var $newsLeft = $('.J_news_left');
+	  var $newsRight = $('.J_news_right');
+	  var $JTitle = $('.J_title');
+	  var $JDate = $('.J_date');
+	  var $JSource = $('.J_source');
+	  var $newsItem = $JNews.find('.news-item');
+	  var $itemWidth = $newsItem.eq(0).width();
+	  var index = 1;
+	  setNewsData(index);
+	  $newsLeft.on('click',function(){
+	    if (index === 2) return;
+	    index++;
+	    setNewsData(index);
+	    var left_v = -$itemWidth * index + 51;
+	    if (index === 2) {
+	      left_v = left_v - 10;
+	    }
+	    $JNews.animate({
+	      "left": left_v
+	    });
+	  });
+	  $newsRight.on('click', function () {
+	    if (index === 0) return;
+	    index--;
+	    setNewsData(index);
+	    var left_v = -$itemWidth * index + 51;
+	    if (index === 0){
+	      left_v = left_v+10;
+	    }
+	    $JNews.animate({
+	      "left": left_v
+	    });
+	  });
+	  function setNewsData(index) {
+	    $newsItem.removeClass('active');
+	    $newsItem.eq(index).addClass('active');
+	    $newsLeft.removeClass('btn-disable');
+	    $newsRight.removeClass('btn-disable');
+	    $JTitle.text($newsItem.eq(index).attr('data-title'));
+	    $JDate.text($newsItem.eq(index).attr('data-date'));
+	    $JSource.text($newsItem.eq(index).attr('data-source'));
+	    if (index === 0) {
+	      $newsRight.addClass('btn-disable');
+	    }
+	    if (index === 2) {
+	      $newsLeft.addClass('btn-disable');
+	    }
+	  }
+  </script>
+</body>
+</html>

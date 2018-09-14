@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	html,body{height: 100%;}
+.carousel{
+  height: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+	</style>
+</head>
+<body>
+<div class="carousel" ontouchstart="" >  
+  <div class="item" style="background: #3b76c0" >    
+    <h3 >item-1</h3>  
+  </div>  
+  <div class="item" style="background: #58c03b;">    
+    <h3>item-2</h3>  
+  </div>  
+  <div class="item" style="background: #c03b25;">    
+    <h3>item-3</h3>
+  </div> 
+  <div class="item" style="background: #e0a718;">  
+    <h3>item-4</h3>  
+  </div>  
+  <div class="item" style="background: #c03eac;">    
+    <h3>item-5</h3>  
+  </div>
+</div>
+<script>
+	function Node(data) {
+    this.data = data;
+    this.prev = null;
+    this.next = null;
+    this.index = -1;
+}
+
+//双向循环列表
+function LinkList() {
+    var _nodes = [];
+    this.head = null;
+    this.last = null;
+
+    if (typeof this.append !== "function") {
+        LinkList.prototype.append = function (node) {
+            if (this.head == null) {
+                this.head = node;
+                this.last = this.head;
+            }
+            else {
+                this.head.prev = node;
+                this.last.next = node;
+
+                node.prev = this.last;
+                node.next = this.head;
+
+                this.last = node;
+            }
+
+            node.index = _nodes.length; //务必在push前设置node.index
+            _nodes.push(node);
+        }
+    }
+}
+
+var _container = document.querySelector("." + containerClass);
+var _items = document.querySelectorAll("." + itemClass);
+
+var list = loop ? new LinkList() : new SingleList();
+for(var i = 0; i < _items.length; i++) {
+  list.append(new Node(_items[i]));
+}
+
+var _prev = null;  //保存之前显示的元素
+var _current = list.head;  //保存当前显示的元素，默认为第一个元素
+
+var _normalZIndex = _current.data.style.zIndex;  //未显示元素的z-index值
+var _activeZIndex = _normalZIndex + 1;  //当前显示元素的z-index值
+
+var _itemWidth = _current.data.offsetWidth; //子元素宽度
+
+positionItems(); //初始化元素位置
+zindexItems(_current, _activeZIndex); //将当前元素及其左右元素的z-index加1
+
+
+
+
+_container.addEventListener("touchstart", function(e) {
+  // e.preventDefault();//取消此行代码的注释会在该元素内阻止页面纵向滚动
+  var touch = e.touches[0];
+  startX = touch.clientX;   //保存手指按下时的位置
+  startY = touch.clientY;
+  _container.style.webkitTransition = ""; //取消动画效果
+  startT = new Date().getTime();          //记录手指按下的开始时间
+  isMove = false;
+  transitionItems(_prev, false);             //取消之前元素的过渡
+  transitionItems(_current, false);          //取消当前元素的过渡
+}, false);
+
+
+
+_container.addEventListener("touchmove", function(e) {
+    // e.preventDefault();//取消此行代码的注释会在该元素内阻止页面纵向滚动
+    var touch = e.touches[0];
+    var deltaX = touch.clientX - startX;  //计算手指在X方向滑动的距离
+    var deltaY = touch.clientY - startY;  //计算手指在Y方向滑动的距离
+    //如果X方向上的位移大于Y方向，则认为是左右滑动
+    if (Math.abs(deltaX) > Math.abs(deltaY)){
+        translate = deltaX > _itemWidth ? _itemWidth : deltaX;
+        translate = deltaX < -_itemWidth ? -_itemWidth : deltaX;
+
+        //同时移动当前元素及其左右元素
+        moveItems(translate); 
+
+        isMove = true;
+    }
+}, false);
+
+
+
+_container.addEventListener("touchend",function(e) {
+    // e.preventDefault();//取消此行代码的注释会在该元素内阻止页面纵向滚动
+
+    //是否会滚
+    var isRollback = false;
+
+    //计算手指在屏幕上停留的时间
+    var deltaT = new Date().getTime() - startT;
+    if (isMove) { //发生了左右滑动
+        //如果停留时间小于300ms,则认为是快速滑动，无论滑动距离是多少，都停留到下一页
+        if(deltaT < 300){
+            translate = translate < 0 ? -_itemWidth : _itemWidth;
+        }else {
+            //如果滑动距离小于屏幕的50%，则退回到上一页
+            if (Math.abs(translate) / _itemWidth < 0.5){
+                isRollback = true;
+            }else{
+                //如果滑动距离大于屏幕的50%，则滑动到下一页
+                translate = translate < 0 ? -_itemWidth : _itemWidth;
+            }
+        }
+
+        moveTo(translate, isRollback);
+    }
+}, false);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>使用swiper插件 https://www.swiper.com.cn/api/navigation/355.html</title>
+	<link href="https://cdn.bootcss.com/Swiper/4.3.0/css/swiper.min.css" rel="stylesheet">
+	<style>
+		.swiper-slide{
+			height: 200px;
+			color: #fff;
+		}
+		.slide1{
+			background: red;
+		}
+		.slide2{
+			background: blue;
+		}
+		.slide3{
+			background: black;
+		}
+
+	.J_btn_left{
+		border: 1px solid red;
+	}
+	.J_btn_right{
+		border: 1px solid red;
+	}
+	</style>
+</head>
+<body>
+	<div class="swiper-container">
+	  <div class="swiper-wrapper">
+	    <div class="swiper-slide slide1">slider1</div>
+	    <div class="swiper-slide slide2">slider2</div>
+	    <div class="swiper-slide slide3">slider3</div>
+	  </div>
+	  <div class="swiper-button-prev"></div><!--左箭头-->
+      <div class="swiper-button-next"></div><!--右箭头-->
+
+      <!--自定义 
+       -->
+       <div class="btns">
+       	<button class="J_btn_left">left</button>
+       	<button class="J_btn_right">right</button>
+       </div>
+	</div>
+<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.min.js"></script>
+	<script>
+	var mySwiper = new Swiper('.swiper-container', {
+		autoplay: false,//可选选项，自动滑动
+		centeredSlides : true,//设定为true时，active slide会居
+		slidesPerView : 1.4,//能够同时显示的slides数量
+		spaceBetween : 20,//间距
+		// slidesOffsetBefore : 100,//与左边偏移量
+		loop:false,
+		initialSlide :1,//初始化时slide的索引。
+		navigation: {
+	      nextEl: '.swiper-button-next',
+	      prevEl: '.swiper-button-prev',
+	    },
+		on: {//回调函数
+		    init: function(){
+		      //Swiper初始化了
+		      // alert('当前的slide序号是'+this.activeIndex);
+		      this.emit('transitionEnd');//在初始化时触发一次transitionEnd事件
+		    }, 
+		    transitionEnd: function(swiper){
+		      alert('过渡结束');
+		    },
+		    slideNextTransitionEnd: function(){
+		      console.log('当前的slide序号是'+this.activeIndex)
+		    },
+		    slidePrevTransitionEnd: function(){
+		      console.log('当前的slide序号是'+this.activeIndex)
+		    },
+		  },
+	})
+	  $('.J_btn_left').click(function(){
+	    mySwiper.slidePrev();
+	  })
+	  $('.J_btn_right').click(function(){
+	    mySwiper.slideNext();
+	  })
+	</script>
+</body>
+</html>
