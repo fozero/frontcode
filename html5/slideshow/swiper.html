@@ -54,7 +54,7 @@
 		slidesPerView : 1.4,//能够同时显示的slides数量
 		spaceBetween : 20,//间距
 		// slidesOffsetBefore : 100,//与左边偏移量
-		loop:false,
+		loop:true,
 		initialSlide :1,//初始化时slide的索引。
 		navigation: {
 	      nextEl: '.swiper-button-next',
@@ -67,7 +67,7 @@
 		      this.emit('transitionEnd');//在初始化时触发一次transitionEnd事件
 		    }, 
 		    transitionEnd: function(swiper){
-		      alert('过渡结束');
+		      // alert('过渡结束');
 		    },
 		    slideNextTransitionEnd: function(){
 		      console.log('当前的slide序号是'+this.activeIndex)

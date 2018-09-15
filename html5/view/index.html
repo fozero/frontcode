@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>热力图</title>
+	<style>
+	</style>
+</head>
+<body>
+	<!-- 
+		热力图原理
+		https://blog.csdn.net/qq_20389175/article/details/49866481
+
+		从CNZZ热力图分析用户群体
+		http://www.zzkseo.com/134.html
+插件
+heatmapjs
+http://antv.alipay.com/
+https://www.patrick-wied.at/static/heatmapjs/
+api http://www.patrick-wied.at/static/heatmapjs/docs.html
+	 -->
+    <div style="height: 900px; width: 100%;" id="heatmap"></div>
+	<script src="https://cdn.bootcss.com/heatmap.js/2.0.2/heatmap.min.js"></script>
+	<script>
+		
+	// 创建一个heatmap实例对象
+	// “h337” 是heatmap.js全局对象的名称.可以使用它来创建热点图实例
+	// 这里直接指定热点图渲染的div了.heatmap支持自定义的样式方案,网页外包接活具体可看官网api
+	 var heatmapInstance = h337.create({
+	     container: document.querySelector('#heatmap'),
+	     backgroundColor:'rgba(0,0,0,0.1)',//画板背景颜色
+	     gradient: {
+	         '0.5': 'blue',
+	         '0.8': 'red',
+	         '0.95': 'white',
+	         '0.6':'yellow',
+	         '0.5':'green'
+	     },
+	     radius: 0,        // [0,+∞)  设置光圈的半径大小，值>=0   默认值0
+	     opacity:0.8//光圈透明度设置[0,1]
+	 });
+	 //构建一些随机数据点,网页切图价格这里替换成你的业务数据
+	 var points = [];
+	 var max = 0;
+	 var width = document.body.clientWidth;
+	 var height = document.body.clientHeight;
+	 var len = 300;
+	 while (len--) {
+	     var val = Math.floor(Math.random()*100);
+	     max = Math.max(max, val);
+	     var point = {
+	        x: Math.floor(Math.random()*width),
+	        y: Math.floor(Math.random()*height),
+	        value: val
+	    };
+	     points.push(point);
+	 }
+	    var data = {
+	    max: max,
+	    data: points
+	};
+	 //因为data是一组数据,web切图报价所以直接setData
+	 heatmapInstance.setData(data); //数据绑定还可以使用
+	</script>
+</body>
+</html>
