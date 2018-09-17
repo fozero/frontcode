@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>响应式布局</title>
+</head>
+<body>
+	<!-- 
+
+响应式网页中，如何只用CSS实现div的高和宽保持固定比例
+https://www.cnblogs.com/xjnotxj/p/5517651.html
+	 -->
+	<div class="container">
+		<ul class="list">
+			<li class="item">
+				<img src="https://video.xiaopeng.com/m/2018052401/m/manBox5.jpg" alt="">
+				<p>图片1</p>
+			</li>
+			<li class="item">
+				<img src="https://video.xiaopeng.com/m/2018052401/m/manBox5.jpg" alt="">
+				<p>图片2</p>
+			</li>
+			<li class="item">
+				<img src="https://video.xiaopeng.com/m/2018052401/m/manBox5.jpg" alt="">
+				<p>图片3</p>
+			</li>
+			<li class="item">
+				<img src="https://video.xiaopeng.com/m/2018052401/m/manBox5.jpg" alt="">
+				<p>图片4</p>
+			</li>
+			<li class="item">
+				<img src="https://video.xiaopeng.com/m/2018052401/m/manBox5.jpg" alt="">
+				<p>图片5</p>
+			</li>
+			<li class="item">
+				<img src="https://video.xiaopeng.com/m/2018052401/m/manBox5.jpg" alt="">
+				<p>图片6</p>
+			</li>
+			<li class="item">
+				<img src="https://video.xiaopeng.com/m/2018052401/m/manBox5.jpg" alt="">
+				<p>图片7</p>
+			</li>
+		</ul>
+	</div>
+	<style>
+	*{
+		margin: 0;padding: 0;
+		box-sizing: border-box;
+	}
+		.list{
+			position: absolute;
+    top: 10%;
+			list-style: none;
+			width: 90%;
+			    transform: translateX(-50%);
+    left: 50%;
+		}
+		.list .item{
+		}
+		.list .item img{
+margin: 2%;
+float: left;
+width: 21%;
+		}
+	</style>
+</body>
+</html>
