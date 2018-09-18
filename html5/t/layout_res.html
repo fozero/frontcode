@@ -5,6 +5,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<title>响应式布局</title>
 </head>
+
+	<style>
+	*{
+		margin: 0;padding: 0;
+		box-sizing: border-box;
+	}
+	.clearfix:after{
+		content: "." ; 
+display: block ;
+height: 0 ;
+clear: both ;
+visibility: hidden ;
+	}
+		.list{    
+			list-style: none;
+    		position: absolute;
+			width: 90%;
+		    top: 50%;
+		    left: 50%;
+			transform: translate(-50%,-50%);
+			font-size: 20px;
+		}
+		.list .item{
+			    float: left;
+			    width: 21%;
+			    margin: 2%;
+			    cursor: pointer;
+			        
+
+		}
+		.list .item .item-wrap{
+			overflow: hidden;
+		}	
+		.list .item img{
+			width: 100%;
+			transition: .6s ease;
+		}
+
+		.show_win{
+			position: fixed;
+			top:30%;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 50%;
+			/*height: 300px;*/
+			background: #fff;
+			border: 1px solid red;
+			z-index: 9;
+			max-height: 300px;
+    		overflow-y: scroll;
+    		padding: 20px;
+		}
+		.content{
+			position: relative;
+		}
+		.content .pic{
+			float: left;
+			width: 40%;
+		}
+		.close{
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		.show_win .head_url{
+			    width: 100%;
+		}
+		.show_win .intro{
+
+		}
+		/*media*/
+		/*分辨率小于 1200px*/
+		@media screen and ( max-width: 1024px ) {
+			.list{
+				font-size: 14px;
+			}
+		}
+	</style>
 <body>
 	<!-- 
 
@@ -12,11 +90,18 @@
 响应式网页中，如何只用CSS实现div的高和宽保持固定比例
 https://www.cnblogs.com/xjnotxj/p/5517651.html
 
+flex 阮一峰
+http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
+
 说明：
 本demo涉及知识点：
 1、使用百分比来做响应式网页  无需设置固定宽高
 2、使用媒体查询设置不同分辨率显示样式
 3、文字环绕图片显示
+4、transform的用法 ，通过设置scale值缩放图片  ，如
+$(this).css({
+		      'transform': 'scale(1.12)'
+		    })
 
 	 -->
 	<div class="container">
@@ -84,82 +169,6 @@ https://www.cnblogs.com/xjnotxj/p/5517651.html
 			</li>
 		</ul>
 	</div>
-	<style>
-	*{
-		margin: 0;padding: 0;
-		box-sizing: border-box;
-	}
-	.clearfix:after{
-		content: "." ; 
-display: block ;
-height: 0 ;
-clear: both ;
-visibility: hidden ;
-	}
-		.list{    
-			list-style: none;
-    		position: absolute;
-			width: 90%;
-		    top: 50%;
-		    left: 50%;
-			transform: translate(-50%,-50%);
-			font-size: 20px;
-		}
-		.list .item{
-			    float: left;
-			    width: 21%;
-			    margin: 2%;
-			    cursor: pointer;
-
-		}
-		.list .item img{
-			width: 100%;
-		}
-
-		.show_win{
-			position: fixed;
-			top:30%;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 50%;
-			/*height: 300px;*/
-			background: #fff;
-			border: 1px solid red;
-			z-index: 9;
-			max-height: 300px;
-    		overflow-y: scroll;
-    		padding: 20px;
-		}
-		.content{
-			position: relative;
-		}
-		.content .pic{
-			float: left;
-			width: 40%;
-		}
-		.close{
-			position: absolute;
-			top: 0;
-			right: 0;
-		}
-		.show_win .head_url{
-			    width: 100%;
-		}
-		.show_win .intro{
-
-		}
-
-
-
-
-		/*media*/
-		/*分辨率小于 1200px*/
-		@media screen and ( max-width: 1024px ) {
-			.list{
-				font-size: 14px;
-			}
-		}
-	</style>
 <script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
 	<script>
 		$('.list').find('.item').each(function(index,dom){
@@ -174,6 +183,16 @@ visibility: hidden ;
 		$('.J_close').on('click',function(){
 			$('.J_win').hide();
 		})
+
+		$('.item img').on('mouseenter', function () {
+		    $(this).css({
+		      'transform': 'scale(1.12)'
+		    })
+		  }).on('mouseleave', function () {
+		    $(this).css({
+		      'transform': 'scale(1)'
+		    })
+		  });
 	</script>
 	<script>
 		var data = [{
