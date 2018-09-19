@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<code id="J_tpl"></code>
+<script id='J_tt'>•	Execute a given test plan by developing manual test setups using commonly available lab equipment
+•	Assist engineers in system/board level trouble shooting failures to root cause 
+•	Analyze test data in excel, present data in clear manner
+•	Familiar with Python / bash scripts with the ability to read and modify
+•	Basic understanding of analog/digital circuits, schematics development and PCB layout
+</script>
+<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<script>
+		$(function(){
+		  var cont = $("#J_tt").html()
+		  var cc = cont.split('\n');
+		  var dd = ''
+		  for(var i in cc){
+		    dd = dd + (parseInt(i)+1)+'.'+cc[i]+'&lt;/br&gt;'
+		    //dd = dd +cc[i]+'&lt;/br&gt;'
+		  }
+		  $("#J_tpl").html(dd)
+		})
+	</script>
+</body>
+</html>
