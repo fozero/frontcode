@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>Document</title>
+	<style>
+		.tab{
+			display: none;
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 80px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+
+	css3 过渡动画   transition
+	transition	简写属性，用于在一个属性中设置四个过渡属性。	3
+transition-property	规定应用过渡的 CSS 属性的名称。	3
+transition-duration	定义过渡效果花费的时间。默认是 0。	3
+transition-timing-function	规定过渡效果的时间曲线。默认是 "ease"。	3
+transition-delay	规定过渡效果何时开始。默认是 0。
+
+其中 transition-timing-function属性可选择值有
+linear	规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。
+ease	规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。
+ease-in	规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。
+ease-out	规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。
+ease-in-out	规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
+
+	 -->
+	<div class="container">
+		<button class="J_btn1">显示</button>
+		<button class="J_btn2">隐藏</button>
+		<div class="tab J_tab"></div>
+	</div>
+<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+<script>
+	$('.J_btn1').on('click',function(){
+		// 滑动方式显示隐藏n内容
+		$('.J_tab').slideDown();
+	});
+	$('.J_btn2').on('click',function(){
+		$('.J_tab').slideUp();
+	});
+</script>
+</body>
+</html>
