@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>函数节流</title>
+</head>
+<body>
+<div>
+	<!--
+	https://www.cnblogs.com/mopagunda/p/5323080.html
+	js有些事件例如resize，mousemove等是会不间断触发的，例如我们简单的一个scroll事件
+ 我们需要在滚动的时候去做一些事情，如上图可见，我们只是简单的console，在一次滚动过程中函数即执行了将近20次，如果这个函数有更为复杂的方法，比如操作dom或者其他交互，会严重影响性能。为了避免这个问题，我们一般会使用定时器来对函数进行节流。
+
+   函数节流的基本思想是设置一个定时器，在指定时间间隔内运行代码时清楚上一次的定时器，并设置另一个定时器，知道函数请求停止并超过时间间隔才会执行。
+	 -->
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+	<h1>hello</h1>
+</div>
+<script type="text/javascript">
+	function scrollFn(){
+	    console.log(1)
+	}
+	function throttle(method,context){
+	    clearTimeout(method.tId);
+	    method.tId=setTimeout(function(){
+	        method.call(context)
+	    },300)
+	}
+	window.onscroll=function(){
+	    throttle(scrollFn)
+	}
+
+</script>
+</body>
+</html>

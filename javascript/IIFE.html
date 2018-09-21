@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div class="main">
+	<div id="title">hello</div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+// 立即执行函数
+(function(){
+	console.log(1)
+})();
+
+
+// 带参数匿名函数
+// window，jQuery参数形式传入，提高js执行效率
+var a = 1;
+(function (win,$1) {
+	console.log('win',win.a)
+	console.log('title',$1('#title').text());
+})(window,jQuery);
+
+
+
+
+// 匿名函数  方法参数传入
+var tj = tj || {};
+(function (win, fun) {
+	console.log('fun',fun)
+	// fun ƒ (tj){
+	// 	tj.init = function(prams){
+	// 		console.log('init ...',prams);
+	// 	}
+	// 	return tj;
+	// }
+
+	// 将函数暴露出来到window下面 
+	win.tj = fun(win.tj)
+
+})(window,function(tj){
+	// 匿名函数内变量  外部无法访问,可以通过指定方法暴露出去
+	var str = 'content';
+	tj.getStr = function(){
+		return str;
+	}
+
+	// 匿名函数初始化方法
+	tj.init = function(prams){
+		console.log('init ...',prams);
+	}
+	return tj;
+});
+// 调用初始化方法
+tj.init('test')
+console.log('str',tj.getStr());
+
+</script>
+</body>
+</html>
+
+
+
+
+
+

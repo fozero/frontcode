@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="container"></div>
+	<script>
+		  (function(){
+		  	  var xpm = document.createElement("script");
+		      xpm.type = 'text/javascript';
+		      xpm.async = true;
+		      // xpm.src='http://127.0.0.1:7001/public/js/xptj.local.js';
+		      xpm.src='http://127.0.0.1:7001/checkVersion';
+		      xpm.onload = function(){
+		        console.log('onload')
+		        Xptj.init({
+		          appid: 'xp-www-pc'
+		        })
+		      };
+		      //script标签数组  
+		      var s = document.getElementsByTagName("script")[0];
+		      console.log('s',document.getElementsByTagName("script")[0].parentNode)
+		      // insertBefore在指定的已有子节点之前插入新的子节点
+		      s.parentNode.insertBefore(xpm, s);
+		  })();
+	</script>
+</body>
+</html>

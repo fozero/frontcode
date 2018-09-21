@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>埋点事件 页面统计</title>
+	<style>
+	*{box-sizing: border-box;margin: 0;padding: 0;}
+		.none{display: none;}
+		.select{
+			width: 200px;height: 48px;line-height: 48px;border: 1px solid #eee;
+			position: relative;
+			margin: 20px 50px;
+			padding-left: 20px;
+			cursor: pointer;
+		}
+		.cover{
+			/*width: 200px;height: 28px;line-height: 48px;border: 1px solid #eee;*/
+		}
+		.list{
+			    position: absolute;
+			    top: 48px;
+			    left: 0;
+			        width: 100%;
+			    list-style: none;
+		}
+		.list .item{
+			border-bottom: 1px solid #eee;
+			    padding-left: 20px;
+		}
+		.active{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="select" onmouseover="citylist(1)" onmouseout="citylist(2)">
+		<div class="cover">
+			<span class="J_city_selected">省份</span>
+		</div>
+		<ul class="list J_list none">
+			<li class="item">湖南</li>
+			<li class="item">湖北</li>
+			<li class="item">广东</li>
+		</ul>
+	</div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	//统计
+	window.onload = function(){
+		document.addEventListener('click',processClick,false);
+	}
+	var processClick = function(event){
+		console.log('lisenter click')
+		// 坐标
+		var clientX = event.clientX;
+		var clientY = event.clientY;
+		console.log('clientXY:',clientX,clientY)
+
+		// html元素
+		var tar = event.srcElement || event.target
+		console.log('event',event)
+		console.log('tar',tar)
+
+
+		// tar.parentNode.tagName.toLowerCase()
+		console.log('tar.parentNode',tar.parentNode,typeof tar.parentNode == 'object')
+		// console.log('tar.parentNode.tagName',tar.parentNode.tagName.toLowerCase())
+	}
+
+	//页面
+	function citylist(type){
+		if(type==1){ //1进入 2离开事件
+			document.querySelector('.J_list').style.display='block';
+		}else{
+			document.querySelector('.J_list').style.display='none';
+		}
+	}
+	// 城市选择
+	$('.J_list').on('click','.item',function(e){
+		console.log('doclick start',e.target)
+		$('.J_city_selected').text($(this).text());
+		$(this).parent().children().removeClass('active');
+		$(this).addClass('active');
+		console.log('doclick end',e.target)
+		document.querySelector('.J_list').style.display='none';
+	})
+
+</script>
+</body>
+</html>

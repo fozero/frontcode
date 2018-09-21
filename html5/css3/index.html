@@ -3,16 +3,34 @@
 <head>
 	<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<title>Document</title>
+	<title>transition过渡动画</title>
 	<style>
 		.tab{
-			display: none;
+			/*display: none;*/
 			position: fixed;
 			left: 0;
 			bottom: 0;
 			width: 100%;
-			height: 80px;
+			/*height: 80px;*/
+			height: 0;
 			background: red;
+			transition:height .5s ease;
+		}
+		.tab-transition{
+			height: 80px;
+			transition:height .5s ease;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			transition: width 1s,height 2s ease-in-out;
+		}
+		.box:hover{
+			width: 200px;
+			height: 200px;
+			/*反向状态*/
+			transition: width 5s,height 6s ease-in-out;
 		}
 	</style>
 </head>
@@ -33,20 +51,36 @@ ease-in	规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)�
 ease-out	规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。
 ease-in-out	规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
 
+
+
+其他方式：
+  这里过渡效果也可以使用jquery的slideDown和slideUp方法  ，但注意的是safir有个bug，当向上再向下滚动的时候会上下来回跳动，所以这里推荐使用transition来实现
+
 	 -->
 	<div class="container">
+		<!-- demo1 -->
 		<button class="J_btn1">显示</button>
 		<button class="J_btn2">隐藏</button>
 		<div class="tab J_tab"></div>
+
+		<!-- demo2 -->
+		<div class="box"></div>
 	</div>
 <script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
 <script>
 	$('.J_btn1').on('click',function(){
-		// 滑动方式显示隐藏n内容
-		$('.J_tab').slideDown();
+		// 滑动方式显示隐藏n内容 jquery方式
+		// $('.J_tab').slideDown();
+
+		// 使用transition
+		// tab-transition
+		$('.J_tab').addClass('tab-transition');
+
 	});
 	$('.J_btn2').on('click',function(){
-		$('.J_tab').slideUp();
+		// $('.J_tab').slideUp();
+
+		$('.J_tab').removeClass('tab-transition');
 	});
 </script>
 </body>

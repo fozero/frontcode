@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+*{margin: 0;padding: 0;}
+		ul{list-style: none;}
+		.list img{width: 100%;height: 800px;}
+		.list li{float: left;width: 30%;}
+		.list img{width: 400px;height: 400px;}
+		.clearfix{clear: both;}
+</style>
+<body>
+	<ul class="list">
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>   
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li> 
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li> 
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li> 
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li> 
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li> 
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li> 
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li> 
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li> 
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li> 
+	    <li class="in"><img src="t1.jpeg" alt="测试" data-original = "http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>            
+	</ul>
+	<script type="text/javascript">
+		var aImages = document.images;
+		console.log('aImages',aImages)
+		window.onscroll = function(){
+		    loadImg(aImages);
+		};
+		function loadImg(arr){
+		    for( var i = 0,len = arr.length; i < len; i++){
+		    	console.log('imgList[i]',arr[i])
+		        if(arr[i].getBoundingClientRect().top < document.documentElement.clientHeight && !arr[i].isLoad){
+		            arr[i].isLoad = true;
+		            // arr[i].style.cssText = "transition: ''; opacity: 0;"
+		            aftLoadImg(arr[i],arr[i].getAttribute("data-original"));
+		            // if(arr[i].dataset){
+		            //     aftLoadImg(arr[i],arr[i].dataset.original);    
+		            // }else{
+		            //     aftLoadImg(arr[i],arr[i].getAttribute("data-original"));
+		            // }
+
+		            // (function(i){
+		            //     setTimeout(function(){
+		            //         arr[i].style.cssText = "transition: 1s; opacity: 1;"
+		            //     },16)
+		            // })(i);
+		        }
+		    }
+		}
+		function aftLoadImg(obj,url){
+		    var oImg = new Image();
+		    oImg.onload = function(){
+		        obj.src = oImg.src;
+		    }
+		    oImg.src = url;
+		}
+	</script>
+</body>
+</html>

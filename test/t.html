@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<!-- 
+sort() 方法用于对数组的元素进行排序。
+	比较函数应该具有两个参数 a 和 b，其返回值如下：
+
+若 a 小于 b，在排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。
+若 a 等于 b，则返回 0。
+若 a 大于 b，则返回一个大于 0 的值。
+
+	 -->
+<script type="text/javascript">
+	
+
+//sort   从小到大
+var arr = [10,20,5,8,6];
+console.log('arr',arr);
+var _arr = arr.sort(function(a,b){
+	return a - b
+});
+console.log('_arr',_arr);
+
+
+//从大到小
+var arr2 = [10,20,5,8,6];
+console.log('arr2',arr2);
+var _arr2 = arr.sort(function(a,b){
+	return b - a
+});
+console.log('_arr2',_arr2);
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>加密解密用法</title>
+</head>
+<body>
+	<!-- 
+		escape、unescape
+encodeURI 、decodeURI
+encodeURIComponent、decodeURIComponent用法区别
+	 -->
+
+
+<script type="text/javascript">
+	//escape unescape加密解密
+	//url加密 http%3A//baidu.com%3Fa%3D1%26b%3D2
+	//url解密 http://baidu.com?a=1&b=2
+	var url = 'http://baidu.com?a=1&b=2';
+	var j_url = escape(url);
+	console.log('url加密',j_url);
+	console.log('url解密',unescape(j_url));
+
+
+	//encodeURI decodeURI编码 解码
+	//只能对中文进行编码 解码
+	//url2编码 http://baidu.com?a=1&b=%E4%BD%A0%E5%A5%BD
+	//url2解码 http://baidu.com?a=1&b=你好
+	var url2 = 'http://baidu.com?a=1&b=你好';
+	var j_url2 = encodeURI(url2);
+	console.log('url2编码',j_url2);
+	console.log('url2解码',decodeURI(j_url2));
+
+
+	//encodeURIComponent decodeURIComponent 编码解码
+	// url3编码 http%3A%2F%2Fbaidu.com%3Fa%3D1%26b%3D%E4%BD%A0%E5%A5%BD
+	// url3解码 http://baidu.com?a=1&b=你好
+	var url3 = 'http://baidu.com?a=1&b=你好';
+	var j_url3 = encodeURIComponent(url3);
+	console.log('url3编码',j_url3);
+	console.log('url3解码',decodeURIComponent(j_url3));
+
+
+
+
+</script>
+</body>
+</html>

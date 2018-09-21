@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>图片懒加载</title>
+<style type="text/css">
+		*{margin: 0;padding: 0;}
+		ul{list-style: none;}
+		.list img{width: 100%;height: 800px;}
+		.list2{width: 680px;}
+		.list2 li{float: left;width: 50%;margin-bottom: 10px;}
+		.list2 img{width: 300px;height: 300px;}
+		.list2 li > .bg{
+			width: 300px;
+    		height: 300px;
+			background: url('t1.jpeg') no-repeat center/300px 300px;
+		}
+		.clearfix{clear: both;}
+</style>
+</head>
+<body>
+	<!-- 
+	https://blog.csdn.net/daimomo000/article/details/73730740
+	https://blog.csdn.net/manmanwei/article/details/75030049
+
+	插件
+	https://www.cnblogs.com/goloving/p/7835279.html
+	 -->
+<!-- <ul class="list">
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>    
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>   
+</ul> -->
+<!-- 小图片 图片、背景图-->
+<ul class="list2">
+	<li><div class="bg imgLazyLoad" data-type="bg" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></div></li>  
+    <li><div class="bg imgLazyLoad" data-type="bg" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-2.jpg"></div></li>  
+    <li><div class="bg imgLazyLoad" data-type="bg" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-3.jpg"></div></li>  
+    <li><div class="bg imgLazyLoad" data-type="bg" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-4.jpg"></div></li>  
+    <li><div class="bg imgLazyLoad" data-type="bg" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-5.jpg"></div></li>  
+    <li><div class="bg imgLazyLoad" data-type="bg" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-6.jpg"></div></li>  
+    <li><div class="bg imgLazyLoad" data-type="bg" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-7.jpg"></div></li> 
+    <li><div class="bg imgLazyLoad" data-type="bg" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-8.jpg"></div></li>  
+    <li><div class="bg imgLazyLoad" data-type="bg" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-9.jpg"></div></li>  
+    <li><div class="bg imgLazyLoad" data-type="bg" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-10.jpg"></div></li>  
+    <li><div class="bg imgLazyLoad" data-type="bg" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-11.jpg"></div></li>  
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>    
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>  
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>  
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>
+    <li><img class="imgLazyLoad" src="t1.jpeg" alt="测试" data-type="img" data-src="http://www.t.xiaopeng.com/public/pc/img/g3-1.jpg"></li>      
+    <li class="clearfix"></li>
+</ul>
+<script type="text/javascript">
+
+
+//背景图懒加载
+(function(){//立即执行函数、
+	    var imgList = [],delay,time = 250,offset = 0;
+	    function _loadImg(){//执行图片加载
+	        for(var i = 0,len = imgList.length; i < len; i++){
+	            if(_isShow(imgList[i]) && !imgList[i].isLoad){
+	            	// console.log('imgList[i]',imgList[i])
+	            	imgList[i].isLoad = true;
+	            	// 图片 背景图
+	                if(imgList[i].getAttribute('data-type')==="img"){
+	                	imgList[i].src = imgList[i].getAttribute('data-src');
+	                }else if(imgList[i].getAttribute('data-type')==="bg"){
+	                	imgList[i].style.backgroundImage="url('"+imgList[i].getAttribute('data-src')+"')";
+	                }
+	            }
+	        }
+	    };
+	    function _isShow(el){//判断img是否出现在可视窗口
+	        var coords = el.getBoundingClientRect();
+	        return coords.top <= document.documentElement.clientHeight+parseInt(offset);
+	        // return (coords.left >= 0 && coords.left >= 0 && coords.top) <= (document.documentElement.clientHeight || window.innerHeight) + parseInt(offset);
+	    };
+	    function imgLoad(selector){//获取所有需要实现懒加载图片对象引用并设置window监听事件scroll
+	        var _selector = selector || '.imgLazyLoad';
+	        var nodes = document.querySelectorAll(_selector);
+	        // console.log('nodes',nodes)
+	        imgList = Array.apply(null,nodes);
+	        // console.log('imgList',imgList)
+	        _loadImg();
+	        window.addEventListener('scroll',_loadImg,false);
+	    };
+	    imgLoad('.imgLazyLoad');
+	})();
+
+	// (function(){//立即执行函数、
+	//     let imgList = [],delay,time = 250,offset = 0;
+	//     function _delay(){//函数节流
+	//         clearTimeout(delay);
+	//         delay = setTimeout(() => {
+	//             _loadImg();
+	//         },time)
+	//     };
+	//     function _loadImg(){//执行图片加载
+	//         for(let i = 0,len = imgList.length; i < len; i++){
+	//             if(_isShow(imgList[i])){
+	//             	console.log('datasrc',imgList[i].getAttribute('data-src'))
+	//                 imgList[i].src = imgList[i].getAttribute('data-src');
+	//                 imgList.splice(i,1);
+	//             }
+	//         }
+	//     };
+	//     function _isShow(el){//判断img是否出现在可视窗口
+	//         let coords = el.getBoundingClientRect();
+	//         return (coords.left >= 0 && coords.left >= 0 && coords.top) <= (document.documentElement.clientHeight || window.innerHeight) + parseInt(offset);
+	//     };
+	//     function imgLoad(selector){//获取所有需要实现懒加载图片对象引用并设置window监听事件scroll
+	//         var _selector = selector || '.imgLazyLoad';
+	//         let nodes = document.querySelectorAll(_selector);
+	//         // console.log('nodes',nodes)
+	//         imgList = Array.apply(null,nodes);
+	//         // console.log('imgList',imgList)
+	//         window.addEventListener('scroll',_delay,false)
+	//     };
+	//     imgLoad('.imgLazyLoad')
+	//     _delay()
+	// })()
+</script>
+</body>
+</html>

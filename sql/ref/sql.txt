@@ -1,0 +1,310 @@
+指标：用户选择司机后的订单完成率、中标司机数
+口径：直营城市，5/1~5/3
+
+'日期','区域','城市','产品','下单用户数','下单新用户数','下单量','有车接单量','用户决策量','完单量','等待服务单量','GMV','GMV-余额支付','GMV-实付','GMV-未付','抽佣','C补','B补','单均价','司机接单率','乘客选单率','完单率','在线司机数','抢单司机数','完单司机数','单均接驾时间 ','单均接驾距离 ','在线时长 ','计费时长 ','充值用户数','充值金额'
+SELECT fz.riqi, fz.city_type, fz.city_name, fz.order_type_name
+	, ceil(SUM(fz.user_cnt)) AS user_cnt
+	, ceil(SUM(fz.new_user_cnt)) AS new_user_cnt
+	, ceil(SUM(fz.chuangjian)) AS chuangjian
+	, ceil(SUM(fz.driver_accept)) AS driver_accept
+	, ceil(SUM(fz.user_decision)) AS user_decision
+	, ceil(SUM(fz.wancheng)) AS wancheng
+	, ceil(SUM(fz.waite)) AS waite
+	, SUM(fz.gmv) AS gmv, SUM(fz.yue_amt) AS yue_amt
+	, SUM(fz.act_gmv) AS act_gmv
+	, SUM(fz.gmv - fz.act_gmv) AS no_amt
+	, SUM(fz.fenyong) AS fenyong, SUM(fz.c_butie) AS c_butie
+	, SUM(fz.b_butie) AS b_butie
+	, SUM(fz.gmv) / SUM(fz.wancheng) AS avg_cnt
+	, SUM(fz.driver_accept) / SUM(fz.chuangjian) AS accept_ratio
+	, SUM(fz.user_decision) / SUM(fz.driver_accept) AS zhong_ratio
+	, SUM(fz.wancheng) / SUM(fz.chuangjian) AS wancheng_ratio
+	, ceil(SUM(fz.od_cnt)) AS od_cnt
+	, ceil(SUM(fz.driver_a_cnt)) AS driver_a_cnt
+	, ceil(SUM(fz.driver_s_cnt)) AS driver_s_cnt
+	, SUM(fz.decision_time) / SUM(fz.user_decision) AS avg_decision_time
+	, SUM(fz.decision_distance) / SUM(fz.user_decision) AS avg_decision_distance
+	, SUM(fz.online_time) / SUM(fz.od_cnt) AS avg_online_time
+	, SUM(fz.service_time) / SUM(fz.driver_s_cnt) AS avg_service_time
+	, ceil(SUM(fz.c_cnt)) AS c_cnt
+	, SUM(fz.c_amt) AS c_amt
+FROM (
+	SELECT ff.riqi, ff.city_type, ff.city_name, ff.order_type_name, ff.rf
+		, ff.user_cnt * ff.rf AS user_cnt, ff.new_user_cnt * ff.rf AS new_user_cnt
+		, ff.chuangjian * ff.rf AS chuangjian, ff.driver_accept * ff.rf AS driver_accept
+		, ff.user_decision * ff.rf AS user_decision, ff.wancheng * ff.rf AS wancheng
+		, ff.waite * ff.rf AS waite, ff.gmv * ff.rf AS gmv
+		, ff.yue_amt * ff.rf AS yue_amt, ff.act_gmv * ff.rf AS act_gmv
+		, ff.fenyong * ff.rf AS fenyong, ff.c_butie AS c_butie, ff.b_butie AS b_butie
+		, ff.accept_cnt * ff.rf AS accept_cnt, ff.dispatch_cnt * ff.rf AS dispatch_cnt
+		, ff.zhong_cnt * ff.rf AS zhong_cnt, ff.wancheng_cnt * ff.rf AS wancheng_cnt
+		, ff.od_cnt * ff.rf AS od_cnt, ff.driver_a_cnt * ff.rf AS driver_a_cnt
+		, ff.driver_s_cnt * ff.rf AS driver_s_cnt, ff.decision_time * ff.rf AS decision_time
+		, ff.decision_distance * ff.rf AS decision_distance, ff.online_time * ff.rf AS online_time
+		, ff.service_time * ff.rf AS service_time, ff.c_cnt * ff.rf AS c_cnt
+		, ff.c_amt * ff.rf AS c_amt
+	FROM (
+		SELECT x.stat_day AS riqi
+			, CASE 
+				WHEN x.city_name IN (
+					'衡水', 
+					'邢台', 
+					'邯郸', 
+					'淄博', 
+					'潍坊', 
+					'青岛', 
+					'临沂', 
+					'济南', 
+					'哈尔滨', 
+					'太原'
+				) THEN '渠道'
+				WHEN x.city_name IN ('北京') THEN '特战'
+				ELSE '直营'
+			END AS city_type, x.city_name
+			, CASE 
+				WHEN x.car_type_id IN (37) THEN '易达'
+				WHEN x.car_type_id IN (2) THEN '舒适'
+				WHEN x.car_type_id IN (3) THEN '豪华'
+				WHEN x.car_type_id IN (5) THEN '商务'
+				WHEN x.car_type_id IN (78) THEN '出租车'
+				WHEN x.car_type_id IN (9999) THEN '汇总'
+				ELSE '其他车型'
+			END AS order_type_name, x.user_cnt, u.new_user_cnt, x.chuangjian, x.driver_accept
+			, x.user_decision, x.wancheng, x.waite, x.gmv, x.yue_amt
+			, x.act_gmv, x.fenyong, x.c_butie, bb.b_butie, dr.accept_cnt
+			, dr.dispatch_cnt, dr.zhong_cnt, dr.wancheng AS wancheng_cnt, od.od_cnt, dd.driver_a_cnt
+			, dd.driver_s_cnt, x.decision_time, x.decision_distance, od.online_time, x.service_time
+			, c.c_cnt, c.c_amt
+			, CASE 
+				WHEN x.city_name IN (
+					'衡水', 
+					'邢台', 
+					'邯郸', 
+					'淄博', 
+					'潍坊', 
+					'青岛', 
+					'临沂', 
+					'济南', 
+					'哈尔滨', 
+					'太原'
+				) THEN 1.0000
+				ELSE 1.0000
+			END AS rf
+		FROM (
+			SELECT oso.stat_day, oso.city_name, oso.car_type_id, COUNT(DISTINCT oso.user_id) AS user_cnt
+				, COUNT(oso.service_order_id) AS chuangjian
+				, SUM(if(dis.accept_status = 1, 1, 0)) AS driver_accept
+				, SUM(if(dis.decision_status = 2, 1, 0)) AS user_decision
+				, SUM(if(oso.status = 7, 1, 0)) AS wancheng
+				, SUM(if(oso.status IN (4, 5, 6), 1, 0)) AS waite
+				, SUM(if(oso.status IN (7), oso.origin_amount, 0)) AS gmv
+				, SUM(if(oso.status IN (7)
+					AND y.amount IS NOT NULL, y.amount, 0)) AS yue_amt
+				, SUM(if(oso.balance_status IN (0, 3)
+					AND oso.status IN (7), oso.origin_amount, 0)) AS act_gmv
+				, SUM(if(oso.status IN (7), oso.origin_sharing_amount - oso.sharing_amount, 0)) AS fenyong
+				, SUM(if(oso.status IN (7), oso.origin_amount - oso.total_amount, 0)) AS c_butie
+				, SUM(if(oso.status IN (7), oso.end_time - oso.start_time, 0)) / 3600 AS service_time
+				, SUM(dis.decision_distance) AS decision_distance, SUM(dis.decision_time) AS decision_time
+			FROM (
+				SELECT from_unixtime(a.create_time, 'yyyy-MM-dd') AS stat_day, a.reason_id, a.status
+					, a.service_order_id, a.city_name, a.user_id, a.origin_sharing_amount, a.sharing_amount
+					, a.origin_amount, a.total_amount, a.balance_status, a.start_time, a.end_time
+					, a.car_type_id
+				FROM (
+					SELECT create_time, service_order_id, reason_id, status, city_name
+						, o.origin_sharing_amount, o.sharing_amount, o.origin_amount, o.total_amount, o.user_id
+						, o.balance_status, o.start_time, o.end_time, 9999 AS car_type_id, row_number() OVER (PARTITION BY service_order_id ORDER BY update_time DESC) AS n
+					FROM yc_ods.ods_service_order o
+						JOIN (
+							SELECT city, city_name
+							FROM yc_bit.dim_city
+							GROUP BY city, city_name
+						) c
+						ON (o.city = c.city
+							AND dt > 20180812
+							AND create_time >= UNIX_TIMESTAMP('2018-08-13', 'yyyy-MM-dd')
+							AND create_time < UNIX_TIMESTAMP('2018-08-27', 'yyyy-MM-dd'))
+				) a
+				WHERE a.n = 1
+			) oso
+				LEFT JOIN (
+					SELECT service_order_id, MAX(accept_status) AS accept_status, MAX(decision_result) AS decision_status
+						, SUM(if(decision_result = 2, CAST(route_distance AS BIGINT), 0)) / 1000 AS decision_distance
+						, SUM(if(decision_result = 2, CAST(route_time_length AS BIGINT), 0)) / 60 AS decision_time
+					FROM yc_dw_mp.dispatch_detail_info
+					WHERE dt > 20180812
+					GROUP BY service_order_id
+				) dis
+				ON oso.service_order_id = dis.service_order_id
+				LEFT JOIN (
+					SELECT CAST(h.service_order_ids AS BIGINT) AS service_order_ids, SUM(-h.amount) / 100 AS amount
+					FROM yc_bit.account_history h
+					WHERE (h.dt > 20180812 -- -----------------时间修改
+						AND h.create_time >= UNIX_TIMESTAMP('2018-08-13', 'yyyy-MM-dd') -- -----------------时间修改
+						AND h.create_time < UNIX_TIMESTAMP('2018-08-27', 'yyyy-MM-dd')
+						AND h.type IN (2, 4)
+						AND h.reason = 2)
+					GROUP BY CAST(h.service_order_ids AS BIGINT)
+				) y
+				ON oso.service_order_id = y.service_order_ids
+			GROUP BY oso.stat_day, oso.city_name, oso.car_type_id
+		) x
+			LEFT JOIN (
+				SELECT from_unixtime(a.create_time, 'yyyy-MM-dd') AS stat_day, a.city_name, a.car_type_id
+					, COUNT(DISTINCT a.user_id) AS new_user_cnt
+				FROM (
+					SELECT create_time, o.service_order_id, c.city_name, o.user_id, 9999 AS car_type_id
+						, row_number() OVER (PARTITION BY o.service_order_id ORDER BY update_time DESC) AS n
+					FROM yc_ods.ods_service_order o
+						JOIN (
+							SELECT city, city_name
+							FROM yc_bit.dim_city
+							GROUP BY city, city_name
+						) c
+						ON o.city = c.city
+						JOIN (
+							SELECT service_order_id
+							FROM yc_bit.user_jihuo_order_new
+						) u0
+						ON o.service_order_id = u0.service_order_id
+					WHERE (o.dt > 20180812
+						AND o.create_time >= UNIX_TIMESTAMP('2018-08-13', 'yyyy-MM-dd')
+						AND o.create_time < UNIX_TIMESTAMP('2018-08-27', 'yyyy-MM-dd'))
+				) a
+				WHERE a.n = 1
+				GROUP BY from_unixtime(a.create_time, 'yyyy-MM-dd'), a.city_name, a.car_type_id
+			) u
+			ON (x.stat_day = u.stat_day
+				AND x.city_name = u.city_name
+				AND x.car_type_id = u.car_type_id)
+			LEFT JOIN (
+				SELECT o.city_name, o.stat_day, o.car_type_id, COUNT(*) AS dispatch_cnt
+					, SUM(if(info.accept_status = 1, 1, 0)) AS accept_cnt
+					, SUM(if(info.accept_status = 1
+						AND info.decision_result = 2, 1, 0)) AS zhong_cnt
+					, COUNT(DISTINCT CASE 
+						WHEN o.status = 7
+						AND info.decision_result = 2 THEN info.service_order_id
+						ELSE NULL
+					END) AS wancheng
+				FROM yc_dw_mp.dispatch_detail_info info
+					JOIN (
+						SELECT a.service_order_id, c.city_name, 9999 AS car_type_id
+							, from_unixtime(a.create_time, 'yyyy-MM-dd') AS stat_day, a.status
+						FROM yc_ods.ods_service_order a
+							JOIN (
+								SELECT city, city_name
+								FROM yc_bit.dim_city
+								GROUP BY city, city_name
+							) c
+							ON a.city = c.city
+						WHERE (a.dt > 20180812
+							AND a.create_time >= UNIX_TIMESTAMP('2018-08-13', 'yyyy-MM-dd')
+							AND a.create_time < UNIX_TIMESTAMP('2018-08-27', 'yyyy-MM-dd'))
+						GROUP BY a.service_order_id, c.city_name, a.car_type_id, from_unixtime(a.create_time, 'yyyy-MM-dd'), a.status
+					) o
+					ON info.service_order_id = o.service_order_id
+				WHERE info.dt > 20180812
+				GROUP BY o.city_name, o.stat_day, o.car_type_id
+			) dr
+			ON (x.stat_day = dr.stat_day
+				AND x.city_name = dr.city_name
+				AND x.car_type_id = dr.car_type_id)
+			LEFT JOIN (
+				SELECT d.stat_day, d.city_name, COUNT(CASE 
+						WHEN d.accept_cnt > 0 THEN d.driver_id
+						ELSE NULL
+					END) AS driver_a_cnt
+					, COUNT(CASE 
+						WHEN d.wancheng > 0 THEN d.driver_id
+						ELSE NULL
+					END) AS driver_s_cnt
+				FROM (
+					SELECT info.driver_id, o.city_name, o.stat_day, COUNT(*) AS dispatch_cnt
+						, SUM(if(info.accept_status = 1, 1, 0)) AS accept_cnt
+						, SUM(if(info.accept_status = 1
+							AND info.decision_result = 2, 1, 0)) AS zhong_cnt
+						, COUNT(DISTINCT CASE 
+							WHEN o.status = 7
+							AND info.decision_result = 2 THEN info.service_order_id
+							ELSE NULL
+						END) AS wancheng
+					FROM yc_dw_mp.dispatch_detail_info info
+						JOIN (
+							SELECT a.service_order_id, c.city_name, from_unixtime(a.create_time, 'yyyy-MM-dd') AS stat_day
+								, a.status
+							FROM yc_ods.ods_service_order a
+								JOIN (
+									SELECT city, city_name
+									FROM yc_bit.dim_city
+									GROUP BY city, city_name
+								) c
+								ON a.city = c.city
+							WHERE (a.dt > 20180812
+								AND a.create_time >= UNIX_TIMESTAMP('2018-08-13', 'yyyy-MM-dd')
+								AND a.create_time < UNIX_TIMESTAMP('2018-08-27', 'yyyy-MM-dd'))
+							GROUP BY a.service_order_id, c.city_name, from_unixtime(a.create_time, 'yyyy-MM-dd'), a.status
+						) o
+						ON info.service_order_id = o.service_order_id
+					WHERE info.dt > 20180812
+					GROUP BY info.driver_id, o.city_name, o.stat_day
+				) d
+				GROUP BY d.city_name, d.stat_day
+			) dd
+			ON x.stat_day = dd.stat_day
+				AND x.city_name = dd.city_name
+			LEFT JOIN (
+				SELECT from_unixtime(cr.record_time, 'yyyy-MM-dd') AS stat_day, fd.city_name
+					, SUM(cr.amount) / 100 AS b_butie
+				FROM yc_ods.ods_driver_charge_record_v2 cr
+					JOIN (
+						SELECT driver_id, city_name
+						FROM yc_stats.fu_driver
+						GROUP BY driver_id, city_name
+					) fd
+					ON cr.driver_id = fd.driver_id
+				WHERE (cr.rewards_type = 107
+					AND cr.record_time >= UNIX_TIMESTAMP('2018-08-13', 'yyyy-MM-dd')
+					AND cr.record_time < UNIX_TIMESTAMP('2018-08-27', 'yyyy-MM-dd')
+					AND cr.dt > 20180812)
+				GROUP BY from_unixtime(cr.record_time, 'yyyy-MM-dd'), fd.city_name
+			) bb
+			ON x.stat_day = bb.stat_day
+				AND x.city_name = bb.city_name
+			LEFT JOIN (
+				SELECT concat_ws('-', substr(l.stat_day, 1, 4), substr(l.stat_day, 5, 2), substr(l.stat_day, 7, 2)) AS stat_day
+					, fd.city_name, COUNT(l.driver_id) AS od_cnt
+					, SUM(coalesce(l.accept_min, 0) + coalesce(l.service_min, 0)) / 60 AS online_time
+				FROM yc_stats.dwd_app_driver_open_log l
+					JOIN (
+						SELECT driver_id, city_name
+						FROM yc_stats.fu_driver
+						GROUP BY driver_id, city_name
+					) fd
+					ON l.driver_id = fd.driver_id
+				WHERE l.dt > 20180812
+					AND l.accept_min > 0
+				GROUP BY concat_ws('-', substr(l.stat_day, 1, 4), substr(l.stat_day, 5, 2), substr(l.stat_day, 7, 2)), fd.city_name
+			) od
+			ON x.stat_day = od.stat_day
+				AND x.city_name = od.city_name
+			LEFT JOIN (
+				SELECT from_unixtime(a.create_time, 'yyyy-MM-dd') AS stat_day, u.city_name
+					, SUM(a.amount) / 100 AS c_amt
+					, COUNT(DISTINCT a.account_id) AS c_cnt
+				FROM yc_bit.account_history a
+					JOIN yc_stats.fu_user u ON a.account_id = u.account_id
+				WHERE (a.reason IN (1, 16)
+					AND a.activity_id != '1069'
+					AND a.dt > 20180812 -- ----------------------时间修改
+					AND a.type IN (2, 4)
+					AND a.create_time >= UNIX_TIMESTAMP('2018-08-13', 'yyyy-MM-dd') -- --------------时间修改
+					AND a.create_time < UNIX_TIMESTAMP('2018-08-27', 'yyyy-MM-dd'))
+				GROUP BY from_unixtime(a.create_time, 'yyyy-MM-dd'), u.city_name
+			) c
+			ON x.stat_day = c.stat_day
+				AND x.city_name = c.city_name
+	) ff
+) fz
+GROUP BY fz.riqi, fz.city_type, fz.city_name, fz.order_type_name

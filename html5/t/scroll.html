@@ -7,24 +7,37 @@
 </head>
 <style>
     .container{
-        /*height: 2000px;*/
         background: #999;
     }
     .g3-reserve{
       position: fixed;
-      left: 50%;
-      bottom: 40px;
-      transform: translateX(-50%);
-      width: 240px;
-      height: 80px;
-      background: #005AE0;
-      border-radius: 40px;
-      color: #fff;
-      line-height: 80px;
-      text-align: center;
-      z-index: 99999;
-      display: none;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 0;
+          background: linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,0.8));
+          box-shadow: rgba(0,0,0,.05) 0 -2px 35px 14px;
+          z-index: 99;
+          font-size: 28px;
+          transition: height .2s linear;
     }
+    .reserve-transition{
+    height: 170px;
+    transition: height .2s linear;
+  }
+    .g3-reserve-btn{
+    display: inline-block;
+    width: 240px;
+    height: 80px;
+    background: #005AE0;
+    border-radius: 40px;
+    color: #fff;
+    line-height: 80px;
+    text-align: center;
+    margin-left: 50%;
+    margin-top: 30px;
+    transform: translateX(-50%);
+  }
 </style>
 <body>
     <!-- 
@@ -50,8 +63,8 @@ if (scrollTop + windowHeight == scrollHeight) {  //滚动到底部执行事件
             //坑  苹果浏览器滚动到底部或者顶部会有回弹 导致向上滚动时会执行向下滚动事件 
             解决：
             判断向下滚动需满足条件 && scrollTop>10
-            向上滚动满足条件 && scrollTop + windowHeight < scrollHeight
-            
+            向上滚动满足条件 && scrollTop + windowHeight < scrollHeight - 100
+
             if (_scrollTop < scrollTop && scrollTop>10) {// 下滚
               $JReserve.show();
             } else if (scrollTop < _scrollTop && scrollTop + windowHeight < scrollHeight){
@@ -59,9 +72,17 @@ if (scrollTop + windowHeight == scrollHeight) {  //滚动到底部执行事件
             }
 
 
+涉及知识点 ：
+1、上下滚动判断及safir兼容性问题解决
+2、css3背景颜色渐变 background: linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,0.8));
+3、css3 transition过渡动画用法    transition: height .2s linear;
+
      -->
     <div class="container">
-        <div class="g3-reserve J_g3_reserve">预约</div>
+        <!-- <div class="g3-reserve J_g3_reserve">预约</div> -->
+          <div class="g3-reserve J_g3_reserve">
+            <a class="g3-reserve-btn" href="http://www.baidu.com">预定</a>
+          </div>
         <p>
             我与父亲不相见已二年余了，我最不能忘记的是他的背影。  
         那年冬天，祖母死了，父亲的差使也交卸了，正是祸不单行的日子。我从北京到徐州，打算跟着父亲奔丧回家。到徐州见着父亲,看见满院狼藉的东西，又想起祖母，不禁簌簌地流下眼泪。父亲说：“事已如此，不必难过，好在天无绝人之路！”   
@@ -84,16 +105,12 @@ if (scrollTop + windowHeight == scrollHeight) {  //滚动到底部执行事件
             console.log('scrollTop ', scrollTop, _scrollTop)
             
             if (_scrollTop < scrollTop && scrollTop>10) {// 下滚
-              $JReserve.show();
-            } else if (scrollTop < _scrollTop && scrollTop + windowHeight < scrollHeight){
-              $JReserve.hide();
+              // $JReserve.show();
+              $JReserve.addClass('reserve-transition');
+            } else if (scrollTop < _scrollTop && scrollTop + windowHeight < scrollHeight - 10){ 
+              // $JReserve.hide();
+              $JReserve.removeClass('reserve-transition');
             }
-            // if (scrollTop + windowHeight == scrollHeight) {  //滚动到底部执行事件
-            //   console.log("我到底部了")
-            // }
-            // if (scrollTop == 0) {   //滚动到头部执行事件                     
-            //   console.log("我到头部了")
-            // }
             setTimeout(function () { _scrollTop = scrollTop; }, 0)
           })
     </script>
