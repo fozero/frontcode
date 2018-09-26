@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue</title>
+</head>
+<!-- 
+	1、生命周期方法
+beforecreated 、created
+beforemounted 、mounted
+beforeupdated、updated
+beforedestoryed 、destoryed
+
+2、关于生命周期方法mounted和created(https://blog.csdn.net/xdnloveme/article/details/78035065)
+
+created:在模板渲染成html前调用，即通常初始化某些属性值，然后再渲染成视图。
+mounted:在模板渲染成html后调用，通常是初始化页面完成后，再对html的dom节点进行一些需要的操作。
+其实两者比较好理解，通常created使用的次数多，而mounted通常是在一些插件的使用或者组件的使用中进行操作，
+比如插件chart.js的使用: var ctx = document.getElementByIdID);通常会有这一步，而如果你写入组件中，你会发现在created中无法对chart进行一些初始化配置，一定要等这个html渲染完后才可以进行，那么mounted就是不二之选
+
+3、this.$nextTick理解及用法
+Vue 实现响应式并不是数据发生变化之后 DOM 立即变化，而是按一定的策略进行 DOM 的更新。
+$nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用 $nextTick，则可以在回调中获取更新后的 DOM
+
+考虑这样一种场景，你有一个 jQuery 插件，希望在 DOM 元素中某些属性发生变化之后重新应用该插件，这时候就需要在 $nextTick 的回调函数中执行重新应用插件的方法。
+ -->
+<body>
+	<div id="app">
+		<div>
+			<input type="text" value="test" id="input1">
+		</div>
+		<div ref="msgDiv">{{msg}}</div>  
+		<div v-if="msg1">Message got outside $nextTick: {{msg1}}</div>  
+		<div v-if="msg2">Message got inside $nextTick: {{msg2}}</div>  
+		<div v-if="msg3">Message got outside $nextTick: {{msg3}}</div>
+		<button @click="login">login</button>
+		<button @click="changeMsg">
+		    Change the Message
+		  </button>
+
+
+	</div>
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				msg:'hello',
+				msg1: '',
+			    msg2: '',
+			    msg3: ''
+			},
+			created: function () {
+				console.log('created')
+				var input1 = document.getElementById('input1');
+				this.msg=input1.value
+			},
+			mounted: function () {
+				console.log('mounted')
+			},
+			  methods:{
+			  	login:function(){
+			  		alert('login')
+			  	},
+			  	changeMsg() {      
+			  		this.msg = "Hello world."      
+				  	this.msg1 = this.$refs.msgDiv.innerHTML      
+				  	this.$nextTick(() => {        
+				  		this.msg2 = this.$refs.msgDiv.innerHTML      
+				  	})      
+				  	this.msg3 = this.$refs.msgDiv.innerHTML    
+			  	}
+			  }
+		})
+	</script>
+</body>
+</html>
