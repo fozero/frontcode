@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<!-- 
+    https://v3.bootcss.com/  
+    https://v3.bootcss.com/css/   全局样式
+    https://v3.bootcss.com/components/   组件
+    https://v3.bootcss.com/javascript/   插件
+    主题 https://coderthemes.com/hyper/index.html
+
+	bootstrap-datetimepicker 日期时间控件
+    http://www.bootcss.com/p/bootstrap-datetimepicker/
+
+	一些jquery插件   
+	1、jquery-confirm.min.css    jquery Confirm确认框
+	 源码：https://github.com/craftpip/jquery-confirm
+ 	在线DEMO：http://www.jq22.com/demo/jqueryConfirm20160413/
+
+ 	2、waves.min.css 点击动画效果 
+ 	http://www.yyyweb.com/3074.html
+
+ 	3、font-awesome.css  一套绝佳的图标字体库和CSS框架
+ 	http://fontawesome.dashgame.com/
+
+
+ 	"/statics/plugins/pace-master/pace.min.js"></script>
+<script src="/statics/plugins/jquery-blockui/jquery.blockui.js"></script>
+<script src="/statics/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/statics/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/statics/plugins/switchery/switchery.min.js"></script>
+<script src="/statics/plugins/uniform/js/jquery.uniform.standalone.js"></script>
+<script src="/statics/plugins/offcanvasmenueffects/js/classie.js"></script>
+<script src="/statics/plugins/waves/waves.min.js"></script>
+<script src="/statics/plugins/3d-bold-navigation/js/main.js"></script>
+<script src="/statics/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
+<script src="/statics/plugins/toastr/toastr.min.js"></script>
+<script src="/statics/plugins/select2/select2.full.min.js"></script>
+<script src="/statics/plugins/select2/i18n/zh-CN.js"></script>
+<script src="/statics/plugins/moment/moment.min.js"></script>
+<script src="/statics/plugins/moment/locale/zh-cn.js"></script>
+<script src="/statics/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="/statics/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+<script src="/statics/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="/statics/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="/statics/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/statics/plugins/jquery-confirm/jquery-confirm.min.js"></script>
+<script src="/statics/plugins/jquery-treetable/jquery.treetable.js"></script>
+
+echarts.js
+echarts主题  macarons.js
+
+layers.js
+moment.min.js
+jquery.slimscroll.min.js
+
+
+pace.min.js  可以实时的监听页面的加载数据,并且能够定制加载条,
+http://github.hubspot.com/pace/docs/welcome/
+
+jquery.treetable.js treeTable是跨浏览器、性能很高的jquery的树表组件
+daterangepicker.js   daterangepicker是Bootstrap的一个时间组件,使用很方便用于选择日期范围的JavaScript组件
+
+
+  	 -->
+    <!-- 所有内容包含在container中 -->
+    <div class="container">
+     <!-- 导航条 -->
+     <nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">Brand</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+	        <li><a href="#">Link</a></li>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#">Action</a></li>
+	            <li><a href="#">Another action</a></li>
+	            <li><a href="#">Something else here</a></li>
+	            <li role="separator" class="divider"></li>
+	            <li><a href="#">Separated link</a></li>
+	            <li role="separator" class="divider"></li>
+	            <li><a href="#">One more separated link</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	      <form class="navbar-form navbar-left">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Search">
+	        </div>
+	        <button type="submit" class="btn btn-default">Submit</button>
+	      </form>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#">Link</a></li>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#">Action</a></li>
+	            <li><a href="#">Another action</a></li>
+	            <li><a href="#">Something else here</a></li>
+	            <li role="separator" class="divider"></li>
+	            <li><a href="#">Separated link</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+     <!-- 面包屑 导航路径 -->
+     <ol class="breadcrumb">
+	  <li><a href="#">Home</a></li>
+	  <li><a href="#">Library</a></li>
+	  <li class="active">Data</li>
+	</ol>
+	  <!-- form表单 -->
+	  <form class="form-inline">
+		  <div class="form-group">
+		  		<label for="exampleInputEmail1">姓名</label>
+    			<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		  </div>
+		  <div class="form-group">
+		  		<label for="exampleInputEmail1">年龄</label>
+    			<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		  </div>
+		  <button type="submit" class="btn btn-default">查询</button>
+	  </form>
+	  <!-- table -->
+	  <table class="table table-striped table-bordered table-hover">
+	  	<thead>
+		  	<tr>
+		  		<td>id</td>
+		  		<td>姓名</td>
+		  		<td>年龄</td>
+		  	</tr>
+	  	</thead>
+	  	<tbody>
+		  	<tr>
+		  		<td>1</td>
+		  		<td>阿健</td>
+		  		<td>18</td>
+		  	</tr>
+		  	<tr>
+		  		<td>1</td>
+		  		<td>阿健</td>
+		  		<td>18</td>
+		  	</tr>
+		  	<tr>
+		  		<td>1</td>
+		  		<td>阿健</td>
+		  		<td>18</td>
+		  	</tr>
+	  	</tbody>
+	  </table>
+	  <!-- 分页 -->
+	  <nav aria-label="Page navigation">
+		  <ul class="pagination">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+	
+	</div>
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for</title>
+</head>
+<body>
+	<div id="app">
+		<table>
+			<tr v-for="(item,index) in result">
+                        <td v-text="item.name"></td>
+                        <td v-text="item.appid"></td>
+                        <td v-text="item.domain"></td>
+                        <td v-text="item.status"></td>
+                    </tr>
+		</table>
+	</div>
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				msg:'hello',
+				result:[{
+          name:'活动',
+          appid:'xp-event',
+          domain:'https://event.xiaopeng.com',
+          status:'1',
+        },{
+          name:'活动',
+          appid:'xp-event',
+          domain:'https://event.xiaopeng.com',
+          status:'1',
+        }],
+			},
+			created: function () {
+				console.log('created')
+			},
+			mounted: function () {
+				console.log('mounted')
+			},
+			  methods:{
+			  	login:function(){
+			  		alert('login')
+			  	},
+			  }
+		})
+	</script>
+</body>
+</html>
