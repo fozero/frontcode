@@ -1,4 +1,6 @@
 node_modules/
 ./node/node_modules/
 .DS_Store
+# 任意层文件下node_modules
+**/node_modules/
 
