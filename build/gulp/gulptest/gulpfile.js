@@ -3,18 +3,19 @@
 * @Author: fozero@126.com
 * @Date:   2018-09-30 11:05:10
 * @Last Modified by:   fozero
-* @Last Modified time: 2018-09-30 11:52:04
+* @Last Modified time: 2018-09-30 19:00:29
 */
 
 var gulp = require('gulp');
-var sass = require('gulp-sass');
-//添加浏览器前缀
-const autoprefixer = require('gulp-autoprefixer');
 
+/**
+ * sass编译  浏览器前缀
+ * @type {[type]}
+ */
+var sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');//添加浏览器前缀
 var sassSrcPath = './sass/**/*.scss';
 var sassDestPath = './css';
-
-// sass编译
 gulp.task('sass', function () {
   return gulp.src(sassSrcPath)
     .pipe(sass().on('error', sass.logError))
@@ -25,15 +26,33 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(sassDestPath));
 });
 
-//监听文件变化 执行任务
+
+/**
+ * js压缩
+ * @type {[type]}
+ */
+var uglify = require('gulp-uglify');
+var jsSrcPath = './resource/*.js';
+var jsDestPath = './js';
+gulp.task('jsmin',function(){
+	gulp.src(jsSrcPath)
+        .pipe(uglify())
+        .pipe(gulp.dest(jsDestPath));
+});
+
+
+
+/**
+ * 监听文件变化 执行任务
+ */
 gulp.task('watch',function(){
-	gulp.watch([sassSrcPath],['sass']);
+	gulp.watch([sassSrcPath,jsSrcPath],['sass','jsmin']);
 });
 
 
 // 开发及生产
 gulp.task('dev',['watch']);
-gulp.task('build',['sass']);
+gulp.task('build',['sass','jsmin']);
 
 
 // 默认task  gulp

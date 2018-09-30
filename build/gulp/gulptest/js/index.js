@@ -1,0 +1,1 @@
+function a(){return"hello2222222"}function c(){return"hello33333333333"}var a=0;
