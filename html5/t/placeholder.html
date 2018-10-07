@@ -1,0 +1,20 @@
+<!DOCTYPE <html>
+<head>
+	<title>div模拟placeholder效果</title>
+	<style type="text/css">
+		.input{
+			width:200px;
+			height:30px;
+			border:1px solid grey;
+		}
+		.input:empty::before{
+			color:lightgrey;
+			content:attr(placeholder);
+		}
+	</style>
+</head>
+<body>
+	<!-- <div class="input" contenteditable placeholder="请输入文字"></div> -->
+	<div class="input" contenteditable="false" placeholder="请输入文字"></div>
+</body>
+</html>
