@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		test
+	</div>
+	<!-- defer async="true"设置异步加载   defer ie支持-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+	<script>
+		require(['jQuery'], function ($) {
+		  console.log('111111111111')
+		});
+	</script>
+</body>
+</html>
