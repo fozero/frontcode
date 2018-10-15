@@ -7,12 +7,20 @@
 <body>
 	<div>
 		test
+		<div class="txt">hello</div>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/seajs/3.0.2/sea.js"></script>
 	<script>
-	 seajs.use('./init.js', function(init) {
-	  init.init();
-	 });
+	seajs.config({
+	  base: "./lib/",
+	  alias: {
+	    'jquery': 'jquery.min.js'
+	  }
+	});
+	seajs.use('./init')
+	 // seajs.use('./init', function(init) {
+	 //  init.init();
+	 // });
 	</script>
 </body>
 </html>
