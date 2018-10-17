@@ -21,6 +21,80 @@ const baseData = [
 		// Step 4: 渲染图表
 		baseChart.render();
 
+
+
+
+// =================双轴图表
+var chart = new G2.Chart({
+  container: 'multYData',
+  forceFit: false,
+  // height: window.innerHeight
+  height: 300
+});
+chart.source(multYData, {
+  call: {
+    min: 0
+  },
+  people: {
+    min: 0
+  },
+  waiting: {
+    min: 0
+  }
+});
+chart.legend({
+  custom: true,
+  allowAllCanceled: true,
+  items: [{
+    value: 'waiting',
+    marker: {
+      symbol: 'square',
+      fill: '#3182bd',
+      radius: 5
+    }
+  }, {
+    value: 'people',
+    marker: {
+      symbol: 'hyphen',
+      stroke: '#fdae6b',
+      radius: 5,
+      lineWidth: 3
+    }
+  }],
+  onClick: function onClick(ev) {
+    var item = ev.item;
+    var value = item.value;
+    var checked = ev.checked;
+    var geoms = chart.getAllGeoms();
+    for (var i = 0; i < geoms.length; i++) {
+      var geom = geoms[i];
+      if (geom.getYScale().field === value) {
+        if (checked) {
+          geom.show();
+        } else {
+          geom.hide();
+        }
+      }
+    }
+  }
+});
+chart.axis('people', {
+  grid: null,
+  label: {
+    textStyle: {
+      fill: '#fdae6b'
+    }
+  }
+});
+chart.interval().position('time*waiting').color('#3182bd');
+chart.line().position('time*people').color('#fdae6b').size(8).shape('smooth');//size(8)设置line的大小   color('#fdae6b')颜色
+chart.point().position('time*people').color('#fdae6b').size(8).shape('circle'); //shape图形类型  smooth circle和 其他triangle
+chart.render();
+
+
+
+
+
 // ===============面积图
 // mask时间格式同 https://momentjs.com/docs/#/displaying/format/
 // scale度量
@@ -89,29 +163,165 @@ const baseData = [
 		var areaStackChart = new G2.Chart({
 		  container: 'area-stack',
 		  forceFit: false,
-		  height: 300
+		  height: 300,
+		  padding: [ 60, 40, 95, 80 ] // 上，右，下，左
 		});
 		areaStackChart.source(areaStackData, {
-		  'time': {
-		    type: 'time',
-    		mask: 'HH:mm'
-		  }
+		  // 'time': {
+		  //   type: 'time',
+    // 		mask: 'HH:mm'
+    // 		// mask:'YYYY-MM-DD'
+		  // }
 		});
 		areaStackChart.tooltip({
 		  crosshairs: {
 		    type: 'line'
 		  }
 		});
+		// areaStackChart.scale({
+		//   'time': {
+		//     alias: '指标类型' // 为属性定义别名
+		//   },
+		//   'value': {
+		//     alias: '数量' // 为属性定义别名
+		//   }
+		// });
+		
+		// 改变坐标轴显示的值
+		areaStackChart.axis('time', {
+		  label: {
+		    formatter: function formatter(val) {
+		      return val + '小时';
+		    }
+		  }
+		});
+		areaStackChart.axis('value', {
+		  // line: {
+		  //   stroke: 'red'
+		  // },
+		  label: {
+		    formatter: function formatter(val) {
+		      return val + '数量';
+		    }
+		  }
+		});
+		// 设置坐标显示label样式
+		areaStackChart.axis('time', {
+			// 配置time字段坐标轴颜色样式
+		  line: {
+		    stroke: 'red'
+		  },
+		  // 设置坐标轴的显示位置，可设置的值包含 top、bottom、left、right，即上下左右四个位置
+		  // position:'left',
+		  title: {
+		  	textStyle: {
+		      fontSize: 22, // 文本大小
+		      textAlign: 'center', // 文本对齐方式
+		      fill: 'red', // 文本颜色
+		    }
+		  }, // 展示 xField 对应坐标轴的标题   title: null // 不展示标题=
+		});
+		// 设置显示x,y轴标题 别名    该配置信息也可以在source方法里面配置
+		areaStackChart.scale('time', {
+			tickCount: 12, // 定义坐标轴刻度线的条数，默认为 5
+		  alias: '时间日期',
+		  type: 'time',
+    	  mask: 'HH:mm',
+    	  // mask:'YYYY/MM/DD'
+		});
+
+		// areaStackChart.scale('value', {
+		//   alias: '数量'
+		// });
+		
+		// 图例
+		// 图例的显示位置，支持12个定位位置，配置值 'left-top','left-center','left-bottom','right-top','right-top','right-bottom',
+		// 'top-left','top-center','top-bottom','bottom-left','bottom-center','bottom-right'。也可使用'left'(默认为left-bottom'),
+		// 'right'(默认为'right-bottom'),'top'(默认为top-center'),'bottom'(默认为bottom-center')定位。
 		areaStackChart.legend({ 
-		  position: 'bottom', // 设置图例的显示位置
+		  position: 'top-center', // 设置图例的显示位置
 		  itemGap: 20, // 图例项之间的间距
 		  title: null, // 不展示图例的标题
-  		  marker: 'circle' // 设置图例 marker 的显示样式
+  		  marker: 'square' ,// 设置图例 marker 的显示样式  circle
+  		  // unCheckColor:'#eee',//为选中图例的颜色
+  		  // textStyle:{fill: '#333'}
+  		  // 显示文本格式化处理  回调函数
+  		  itemFormatter:function(val){
+			return val+'test';
+			}
 		});
 		areaStackChart.areaStack().position('time*value').color('type');
 		areaStackChart.lineStack().position('time*value').color('type').size(2);
 		areaStackChart.render();
 
+
+// ====================层叠面积图双轴
+var areaStackMChart = new G2.Chart({
+		  container: 'area-mstack',
+		  forceFit: false,
+		  height: 300,
+		  padding: [ 60, 40, 95, 80 ] // 上，右，下，左
+		});
+		areaStackMChart.source(areaStackMData, {
+		});
+		areaStackMChart.tooltip({
+		  crosshairs: {
+		    type: 'line'
+		  }
+		});
+		// 改变坐标轴显示的值
+		areaStackMChart.axis('time', {
+		  label: {
+		    formatter: function formatter(val) {
+		      return val + '小时';
+		    }
+		  }
+		});
+		areaStackMChart.axis('value', {
+		  label: {
+		    formatter: function formatter(val) {
+		      return val + '数量';
+		    }
+		  }
+		});
+		// 设置坐标显示label样式
+		areaStackMChart.axis('time', {
+			// 配置time字段坐标轴颜色样式
+		  line: {
+		    stroke: 'red'
+		  },
+		  title: {
+		  	textStyle: {
+		      fontSize: 22, // 文本大小
+		      textAlign: 'center', // 文本对齐方式
+		      fill: 'red', // 文本颜色
+		    }
+		  }, // 展示 xField 对应坐标轴的标题   title: null // 不展示标题=
+		});
+		// 设置显示x,y轴标题 别名    该配置信息也可以在source方法里面配置
+		areaStackMChart.scale('time', {
+			tickCount: 12, // 定义坐标轴刻度线的条数，默认为 5
+		  alias: '时间日期',
+		  type: 'time',
+    	  mask: 'HH:mm',
+    	  // mask:'YYYY/MM/DD'
+		});
+		areaStackMChart.legend({ 
+		  position: 'top-center', // 设置图例的显示位置
+		  itemGap: 20, // 图例项之间的间距
+		  title: null, // 不展示图例的标题
+  		  marker: 'square' ,// 设置图例 marker 的显示样式  circle
+  		  itemFormatter:function(val){
+			return val+'test';
+			}
+		});
+
+		areaStackMChart.areaStack().position('time*value').color('type');
+		areaStackMChart.lineStack().position('time*value').color('type').size(2);
+		// 双轴显示
+		areaStackMChart.areaStack().position('time*value2').color('type');
+		areaStackMChart.lineStack().position('time*value2').color('type').size(2);
+		areaStackMChart.render();
 
 
 // ===============饼图
@@ -194,6 +404,8 @@ lineChart.render();
 		  }
 		});
 		lineMultChart.axis('temperature', {
+		// 	line: null,
+  // tickLine: null,
 		  label: {
 		    formatter: function formatter(val) {
 		      return val + '°C';

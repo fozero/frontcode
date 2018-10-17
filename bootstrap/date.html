@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日期控件  日期范围选择</title>
+</head>
+<body>
+	<!-- 
+		后台模板（单页 iframe）https://www.layui.com/admin/
+https://www.layui.com/laydate/
+https://www.layui.com/doc/modules/laydate.html#range
+
+
+
+	 -->
+<input type="text" id="test1" placeholder="选择日期">
+<input type="text" name="daterange" value="选择日期" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script src="./lib/laydate.js" type="text/javascript"></script>
+<script>
+	//执行一个laydate实例
+	laydate.render({
+	  elem: '#test1',//指定元素
+	  range: true ,//日期范围
+	  theme: 'default',
+	  change: function(value, date){ //监听日期被切换
+	  	console.log('value',value)
+	  }
+	});
+
+
+
+	// daterangepicker用法
+	// http://www.daterangepicker.com/
+// https://www.cnblogs.com/SunY0n9/p/7515280.html
+	// 
+	$(function() {
+	  $('input[name="daterange"]').daterangepicker({
+	    // opens: 'left',
+	    startDate: moment().hours(0).minutes(0).seconds(0), //设置开始日期
+         endDate: moment(new Date()), //设置结束器日期
+         locale: {
+             format: "YYYY-MM-DD", //设置显示格式
+             applyLabel: '确定', //确定按钮文本
+             cancelLabel: '取消', //取消按钮文本
+             customRangeLabel: '自定义',
+             daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+             monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+                 '七月', '八月', '九月', '十月', '十一月', '十二月'
+             ],
+             firstDay: 1
+        },
+	  }, function(start, end, label) {
+	    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+	  });
+	});
+</script>
+</body>
+</html>
+
+
+
