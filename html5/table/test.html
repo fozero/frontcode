@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table</title>
+	<style>
+		.table tr td{
+			border: 1px solid #eee;
+		}
+	</style>
+</head>
+<body>
+	<!-- 动态内容 -->
+	<table class="table">
+      <thead>
+        <tr>
+            <td colspan="2"></td>
+            <td colspan="3">流量基础指标</td>
+            <td colspan="2">线索质量指标</td>
+        </tr>
+        <tr>
+            <td colspan="2">项目</td>
+            <td>浏览量</td>
+            <td>访客数</td>
+            <td>独立访客</td>
+            <td>线索数量</td>
+            <td>线索转化率</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in list" v-if="item.sub.length>1">
+        	<td rowspan="3" v-text="item.name">搜索</td>
+        	<td v-for="ite in item.sub" v-text="ite.name">百度搜索</td>
+        	<td>1000</td>
+        	<td>1000</td>
+        	<td>1000</td>
+        	<td>1000</td>
+        	<td>1000</td>
+        </tr>
+        <tr v-for="(item,index) in list" v-if="item.sub.length<=1">
+          <td v-text="item.name">搜索</td>
+          <td v-for="(ite,ind) in item[index].sub" v-text="ite.name">搜索</td>
+        </tr>
+      </tbody>
+  </table>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      list:[]
+    },
+    created: function () {
+      console.log('created')
+    },
+    mounted: function () {
+      console.log('mounted')
+      this.load();
+    },
+      methods:{
+        load:function(){
+          var that = this;
+          $.ajax({
+             url: "https://www.easy-mock.com/mock/5bc55f0b869c55589bda32c4/stats/source",//json文件位置
+             type: "GET",//请求方式为get
+             dataType: "json", //返回数据格式为json
+             success: function(data) {//请求成功完成后要执行的方法 
+              console.log('result',data)
+               that.list = data.list;
+             }
+          })
+        }   
+      }
+  })
+	</script>
+</body>
+</html>

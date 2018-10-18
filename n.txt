@@ -1,0 +1,71 @@
+
+
+
+
+
+
+----antv图表
+
+双轴展示
+
+动态绘制图表，数据动态绑定  x轴按小时按天动态切换展示
+
+// 更新数据
+        this.areaStackChart.changeData(newValue);
+        // 修改图表配置重新渲染
+        this.areaStackChart.scale('time', {
+          tickCount: 12, // 定义坐标轴刻度线的条数，默认为 5
+          type: 'time',
+          mask: this.chartsDateType
+        });
+        this.areaStackChart.render();
+
+
+this.curSearchDate = type;
+      if(type==1 || type==-1){
+        this.chartsDateType = 'HH:mm';
+      }else if(type==7){
+        this.chartsDateType = 'YYYY/MM/DD';
+      }
+
+
+
+
+
+----vue $refs的基本用法
+
+一般来讲，获取DOM元素，需document.querySelector（".input1"）获取这个dom节点，然后在获取input1的值。
+但是用ref绑定之后，我们就不需要在获取dom节点了，直接在上面的input上绑定input1，然后$refs里面调用就行。
+然后在javascript里面这样调用：this.$refs.input1  这样就可以减少获取dom节点的消耗了
+
+<div id="app">
+    <input type="text" ref="input1"/>
+    <button @click="add">添加</button>
+</div>
+
+new Vue({
+    el: "#app",
+    methods:{
+    add:function(){
+        this.$refs.input1.value ="22"; //this.$refs.input1  减少获取dom节点的消耗
+        }
+    }
+})
+
+
+
+vue的ref与$refs
+一. ref使用在父组件上
+父组件html：
+　　<information ref='information'></information>
+　　import information from './information'
+　　components:{information,bill,means},
+在父组件上使用子组件的值，js :this.$refs.information.isAdd;   isAdd是information组件的data的属性。
+
+二.ref使用在元素上
+例如本组件html：
+
+<span ref="myspan" class="redmy">23232</span>
+
+本组件js使用：this.$refs["myspan"].className  //redmy
+this.$refs["myspan"]   指代对象//<span class="redmy">23232</span>
