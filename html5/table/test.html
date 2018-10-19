@@ -44,7 +44,64 @@
   var vm = new Vue({
     el: '#app',
     data: {
-      list:[]
+      list:[],
+      data:{
+        "code": 200,
+        "msg": "success",
+        "data": {
+          "site": {
+            "xp_www": "官网主站",
+            "xp_event_up": "线上活动",
+            "xp_event_down": "线下活动"
+          },
+          "time": {
+            "today": "今天",
+            "yesterday": "昨天",
+            "sevenday": "近7天",
+            "thirtyday": "近30天",
+            "customday": "自定义时间"
+          },
+          "equipment": {
+            "all": "全部",
+            "pc": "PC",
+            "h5": "H5",
+            "app": "APP"
+          },
+          "source": {
+            "all": "全部",
+            "search": {
+              "xiaopeng_com": "内部跳转",
+              "nativeapp_toutiao_com": "今日头条",
+              "m_sp_sm_cn": "神马搜索",
+              "m_so_com": "360搜索移动",
+              "v_youku_com": "优酷",
+              "m_youku_com": "优酷移动",
+              "m_sm_cn": "神马搜索移动",
+              "m_soso_com": "搜狗搜索移动",
+              "m_sogou_com": "搜狗搜索移动",
+              "m_baidu_com": "百度搜索移动",
+              "www_baidu_com": "百度搜索",
+              "yz_m_sm_cn": "神马",
+              "www_so_com": "360搜索",
+              "www_google": "google",
+              "bing_com": "bing",
+              "weibo_com": "微博",
+              "wap_sogou_com": "搜狗wap",
+              "www_sogou_com": "搜狗www",
+              "vip_liepin_com": "猎聘",
+              "yahoo_com": "雅虎",
+              "so_m_sm_cn": "神马搜索"
+            },
+            "media": {
+              "bzclk_baidu_com": "百度推广",
+              "www_lagou_com": "拉钩",
+              "sp0_baidu_com": "百度尾巴"
+            },
+            "direct_access": "直接访问",
+            "other": "其他"
+          }
+        }
+      }
     },
     created: function () {
       console.log('created')
