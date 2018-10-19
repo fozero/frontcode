@@ -10,8 +10,7 @@
 	</style>
 </head>
 <body>
-	<!-- 动态内容 -->
-	<table class="table">
+  <table class="table">
       <thead>
         <tr>
             <td colspan="2"></td>
@@ -28,18 +27,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in list" v-if="item.sub.length>1">
-        	<td rowspan="3" v-text="item.name">搜索</td>
-        	<td v-for="ite in item.sub" v-text="ite.name">百度搜索</td>
-        	<td>1000</td>
-        	<td>1000</td>
-        	<td>1000</td>
-        	<td>1000</td>
-        	<td>1000</td>
-        </tr>
-        <tr v-for="(item,index) in list" v-if="item.sub.length<=1">
-          <td v-text="item.name">搜索</td>
-          <td v-for="(ite,ind) in item[index].sub" v-text="ite.name">搜索</td>
+        <tr v-for="(item,index) in list" :key="index">
+          <!-- <td v-text="item.name">搜索</td>
+          <td>{{item.name}}</td>
+          <td>1000</td>
+          <td>1000</td>
+          <td>1000</td>
+          <td>1000</td>
+          <td>1000</td> -->
         </tr>
       </tbody>
   </table>

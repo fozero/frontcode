@@ -1,6 +1,8 @@
 
+---$(...).modal is not a function的解决办法
 
-
+在使用bootstrap模态框插件的时候报错modal is not a function的解决办法，因为bootstrap是依赖jquery的，所以
+需要调整bootstrap和jquery的加载顺序，将jquery放在bootstrap之前。
 
 
 
