@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table</title>
+	<style>
+		.table tr td{
+			border: 1px solid #eee;
+		}
+	</style>
+</head>
+<body>
+  <div id="app">
+    <table class="table">
+        <thead>
+          <tr>
+              <td colspan="2"></td>
+              <td colspan="3">流量基础指标</td>
+              <td colspan="2">线索质量指标</td>
+          </tr>
+          <tr>
+              <td colspan="2">项目</td>
+              <td>浏览量</td>
+              <td>访客数</td>
+              <td>独立访客</td>
+              <td>线索数量</td>
+              <td>线索转化率</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item,index) in list2" :key="index">
+            <td v-text="item.pname">搜索</td>
+            <td v-text="item.name">百度搜索</td>
+            <td v-text="item.pv">1000</td>
+            <td v-text="item.uv">1000</td>
+            <td v-text="item.ip">1000</td>
+            <td v-text="item.clue">1000</td>
+            <td v-text="item.clue_rate">1000</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      msg:'hello',
+      list:[],
+      list3:[{
+    "name":"搜索",
+    "pv":2000,
+        "uv":1000,
+        "ip":3000,
+        "clue":1000,
+        "clue_rate":0.5,
+    "sub":[{
+       "name":"百度搜索",
+              "pv":2000,
+              "uv":1000,
+              "ip":3000,
+              "clue":1000,
+              "clue_rate":0.5
+    },{
+       "name":"谷歌搜索",
+              "pv":2000,
+              "uv":1000,
+              "ip":3000,
+              "clue":1000,
+              "clue_rate":0.5
+    }]
+  },{
+    "name":"媒体",
+              "pv":2000,
+              "uv":1000,
+              "ip":3000,
+              "clue":1000,
+              "clue_rate":0.5,
+              "sub":[{
+         "name":"优酷",
+                "pv":2000,
+                "uv":1000,
+                "ip":3000,
+                "clue":1000,
+                "clue_rate":0.5
+        },{
+         "name":"微博",
+                "pv":2000,
+                "uv":1000,
+                "ip":3000,
+                "clue":1000,
+                "clue_rate":0.5
+      }]
+      
+    }],
+      list2:[{
+              "pname":"搜索",
+              "name":"百度搜索",
+              "pv":2000,
+              "uv":1000,
+              "ip":3000,
+              "clue":1000,
+              "clue_rate":0.5
+          },
+          {
+              "pname":"搜索",
+              "name":"神马搜索",
+              "pv":2000,
+              "uv":1000,
+              "ip":3000,
+              "clue":1000,
+              "clue_rate":0.5
+          },
+          {
+              "pname":"搜索",
+              "name":"360搜索",
+              "pv":2000,
+              "uv":1000,
+              "ip":3000,
+              "clue":1000,
+              "clue_rate":0.5
+          },
+          {
+              "pname":"媒体",
+              "name":"优酷",
+              "pv":2000,
+              "uv":1000,
+              "ip":3000,
+              "clue":1000,
+              "clue_rate":0.5
+          },
+          {
+              "pname":"媒体",
+              "name":"微博",
+              "pv":2000,
+              "uv":1000,
+              "ip":3000,
+              "clue":1000,
+              "clue_rate":0.5
+          },
+          {
+              "pname":"直接访问",
+              "name":"直接访问",
+              "pv":2000,
+              "uv":1000,
+              "ip":3000,
+              "clue":1000,
+              "clue_rate":0.5
+          }
+      ],
+      data:{
+        "code": 200,
+        "msg": "success",
+        "data": {
+          "site": {
+            "xp_www": "官网主站",
+            "xp_event_up": "线上活动",
+            "xp_event_down": "线下活动"
+          },
+          "time": {
+            "today": "今天",
+            "yesterday": "昨天",
+            "sevenday": "近7天",
+            "thirtyday": "近30天",
+            "customday": "自定义时间"
+          },
+          "equipment": {
+            "all": "全部",
+            "pc": "PC",
+            "h5": "H5",
+            "app": "APP"
+          },
+          "source": {
+            "all": "全部",
+            "search": {
+              "xiaopeng_com": "内部跳转",
+              "nativeapp_toutiao_com": "今日头条",
+              "m_sp_sm_cn": "神马搜索",
+              "m_so_com": "360搜索移动",
+              "v_youku_com": "优酷",
+              "m_youku_com": "优酷移动",
+              "m_sm_cn": "神马搜索移动",
+              "m_soso_com": "搜狗搜索移动",
+              "m_sogou_com": "搜狗搜索移动",
+              "m_baidu_com": "百度搜索移动",
+              "www_baidu_com": "百度搜索",
+              "yz_m_sm_cn": "神马",
+              "www_so_com": "360搜索",
+              "www_google": "google",
+              "bing_com": "bing",
+              "weibo_com": "微博",
+              "wap_sogou_com": "搜狗wap",
+              "www_sogou_com": "搜狗www",
+              "vip_liepin_com": "猎聘",
+              "yahoo_com": "雅虎",
+              "so_m_sm_cn": "神马搜索"
+            },
+            "media": {
+              "bzclk_baidu_com": "百度推广",
+              "www_lagou_com": "拉钩",
+              "sp0_baidu_com": "百度尾巴"
+            },
+            "direct_access": "直接访问",
+            "other": "其他"
+          }
+        }
+      }
+    },
+    created: function () {
+      console.log('created')
+    },
+    mounted: function () {
+      console.log('mounted')
+      this.load();
+    },
+      methods:{
+        load:function(){
+          var that = this;
+          $.ajax({
+             url: "https://www.easy-mock.com/mock/5bc55f0b869c55589bda32c4/stats/source",//json文件位置
+             type: "GET",//请求方式为get
+             dataType: "json", //返回数据格式为json
+             success: function(res) {//请求成功完成后要执行的方法 
+              console.log('result',JSON.stringify(res.data.list))
+               that.list = res.data.list;
+             }
+          })
+        }   
+      }
+  })
+	</script>
+</body>
+</html>
