@@ -1,0 +1,11 @@
+
+
+小程序 类似发布朋友圈的功能（图片上传和修改）
+https://blog.csdn.net/xiuxiumomo/article/details/81976038
+
+微信小程序-仿朋友圈发布动态（包括后端上传图片）
+https://blog.csdn.net/qq_33514421/article/details/81034976
+
+
+表设计中冗余字段的思考
+https://blog.csdn.net/ztchun/article/details/80034764
