@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table</title>
+	<style>
+		.table tr td{
+			border: 1px solid #eee;
+		}
+	</style>
+</head>
+<body>
+  <div id="app">
+    <table class="table">
+        <thead>
+          <tr>
+              <td colspan="2"></td>
+              <td colspan="3">流量基础指标</td>
+              <td colspan="2">线索质量指标</td>
+          </tr>
+          <tr>
+              <td colspan="2">项目</td>
+              <td>浏览量</td>
+              <td>访客数</td>
+              <td>独立访客</td>
+              <td>线索数量</td>
+              <td>线索转化率</td>
+          </tr>
+        </thead>
+        <tbody v-for="(item,index) in list" :key="index">
+          <tr v-for="(ite,ind) in item.sub" :key="ind">
+            <td v-text="item.name">搜索</td>
+            <td v-text="ite.name">百度</td>
+            <td>1000</td>
+            <td>1000</td>
+            <td>1000</td>
+            <td>1000</td>
+            <td>1000</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+  <script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      msg:'hello',
+      list:[],
+    },
+    created: function () {
+      console.log('created')
+    },
+    mounted: function () {
+      console.log('mounted')
+      this.load();
+    },
+      methods:{
+        load:function(){
+          var that = this;
+          $.ajax({
+             url: "https://www.easy-mock.com/mock/5bc55f0b869c55589bda32c4/stats/source",//json文件位置
+             type: "GET",//请求方式为get
+             dataType: "json", //返回数据格式为json
+             success: function(res) {//请求成功完成后要执行的方法 
+              console.log('result',JSON.stringify(res.data.list))
+               that.list = res.data.list;
+             },
+             error:function(e){
+              console.log('error',e)
+             }
+          })
+        }   
+      }
+  })
+  </script>
+</body>
+</html>

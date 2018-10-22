@@ -11,7 +11,7 @@
 </head>
 <body>
   <div id="app">
-    <table class="table">
+    <!-- <table class="table">
         <thead>
           <tr>
               <td></td>
@@ -46,66 +46,119 @@
             <td v-text="item.clue_rate">1000</td>
               </tr>
         </tbody>
-    </table>
-    <!-- <ul>
-      <li v-for="item in sublist" v-text="item.name"></li>
-    </ul> -->
+    </table> -->
+
+    <ul class="table">
+      <li class="tr">
+        <div class="td">项目</div>
+        <div class="td">浏览量</div>
+        <div class="td">访客数</div>
+        <div class="td">独立访客</div>
+        <div class="td">线索数量</div>
+        <div class="td">线索转化率</div>
+      </li>
+      <li class="tr" v-for="(item2,index) in list3" :key="index">
+        <div class="td"><span style="font-weight: bold;font-size: 28px;" @click="showSub(item2)">+</span><span v-text="item2.name"></span></div>
+        <div class="td" v-text="item2.pv">value2</div>
+        <div class="td" v-text="item2.uv">value3</div>
+        <div class="td" v-text="item2.ip">value4</div>
+        <div class="td" v-text="item2.clue">value4</div>
+        <div class="td" v-text="item2.clue_rate">value4</div>
+        <ul>
+          <li class="tr" v-for="(subitem,index2) in item2.sub" :key="index2">
+            <div class="td" v-text="subitem.name">value1</div>
+            <div class="td" v-text="subitem.pv">value2</div>
+            <div class="td" v-text="subitem.uv">value3</div>
+            <div class="td" v-text="subitem.ip">value4</div>
+            <div class="td" v-text="subitem.clue">value4</div>
+            <div class="td" v-text="subitem.clue_rate">value4</div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <!-- for多层循环 -->
+    <ul>
+      <li v-for="it in mydata">
+          <div>{{it.name}}</div>
+          <ul>
+            <li v-for="t in it.sub">
+              <div>{{t.name}}</div>
+            </li>
+          </ul>
+      </li>
+    </ul>
   </div>
+  <style>
+  .table{
+    display: table;
+  }
+  .table .tr{
+    display: table-row;
+  }
+  .table .tr .td{
+    display: table-cell;
+    border: 1px solid #eee;
+  }
+  /*.clearfix:after{
+    content:".";display:block;height:0;clear:both;visibility:hidden
+  }
+      ul{
+            list-style: none;
+    padding: 0;
+    margin: 0;
+      }
+      ul .tr .td{
+        float: left;
+        border: 1px solid #eee;
+      }*/
+    </style>
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 	<script>
   var vm = new Vue({
     el: '#app',
     data: {
+      mydata:[{
+        id:1,
+        name:'p1',
+        sub:[{
+          id:3,
+          name:'sub1',
+        },{
+          id:4,
+          name:'sub2',
+        }]
+      },{
+        id:2,
+        name:'p2'
+      }],
+      curItem:'',
       msg:'hello',
       sublist:[],
       list:[],
       list3:[{
-    "name":"搜索",
-    "pv":2000,
-        "uv":1000,
-        "ip":3000,
-        "clue":1000,
-        "clue_rate":0.5,
-    "sub":[{
-       "name":"百度搜索",
-              "pv":2000,
-              "uv":1000,
-              "ip":3000,
-              "clue":1000,
-              "clue_rate":0.5
-    },{
-       "name":"谷歌搜索",
-              "pv":2000,
-              "uv":1000,
-              "ip":3000,
-              "clue":1000,
-              "clue_rate":0.5
-    }]
-  },{
-    "name":"媒体",
-              "pv":2000,
-              "uv":1000,
-              "ip":3000,
-              "clue":1000,
-              "clue_rate":0.5,
-              "sub":[{
-         "name":"优酷",
-                "pv":2000,
-                "uv":1000,
-                "ip":3000,
-                "clue":1000,
-                "clue_rate":0.5
+        name:"搜索",
+        pv:2000,
+        uv:1000,
+        ip:3000,
+        clue:1000,
+        clue_rate:0.5,
+        sub:[{
+           name:"百度搜索",
+            pv:2000,
+            uv:1000,
+            ip:3000,
+            clue:1000,
+            clue_rate:0.5
         },{
-         "name":"微博",
-                "pv":2000,
-                "uv":1000,
-                "ip":3000,
-                "clue":1000,
-                "clue_rate":0.5
-      }]
-      
-    }],
+              name:"谷歌搜索",
+              pv:2000,
+              uv:1000,
+              ip:3000,
+              clue:1000,
+              clue_rate:0.5
+        }]
+      }],
       list2:[{
               "pname":"搜索",
               "name":"百度搜索",
@@ -227,10 +280,12 @@
       this.load();
     },
       methods:{
-        showSub(item,index){
-          console.log(JSON.stringify(item.sub))
+        showSub2(){
+
+        },
+        showSub(item){
+          console.log("item.sub",JSON.stringify(item.sub))
           this.sublist = item.sub;
-          // alert($("#"+index).append('')
         },
         load:function(){
           var that = this;
