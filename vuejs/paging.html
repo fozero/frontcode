@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分页</title>
+	<style>
+	*{
+			padding: 0;
+			margin: 0;
+	}
+	.clearfix:after{
+		display: block;
+		content: '';
+		clear: both;
+	}
+		ul{
+			list-style: none;
+			margin: 20px;
+		}
+		ul li{
+			float: left;
+			border: 1px solid #999;
+			padding: 2px 8px;
+			cursor: pointer;
+		}
+		ul>li.active{
+			background: blue;
+			color:#fff;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<ul class="clearfix">
+			<li @click="changePage(curPage-1)">上一页</li>
+			<li @click="changePage(1)">首页</li>
+			<li :class="{'active':curPage==item.val}" v-for="item in pagelist" v-text="item.text" @click="changePage(item.val)">1</li>
+			<li @click="changePage(totalPage)">尾页</li>
+			<li @click="changePage(curPage+1)">下一页</li>
+		</ul>
+		<div style="padding: 20px;">
+			{{curPage}}/{{totalPage}}页
+		</div>
+	</div>
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				msg:'hello',
+				curItem:'',
+				curPage:1,
+				total:84,
+				limit:5,
+				pageGroup:7//分页条数 默认7个分页数
+			},
+			created: function () {
+				console.log('created')
+			},
+			mounted: function () {
+				console.log('mounted')
+			},
+			computed:{
+				totalPage:function(){
+					return Math.ceil(this.total / this.limit)
+				},
+				pagelist:function(){
+					var list = [];
+					var count = Math.floor(this.pageGroup/2), center = this.curPage;
+					var left = 1,right = this.totalPage;
+
+
+					if(this.totalPage>center+1){
+						right = center + count;
+						left = center - count;
+					}
+					if(this.totalPage==center){
+						right = center;
+						left = center - count;
+					}
+
+					while(left<=right){
+						list.push({
+							text:left,
+							val:left
+						});
+						left++;
+					}
+
+					// 总分页数大于分页条目数
+					if(this.totalPage>this.pageGroup){
+						if(this.curPage > count+1){
+							list.unshift({text:'...',val:left});
+						}
+						if(this.curPage < this.totalPage - count){
+							list.push({text:'...',val:left});
+						}
+					}
+					return list;
+				}
+			},
+		  methods:{
+		  	changePage:function(idx){
+		  		if(idx!=this.curPage && idx>0 && idx<=this.totalPage){
+		  			this.curPage = idx;
+		  		}
+		  	},
+		  	login:function(){
+		  		alert('login')
+		  	}
+		  }
+		})
+	</script>
+</body>
+</html>
