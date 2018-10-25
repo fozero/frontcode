@@ -33,9 +33,9 @@
 	<div id="app">
 		<ul class="clearfix">
 			<li @click="changePage(curPage-1)">上一页</li>
-			<li @click="changePage(1)">首页</li>
+			<!-- <li @click="changePage(1)">首页</li> -->
 			<li :class="{'active':curPage==item.val}" v-for="item in pagelist" v-text="item.text" @click="changePage(item.val)">1</li>
-			<li @click="changePage(totalPage)">尾页</li>
+			<!-- <li @click="changePage(totalPage)">尾页</li> -->
 			<li @click="changePage(curPage+1)">下一页</li>
 		</ul>
 		<div style="padding: 20px;">
@@ -50,7 +50,7 @@
 				msg:'hello',
 				curItem:'',
 				curPage:1,
-				total:84,
+				total:35,
 				limit:5,
 				pageGroup:7//分页条数 默认7个分页数
 			},
@@ -69,17 +69,30 @@
 					var count = Math.floor(this.pageGroup/2), center = this.curPage;
 					var left = 1,right = this.totalPage;
 
+					if(this.totalPage>this.pageGroup){
+						// 17   1  3    |  6   2  
+						if(this.totalPage>center && center>count){
+							console.log('center',center,count)
+							left = center - count;
+							right = center + count;
+						}
 
-					if(this.totalPage>center+1){
-						right = center + count;
-						left = center - count;
-					}
-					if(this.totalPage==center){
-						right = center;
-						left = center - count;
+						// 当前页在前面时（当前页小于等于分页组数）
+						if(this.totalPage>center && this.curPage<=count){
+							console.log(111111111)
+							left = 1;
+							right = this.pageGroup;
+						} 
+						// 17  >14(17-3)   |  2  5  3      4  5 4
+						// 当前页在最后时（总页数-分页组数）
+						if(this.curPage>this.totalPage-count+1){
+							console.log(2222222222)
+							left = this.totalPage-this.pageGroup;
+							right = this.totalPage+1;
+						}
 					}
 
-					while(left<=right){
+					while(left<right){
 						list.push({
 							text:left,
 							val:left
@@ -91,9 +104,11 @@
 					if(this.totalPage>this.pageGroup){
 						if(this.curPage > count+1){
 							list.unshift({text:'...',val:left});
+							list.unshift({text:'1',val:1});
 						}
 						if(this.curPage < this.totalPage - count){
 							list.push({text:'...',val:left});
+							list.push({text:this.totalPage,val:this.totalPage});
 						}
 					}
 					return list;
