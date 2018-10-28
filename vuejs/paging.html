@@ -50,9 +50,9 @@
 				msg:'hello',
 				curItem:'',
 				curPage:1,
-				total:35,
-				limit:5,
-				pageGroup:7//分页条数 默认7个分页数
+				total:189,
+				limit:10,
+				pageGroup:10//分页条数 默认7个分页数
 			},
 			created: function () {
 				console.log('created')
@@ -70,29 +70,22 @@
 					var left = 1,right = this.totalPage;
 
 					if(this.totalPage>this.pageGroup){
-						// 17   1  3    |  6   2  
-						if(this.totalPage>center && center>count){
-							console.log('center',center,count)
-							left = center - count;
-							right = center + count;
-						}
-
-						// 当前页在前面时（当前页小于等于分页组数）
-						if(this.totalPage>center && this.curPage<=count){
-							console.log(111111111)
-							left = 1;
+						if(this.curPage>count){
+							if(this.curPage < this.totalPage - count){
+								left = this.curPage - count;
+								right = this.curPage + count;
+							}
+							else{
+								left = this.totalPage - this.pageGroup+1;
+								// console.log('left',left)
+							}
+						}else{
 							right = this.pageGroup;
-						} 
-						// 17  >14(17-3)   |  2  5  3      4  5 4
-						// 当前页在最后时（总页数-分页组数）
-						if(this.curPage>this.totalPage-count+1){
-							console.log(2222222222)
-							left = this.totalPage-this.pageGroup;
-							right = this.totalPage+1;
 						}
 					}
 
-					while(left<right){
+					// 遍历添加到数组里
+					while(left<=right){
 						list.push({
 							text:left,
 							val:left
@@ -100,13 +93,19 @@
 						left++;
 					}
 
-					// 总分页数大于分页条目数
+
+					// 总页数大于分页条目数
 					if(this.totalPage>this.pageGroup){
+						console.log('this.totalPage',this.totalPage,this.pageGroup)
+
+						// 在首页和末页添加省略符 
 						if(this.curPage > count+1){
+							console.log('this.curPage',this.curPage,count)
 							list.unshift({text:'...',val:left});
 							list.unshift({text:'1',val:1});
 						}
 						if(this.curPage < this.totalPage - count){
+							console.log('this.curPage',this.curPage,this.totalPage,count)
 							list.push({text:'...',val:left});
 							list.push({text:this.totalPage,val:this.totalPage});
 						}
