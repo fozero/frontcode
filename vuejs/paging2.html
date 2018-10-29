@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>分页1  带省略号</title>
+	<title>仿百度分页效果，最多可见10页</title>
 	<style>
 	*{
 			padding: 0;
@@ -50,7 +50,7 @@
 				msg:'hello',
 				curItem:'',
 				curPage:1,
-				total:189,
+				total:211,
 				limit:10,
 				pageGroup:10//分页条数 默认7个分页数
 			},
@@ -70,14 +70,12 @@
 					var left = 1,right = this.totalPage;
 
 					if(this.totalPage>this.pageGroup){
-						if(this.curPage>count){
+						if(this.curPage>count+1){
 							if(this.curPage < this.totalPage - count){
 								left = this.curPage - count;
-								right = this.curPage + count;
-							}
-							else{
+								right = this.curPage + count-1;
+							}else{
 								left = this.totalPage - this.pageGroup+1;
-								// console.log('left',left)
 							}
 						}else{
 							right = this.pageGroup;
@@ -91,24 +89,6 @@
 							val:left
 						});
 						left++;
-					}
-
-
-					// 总页数大于分页条目数
-					if(this.totalPage>this.pageGroup){
-						console.log('this.totalPage',this.totalPage,this.pageGroup)
-
-						// 在首页和末页添加省略符 
-						if(this.curPage > count+1){
-							console.log('this.curPage',this.curPage,count)
-							list.unshift({text:'...',val:left});
-							list.unshift({text:'1',val:1});
-						}
-						if(this.curPage < this.totalPage - count){
-							console.log('this.curPage',this.curPage,this.totalPage,count)
-							list.push({text:'...',val:left});
-							list.push({text:this.totalPage,val:this.totalPage});
-						}
 					}
 					return list;
 				}
