@@ -1,5 +1,114 @@
 
-
+使用vue仿百度实现前端分页效果
 
 ---vue-cli
 https://cli.vuejs.org/zh/guide/installation.html
+
+vue组件
+https://cn.vuejs.org/v2/guide/components.html
+
+
+1、通过vue-cli创建项目
+
+安装vue-cli
+$npm install -g vue-cli
+
+创建vue项目
+$vue init webpack my-project
+
+项目运行
+$cd my-project
+$npm run dev
+
+
+2、创建组件
+
+涉及
+父子组件通信
+通过props向子组件传递参数
+在子组件中使用emit自定义事件返回数据给父组件
+
+
+props传递数据到子组件
+
+a.字符串数组形式props
+props: ['title', 'likes', 'isPublished', 'commentIds', 'author']
+或者指定每个prop的值类型
+props: {
+  title: String,
+  likes: Number,
+  isPublished: Boolean,
+  commentIds: Array,
+  author: Object
+}
+
+b.props验证
+props: {
+    // 基础的类型检查 (`null` 匹配任何类型)
+    propA: Number,
+    // 多个可能的类型
+    propB: [String, Number],
+    // 必填的字符串
+    propC: {
+      type: String,
+      required: true
+    },
+    // 带有默认值的数字
+    propD: {
+      type: Number,
+      default: 100
+    },
+    // 带有默认值的对象
+    propE: {
+      type: Object,
+      // 对象或数组默认值必须从一个工厂函数获取
+      default: function () {
+        return { message: 'hello' }
+      }
+    },
+    // 自定义验证函数
+    propF: {
+      validator: function (value) {
+        // 这个值必须匹配下列字符串中的一个
+        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+      }
+    }
+  }
+
+
+
+
+--坑 
+在子组件中修改currentPage时报错
+Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders
+在使用组件时，传入的prop，被组件内部又做了一次修改
+避免直接修改prop，因为当父组件重新呈现时，值将被覆盖
+
+
+changePage:function(idx){
+  		if(idx!=this.currentPage && idx>0 && idx<=this.totalPage){
+  			this.currentPage = idx;
+	  		// 触发父组件事件  pageChange会转换成小写pagechange
+	  		this.$emit('change');
+			}
+  	}
+
+ 解决 
+修改代码，通过emit传递curPage给父组件，让父组件修改
+changePage:function(idx){
+  		if(idx!=this.currentPage && idx>0 && idx<=this.totalPage){
+	  		// 触发父组件事件  pageChange会转换成小写pagechange
+	  		this.$emit('change',{curPage:idx});
+			}
+  	}
+
+  	父组件监听事件更新curPage 
+  	onPageChange:function(page){
+      this.curPage = page.curPage;
+    }
+
+
+
+
+
+
