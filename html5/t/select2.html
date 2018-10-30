@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>默认select下拉框</title>
+	<style>
+		.shortselect{  
+		    background:#fafdfe;  
+		    height:28px;  
+		    width:180px;  
+		    line-height:28px;  
+		    border:1px solid #9bc0dd;  
+		    -moz-border-radius:2px;  
+		    -webkit-border-radius:2px;  
+		    border-radius:2px;  
+		}  
+	</style>
+</head>
+<body>
+	<select name="bbxb" id="selecte" class="shortselect">  
+	      <option value="">---请选择--</option>  
+	      <option value="0" selected="selected">男</option>  
+	      <option value="1">女</option>  
+	 </select> 
+	 <p></p>
+
+
+	 <!-- 
+		修改样式美化select框默认样式,调用系统默认下拉框
+	  -->
+
+	  <style>
+	  	.place{
+			position: relative;
+	  	}
+	  	.pro{
+	  		position: absolute;
+	  		height: 26px;
+			width: 206px;
+			opacity: 0;
+			z-index: 999;
+	  	}
+	  	.cover{
+			position:relative;
+			/*left: 0;
+			top: 0;*/
+			    width: 200px;
+		    border: 1px solid #999;
+		    border-radius: 5px;
+		    padding: 2px;
+		    font-size: 14px;
+	  	}
+	  	.angle{
+	  		position: absolute;
+    right: 10px;
+	  	}
+	  </style>
+	  <div class="place">
+	  	<select class="pro" name="pro" id="pro">
+	  	</select>
+		<div class="place-rect">
+			<div class="cover">
+				<span class="pro_txt J_pro_txt">请选择省份</span>
+				<span class="angle">^</span>
+			</div>
+		</div>
+	  </div>
+	  <div class="place" style="margin-top:10px;">
+	  	<select class="pro" name="shi" id="shi">
+	  		<option value="0">北京市</option>
+	  	</select>
+		<div class="place-rect">
+			<div class="cover">
+				<span class="pro_txt J_shi_txt">请选择城市</span>
+				<span class="angle">^</span>
+			</div>
+		</div>
+	  </div>
+	<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<script src="../citys/city.js"></script>
+	  <script>
+	  	var proArr = citylist;
+	  	var prohtml = '';
+	  	for(var item in proArr){
+	  		prohtml +='<option value="'+proArr[item].id+'">'+proArr[item].name+'</option>';
+	  	}
+	  	$("#pro").html(prohtml);
+
+	  	var curPro = '';
+  		var curCity = '';
+	  	function findObjById(arr, id) {
+		    for (var i = 0; i < arr.length; i++) {
+		      if (arr[i].id == id) {
+		        return arr[i];
+		      }
+		    }
+		  }
+	  	$('#pro').on('change', function () {
+	  		var pro = $(this).val();
+	  		proText = findObjById(proArr, pro).name;
+	  		$('.J_pro_txt').text(proText);
+
+	  		curPro = pro;
+    		cityArr = [];
+    		for (var i in citylist) {
+		      if (citylist[i].id == pro) {
+		        cityArr = citylist[i].children;
+		      }
+		    }
+		    $('.J_shi_txt').text(cityArr[0].name);
+		    curCity = cityArr[0].id;
+
+		    var cityhtml = '';
+		  	for(var item2 in cityArr){
+		  		cityhtml +='<option value="'+cityArr[item2].id+'">'+cityArr[item2].name+'</option>';
+		  	}
+		  	$("#shi").html(cityhtml);
+	  	})
+	  	$('#shi').on('change', function () {
+		    var city = $(this).val();
+		    var cityText = findObjById(cityArr, city).name;
+		    curCity = city;
+		    $('.J_shi_txt').text(cityText);
+		  });
+	  </script>
+</body>
+</html>

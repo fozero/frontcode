@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>select美化</title>
+	<style>
+		@import "http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css";
+		html {
+		    box-sizing: inherit;
+		    background-color: #8e9eab;
+		    background: linear-gradient(to left, #8e9eab, #eef2f3);
+		}
+		body {
+		    margin: 10% auto;
+		    font-size: 12px;
+		}
+		.select {
+		    position: relative;
+		    display: block;
+		    margin: 0 auto;
+		    width: 100%;
+		    max-width: 325px;
+		    color: #cccccc;
+		    vertical-align: middle;
+		    text-align: left;
+		    user-select: none;
+		    -webkit-touch-callout: none;
+		}
+		.select .placeholder {
+		    position: relative;
+		    display: block;
+		    background-color: #393d41;
+		    z-index: 1;
+		    padding: 1em;
+		    border-radius: 2px;
+		    cursor: pointer;
+		}
+		.select .placeholder:hover {
+		    background: #34383c;
+		}
+		.select .placeholder:after {
+		    position: absolute;
+		    right: 1em;
+		    top: 50%;
+		    transform: translateY(-50%);
+		    font-family: 'FontAwesome';
+		    content: '\f078';
+		    z-index: 10;
+		}
+		.select.is-open .placeholder:after {
+		    content: '\f077';
+		}
+		.select.is-open ul {
+		    display: block;
+		}
+		.select.select--white .placeholder {
+		    background: #fff;
+		    color: #999;
+		}
+		.select.select--white .placeholder:hover {
+		    background: #fafafa;
+		}
+		.select ul {
+		    display: none;
+		    position: absolute;
+		    overflow: hidden;
+		    width: 100%;
+		    background: #fff;
+		    border-radius: 2px;
+		    top: 100%;
+		    left: 0;
+		    list-style: none;
+		    margin: 5px 0 0 0;
+		    padding: 0;
+		    z-index: 100;
+		}
+		.select ul li {
+		    display: block;
+		    text-align: left;
+		    padding: 0.8em 1em 0.8em 1em;
+		    color: #999;
+		    cursor: pointer;
+		}
+		.select ul li:hover {
+		    background: #4ebbf0;
+		    color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="select dowebok">
+	    <span class="placeholder">请选择</span>
+	    <ul>
+	        <li>百度</li>
+	        <li>谷歌</li>
+	        <li>雅虎</li>
+	        <li>新浪</li>
+	    </ul>
+	</div>
+	<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<script>
+		$('.select').on('click', '.placeholder', function(e) {
+		    var parent = $(this).closest('.select');
+		    if (!parent.hasClass('is-open')) {
+		        parent.addClass('is-open');
+		        $('.select.is-open').not(parent).removeClass('is-open');
+		    } else {
+		        parent.removeClass('is-open');
+		    }
+		    e.stopPropagation();
+		}).on('click', 'ul>li', function() {
+		    var parent = $(this).closest('.select');
+		    parent.removeClass('is-open').find('.placeholder').text($(this).text());
+		});
+		 
+		$('body').on('click', function() {
+		    $('.select.is-open').removeClass('is-open');
+		});
+	</script>
+</body>
+</html>
