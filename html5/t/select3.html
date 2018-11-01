@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3级下拉选项框</title>
+	<style>
+		.select{
+			position: relative;
+		}
+		.name{
+			height: 38px;
+			line-height: 38px;
+			width: 200px;
+			padding: 0 5px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.list{
+			position: absolute;
+			left: 0;
+			top: 38px;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			border: 1px solid #ddd;
+		}
+		.list-item{
+			position: relative;
+			height: 38px;
+			line-height: 38px;
+			width: 200px;
+			padding: 0 5px;
+			cursor: pointer;
+		}
+		.list-item:hover{
+			background: #4aa6fc;
+		}
+		.sublist{
+			position: absolute;
+			padding: 0;
+			left: 212px;
+			list-style: none;
+			border: 1px solid #ddd;
+		}
+		.sublist-item{
+			height: 38px;
+			line-height: 38px;
+			width: 200px;
+			padding: 0 5px;
+			cursor: pointer;
+		}
+		.sublist-item:hover{
+			background: #4aa6fc;
+		}
+	</style>
+</head>
+<body>
+	<div class="select">
+		<div class="name J_name">请选择类别</div>
+		<ul class="list J_list" style="display: none;">
+			<li class="list-item">
+				官网主站
+				<ul class="sublist">
+					<li class="sublist-item">pc</li>
+					<li class="sublist-item">h5</li>
+					<li class="sublist-item">app</li>
+				</ul>
+			</li>
+			<li class="list-item">线上活动</li>
+			<li class="list-item">线下活动</li>
+		</ul>
+	</div>
+	<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('.J_name').on('click',function(){
+				$('.J_list').show();
+			});
+			
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<style>
+		.tipToast{
+			background:rgba(0,0,0,0.8);
+			  position: fixed;
+			  left: 50%;
+			  top: 50%;
+			  transform: translate(-50%,-50%);
+			  color: #fff;
+			  padding: _(30);
+			  z-index: 9999;
+			  border-radius: _(10);
+			  text-align: center;
+			  box-sizing: border-box;
+			  font-size: _(32);
+		}
+	</style>
+</head>
+<!-- 
+封装常用组件  toast、dialog
+ -->
+<body>
+	<div>
+  		<div class="tipToast tip J_toast_tip">请输入姓名</div>
+	</div>
+	<script>
+		function showToast(title) {
+		    $('.J_toast_tip').show().html(title);
+		    setTimeout(function () {
+		      $('.J_toast_tip').hide();
+		    }, 2000);
+		  }
+	</script>
+</body>
+</html>
