@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>video视频播放组件</title>
+	<style>
+	*{
+		    margin: 0;
+    padding: 0;
+	}
+		.video-model{
+			z-index: 200;
+		    position: fixed;
+		    width: 100%;
+    		height: 100%;
+		    left: 0;
+		    top: 0;
+		    right: 0;
+		    bottom: 0;
+		    background: #000;
+		}
+		.video-cont video{
+			position: absolute;
+		    left: 0;
+		    top: 50%;
+		    width: 100%;
+		    transform: translateY(-50%);
+		}
+
+		/**/
+		.auto-video{
+			height: 200px;
+			position: relative;
+		}
+		.auto-video .video{
+			width: 100%;
+		}
+		.auto-video .video-cover{
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    right: 0;
+			    bottom: 0;
+			    display: flex;
+			    justify-content: center;
+			    align-items: center;
+		}
+		.auto-video .video-cover .icon-btn-play{
+			    width: 60px;
+			    height: 60px;
+			    color: #fff;
+			    z-index: 1;
+			    background: #000;
+			    line-height: 60px;
+			    text-align: center;
+			    border-radius: 100%;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+preload 预加载
+loop 循环播放
+autoplay自动播放
+poster 预览图
+muted 静音
+https://video.xiaopeng.com/m/auto-parking/video_01.jpg
+https://video.xiaopeng.com/m/auto-parking/first.mp4
+	 -->
+	<div class="auto-video">
+		<video class="video" loop preload muted autoplay="autoplay" poster="https://video.xiaopeng.com/m/auto-parking/video_01.jpg?v=1">
+			<source src="https://video.xiaopeng.com/m/auto-parking/first.mp4" type="video/mp4">
+		</video>
+		<div class="video-cover">
+			<span class="icon-btn-play J_playVideo" data-src="https://video.xiaopeng.com/m/auto-parking/video_01.jpg" data-url="https://video.xiaopeng.com/m/auto-parking/first.mp4">play</span>
+		</div>
+	</div>
+	<!-- 视频弹出层 组件 -->
+	<div class="video-model J_videoModal" style="display: none;">
+		<div class="video-cont"></div>
+	</div>
+<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+<script>
+	$(function(){
+		$(document.body).on('click','.J_videoModal',function(){
+			$('.J_videoModal').find('.video-cont').html('');
+        	$('.J_videoModal').hide();
+		});
+		$(document.body).on('click','.J_playVideo',function(){
+			let img = $(this).attr('data-src');
+        	let url = $(this).attr('data-url');
+			showVideo(img,url);// 播放
+		});
+	});
+	function showVideo(img,url){
+		let tmpl = '<video id="J_videoPModal" preload autoplay controls poster="'+img+'"><source src="'+url+'" type="video/mp4"></video>';
+		$('.J_videoModal').find('.video-cont').html(tmpl);
+		$('.J_videoModal').show();
+		let myvideo = document.getElementById('J_videoPModal');
+    	myvideo.play();
+	}
+
+	// 判断设备 
+	// 默认设置 J_videoModal   width: 1px; height: 1px; iphone会调用自带的播放器
+	// 通过判断设备如果是android   添加类show-android  将width和height设置为100%；
+	function isDevice() {
+	    let o = navigator.userAgent;
+	    const r = rx => o.indexOf(rx) > -1;
+	    if (r('Android')) {
+	      $('.J_videoModal').addClass('show-android');
+	    }
+	  }
+</script>
+</body>
+</html>
