@@ -1,0 +1,4164 @@
+[
+    {
+        "id":187,
+        "brand":"A3",
+        "firstNum":"a",
+        "manufactor":"奥迪(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/A3.jpg",
+        "range":39.98,
+        "typeArr":[
+            {
+                "name":"奥迪A3 Sportback e-tron 2017款",
+                "guide_price":"39.98",
+                "battery":"50",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":133,
+        "brand":"艾瑞泽7e",
+        "firstNum":"a",
+        "manufactor":"奇瑞汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ai_rui_ze_7e.jpg",
+        "range":"17.99-21.29",
+        "typeArr":[
+            {
+                "name":"艾瑞泽7e 2016款 致尚版",
+                "guide_price":"17.99",
+                "battery":"50",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"艾瑞泽7e 2016款 致享版",
+                "guide_price":"19.29",
+                "battery":"50",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"艾瑞泽7e 2016款 致尊版",
+                "guide_price":"21.29",
+                "battery":"50",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":352,
+        "brand":"爱尚EV",
+        "firstNum":"a",
+        "manufactor":"海马新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ai_shang_EV.jpg",
+        "range":12.38,
+        "typeArr":[
+            {
+                "name":"爱尚EV160 2017款 标准型",
+                "guide_price":"12.38",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            }
+        ]
+    },
+    {
+        "id":74,
+        "brand":"A6L",
+        "firstNum":"a",
+        "manufactor":"一汽-大众奥迪",
+        "pic":"https://video.xiaopeng.com/m/2018110601/A6L.jpg",
+        "range":53.98,
+        "typeArr":[
+            {
+                "name":"奥迪A6L e-tron 2017款",
+                "guide_price":"53.98",
+                "battery":"50",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":319,
+        "brand":"BXi7",
+        "firstNum":"b",
+        "manufactor":"宝沃汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/BXi7.jpg",
+        "range":"35.88-37.88",
+        "typeArr":[
+            {
+                "name":"宝沃BXi7 2018款 四驱精英型",
+                "guide_price":"35.88",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"宝沃BXi7 2018款 四驱旗舰型",
+                "guide_price":"37.88",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":158,
+        "brand":"比亚迪秦",
+        "firstNum":"b",
+        "manufactor":"比亚迪",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bi_ya_di_qin.jpg",
+        "range":"14.99-29.99",
+        "typeArr":[
+            {
+                "name":"秦Pro DM 2019款 1.5TI 自动智联锐尚型",
+                "guide_price":"14.99",
+                "battery":"80",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"秦Pro DM 2019款 1.5TI 自动智联锐动型",
+                "guide_price":"15.69",
+                "battery":"80",
+                "state_subsidies":"--"
+            },
+            {
+                "name":" 秦Pro DM 2019款1.5TI 自动智联锐享型",
+                "guide_price":"16.69",
+                "battery":"80",
+                "state_subsidies":"--"
+            },
+            {
+                "name":" 秦Pro DM 2019款1.5TI 自动智联锐耀型",
+                "guide_price":"17.69",
+                "battery":"80",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"秦Pro DM 2019款 1.5TI 开发者版入门版",
+                "guide_price":"17.69",
+                "battery":"80",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"秦Pro DM 2019款 1.5TI 开发者版专业版",
+                "guide_price":"20.69",
+                "battery":"80",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"秦Pro EV500 2019款 智联领享型",
+                "guide_price":"17.99",
+                "battery":"420",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"秦Pro EV500 2019款 智联领耀型",
+                "guide_price":"18.99",
+                "battery":"420",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":" 秦Pro EV500 2019款 开发者版入门级",
+                "guide_price":"18.99",
+                "battery":"420",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":" 秦Pro EV500 2019款 开发者版自动驾驶版",
+                "guide_price":"29.99",
+                "battery":"420",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"秦Pro EV500 2019款 开发者版专业版",
+                "guide_price":"21.99",
+                "battery":"420",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"秦 2018款 EV450 智联尊尚型",
+                "guide_price":"26.07",
+                "battery":"-",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"秦 2018款 EV450 智联锋尚型",
+                "guide_price":"25.07",
+                "battery":"-",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"秦 2018款 EV450 智联时尚型",
+                "guide_price":"24.07",
+                "battery":"-",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"比亚迪秦 2017款 尊贵型",
+                "guide_price":"18.59",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"比亚迪秦 EV300 2017款 尊享型",
+                "guide_price":"24.59",
+                "battery":"350",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"比亚迪秦 EV300 2017款 旗舰型",
+                "guide_price":"25.59",
+                "battery":"350",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"比亚迪秦 EV300 2017款 精英型",
+                "guide_price":"25.39",
+                "battery":"350",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"比亚迪秦100 2017款",
+                "guide_price":"20.99",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":280,
+        "brand":"比亚迪宋",
+        "firstNum":"b",
+        "manufactor":"比亚迪",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bi_ya_di_song.jpg",
+        "range":"17.69-27.59",
+        "typeArr":[
+            {
+                "name":"宋 2019款 宋EV500 智联领尚型",
+                "guide_price":"18.99",
+                "battery":"400",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"宋 2019款 宋EV500 智联领动型",
+                "guide_price":"19.99",
+                "battery":"400",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"宋 2019款 宋EV500 智联领享型",
+                "guide_price":"20.99",
+                "battery":"400",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"宋 2019款 宋EV500 智联领耀型",
+                "guide_price":"21.99",
+                "battery":"400",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"宋 2019款 宋DM 1.5TI 四驱智联锐耀型",
+                "guide_price":"20.69",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"宋 2019款 宋DM 1.5TI 四驱智联锐享型",
+                "guide_price":"19.69",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"宋 2019款 宋DM 1.5TI 四驱智联锐动型",
+                "guide_price":"18.69",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"宋 2019款 宋DM 1.5TI 四驱智联锐尚型",
+                "guide_price":"17.69",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"宋 2018款 EV400 智联进享型",
+                "guide_price":"27.41",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"宋 2018款 EV400 智联进取型",
+                "guide_price":"26.41",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"比亚迪宋 EV300 2017款 尊贵型",
+                "guide_price":"27.59",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"比亚迪宋 DM 2017款 豪华型",
+                "guide_price":"21.59",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"比亚迪宋 DM 2017款 尊贵型",
+                "guide_price":"23.19",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"比亚迪宋 DM 2017款 尊荣型",
+                "guide_price":"24.59",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"比亚迪宋 EV300 2017款 豪华型",
+                "guide_price":"26.59",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":323,
+        "brand":"比亚迪唐",
+        "firstNum":"b",
+        "manufactor":"比亚迪",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bi_ya_di_tang.jpg",
+        "range":"23.99-32.99",
+        "typeArr":[
+            {
+                "name":"唐DM 2018款 2.0T 智联创世版",
+                "guide_price":"32.99",
+                "battery":"100",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"唐DM 2018款 2.0T 智联创领型",
+                "guide_price":"27.99",
+                "battery":"100",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"唐DM 2018款 2.0T 智联创享型",
+                "guide_price":"25.99",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"唐DM 2018款 2.0T 智联创睿型",
+                "guide_price":"24.99",
+                "battery":"80",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"唐DM 2018款 2.0T 智联创悦型",
+                "guide_price":"23.99",
+                "battery":"80",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"比亚迪唐 2017款 全时四驱豪雅型",
+                "guide_price":"27.99",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"比亚迪唐 2017款 全时四驱豪华型",
+                "guide_price":"26.59",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"比亚迪唐 100 2017款",
+                "guide_price":"29.99",
+                "battery":"100",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":211,
+        "brand":"比亚迪元",
+        "firstNum":"b",
+        "manufactor":"比亚迪",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bi_ya_di_yuan.jpg",
+        "range":"7.9-24.98",
+        "typeArr":[
+            {
+                "name":"元 2018款 EV360 智联创酷型",
+                "guide_price":"9.90",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"元 2018款 EV360 智联炫酷型",
+                "guide_price":"9.39",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"元 2018款 EV360 智联悦酷型",
+                "guide_price":"8.59",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"元 2018款 EV360 智联尚酷型",
+                "guide_price":"7.90",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"比亚迪元 2016款 双模版 旗舰型",
+                "guide_price":"24.98",
+                "battery":"85",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"比亚迪元 2016款 双模版 尊贵型",
+                "guide_price":"22.98",
+                "battery":"85",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"比亚迪元 2016款 双模版 豪华型",
+                "guide_price":"20.98",
+                "battery":"85",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":444,
+        "brand":"比亚迪e6",
+        "firstNum":"b",
+        "manufactor":"比亚迪",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bi_ya_di_e6.jpg",
+        "range":"30.98-36.98",
+        "typeArr":[
+            {
+                "name":"比亚迪e6 2017款 尊贵版",
+                "guide_price":"36.98",
+                "battery":"400",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"比亚迪e6 2017款 精英型",
+                "guide_price":"33.00",
+                "battery":"400",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"比亚迪e6 2017款 豪华型",
+                "guide_price":"30.98",
+                "battery":"400",
+                "state_subsidies":"5.00"
+            }
+        ]
+    },
+    {
+        "id":119,
+        "brand":"比亚迪e5",
+        "firstNum":"b",
+        "manufactor":"比亚迪",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bi_ya_di_e5.jpg",
+        "range":"19.59-23.07",
+        "typeArr":[
+            {
+                "name":"比亚迪e5 2018款 450 智联尊享型",
+                "guide_price":"23.07",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"比亚迪e5 2018款 450 智联畅享型",
+                "guide_price":"22.07",
+                "battery":"-",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"比亚迪e5 2017款 尊荣型",
+                "guide_price":"21.59",
+                "battery":"256",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"比亚迪e5 2017款 尊贵型",
+                "guide_price":"20.59",
+                "battery":"256",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"比亚迪e5 2017款 e享型",
+                "guide_price":"19.59",
+                "battery":"256",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":411,
+        "brand":"宝骏E100",
+        "firstNum":"b",
+        "manufactor":"上汽通用五菱",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bao_jun_E100.jpg",
+        "range":"9.39-10.99",
+        "typeArr":[
+            {
+                "name":"宝骏E100 2017款 智享版",
+                "guide_price":"10.99",
+                "battery":"155",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"宝骏E100 2017款 智行版",
+                "guide_price":"9.39",
+                "battery":"155",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":339,
+        "brand":"宝马X5",
+        "firstNum":"b",
+        "manufactor":"宝马(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bao_ma_X5.jpg",
+        "range":92.8,
+        "typeArr":[
+            {
+                "name":"宝马X5 2017款 xDrive40e",
+                "guide_price":"92.80",
+                "battery":"31",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":331,
+        "brand":"宝马X1",
+        "firstNum":"b",
+        "manufactor":"宝马(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bao_ma_X1.jpg",
+        "range":"39.68-39.88",
+        "typeArr":[
+            {
+                "name":"宝马X1 2019款 xDrive25Le 豪华型",
+                "guide_price":"39.68",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"宝马X1 2018款 xDrive 25Le",
+                "guide_price":"39.88",
+                "battery":"60",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":2,
+        "brand":"宝马i8",
+        "firstNum":"b",
+        "manufactor":"宝马(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bao_ma_i8.jpg",
+        "range":198.8,
+        "typeArr":[
+            {
+                "name":"宝马i8 2014款 标准型",
+                "guide_price":"198.80",
+                "battery":"37",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":55,
+        "brand":"宝马i3",
+        "firstNum":"b",
+        "manufactor":"宝马(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bao_ma_i3.jpg",
+        "range":"42.28-52.28",
+        "typeArr":[
+            {
+                "name":"宝马i3 2017款 升级款增程型",
+                "guide_price":"52.28",
+                "battery":"355",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"宝马i3 2017款 升级款豪华型",
+                "guide_price":"45.58",
+                "battery":"245",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"宝马i3 2017款 升级款时尚型",
+                "guide_price":"42.28",
+                "battery":"245",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":23,
+        "brand":"宝马7系",
+        "firstNum":"b",
+        "manufactor":"宝马(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bao_ma_7_xi.jpg",
+        "range":106.8,
+        "typeArr":[
+            {
+                "name":"宝马7系 2018款 740Le xDrive",
+                "guide_price":"106.80",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":20,
+        "brand":"宝马5系",
+        "firstNum":"b",
+        "manufactor":"华晨宝马",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bao_ma_5_xi.jpg",
+        "range":49.69,
+        "typeArr":[
+            {
+                "name":"宝马5系 2018款 530Le 豪华套装",
+                "guide_price":"49.69",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":231,
+        "brand":"奔腾X40EV",
+        "firstNum":"b",
+        "manufactor":"一汽奔腾",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ben_teng_X40EV.jpg",
+        "range":"18.38-18.98",
+        "typeArr":[
+            {
+                "name":"奔腾X40 EV400 2019款 舒适型",
+                "guide_price":"18.38",
+                "battery":"310",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"奔腾X40 EV400 2019款 尊享型",
+                "guide_price":"18.98",
+                "battery":"310",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":145,
+        "brand":"奔腾B30EV",
+        "firstNum":"b",
+        "manufactor":"一汽奔腾",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ben_teng_B30EV.jpg",
+        "range":"17.38-18.38",
+        "typeArr":[
+            {
+                "name":"奔腾B30 EV 2018款 舒适型",
+                "guide_price":"17.38",
+                "battery":"205",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"奔腾B30 EV 2018款 豪华型",
+                "guide_price":"18.38",
+                "battery":"205",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":357,
+        "brand":"奔奔mini-e",
+        "firstNum":"b",
+        "manufactor":"长安汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ben_ben_mini-e.jpg",
+        "range":"8.28-8.58",
+        "typeArr":[
+            {
+                "name":"奔奔mini-e 2017款 舒适型",
+                "guide_price":"8.58",
+                "battery":"151",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"奔奔mini-e 2017款 标准型",
+                "guide_price":"8.28",
+                "battery":"151",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":429,
+        "brand":"奔奔EV",
+        "firstNum":"b",
+        "manufactor":"长安汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ben_ben_EV.jpg",
+        "range":"5.98-17.18",
+        "typeArr":[
+            {
+                "name":"奔奔EV 2019款 EC260 标准型",
+                "guide_price":"9.58",
+                "battery":"210",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"奔奔EV 2019款 EC260 时尚型",
+                "guide_price":"10.18",
+                "battery":"210",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"奔奔EV 2019款 EC260 豪华型",
+                "guide_price":"10.78",
+                "battery":"210",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"奔奔EV 2019款 EV360 标准型",
+                "guide_price":"5.98",
+                "battery":"210",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"奔奔EV 2019款 EV360 时尚型",
+                "guide_price":"6.58",
+                "battery":"210",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"奔奔EV 2019款 EV360 豪华型",
+                "guide_price":"7.18",
+                "battery":"210",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"奔奔EV260 2018款 时尚型",
+                "guide_price":"12.98",
+                "battery":"251",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"奔奔EV260 2018款 豪华型",
+                "guide_price":"13.58",
+                "battery":"251",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"奔奔EV260 2018款 标准型",
+                "guide_price":"12.38",
+                "battery":"251",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"奔奔EV 210 2017款 豪华型",
+                "guide_price":"17.18",
+                "battery":"210",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"奔奔EV 210 2017款 标准型",
+                "guide_price":"16.08",
+                "battery":"210",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"奔奔EV180 2017款 豪华型",
+                "guide_price":"16.68",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"奔奔EV180 2017款 时尚型",
+                "guide_price":"16.05",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"奔奔EV210 2017款 时尚型",
+                "guide_price":"17.18",
+                "battery":"210",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"奔奔EV180 2017款 标准型",
+                "guide_price":"15.48",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":153,
+        "brand":"博瑞GE",
+        "firstNum":"b",
+        "manufactor":"吉利新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bo_rui_GE.jpg",
+        "range":"19.98-23.28",
+        "typeArr":[
+            {
+                "name":"博瑞GE 2018款 PHEV 耀享版",
+                "guide_price":"21.28",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"博瑞GE 2018款 PHEV 耀悦版",
+                "guide_price":"19.98",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"博瑞GE 2018款 PHEV 耀领版",
+                "guide_price":"23.28",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":402,
+        "brand":"北斗星X5E",
+        "firstNum":"b",
+        "manufactor":"昌河汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bei_dou_xing_X5E.jpg",
+        "range":"11.5-14.3",
+        "typeArr":[
+            {
+                "name":"北斗星X5E 2017款 EV268 畅行版",
+                "guide_price":"14.30",
+                "battery":"260",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"北斗星X5E 2017款 EV168 进取版",
+                "guide_price":"11.50",
+                "battery":"160",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":183,
+        "brand":"别克VELITE5",
+        "firstNum":"b",
+        "manufactor":"上汽通用别克",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bie_ke_VELITE5.jpg",
+        "range":"26.58-29.58",
+        "typeArr":[
+            {
+                "name":"别克VELITE 5 2017款 时尚增程型",
+                "guide_price":"29.58",
+                "battery":"116",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"别克VELITE 5 2017款 都市增程型",
+                "guide_price":"26.58",
+                "battery":"116",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":195,
+        "brand":"保时捷Panamera",
+        "firstNum":"b",
+        "manufactor":"保时捷",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bao_shi_jie_Panamera.jpg",
+        "range":"140.8-273.8",
+        "typeArr":[
+            {
+                "name":"Panamera 2017款 4 E-Hybrid 2.9T 行政加长版",
+                "guide_price":"143.80",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"Panamera 2017款 Turbo S E-Hybrid 4.0T 行政加长版",
+                "guide_price":"273.80",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"Panamera 2017款 4 E-Hybrid Sport Turismo 2.9T",
+                "guide_price":"140.80",
+                "battery":"140",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":202,
+        "brand":"保时捷Cayenne",
+        "firstNum":"b",
+        "manufactor":"保时捷",
+        "pic":"https://video.xiaopeng.com/m/2018110601/bao_shi_jie_Cayenne.jpg",
+        "range":108.8,
+        "typeArr":[
+            {
+                "name":"保时捷Cayenne 2016款 Cayenne S E-Hybrid",
+                "guide_price":"108.80",
+                "battery":"51",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"保时捷Cayenne 2015款 Cayenne S E-Hybrid",
+                "guide_price":"108.80",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":260,
+        "brand":"传祺GS4PHEV",
+        "firstNum":"c",
+        "manufactor":"广汽乘用车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/chuan_qi_GS4PHEV.jpg",
+        "range":"20.98-21.98",
+        "typeArr":[
+            {
+                "name":"传祺GS4 PHEV 2017款 尊享版",
+                "guide_price":"21.98",
+                "battery":"58",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"传祺GS4 PHEV 2017款 智享版",
+                "guide_price":"20.98",
+                "battery":"58",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":269,
+        "brand":"长安CS15EV",
+        "firstNum":"c",
+        "manufactor":"长安汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/chang_an_CS15EV.jpg",
+        "range":"18.94-19.64",
+        "typeArr":[
+            {
+                "name":"长安CS15EV 2018款 350i",
+                "guide_price":"19.64",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"长安CS15EV 2018款 350e",
+                "guide_price":"18.94",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":85,
+        "brand":"C30EV",
+        "firstNum":"c",
+        "manufactor":"长城汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/C30EV.jpg",
+        "range":"13.98-15.4",
+        "typeArr":[
+            {
+                "name":"长城C30EV 2018款 升级版精英型",
+                "guide_price":"15.40",
+                "battery":"-",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"长城C30EV 2018款 升级版悦享型",
+                "guide_price":"15.00",
+                "battery":"-",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"长城C30EV 2017款 豪华型",
+                "guide_price":"14.28",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"长城C30EV 2017款 舒适型",
+                "guide_price":"13.98",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"长城C30EV 2017款 悦享型",
+                "guide_price":"14.98",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            }
+        ]
+    },
+    {
+        "id":239,
+        "brand":"CS9-EV",
+        "firstNum":"c",
+        "manufactor":"猎豹汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/CS9-EV.jpg",
+        "range":"20.58-21.58",
+        "typeArr":[
+            {
+                "name":"猎豹CS9EV 2018款 EV300 风尚版",
+                "guide_price":"20.58",
+                "battery":"255",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"猎豹CS9EV 2018款 EV300 精英版",
+                "guide_price":"21.58",
+                "battery":"255",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":271,
+        "brand":"传祺GE3",
+        "firstNum":"c",
+        "manufactor":"广汽新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/chuan_qi_GE3.jpg",
+        "range":"22.28-24.65",
+        "typeArr":[
+            {
+                "name":"传祺GE3 2018款 530 互联网尊享版",
+                "guide_price":"24.65",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"传祺GE3 2017款 智享版",
+                "guide_price":"22.28",
+                "battery":"310",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"传祺GE3 2017款 尊享版",
+                "guide_price":"24.58",
+                "battery":"310",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":177,
+        "brand":"晨风",
+        "firstNum":"c",
+        "manufactor":"东风启辰",
+        "pic":"https://video.xiaopeng.com/m/2018110601/chen_feng.jpg",
+        "range":"24.28-26.18",
+        "typeArr":[
+            {
+                "name":"晨风 2017款 领航极地版 6.6KW",
+                "guide_price":"26.18",
+                "battery":"175",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"晨风 2014款 领航版 6.6KW",
+                "guide_price":"25.68",
+                "battery":"175",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"晨风 2014款 领风版 6.6KW",
+                "guide_price":"24.78",
+                "battery":"175",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"晨风 2014款 领风版 3.6KW",
+                "guide_price":"24.28",
+                "battery":"175",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":61,
+        "brand":"传祺GA5PHEV",
+        "firstNum":"c",
+        "manufactor":"广汽乘用车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/chuan_qi_GA5PHEV.jpg",
+        "range":"19.93-21.93",
+        "typeArr":[
+            {
+                "name":"传祺GA5PHEV 2016款 精英版",
+                "guide_price":"19.93",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"传祺GA5PHEV 2016款 尊享版",
+                "guide_price":"21.93",
+                "battery":"80",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":90,
+        "brand":"传祺GA3SPHEV",
+        "firstNum":"c",
+        "manufactor":"广汽乘用车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/chuan_qi_GA3SPHEV.jpg",
+        "range":"16.48-17.48",
+        "typeArr":[
+            {
+                "name":"传祺GA3S PHEV 2017款 尊享版",
+                "guide_price":"17.48",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"传祺GA3S PHEV 2017款 精英版",
+                "guide_price":"16.48",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":102,
+        "brand":"帝豪",
+        "firstNum":"d",
+        "manufactor":"吉利新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/di_hao.jpg",
+        "range":"15-24.98",
+        "typeArr":[
+            {
+                "name":"帝豪 2018款 EV450 尊贵型",
+                "guide_price":"23.83",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"帝豪 2018款 EV450 精英型",
+                "guide_price":"22.83",
+                "battery":"-",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"帝豪 2018款 EV450 进取型",
+                "guide_price":"21.83",
+                "battery":"-",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"帝豪PHEV 2018款 三厢 1.5L PHEV 尊贵型",
+                "guide_price":"15.00",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"帝豪PHEV 2018款 三厢 1.5L PHEV 精英型",
+                "guide_price":"17.58",
+                "battery":"-",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"帝豪PHEV 2018款 三厢 1.5L PHEV 进取型",
+                "guide_price":"16.58",
+                "battery":"-",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"帝豪EV300 2017款 进取型",
+                "guide_price":"19.48",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"帝豪EV300 2017款 精英型",
+                "guide_price":"20.58",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"帝豪EV300 2017款 尊贵型",
+                "guide_price":"21.58",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"吉利帝豪EV 2016款 尊贵型",
+                "guide_price":"24.98",
+                "battery":"253",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"吉利帝豪EV 2016款 精英型",
+                "guide_price":"23.98",
+                "battery":"253",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"吉利帝豪EV 2016款 进取型",
+                "guide_price":"22.88",
+                "battery":"253",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":241,
+        "brand":"帝豪GSe",
+        "firstNum":"d",
+        "manufactor":"吉利新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/di_hao_GSe.jpg",
+        "range":"11.98-14.58",
+        "typeArr":[
+            {
+                "name":"帝豪GSe 2018款 风尚型",
+                "guide_price":"11.98",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"帝豪GSe 2018款 领尚型",
+                "guide_price":"12.58",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"帝豪GSe 2018款 臻尚型",
+                "guide_price":"13.58",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"帝豪GSe 2018款 尊尚型",
+                "guide_price":"14.58",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":424,
+        "brand":"东风风神E30",
+        "firstNum":"d",
+        "manufactor":"东风乘用车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/dong_feng_feng_shen_E30.jpg",
+        "range":16.48,
+        "typeArr":[
+            {
+                "name":"东风风神E30 2016款 E30L",
+                "guide_price":"16.48",
+                "battery":"150",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":136,
+        "brand":"东风风神E70",
+        "firstNum":"d",
+        "manufactor":"东风乘用车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/dong_feng_feng_shen_E70.jpg",
+        "range":"21.28-22.88",
+        "typeArr":[
+            {
+                "name":"东风风神E70 2017款 超睿版",
+                "guide_price":"22.88",
+                "battery":"351",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"东风风神E70 2017款 超享版",
+                "guide_price":"21.28",
+                "battery":"351",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":245,
+        "brand":"东南DX3EV",
+        "firstNum":"d",
+        "manufactor":"东南汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/dong_nan_DX3EV.jpg",
+        "range":"17.15-19.29",
+        "typeArr":[
+            {
+                "name":"东南DX3 2018款 EV400 旗舰版",
+                "guide_price":"19.15",
+                "battery":"351",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"东南DX3 2018款 EV400 豪华版",
+                "guide_price":"17.85",
+                "battery":"351",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"东南DX3 2018款 EV400 精英版",
+                "guide_price":"17.15",
+                "battery":"351",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"东南DX3EV 2018款 旗舰型",
+                "guide_price":"19.29",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"东南DX3EV 2018款 豪华型",
+                "guide_price":"18.29",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":33,
+        "brand":"电咖EV10",
+        "firstNum":"d",
+        "manufactor":"电咖汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/dian_ka_EV10.jpg",
+        "range":"13.38-14.18",
+        "typeArr":[
+            {
+                "name":"电咖EV10 2018款 专业版",
+                "guide_price":"13.38",
+                "battery":"251",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"电咖EV10 2018款 精英版",
+                "guide_price":"13.58",
+                "battery":"251",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"电咖EV10 2018款 豪华版",
+                "guide_price":"14.18",
+                "battery":"251",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":355,
+        "brand":"大众up",
+        "firstNum":"d",
+        "manufactor":"大众(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/da_zhong_up.jpg",
+        "range":26.88,
+        "typeArr":[
+            {
+                "name":"大众Electric up",
+                "guide_price":"26.88",
+                "battery":"160",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"大众e-up!",
+                "guide_price":"26.88",
+                "battery":"160",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":447,
+        "brand":"大捷龙PHEV",
+        "firstNum":"d",
+        "manufactor":"克莱斯勒(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/da_jie_long_PHEV.jpg",
+        "range":52.69,
+        "typeArr":[
+            {
+                "name":"大捷龙PHEV 2018款 3.6L插电混动版",
+                "guide_price":"52.69",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":392,
+        "brand":"DEV1",
+        "firstNum":"d",
+        "manufactor":"新特汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/DEV1.jpg",
+        "range":"14.79-16.49",
+        "typeArr":[
+            {
+                "name":"SITECH DEV 1 2018款 创智版",
+                "guide_price":"14.79",
+                "battery":"305",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"SITECH DEV 1 2018款 创睿版",
+                "guide_price":"15.59",
+                "battery":"305",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"SITECH DEV 1 2018款 尊享版",
+                "guide_price":"16.49",
+                "battery":"305",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":138,
+        "brand":"EU系列",
+        "firstNum":"e",
+        "manufactor":"北汽新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/EU_xi_lie.jpg",
+        "range":"20.59-25.27",
+        "typeArr":[
+            {
+                "name":"EU系列 2018款 EU5 R550 智领版",
+                "guide_price":"25.27",
+                "battery":"-",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"EU系列 2018款 EU5 R550 智潮版",
+                "guide_price":"23.97",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"EU系列 2018款 EU5 R500 智尚版",
+                "guide_price":"22.67",
+                "battery":"-",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"EU系列 2018款 EU5 R500 智风版",
+                "guide_price":"22.07",
+                "battery":"-",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"EU260 2017款 乐途plus版",
+                "guide_price":"20.59",
+                "battery":"260",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":" EU260 2017款 乐享版",
+                "guide_price":"21.59",
+                "battery":"260",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"EU系列 2017款 EU400 乐享版",
+                "guide_price":"22.49",
+                "battery":"260",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":251,
+        "brand":"EX系列",
+        "firstNum":"e",
+        "manufactor":"北汽新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/EX_xi_lie.jpg",
+        "range":"12.69-20.29",
+        "typeArr":[
+            {
+                "name":"EX系列 2018款 EX360 新潮版",
+                "guide_price":"20.29",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"EX系列 2018款 EX360 新尚版",
+                "guide_price":"19.29",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"EX系列 2018款 EX360 新风版",
+                "guide_price":"18.39",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"EX260 2017款 乐活版",
+                "guide_price":"19.29",
+                "battery":"250",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"EX260 2017款 乐酷版",
+                "guide_price":"12.69",
+                "battery":"250",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":418,
+        "brand":"EC系列",
+        "firstNum":"e",
+        "manufactor":"北汽新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/EC_xi_lie.jpg",
+        "range":"12.19-16.48",
+        "typeArr":[
+            {
+                "name":"EC系列 2018款 EC3 灵秀版",
+                "guide_price":"12.79",
+                "battery":"261",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"EC系列 2018款 EC3 灵动版",
+                "guide_price":"12.19",
+                "battery":"261",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"EC200 2017款 灵秀版",
+                "guide_price":"16.48",
+                "battery":"162",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"EC系列 2017款 EC200 灵动版",
+                "guide_price":"15.88",
+                "battery":"162",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"EC系列 2017款 EC180 灵秀版",
+                "guide_price":"15.78",
+                "battery":"156",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"EC系列 2017款 EC180 灵动版",
+                "guide_price":"15.18",
+                "battery":"156",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":21,
+        "brand":"EH系列",
+        "firstNum":"e",
+        "manufactor":"北汽新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/EH_xi_lie.jpg",
+        "range":"34.58-35.58",
+        "typeArr":[
+            {
+                "name":"EH系列 2017款 EH300 尊享版",
+                "guide_price":"35.58",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"EH系列 2017款 EH300 行政版",
+                "guide_price":"34.58",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":58,
+        "brand":"Ei5",
+        "firstNum":"e",
+        "manufactor":"上汽集团",
+        "pic":"https://video.xiaopeng.com/m/2018110601/Ei5.jpg",
+        "range":"21.38-22.38",
+        "typeArr":[
+            {
+                "name":"荣威EI5 2018款 互联网旗舰版",
+                "guide_price":"22.38",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"荣威EI5 2018款 互联网豪华版",
+                "guide_price":"21.38",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":48,
+        "brand":"EV系列",
+        "firstNum":"e",
+        "manufactor":"北汽新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/EV_xi_lie.jpg",
+        "range":"17.69-24.69",
+        "typeArr":[
+            {
+                "name":" EV160 2016款 轻快版",
+                "guide_price":"17.78",
+                "battery":"150",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":" EV160 2016款 轻秀版",
+                "guide_price":"18.99",
+                "battery":"150",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"EV160 2015款 轻快版",
+                "guide_price":"17.69",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"EV160 2015款 轻秀版",
+                "guide_price":"18.89",
+                "battery":"200",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"EV200 2015款 轻秀版",
+                "guide_price":"22.69",
+                "battery":"245",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"EV200 2015款 轻快版",
+                "guide_price":"20.89",
+                "battery":"245",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"EV200 2015款 轻享版",
+                "guide_price":"24.69",
+                "battery":"245",
+                "state_subsidies":"2.40"
+            }
+        ]
+    },
+    {
+        "id":345,
+        "brand":"FF91",
+        "firstNum":"f",
+        "manufactor":"法拉第未来",
+        "pic":"https://video.xiaopeng.com/m/2018110601/FF91.jpg",
+        "range":104,
+        "typeArr":[
+            {
+                "name":"FF 91 2017款 基本型",
+                "guide_price":"104.00",
+                "battery":"608",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":185,
+        "brand":"高尔夫",
+        "firstNum":"g",
+        "manufactor":"大众(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/gao_er_fu.jpg",
+        "range":"26.8-28.88",
+        "typeArr":[
+            {
+                "name":"高尔夫(进口) 2018款 e-Golf",
+                "guide_price":"26.80",
+                "battery":"255",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"高尔夫 2016款 GTE",
+                "guide_price":"28.88",
+                "battery":"50",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":16,
+        "brand":"国金GM3",
+        "firstNum":"g",
+        "manufactor":"国金汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/guo_jin_GM3.jpg",
+        "range":"22.98-24.98",
+        "typeArr":[
+            {
+                "name":"国金GM3 2018款 C型",
+                "guide_price":"24.98",
+                "battery":"350",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"国金GM3 2018款 B型",
+                "guide_price":"23.98",
+                "battery":"350",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"国金GM3 2018款 A型",
+                "guide_price":"22.98",
+                "battery":"350",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":301,
+        "brand":"汉腾X7PHEV",
+        "firstNum":"h",
+        "manufactor":"汉腾汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/han_teng_X7PHEV.jpg",
+        "range":"22.98-24.98",
+        "typeArr":[
+            {
+                "name":"汉腾X7PHEV 2019款 1.8T智尚版",
+                "guide_price":"22.98",
+                "battery":"60",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"汉腾X7PHEV 2019款 1.8T智雅版",
+                "guide_price":"23.98",
+                "battery":"60",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"汉腾X7PHEV 2018款 1.8T智尊版",
+                "guide_price":"24.98",
+                "battery":"55",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"汉腾X7PHEV 2018款 1.8T智享版",
+                "guide_price":"22.98",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":127,
+        "brand":"华骐300E",
+        "firstNum":"h",
+        "manufactor":"东风悦达起亚",
+        "pic":"https://video.xiaopeng.com/m/2018110601/hua_qi_300E.jpg",
+        "range":19.88,
+        "typeArr":[
+            {
+                "name":"华骐300E 2017款 标准型",
+                "guide_price":"19.88",
+                "battery":"310",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":276,
+        "brand":"华泰XEV260",
+        "firstNum":"h",
+        "manufactor":"华泰新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/hua_tai_XEV260.jpg",
+        "range":"24.58-27.28",
+        "typeArr":[
+            {
+                "name":"华泰XEV260 2017款 尊贵型",
+                "guide_price":"27.28",
+                "battery":"266",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"华泰XEV260 2017款 精英型",
+                "guide_price":"24.58",
+                "battery":"266",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"华泰XEV260 2016款 精英型",
+                "guide_price":"25.98",
+                "battery":"266",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"华泰XEV260 2016款 进取型",
+                "guide_price":"24.98",
+                "battery":"266",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":92,
+        "brand":"华泰iEV230",
+        "firstNum":"h",
+        "manufactor":"华泰新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/hua_tai_iEV230.jpg",
+        "range":"18.65-22.55",
+        "typeArr":[
+            {
+                "name":"华泰iEV230 2017款 尊贵型",
+                "guide_price":"19.35",
+                "battery":"230",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"华泰iEV230 2017款 精英型",
+                "guide_price":"18.65",
+                "battery":"230",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"华泰iEV230 2016款 进取型",
+                "guide_price":"21.35",
+                "battery":"230",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"华泰iEV230 2016款 精英型",
+                "guide_price":"21.85",
+                "battery":"230",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"华泰iEV230 2016款 尊贵型",
+                "guide_price":"22.55",
+                "battery":"230",
+                "state_subsidies":"2.40"
+            }
+        ]
+    },
+    {
+        "id":391,
+        "brand":"华泰EV160R",
+        "firstNum":"h",
+        "manufactor":"华泰新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/hua_tai_EV160R.jpg",
+        "range":10.98,
+        "typeArr":[
+            {
+                "name":"华泰EV160R 2017款 标准型",
+                "guide_price":"10.98",
+                "battery":"160",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":381,
+        "brand":"华泰EV160B",
+        "firstNum":"h",
+        "manufactor":"华泰新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/hua_tai_EV160B.jpg",
+        "range":10.28,
+        "typeArr":[
+            {
+                "name":"华泰EV160B 2017款 基本型",
+                "guide_price":"10.28",
+                "battery":"155",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":75,
+        "brand":"海马E3",
+        "firstNum":"h",
+        "manufactor":"海马新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/hai_ma_E3.jpg",
+        "range":"14.98-15.78",
+        "typeArr":[
+            {
+                "name":"海马E3 2017款 豪华型",
+                "guide_price":"15.78",
+                "battery":"202",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"海马E3 2017款 舒适版",
+                "guide_price":"14.98",
+                "battery":"202",
+                "state_subsidies":"2.40"
+            }
+        ]
+    },
+    {
+        "id":353,
+        "brand":"江铃E100",
+        "firstNum":"j",
+        "manufactor":"江铃集团新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jiang_ling_E100.jpg",
+        "range":15.6,
+        "typeArr":[
+            {
+                "name":"江铃E100 2017款 标准版",
+                "guide_price":"15.60",
+                "battery":"150",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":99,
+        "brand":"江淮IEVA50",
+        "firstNum":"j",
+        "manufactor":"江淮汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jiang_huai_IEVA50.jpg",
+        "range":"18.37-23.45",
+        "typeArr":[
+            {
+                "name":"江淮iEVA50 2018款 豪华智享型",
+                "guide_price":"23.45",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"江淮iEVA50 2018款 智享型",
+                "guide_price":"20.70",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"江淮iEVA50 2018款 豪华型",
+                "guide_price":"18.37",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":250,
+        "brand":"江淮iEV7S",
+        "firstNum":"j",
+        "manufactor":"江淮汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jiang_huai_iEV7S.jpg",
+        "range":20.71,
+        "typeArr":[
+            {
+                "name":"江淮iEV7S 2017款 智尊型",
+                "guide_price":"20.71",
+                "battery":"280",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":40,
+        "brand":"江淮iEV7",
+        "firstNum":"j",
+        "manufactor":"江淮汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jiang_huai_iEV7.jpg",
+        "range":15.85,
+        "typeArr":[
+            {
+                "name":"江淮iEV7 2017款 iEV7",
+                "guide_price":"15.85",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":256,
+        "brand":"江淮iEV6S",
+        "firstNum":"j",
+        "manufactor":"江淮汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jiang_huai_iEV6S.jpg",
+        "range":21.98,
+        "typeArr":[
+            {
+                "name":"江淮iEV6S 2016款 智享版",
+                "guide_price":"21.98",
+                "battery":"251",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":114,
+        "brand":"景逸S50EV",
+        "firstNum":"j",
+        "manufactor":"东风风行",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jing_yi_S50EV.jpg",
+        "range":"18.85-24.07",
+        "typeArr":[
+            {
+                "name":"景逸S50EV 2019款 运营型",
+                "guide_price":"22.07",
+                "battery":"410",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"景逸S50EV 2019款 豪华型",
+                "guide_price":"23.07",
+                "battery":"410",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"景逸S50EV 2019款 旗舰型",
+                "guide_price":"24.07",
+                "battery":"410",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"景逸S50 EV 2018款 旗舰型",
+                "guide_price":"20.25",
+                "battery":"255",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"景逸S50 EV 2018款 豪华型",
+                "guide_price":"18.85",
+                "battery":"255",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":97,
+        "brand":"骏派A70E",
+        "firstNum":"j",
+        "manufactor":"天津一汽",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jun_pai_A70E.jpg",
+        "range":"16.88-18.38",
+        "typeArr":[
+            {
+                "name":"骏派A70E 2017款 基本型",
+                "guide_price":"16.88",
+                "battery":"280",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"骏派A70E 2017款 豪华型",
+                "guide_price":"18.38",
+                "battery":"280",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":128,
+        "brand":"俊风E11K",
+        "firstNum":"j",
+        "manufactor":"东风汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jun_feng_E11K.jpg",
+        "range":25.88,
+        "typeArr":[
+            {
+                "name":"俊风E11K 2019款 标准型",
+                "guide_price":"25.88",
+                "battery":"405",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":24,
+        "brand":"俊风E17",
+        "firstNum":"j",
+        "manufactor":"东风汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jun_feng_E17.jpg",
+        "range":22.88,
+        "typeArr":[
+            {
+                "name":"俊风E17 2018款 标准型",
+                "guide_price":"22.88",
+                "battery":"310",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":28,
+        "brand":"俊风ER30",
+        "firstNum":"j",
+        "manufactor":"东风汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jun_feng_ER30.jpg",
+        "range":14.98,
+        "typeArr":[
+            {
+                "name":"俊风ER30 2018款 基本型",
+                "guide_price":"14.98",
+                "battery":"255",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":361,
+        "brand":"江淮iEV6E",
+        "firstNum":"j",
+        "manufactor":"江淮汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jiang_huai_iEV6E.jpg",
+        "range":"11.85-15.88",
+        "typeArr":[
+            {
+                "name":"江淮iEV6E 2018款 运动版 iEV6E 豪华智享型",
+                "guide_price":"15.88",
+                "battery":"310",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"江淮iEV6E 2018款 运动版 iEV6E 智享型",
+                "guide_price":"15.48",
+                "battery":"310",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"江淮iEV6E 2018款 升级版 iEV6E 豪华智能型",
+                "guide_price":"12.85",
+                "battery":"255",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"江淮iEV6E 2018款 升级版 iEV6E 豪华型",
+                "guide_price":"12.55",
+                "battery":"255",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"江淮iEV6E 2017款 时光版",
+                "guide_price":"11.85",
+                "battery":"156",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"江淮iEV6E 2017款 基本型",
+                "guide_price":"12.85",
+                "battery":"170",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":200,
+        "brand":"捷豹I-PACE",
+        "firstNum":"j",
+        "manufactor":"捷豹",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jie_bao_I-PACE.jpg",
+        "range":68,
+        "typeArr":[
+            {
+                "name":"捷豹I-PACE",
+                "guide_price":"68.00",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":43,
+        "brand":"江淮iEV",
+        "firstNum":"j",
+        "manufactor":"江淮汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jiang_huai_iEV.jpg",
+        "range":"12.85-13.85",
+        "typeArr":[
+            {
+                "name":"江淮 iEV4 2017款 时光版",
+                "guide_price":"12.85",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"江淮 iEV4 2017款 豪华型",
+                "guide_price":"13.65",
+                "battery":"260",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"江淮 iEV4 2017款 豪华智能型",
+                "guide_price":"13.85",
+                "battery":"260",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":359,
+        "brand":"江铃E200S",
+        "firstNum":"j",
+        "manufactor":"江铃集团新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jiang_ling_E200S.jpg",
+        "range":"13.28-13.58",
+        "typeArr":[
+            {
+                "name":"江铃E200S 2017款 舒适型",
+                "guide_price":"13.28",
+                "battery":"152",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"江铃E200S 2017款 豪华型",
+                "guide_price":"13.58",
+                "battery":"152",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":389,
+        "brand":"江铃E200",
+        "firstNum":"j",
+        "manufactor":"江铃集团新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jiang_ling_E200.jpg",
+        "range":"10.58-10.88",
+        "typeArr":[
+            {
+                "name":"江铃E200 2016款 舒适型",
+                "guide_price":"10.88",
+                "battery":"152",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"江铃E200 2016款 标准型",
+                "guide_price":"10.58",
+                "battery":"152",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":29,
+        "brand":"江铃E160",
+        "firstNum":"j",
+        "manufactor":"江铃集团新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/jiang_ling_E160.jpg",
+        "range":"13.68-13.98",
+        "typeArr":[
+            {
+                "name":"江铃E160 2017款 标准型",
+                "guide_price":"13.68",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"江铃E160 2017款 舒适型",
+                "guide_price":"13.98",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            }
+        ]
+    },
+    {
+        "id":13,
+        "brand":"开瑞K50EV",
+        "firstNum":"k",
+        "manufactor":"开瑞汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/kai_rui_K50EV.jpg",
+        "range":18.88,
+        "typeArr":[
+            {
+                "name":"K50 EV 2018款 EV 300",
+                "guide_price":"18.88",
+                "battery":"255",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"开瑞 K50EV 2018款 舒适型",
+                "guide_price":"18.88",
+                "battery":"255",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":221,
+        "brand":"开瑞K60EV",
+        "firstNum":"k",
+        "manufactor":"开瑞汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/kai_rui_K60EV.jpg",
+        "range":"19.89-20.88",
+        "typeArr":[
+            {
+                "name":"开瑞K60EV 2018款 V行版",
+                "guide_price":"20.88",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"开瑞K60EV 2018款 豪华型",
+                "guide_price":"19.89",
+                "battery":"300",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":305,
+        "brand":"领克01PHEV",
+        "firstNum":"l",
+        "manufactor":"领克",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ling_ke_01PHEV.jpg",
+        "range":"23.28-26.28",
+        "typeArr":[
+            {
+                "name":"领克01新能源 2018款 PHEV 劲Pro",
+                "guide_price":"26.28",
+                "battery":"51",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"领克 01 2018款 PHEV 劲",
+                "guide_price":"24.28",
+                "battery":"51",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"领克 01 2018款 PHEV 劲Lite",
+                "guide_price":"23.28",
+                "battery":"51",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":77,
+        "brand":"力帆650EV",
+        "firstNum":"l",
+        "manufactor":"力帆汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/li_fan_650EV.jpg",
+        "range":"16.89-17.58",
+        "typeArr":[
+            {
+                "name":"力帆650EV 2018款 豪华型",
+                "guide_price":"17.58",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"力帆650 EV 2018款 舒适型",
+                "guide_price":"16.89",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":341,
+        "brand":"揽胜P400e",
+        "firstNum":"l",
+        "manufactor":"路虎(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/lan_sheng_P400e.jpg",
+        "range":96.8,
+        "typeArr":[
+            {
+                "name":"揽胜运动版PHEV 2018款 P400e",
+                "guide_price":"96.80",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":31,
+        "brand":"力帆330EV",
+        "firstNum":"l",
+        "manufactor":"力帆汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/li_fan_330EV.jpg",
+        "range":"14.38-14.68",
+        "typeArr":[
+            {
+                "name":"力帆330EV 2015款 标准型",
+                "guide_price":"14.38",
+                "battery":"160",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"力帆330EV 2015款 豪华型",
+                "guide_price":"14.68",
+                "battery":"160",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":399,
+        "brand":"路盛S1",
+        "firstNum":"l",
+        "manufactor":"华泰新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/lu_sheng_S1.jpg",
+        "range":"6.58-9.58",
+        "typeArr":[
+            {
+                "name":"路盛S1 2018款 iEV360 豪华型",
+                "guide_price":"9.58",
+                "battery":"160",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"路盛S1 2018款 iEV360 舒适型",
+                "guide_price":"6.58",
+                "battery":"160",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":36,
+        "brand":"LITE",
+        "firstNum":"l",
+        "manufactor":"北汽新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/LITE.jpg",
+        "range":"14.08-16.08",
+        "typeArr":[
+            {
+                "name":"LITE 2017款 引力限量版",
+                "guide_price":"16.08",
+                "battery":"170",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"LITE 2017款 引力版",
+                "guide_price":"15.08",
+                "battery":"170",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"LITE 2017款 原力限量版",
+                "guide_price":"14.78",
+                "battery":"170",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"LITE 2017款 原力版",
+                "guide_price":"14.08",
+                "battery":"170",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":129,
+        "brand":"猎豹C5EV",
+        "firstNum":"l",
+        "manufactor":"猎豹汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/lie_bao_C5EV.jpg",
+        "range":"19.38-20.28",
+        "typeArr":[
+            {
+                "name":"猎豹C5EV 2018款 标准型",
+                "guide_price":"19.38",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"猎豹C5EV 2018款 豪华型",
+                "guide_price":"20.28",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":5,
+        "brand":"菱智M5EV",
+        "firstNum":"l",
+        "manufactor":"东风风行",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ling_zhi_M5EV.jpg",
+        "range":"16.99-21.59",
+        "typeArr":[
+            {
+                "name":"菱智M5EV 2019款 舒适型 5座",
+                "guide_price":"21.09",
+                "battery":"353",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"菱智M5EV 2019款 舒适型 7座",
+                "guide_price":"21.09",
+                "battery":"353",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"菱智M5EV 2019款 舒适型 9座",
+                "guide_price":"21.09",
+                "battery":"353",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"菱智M5EV 2019款 豪华型 7座",
+                "guide_price":"21.59",
+                "battery":"353",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"菱智M5 EV 2018款 舒适型",
+                "guide_price":"16.99",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            }
+        ]
+    },
+    {
+        "id":131,
+        "brand":"力帆620EV",
+        "firstNum":"l",
+        "manufactor":"力帆汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/li_fan_620EV.jpg",
+        "range":"21.98-23.38",
+        "typeArr":[
+            {
+                "name":"力帆620EV 2015款 改款 换电",
+                "guide_price":"21.98",
+                "battery":"250",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"力帆620EV 2015款 改款 充电",
+                "guide_price":"23.38",
+                "battery":"250",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":147,
+        "brand":"名爵6PHEV",
+        "firstNum":"m",
+        "manufactor":"上汽集团",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ming_jue_6PHEV.jpg",
+        "range":"16.98-18.68",
+        "typeArr":[
+            {
+                "name":" 名爵6 PHEV 2018款 45T E-DRIVE智驱混动PILOT超级互联网版",
+                "guide_price":"18.68",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"名爵6 PHEV 2018款 45T E-DRIVE智驱混动PILOT尊享互联网版",
+                "guide_price":"17.88",
+                "battery":"-",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"名爵6 PHEV 2018款 45T E-DRIVE智驱混动尊享互联网版",
+                "guide_price":"16.98",
+                "battery":"-",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":346,
+        "brand":"ModelS",
+        "firstNum":"m",
+        "manufactor":"特斯拉",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ModelS.jpg",
+        "range":"77.22-139.98",
+        "typeArr":[
+            {
+                "name":"Model S 2017款 100D",
+                "guide_price":"139.98",
+                "battery":"557",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"Model S 2016款 P100D",
+                "guide_price":"133.93",
+                "battery":"509",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"Model S 2016款 75D",
+                "guide_price":"77.22",
+                "battery":"490",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":68,
+        "brand":"蒙迪欧PEHV",
+        "firstNum":"m",
+        "manufactor":"长安福特",
+        "pic":"https://video.xiaopeng.com/m/2018110601/meng_di_ou_PEHV.jpg",
+        "range":"28.08-33.78",
+        "typeArr":[
+            {
+                "name":"蒙迪欧 2018款 2.0L PHEV 智尊旗舰型",
+                "guide_price":"33.78",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"蒙迪欧 2018款 2.0L PHEV 智豪型",
+                "guide_price":"29.58",
+                "battery":"-",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"蒙迪欧 2018款 2.0L PHEV 智尚型",
+                "guide_price":"28.08",
+                "battery":"-",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":349,
+        "brand":"ModelX",
+        "firstNum":"m",
+        "manufactor":"特斯拉",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ModelX.jpg",
+        "range":"98.47-150.27",
+        "typeArr":[
+            {
+                "name":"Model X 2017款 100D",
+                "guide_price":"104.47",
+                "battery":"565",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"Model X 2016款 P100D",
+                "guide_price":"150.27",
+                "battery":"417",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"Model X 2016款 90D",
+                "guide_price":"98.47",
+                "battery":"489",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":3,
+        "brand":"欧尚EV",
+        "firstNum":"o",
+        "manufactor":"长安汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ou_shang_EV.jpg",
+        "range":16.98,
+        "typeArr":[
+            {
+                "name":"欧尚EV 2018款 EV 基本型",
+                "guide_price":"16.98",
+                "battery":"315",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":404,
+        "brand":"欧拉IQ",
+        "firstNum":"o",
+        "manufactor":"长城欧拉",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ou_la_IQ.jpg",
+        "range":"18.88-20.48",
+        "typeArr":[
+            {
+                "name":"欧拉IQ 2018款 进取型",
+                "guide_price":"18.88",
+                "battery":"360",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"欧拉IQ 2018款 智联型",
+                "guide_price":"19.58",
+                "battery":"360",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"欧拉IQ 2018款 智享型",
+                "guide_price":"20.48",
+                "battery":"360",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":47,
+        "brand":"欧力威EV",
+        "firstNum":"o",
+        "manufactor":"长安汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ou_li_wei_EV.jpg",
+        "range":15.8,
+        "typeArr":[
+            {
+                "name":"欧力威EV 2017款 精英型",
+                "guide_price":"15.80",
+                "battery":"252",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":15,
+        "brand":"普力马EV",
+        "firstNum":"p",
+        "manufactor":"一汽海马",
+        "pic":"https://video.xiaopeng.com/m/2018110601/pu_li_ma_EV.jpg",
+        "range":21.68,
+        "typeArr":[
+            {
+                "name":"普力马 EV 2016款 绿驱型",
+                "guide_price":"21.68",
+                "battery":"165",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":257,
+        "brand":"卡威EV1",
+        "firstNum":"q",
+        "manufactor":"卡威汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/qia_wei_EV1.jpg",
+        "range":22.78,
+        "typeArr":[
+            {
+                "name":"卡威EV1 2017款 基本型",
+                "guide_price":"22.78",
+                "battery":"250",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":340,
+        "brand":"Q7",
+        "firstNum":"q",
+        "manufactor":"奥迪(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/Q7.jpg",
+        "range":92.88,
+        "typeArr":[
+            {
+                "name":"奥迪Q7 45 e-tron 2017款 ",
+                "guide_price":"92.88",
+                "battery":"56",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":208,
+        "brand":"全球鹰EX3",
+        "firstNum":"q",
+        "manufactor":"康迪全球鹰电动车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/quan_qiu_ying_EX3.jpg",
+        "range":"7.68-9.68",
+        "typeArr":[
+            {
+                "name":"全球鹰EX3 2018款 尊享型",
+                "guide_price":"9.68",
+                "battery":"302",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"全球鹰EX3 2018款 智享型",
+                "guide_price":"8.68",
+                "battery":"302",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"全球鹰EX3 2018款 悦享型",
+                "guide_price":"7.68",
+                "battery":"302",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":198,
+        "brand":"清行400",
+        "firstNum":"q",
+        "manufactor":"北京清行",
+        "pic":"https://video.xiaopeng.com/m/2018110601/qing_xing_400.jpg",
+        "range":"7.98-8.38",
+        "typeArr":[
+            {
+                "name":"清行400 2018款 智惠版",
+                "guide_price":"7.98",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"清行400 2018款 智享版",
+                "guide_price":"8.38",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":124,
+        "brand":"奇瑞艾瑞泽5e",
+        "firstNum":"q",
+        "manufactor":"奇瑞新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/qi_rui_ai_rui_ze_5e.jpg",
+        "range":"21.28-23.28",
+        "typeArr":[
+            {
+                "name":"艾瑞泽5e 2017款 智酷版",
+                "guide_price":"23.28",
+                "battery":"351",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"艾瑞泽5e 2017款 智享版",
+                "guide_price":"22.28",
+                "battery":"351",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"艾瑞泽5e 2017款 智尚版",
+                "guide_price":"21.28",
+                "battery":"351",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":367,
+        "brand":"奇瑞eQ1",
+        "firstNum":"q",
+        "manufactor":"奇瑞新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/qi_rui_eQ1.jpg",
+        "range":"11.99-16.59",
+        "typeArr":[
+            {
+                "name":"奇瑞eQ1 2018款 小蚂蚁300 智享版 4座",
+                "guide_price":"11.99",
+                "battery":"251",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"奇瑞eQ1 2018款 小蚂蚁400 智炫版 4座",
+                "guide_price":"14.41",
+                "battery":"301",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"奇瑞eQ1 2018款 小蚂蚁400 智享版 4座",
+                "guide_price":"14.01",
+                "battery":"301",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"奇瑞eQ1 2018款 小蚂蚁400 智享版 2座",
+                "guide_price":"13.81",
+                "battery":"301",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"奇瑞eQ1 2018款 小蚂蚁400 智尚版",
+                "guide_price":"13.41",
+                "battery":"301",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"奇瑞eQ1 2018款 智享版 251km 四座",
+                "guide_price":"11.99",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"奇瑞小蚂蚁(eQ1) 2017款 智享版",
+                "guide_price":"16.19",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"奇瑞小蚂蚁(eQ1) 2017款 智尚版",
+                "guide_price":"15.59",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"奇瑞小蚂蚁(eQ1) 2017款 智炫版",
+                "guide_price":"16.59",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":385,
+        "brand":"奇瑞eQ",
+        "firstNum":"q",
+        "manufactor":"奇瑞新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/qi_rui_eQ.jpg",
+        "range":"15.99-17.19",
+        "typeArr":[
+            {
+                "name":"奇瑞eQ 2017款 分享型",
+                "guide_price":"16.99",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"奇瑞eQ 2017款 豪华型",
+                "guide_price":"17.19",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"奇瑞eQ 2015款 豪华型",
+                "guide_price":"16.49",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"奇瑞eQ 2015款 舒适型",
+                "guide_price":"15.99",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            }
+        ]
+    },
+    {
+        "id":1,
+        "brand":"前途K50",
+        "firstNum":"q",
+        "manufactor":"前途汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/qian_tu_K50.jpg",
+        "range":75.43,
+        "typeArr":[
+            {
+                "name":"前途K50 2018款 基本型",
+                "guide_price":"75.43",
+                "battery":"380",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":415,
+        "brand":"全球鹰K10",
+        "firstNum":"q",
+        "manufactor":"康迪全球鹰电动车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/quan_qiu_ying_K10.jpg",
+        "range":15.08,
+        "typeArr":[
+            {
+                "name":"全球鹰K10 2016款 K10D",
+                "guide_price":"15.08",
+                "battery":"151",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":413,
+        "brand":"全球鹰K17",
+        "firstNum":"q",
+        "manufactor":"康迪全球鹰电动车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/quan_qiu_ying_K17.jpg",
+        "range":16.48,
+        "typeArr":[
+            {
+                "name":"全球鹰K17 2017款 K17AS",
+                "guide_price":"16.48",
+                "battery":"151",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"全球鹰K17 2016款 K17A 时尚型",
+                "guide_price":"16.48",
+                "battery":"151",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":417,
+        "brand":"全球鹰K12",
+        "firstNum":"q",
+        "manufactor":"康迪全球鹰电动车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/quan_qiu_ying_K12.jpg",
+        "range":15.88,
+        "typeArr":[
+            {
+                "name":"全球鹰K12 2016款 K12",
+                "guide_price":"15.88",
+                "battery":"152",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":63,
+        "brand":"起亚K5PHEV",
+        "firstNum":"q",
+        "manufactor":"东风悦达起亚",
+        "pic":"https://video.xiaopeng.com/m/2018110601/qi_ya_K5PHEV.jpg",
+        "range":18.98,
+        "typeArr":[
+            {
+                "name":"起亚K5PHEV 2018款 2.0L GLS 智享版",
+                "guide_price":"18.98",
+                "battery":"75",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"起亚K5PHEV 2018款 2.0L LUX 智尊版",
+                "guide_price":"18.98",
+                "battery":"75",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":425,
+        "brand":"全球鹰K11",
+        "firstNum":"q",
+        "manufactor":"康迪全球鹰电动车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/quan_qiu_ying_K11.jpg",
+        "range":18.18,
+        "typeArr":[
+            {
+                "name":"全球鹰K11 2016款 K11D",
+                "guide_price":"18.18",
+                "battery":"151",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":258,
+        "brand":"祺智PHEV",
+        "firstNum":"q",
+        "manufactor":"广汽三菱",
+        "pic":"https://video.xiaopeng.com/m/2018110601/qi_zhi_PHEV.jpg",
+        "range":"20.98-21.98",
+        "typeArr":[
+            {
+                "name":"2018款祺智PHEV 智联尊贵版",
+                "guide_price":"21.98",
+                "battery":"-",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"祺智PHEV 2018款 智联豪华版",
+                "guide_price":"20.98",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":46,
+        "brand":"荣威e50",
+        "firstNum":"r",
+        "manufactor":"上汽集团",
+        "pic":"https://video.xiaopeng.com/m/2018110601/rong_wei_e50.jpg",
+        "range":18.89,
+        "typeArr":[
+            {
+                "name":"荣威e50 2016款 标准型",
+                "guide_price":"18.89",
+                "battery":"170",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":181,
+        "brand":"荣威e550",
+        "firstNum":"r",
+        "manufactor":"上汽集团",
+        "pic":"https://video.xiaopeng.com/m/2018110601/rong_wei_e550.jpg",
+        "range":"23.98-25.98",
+        "typeArr":[
+            {
+                "name":"荣威e550 2016款 尊享版",
+                "guide_price":"23.98",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"荣威e550 2014款 旗舰版",
+                "guide_price":"25.98",
+                "battery":"60",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":65,
+        "brand":"荣威e950",
+        "firstNum":"r",
+        "manufactor":"上汽集团",
+        "pic":"https://video.xiaopeng.com/m/2018110601/rong_wei_e950.jpg",
+        "range":"25.59-30.88",
+        "typeArr":[
+            {
+                "name":"荣威e950 2016款 行政尊享版",
+                "guide_price":"30.88",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"荣威e950 2016款 豪华版",
+                "guide_price":"28.88",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"荣威e950 2017款 混动互联行政版",
+                "guide_price":"25.59",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":150,
+        "brand":"荣威ei6",
+        "firstNum":"r",
+        "manufactor":"上汽集团",
+        "pic":"https://video.xiaopeng.com/m/2018110601/rong_wei_ei6.jpg",
+        "range":"20.18-22.28",
+        "typeArr":[
+            {
+                "name":"荣威ei6 2017款 智臻版",
+                "guide_price":"22.28",
+                "battery":"53",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"荣威ei6 2017款 智尊版",
+                "guide_price":"21.58",
+                "battery":"53",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"荣威ei6 2017款 智享版",
+                "guide_price":"20.18",
+                "battery":"53",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":321,
+        "brand":"荣威marvelx",
+        "firstNum":"r",
+        "manufactor":"上汽集团",
+        "pic":"https://video.xiaopeng.com/m/2018110601/rong_wei_marvelx.jpg",
+        "range":"26.88-30.88",
+        "typeArr":[
+            {
+                "name":"荣威MARVEL X 2018款 后驱版",
+                "guide_price":"30.88",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"荣威MARVEL X 2018款 四驱版",
+                "guide_price":"26.88",
+                "battery":"-",
+                "state_subsidies":"5.00"
+            }
+        ]
+    },
+    {
+        "id":233,
+        "brand":"瑞虎3xe",
+        "firstNum":"r",
+        "manufactor":"奇瑞新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/rui_hu_3xe.jpg",
+        "range":"15.78-18.98",
+        "typeArr":[
+            {
+                "name":"瑞虎3xe 2018款 480 畅享版",
+                "guide_price":"18.98",
+                "battery":"401",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"瑞虎3xe 2018款 480 畅行版",
+                "guide_price":"18.28",
+                "battery":"401",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"瑞虎3xe 2018款 480 畅优版",
+                "guide_price":"17.68",
+                "battery":"401",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"瑞虎3xe 2018款 400 畅优版",
+                "guide_price":"15.78",
+                "battery":"351",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"瑞虎3xe 2018款 400 畅享版",
+                "guide_price":"17.08",
+                "battery":"351",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"瑞虎3xe 2018款 400 畅行版",
+                "guide_price":"16.38",
+                "battery":"351",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":295,
+        "brand":"荣威RX5",
+        "firstNum":"r",
+        "manufactor":"上汽集团",
+        "pic":"https://video.xiaopeng.com/m/2018110601/rong_wei_RX5.jpg",
+        "range":"19.59-29.68",
+        "typeArr":[
+            {
+                "name":"荣威eRX5 2018款 50T 混动尊享版",
+                "guide_price":"19.59",
+                "battery":"60",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"荣威eRX5 2017款 尊贵旗舰版",
+                "guide_price":"26.59",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"荣威ERX5 2017款 豪华版",
+                "guide_price":"27.18",
+                "battery":"320",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"荣威ERX5 2017款 旗舰版",
+                "guide_price":"28.18",
+                "battery":"320",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"荣威 ERX5 2017款 至尊版",
+                "guide_price":"29.68",
+                "battery":"320",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"荣威eRX5 2017款 尊荣旗舰版",
+                "guide_price":"28.59",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":204,
+        "brand":"闪闪X2",
+        "firstNum":"s",
+        "manufactor":"红星汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/shan_shan_X2.jpg",
+        "range":"11.98-13.98",
+        "typeArr":[
+            {
+                "name":"闪闪X2 2018款 星耀360",
+                "guide_price":"13.98",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"闪闪X2 2018款 星耀300",
+                "guide_price":"12.98",
+                "battery":"252",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"闪闪X2 2018款 星动300",
+                "guide_price":"12.68",
+                "battery":"252",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"闪闪X2 2018款 星行300",
+                "guide_price":"11.98",
+                "battery":"252",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":25,
+        "brand":"索纳塔PHEV",
+        "firstNum":"s",
+        "manufactor":"北京现代",
+        "pic":"https://video.xiaopeng.com/m/2018110601/suo_na_ta_PHEV.jpg",
+        "range":"22.28-25.68",
+        "typeArr":[
+            {
+                "name":"索纳塔PHEV 2018款 2.0 PHT智尊版",
+                "guide_price":"25.68",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"索纳塔PHEV 2018款 2.0 PHS智联版",
+                "guide_price":"23.98",
+                "battery":"-",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"索纳塔PHEV 2018款 2.0 PHE智享版",
+                "guide_price":"22.28",
+                "battery":"-",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":12,
+        "brand":"帅客",
+        "firstNum":"s",
+        "manufactor":"东风·郑州日产",
+        "pic":"https://video.xiaopeng.com/m/2018110601/shuai_ke.jpg",
+        "range":20.3,
+        "typeArr":[
+            {
+                "name":"帅客 2018款 纯电动乘用车",
+                "guide_price":"20.30",
+                "battery":"298",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":188,
+        "brand":"腾势",
+        "firstNum":"t",
+        "manufactor":"腾势汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/teng_shi.jpg",
+        "range":"32.88-43.28",
+        "typeArr":[
+            {
+                "name":"腾势 2018款 腾势500 荣耀版",
+                "guide_price":"32.88",
+                "battery":"451",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"腾势 2018款 腾势500 时尚版",
+                "guide_price":"32.88",
+                "battery":"451",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"腾势 2017款 时尚版",
+                "guide_price":"36.98",
+                "battery":"352",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"腾势 2017款 尊贵版",
+                "guide_price":"41.58",
+                "battery":"352",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"腾势 2017款 荣耀版",
+                "guide_price":"43.28",
+                "battery":"352",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"腾势 2015款 尊贵版",
+                "guide_price":"39.90",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"腾势 2015款 时尚版",
+                "guide_price":"36.90",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":308,
+        "brand":"威马EX5",
+        "firstNum":"w",
+        "manufactor":"威马汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/wei_ma_EX5.jpg",
+        "range":"18.66-29.88",
+        "typeArr":[
+            {
+                "name":"威马EX5 2018款 EX5 Pro 400",
+                "guide_price":"29.88",
+                "battery":"400",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"威马EX5 2018款 EX5 Pro 300",
+                "guide_price":"26.88",
+                "battery":"300",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"威马EX5 2018款 EX5 500 Extra创新版",
+                "guide_price":"24.73",
+                "battery":"460",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"威马EX5 2018款 EX5 500 Lite探索版",
+                "guide_price":"23.23",
+                "battery":"460",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"威马EX5 2018款 EX5 400 Extra创新版",
+                "guide_price":"22.23",
+                "battery":"400",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"威马EX5 2018款 EX5 400 Lite探索版",
+                "guide_price":"20.73",
+                "battery":"400",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"威马EX5 2018款 EX5 300 Extra创新版",
+                "guide_price":"20.16",
+                "battery":"300",
+                "state_subsidies":"5.00"
+            },
+            {
+                "name":"威马EX5 2018款 EX5 300 Lite探索版",
+                "guide_price":"18.66",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":342,
+        "brand":"沃尔沃XC90",
+        "firstNum":"w",
+        "manufactor":"沃尔沃(进口)",
+        "pic":"https://video.xiaopeng.com/m/2018110601/wo_er_wo_XC90.jpg",
+        "range":"99.8-135.8",
+        "typeArr":[
+            {
+                "name":"沃尔沃XC90 PHEV 2018款 个性运动版",
+                "guide_price":"99.80",
+                "battery":"50",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"沃尔沃XC90 PHEV 2018款 智尊版",
+                "guide_price":"99.80",
+                "battery":"50",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"沃尔沃XC90 PHEV 2018款 荣誉版",
+                "guide_price":"135.80",
+                "battery":"50",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":335,
+        "brand":"沃尔沃XC60",
+        "firstNum":"w",
+        "manufactor":"沃尔沃亚太",
+        "pic":"https://video.xiaopeng.com/m/2018110601/wo_er_wo_XC60.jpg",
+        "range":"54.99-60.99",
+        "typeArr":[
+            {
+                "name":"沃尔沃XC60 2019款 T8 E驱混动 智雅运动版",
+                "guide_price":"54.99",
+                "battery":"50",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"沃尔沃XC60 2019款 T8 E驱混动 智尊豪华版",
+                "guide_price":"60.99",
+                "battery":"50",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"沃尔沃XC60 2018款 T8 E驱混动 智雅运动版",
+                "guide_price":"54.99",
+                "battery":"50",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"沃尔沃XC60 2018款 T8 E驱混动 智尊豪华版",
+                "guide_price":"60.99",
+                "battery":"50",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":71,
+        "brand":"沃尔沃S60L",
+        "firstNum":"w",
+        "manufactor":"沃尔沃亚太",
+        "pic":"https://video.xiaopeng.com/m/2018110601/wo_er_wo_S60L.jpg",
+        "range":"50.59-55.99",
+        "typeArr":[
+            {
+                "name":"沃尔沃S60L PHEV 2015款 智越版",
+                "guide_price":"55.99",
+                "battery":"53",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"沃尔沃S60L PHEV 2015款 智驭版",
+                "guide_price":"50.59",
+                "battery":"53",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":333,
+        "brand":"蔚来ES8",
+        "firstNum":"w",
+        "manufactor":"NIO蔚来",
+        "pic":"https://video.xiaopeng.com/m/2018110601/wei_lai_ES8.jpg",
+        "range":"44.8-54.8",
+        "typeArr":[
+            {
+                "name":"蔚来ES8 2018款 创始版",
+                "guide_price":"54.80",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"蔚来ES8 2018款 基准版",
+                "guide_price":"44.80",
+                "battery":"-",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":316,
+        "brand":"WEYP8",
+        "firstNum":"w",
+        "manufactor":"长城汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/WEYP8.jpg",
+        "range":"20.28-31.28",
+        "typeArr":[
+            {
+                "name":"WEY P8 2018款 旗舰型",
+                "guide_price":"31.28",
+                "battery":"-",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"WEY P8 2018款 尊享型",
+                "guide_price":"20.28",
+                "battery":"-",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"WEY P8 2018款 尊贵型",
+                "guide_price":"29.28",
+                "battery":"-",
+                "state_subsidies":"2.20"
+            }
+        ]
+    },
+    {
+        "id":73,
+        "brand":"轩逸·纯电",
+        "firstNum":"x",
+        "manufactor":"东风日产",
+        "pic":"https://video.xiaopeng.com/m/2018110601/xuan_yi_·_chun_dian.jpg",
+        "range":16.6,
+        "typeArr":[
+            {
+                "name":"轩逸·纯电 2018款 EV 基本型",
+                "guide_price":"16.60",
+                "battery":"338",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":262,
+        "brand":"云度π3",
+        "firstNum":"y",
+        "manufactor":"云度新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/yun_du_π3.jpg",
+        "range":"17.08-20.48",
+        "typeArr":[
+            {
+                "name":"云度π3 2018款 Pro 精英型",
+                "guide_price":"18.48",
+                "battery":"360",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"云度π3 2018款 Pro 尊贵型 单色版",
+                "guide_price":"19.78",
+                "battery":"360",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"云度π3 2018款 Pro 尊贵型 双色版",
+                "guide_price":"20.08",
+                "battery":"360",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"云度π3 2018款 Pro 运动尊贵型",
+                "guide_price":"20.48",
+                "battery":"360",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"云度π3 2018款 尊贵型 双色版",
+                "guide_price":"18.68",
+                "battery":"251",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"云度π3 2018款 尊贵型 单色版",
+                "guide_price":"18.38",
+                "battery":"251",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"云度π3 2018款 精英型",
+                "guide_price":"17.08",
+                "battery":"251",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":223,
+        "brand":"云度π1",
+        "firstNum":"y",
+        "manufactor":"云度新能源",
+        "pic":"https://video.xiaopeng.com/m/2018110601/yun_du_π1.jpg",
+        "range":"13.78-19.75",
+        "typeArr":[
+            {
+                "name":"云度π1 2018款 Pro 智派型",
+                "guide_price":"17.98",
+                "battery":"402",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"云度π1 2018款 360 乐派型",
+                "guide_price":"13.78",
+                "battery":"301",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"云度π1 2018款 360 智派型",
+                "guide_price":"14.38",
+                "battery":"301",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"云度π1 2018款 Pro 乐派型",
+                "guide_price":"17.28",
+                "battery":"402",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"云度π1 2017款 城市乐派型",
+                "guide_price":"13.89",
+                "battery":"150",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"云度π1 2017款 城市智派型",
+                "guide_price":"14.79",
+                "battery":"150",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"云度π1 2017款 城际乐派型",
+                "guide_price":"18.85",
+                "battery":"250",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"云度π1 2017款 城际智派型",
+                "guide_price":"19.75",
+                "battery":"250",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":19,
+        "brand":"英致EX1",
+        "firstNum":"y",
+        "manufactor":"潍柴动力",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ying_zhi_EX1.jpg",
+        "range":10,
+        "typeArr":[
+            {
+                "name":"英致EX1 2018款 标准版",
+                "guide_price":"10.00",
+                "battery":"160",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":416,
+        "brand":"御捷E驰",
+        "firstNum":"y",
+        "manufactor":"御捷电动汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/yu_jie_E_chi.jpg",
+        "range":15.28,
+        "typeArr":[
+            {
+                "name":"御捷E驰 2017款 标准型",
+                "guide_price":"15.28",
+                "battery":"155",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":407,
+        "brand":"裕路EV2",
+        "firstNum":"y",
+        "manufactor":"东风裕隆",
+        "pic":"https://video.xiaopeng.com/m/2018110601/yu_lu_EV2.jpg",
+        "range":"11.98-12.28",
+        "typeArr":[
+            {
+                "name":"裕路EV2 2018款 舒适型",
+                "guide_price":"12.28",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"裕路EV2 2018款 标准型",
+                "guide_price":"11.98",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":156,
+        "brand":"伊兰特EV",
+        "firstNum":"y",
+        "manufactor":"北京现代",
+        "pic":"https://video.xiaopeng.com/m/2018110601/yi_lan_te_EV.jpg",
+        "range":19.98,
+        "typeArr":[
+            {
+                "name":"伊兰特EV 2017款 GS版",
+                "guide_price":"19.98",
+                "battery":"270",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"伊兰特EV 2017款 GS PLUS版",
+                "guide_price":"19.98",
+                "battery":"270",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":10,
+        "brand":"英致737EV",
+        "firstNum":"y",
+        "manufactor":"潍柴动力",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ying_zhi_737EV.jpg",
+        "range":14.68,
+        "typeArr":[
+            {
+                "name":"英致737EV 2018款 舒适版 7座",
+                "guide_price":"14.68",
+                "battery":"252",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"英致737EV 2018款 舒适版 5座",
+                "guide_price":"14.68",
+                "battery":"252",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":79,
+        "brand":"逸动",
+        "firstNum":"y",
+        "manufactor":"长安汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/yi_dong.jpg",
+        "range":"16.09-21.54",
+        "typeArr":[
+            {
+                "name":"逸动EV460 2019款 智享版",
+                "guide_price":"20.34",
+                "battery":"405",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"逸动 EV460 2019款 智领版",
+                "guide_price":"21.54",
+                "battery":"405",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"逸动PHEV 2018款 1.0T 领航型",
+                "guide_price":"16.99",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"逸动PHEV 2018款 1.0T 领创型",
+                "guide_price":"16.09",
+                "battery":"60",
+                "state_subsidies":"2.20"
+            },
+            {
+                "name":"逸动EV300 2018款 臻享型",
+                "guide_price":"20.73",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"逸动EV300 2018款 尊享型",
+                "guide_price":"20.03",
+                "battery":"300",
+                "state_subsidies":"4.50"
+            }
+        ]
+    },
+    {
+        "id":4,
+        "brand":"野马EC30",
+        "firstNum":"y",
+        "manufactor":"野马汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ye_ma_EC30.jpg",
+        "range":12.88,
+        "typeArr":[
+            {
+                "name":"野马EC30 2017款 舒适型",
+                "guide_price":"12.88",
+                "battery":"255",
+                "state_subsidies":"3.40"
+            }
+        ]
+    },
+    {
+        "id":274,
+        "brand":"野马EC70",
+        "firstNum":"y",
+        "manufactor":"野马汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/ye_ma_EC70.jpg",
+        "range":"23.98-24.98",
+        "typeArr":[
+            {
+                "name":"野马EC70 2017款 乐享版",
+                "guide_price":"24.98",
+                "battery":"250",
+                "state_subsidies":"3.40"
+            },
+            {
+                "name":"野马EC70 2016款 电动版",
+                "guide_price":"23.98",
+                "battery":"150",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":401,
+        "brand":"御捷新能源E行",
+        "firstNum":"y",
+        "manufactor":"御捷电动汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/yu_jie_xin_neng_yuan_E_xing.jpg",
+        "range":13.68,
+        "typeArr":[
+            {
+                "name":"御捷E行 2018款 标准型",
+                "guide_price":"13.68",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            }
+        ]
+    },
+    {
+        "id":41,
+        "brand":"中华H230EV",
+        "firstNum":"z",
+        "manufactor":"中华",
+        "pic":"https://video.xiaopeng.com/m/2018110601/zhong_hua_H230EV.jpg",
+        "range":17.98,
+        "typeArr":[
+            {
+                "name":"中华H230EV 2017款 舒适型",
+                "guide_price":"17.98",
+                "battery":"150",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"中华H230EV 2017款 豪华型",
+                "guide_price":"17.98",
+                "battery":"150",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":376,
+        "brand":"知豆D2",
+        "firstNum":"z",
+        "manufactor":"知豆电动车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/zhi_dou_D2.jpg",
+        "range":"15.18-18.88",
+        "typeArr":[
+            {
+                "name":"知豆D2 2017款 智享版",
+                "guide_price":"15.88",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"知豆D2 2017款 乐享版",
+                "guide_price":"15.18",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"知豆D2 2017款 D2S",
+                "guide_price":"18.88",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"知豆D2 2016款 D2S",
+                "guide_price":"18.88",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"知豆D2 2016款 D2",
+                "guide_price":"15.88",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":354,
+        "brand":"知豆D1",
+        "firstNum":"z",
+        "manufactor":"知豆电动车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/zhi_dou_D1.jpg",
+        "range":15.88,
+        "typeArr":[
+            {
+                "name":"知豆D1 2016款 标准型",
+                "guide_price":"15.88",
+                "battery":"180",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":382,
+        "brand":"芝麻",
+        "firstNum":"z",
+        "manufactor":"众泰汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/zhi_ma.jpg",
+        "range":"10.98-11.98",
+        "typeArr":[
+            {
+                "name":"芝麻 2018款 eZ 翼享版",
+                "guide_price":"11.98",
+                "battery":"-",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"芝麻 2018款 eZ 翼行版",
+                "guide_price":"10.98",
+                "battery":"-",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"2017款 芝麻 标准型",
+                "guide_price":"11.98",
+                "battery":"160",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":409,
+        "brand":"知豆D3",
+        "firstNum":"z",
+        "manufactor":"知豆电动车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/zhi_dou_D3.jpg",
+        "range":10.98,
+        "typeArr":[
+            {
+                "name":"知豆D3 2018款 圣豆士版",
+                "guide_price":"10.98",
+                "battery":"-",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"知豆D3 2018款 豆牛士版",
+                "guide_price":"10.98",
+                "battery":"-",
+                "state_subsidies":"2.40"
+            }
+        ]
+    },
+    {
+        "id":395,
+        "brand":"众泰E200",
+        "firstNum":"z",
+        "manufactor":"众泰汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/zhong_tai_E200.jpg",
+        "range":"12.58-18.58",
+        "typeArr":[
+            {
+                "name":"众泰E200 2018款 pro",
+                "guide_price":"12.58",
+                "battery":"301",
+                "state_subsidies":"4.50"
+            },
+            {
+                "name":"众泰E200 2018款 天马座",
+                "guide_price":"18.58",
+                "battery":"165",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"众泰E200 2018款 飞鱼座",
+                "guide_price":"18.18",
+                "battery":"165",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"众泰E200 2016款 科技版",
+                "guide_price":"18.18",
+                "battery":"185",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":201,
+        "brand":"之诺60H",
+        "firstNum":"z",
+        "manufactor":"之诺",
+        "pic":"https://video.xiaopeng.com/m/2018110601/zhi_nuo_60H.jpg",
+        "range":34.9,
+        "typeArr":[
+            {
+                "name":"之诺60H 2017款 60H",
+                "guide_price":"34.90",
+                "battery":"60",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":60,
+        "brand":"众泰Z500EV",
+        "firstNum":"z",
+        "manufactor":"众泰汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/zhong_tai_Z500EV.jpg",
+        "range":22.98,
+        "typeArr":[
+            {
+                "name":"众泰Z500EV 2017款 高配型",
+                "guide_price":"22.98",
+                "battery":"300",
+                "state_subsidies":"--"
+            }
+        ]
+    },
+    {
+        "id":426,
+        "brand":"众泰云100",
+        "firstNum":"z",
+        "manufactor":"众泰汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/zhong_tai_yun_100.jpg",
+        "range":"10.88-16.99",
+        "typeArr":[
+            {
+                "name":"云100 2017款 Plus 豪华型",
+                "guide_price":"10.88",
+                "battery":"200",
+                "state_subsidies":"2.40"
+            },
+            {
+                "name":"云100S 2016款 豪华型",
+                "guide_price":"16.99",
+                "battery":"150",
+                "state_subsidies":"1.50"
+            },
+            {
+                "name":"云100 2015款 舒适型",
+                "guide_price":"15.89",
+                "battery":"150",
+                "state_subsidies":"1.50"
+            }
+        ]
+    },
+    {
+        "id":218,
+        "brand":"众泰T300EV",
+        "firstNum":"z",
+        "manufactor":"众泰汽车",
+        "pic":"https://video.xiaopeng.com/m/2018110601/zhong_tai_T300EV.jpg",
+        "range":"17.99-19.99",
+        "typeArr":[
+            {
+                "name":"众泰T300EV 2018款 标准型",
+                "guide_price":"17.99",
+                "battery":"250",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"众泰T300EV 2018款 尊享型",
+                "guide_price":"18.99",
+                "battery":"250",
+                "state_subsidies":"--"
+            },
+            {
+                "name":"众泰T300EV 2018款 旗舰型",
+                "guide_price":"19.99",
+                "battery":"250",
+                "state_subsidies":"--"
+            }
+        ]
+    }
+]

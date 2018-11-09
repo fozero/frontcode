@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js遍历</title>
+</head>
+<!-- 
+
+方式 
+for(var i=0;i<arr.length;i++)
+for in
+foreach
+filter
+map
+ -->
+<body>
+	<script>
+		var arr = [1,2,3,4,5];
+		// 方式1 普通遍历
+		// for(var i=0;i<arr.length;i++){
+		// 	console.log('arr[i]',arr[i]);
+		// }
+		
+		// 方式2 for in
+		// for(var item in arr){
+		// 	console.log('item',arr[item]);
+		// }
+		
+		// 方式3  foreach
+		// arr.forEach(function(item,index){
+		// 	console.log('item',item)
+		// })
+		
+		// 方式4  filter   返回新的数组，返回item>3的值
+		var newArray = arr.filter(function(item,index){
+			console.log('item',item)
+			return item>3;
+		})
+		console.log('newArray',newArray)
+
+		// 方式5  map   每个元素加1 返回新的数组  
+		// var newArray = arr.map(function(item,index){
+		// 		console.log('item',item)
+		// 		return item+1;
+		// })
+		// console.log('newArray',JSON.stringify(newArray))
+	</script>
+</body>
+</html>

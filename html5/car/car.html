@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>汽车列表展示</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="(item,index) in list">
+				{{index}}
+				<ul>
+					<li v-for="sub in item">{{sub.brand}}</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+<script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				list:{}
+			},
+			created: function () {
+			},
+			mounted: function () {
+				this.load();
+			},
+			  methods:{
+			  	load:function(){
+			  		var that = this;
+			  		$.ajax({
+			            url: 'https://www.easy-mock.com/mock/5bc55f0b869c55589bda32c4/stats/car',
+			            type: 'GET',
+			            dataType:'json',
+			            success: function(data) {
+			                let arr1 = {}
+							for (var i = 0; i < data.length; i++) {
+							  if (!arr1[data[i].firstNum]) {
+							    var arr = []
+							    arr.push(data[i])
+							    arr1[data[i].firstNum] = arr
+							  } else {
+							    arr1[data[i].firstNum].push(data[i])
+							  }
+							}
+							that.list = arr1;
+							console.log('arr1',JSON.stringify(that.list))
+			            }
+			        })
+			  	}
+			  }
+		});
+	</script>
+</body>
+</html>

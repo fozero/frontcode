@@ -478,3 +478,5 @@ lineChart.render();
 		loopChart.render();
 		// 当前选中
 		// interval.setSelected(loopData[0]);
+// ===============中国地图
+// 可视化的方法显示地理区域上的数据。 使用地图作为背景，通过图形的位置来表现数据的地理位置， 通常来展示数据在不同地理区域上的分布情况。

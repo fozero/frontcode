@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>checkbox vuejs</title>
+</head>
+<!-- 
+checkbox  同时最多只能选择2项  至少选择1项
+ -->
+<body>
+	<div id="app">
+		<div class="" v-for="(item,index) in indexs" :key="index" @click="indexChange(item)">
+      <input type="checkbox" name="indexcheck" v-model="item.state" :value="item.id"> {{item.name}}
+    </div>
+	</div>
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				msg:'hello',
+				indexs:[{
+	        id:1,
+	        name:'下单金额',
+	        state:true
+	      },{
+	        id:2,
+	        name:'下单比数',
+	        state:true
+	      },{
+	        id:3,
+	        name:'下单人数',
+	        state:false
+	      },{
+	        id:4,
+	        name:'付款金额',
+	        state:false
+	      },{
+	        id:5,
+	        name:'平均订单金额',
+	        state:false
+	      },{
+	        id:6,
+	        name:'客单量',
+	        state:false
+	      },{
+	        id:7,
+	        name:'客单价',
+	        state:false
+	      },{
+	        id:8,
+	        name:'付款金额',
+	        state:false
+	      },{
+	        id:9,
+	        name:'付款人数',
+	        state:false
+	      },{
+	        id:10,
+	        name:'付款笔数',
+	        state:false
+	      }]
+			},
+			created: function () {
+				console.log('created')
+			},
+			mounted: function () {
+				console.log('mounted')
+			},
+			watch:{
+				 indexs: {  // 这监听对象值的改变 和上面的不一样。
+            handler(curVal,oldVal){
+//                 console.log(curVal);
+								// todo  1、删除1个项 2、加载新的数据 
+
+            },
+            deep: true, 
+        },
+			},
+		  methods:{
+		  	indexChange:function(item){
+
+		  		console.log('item',item.state)
+		  		// var newIndexs = this.getIndexsLength(this.indexs);
+		  		// if(newIndexs.length<=1){
+
+		  		// 	return;
+		  		// }
+		  		// if(newIndexs.length>=2){
+		  		// 	for(var i=0;i<this.indexs.length;i++){
+			  	// 		if(this.indexs[i].state){
+			  	// 			// splice(2,1,5)   2表示要删除的数组位置  1表示要删除的数量  如是0则不会删除    5表示添加的新项目
+			  	// 			this.indexs[i].state = false;
+			  	// 			this.indexs.splice(i,1,this.indexs[i]) 
+			  	// 			break;
+			  	// 		}
+			  	// 	}
+		  		// }
+		  		// item.state = !item.state;
+		  		item.state = true;
+		  	},
+		  	getIndexsLength:function(arr){
+		  		var newArray = arr.filter(function(item,index){
+							return item.state==true;
+					});
+					return newArray;
+		  	}
+		  }
+		})
+	</script>
+</body>
+</html>
