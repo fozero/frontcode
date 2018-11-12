@@ -2,15 +2,52 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>checkbox vuejs</title>
+	<title>checkbox</title>
+	<style>
+		.checklist-item{
+			/*float: left;*/
+		}
+		.checklist input{
+			opacity: 0;
+		}
+		.checklist label div{
+			display: inline-block;
+		    zoom: 1;
+		    margin-bottom: 0px;
+    		margin-right: -22px;
+		    width: 12px;
+		    height: 12px;
+		    font-size: 14px;
+		}
+		.checklist label div.checkbox{
+			background-image: url('./img/icon.png');
+			background-position: left -67px;
+    		background-repeat: no-repeat;
+		}
+		.checklist label div.checkbox.checked{
+			background-position: left -99px;
+    		background-repeat: no-repeat;
+		}
+	</style>
 </head>
 <!-- 
-checkbox  同时最多只能选择2项  至少选择1项
+checkbox vue自定义多选框样式  checkbox禁用  checkbox选项数量限制
+
  -->
 <body>
 	<div id="app">
-		<div class="" v-for="(item,index) in indexs" :key="index" @click="indexChange(item)">
-      <input type="checkbox" name="indexcheck" v-model="item.state" :value="item.id"> {{item.name}}
+      <h6>checkbox</h6>
+      <div @click="resetChoose">取消选中</div>
+      <div class="checklist">
+      	<div class="checklist-item" v-for="(item,index) in indexs" :key="index">
+      		<label :for="item.type">
+	      		<div class="checkbox" :class="checkval.indexOf(item.type)!=-1?'checked':''"></div> 
+	      		<input type="checkbox" :id="item.type" v-model="checkval" @change="handleChange" :value="item.type">
+	      		{{item.name}}
+	      	</label>
+      	</div>
+      </div>
+      {{checkval}}
     </div>
 	</div>
 	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
@@ -19,47 +56,9 @@ checkbox  同时最多只能选择2项  至少选择1项
 			el: '#app',
 			data: {
 				msg:'hello',
-				indexs:[{
-	        id:1,
-	        name:'下单金额',
-	        state:true
-	      },{
-	        id:2,
-	        name:'下单比数',
-	        state:true
-	      },{
-	        id:3,
-	        name:'下单人数',
-	        state:false
-	      },{
-	        id:4,
-	        name:'付款金额',
-	        state:false
-	      },{
-	        id:5,
-	        name:'平均订单金额',
-	        state:false
-	      },{
-	        id:6,
-	        name:'客单量',
-	        state:false
-	      },{
-	        id:7,
-	        name:'客单价',
-	        state:false
-	      },{
-	        id:8,
-	        name:'付款金额',
-	        state:false
-	      },{
-	        id:9,
-	        name:'付款人数',
-	        state:false
-	      },{
-	        id:10,
-	        name:'付款笔数',
-	        state:false
-	      }]
+				indexs:[{type:'amount',name:'下单金额'},{type:'order_amount',name:'付款金额'},{type:'total',name:'下单笔数'},{type:'user_total',name:'下单人数'},{type:'user_order_rate',name:'客单量'},{type:'user_amount_rate',name:'客单价'},{type:'user_pay_num',name:'付款人数'},{type:'order_money_avg',name:'平均订单金额'},{type:'pay_num',name:'付款笔数'}],
+				checkval:['amount','order_amount'],
+				lastCheckval:'',
 			},
 			created: function () {
 				console.log('created')
@@ -68,42 +67,42 @@ checkbox  同时最多只能选择2项  至少选择1项
 				console.log('mounted')
 			},
 			watch:{
-				 indexs: {  // 这监听对象值的改变 和上面的不一样。
-            handler(curVal,oldVal){
-//                 console.log(curVal);
-								// todo  1、删除1个项 2、加载新的数据 
-
-            },
-            deep: true, 
-        },
+// 				 indexs: {  // 这监听对象值的改变 和上面的不一样。
+//             handler(curVal,oldVal){
+//             },
+//             deep: true, 
+//         },
+			},
+			computed:{
+				// isDisabled(){
+				// 	return false;
+				// }
 			},
 		  methods:{
-		  	indexChange:function(item){
-
-		  		console.log('item',item.state)
-		  		// var newIndexs = this.getIndexsLength(this.indexs);
-		  		// if(newIndexs.length<=1){
-
-		  		// 	return;
-		  		// }
-		  		// if(newIndexs.length>=2){
-		  		// 	for(var i=0;i<this.indexs.length;i++){
-			  	// 		if(this.indexs[i].state){
-			  	// 			// splice(2,1,5)   2表示要删除的数组位置  1表示要删除的数量  如是0则不会删除    5表示添加的新项目
-			  	// 			this.indexs[i].state = false;
-			  	// 			this.indexs.splice(i,1,this.indexs[i]) 
-			  	// 			break;
-			  	// 		}
-			  	// 	}
-		  		// }
-		  		// item.state = !item.state;
-		  		item.state = true;
+		  	resetChoose(){
+		  		this.checkval = [];
 		  	},
-		  	getIndexsLength:function(arr){
-		  		var newArray = arr.filter(function(item,index){
-							return item.state==true;
-					});
-					return newArray;
+		  	handleChange(event){
+		  		console.log('event',event.target.checked)
+		  		if(event.target.checked){
+		  			// 判断选项数量，超过2个，则删除第一个选项
+		  			if(this.checkval.length>2){
+		  				this.checkval.splice(0,1);
+		  			}
+		  			// 如选项数量为1 ，则保存起来
+		  			if(this.checkval.length<=1){
+		  				this.lastCheckval = this.checkval[0];
+		  			}
+		  		}else{
+		  			// 判断选项数量，如小于等于2时，保存最后一个值
+		  			if(this.checkval.length==1){
+		  				this.lastCheckval = this.checkval[0];
+		  			}
+		  			// 判断选项数量，如小于等于1，禁止删除   将lastCheckval值添加到数组中
+		  			if(this.checkval.length==0){
+		  				this.checkval.push(this.lastCheckval);
+		  			}
+		  		}
 		  	}
 		  }
 		})
