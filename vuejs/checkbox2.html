@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>checkbox及在vue中的用法总结</title>
+</head>
+<!-- 
+关于checkbox选框是再常见不过的了，几乎很多地方都会用到，这两天在使用vue框架时需要用到checkbox多选功能，实在着实让我头疼，vue和原生checkbox用法不太一样，
+之前对于vue中用到过的checkbox也只是别人写好的组件，这次在自己实现时走了很多坑，特意写这篇文章记录下来，给后来者提供一个参考
+
+写之前，先看看原生checkbox搭配jquery取值的用法
+<input type="checkbox" name="hobby" value="游泳">游泳
+		<input type="checkbox" name="hobby" value="健身">健身
+		<input type="checkbox" name="hobby" value="旅游">旅游
+
+		$(".section1 input[type=checkbox][name=hobby]").change(function(){
+				 var obj = document.getElementsByName("hobby");
+         var check_val = [];
+         for(k in obj){
+         	if(obj[k].checked){
+         		check_val.push(obj[k].value);
+         	}
+         }
+         $(".section1 .res").text(check_val);
+			});
+
+checkbox禁用 
+<input type="checkbox" name="hobby" value="游泳" checked disabled="true">游泳
+
+
+
+vue checkbox用法
+v-model其实是checked语法糖，应该通过v-model来判断当前checkbox是否被选中， 它通过绑定一个数组，选中项的值会自动添加到数组中
+<div>请选择你的爱好(vue)</div>
+		<input type="checkbox" v-model="hobby2" value="游泳">游泳
+		<input type="checkbox" v-model="hobby2" value="健身">健身
+		<input type="checkbox" v-model="hobby2" value="旅游">旅游
+		<div>你已选中：{{hobby2}}</div>
+
+var vm = new Vue({
+			el: '#app',
+			data:{
+				msg:'hello',
+				hobby2:[]
+			},
+			created(){
+				console.log('created')
+			},
+			method:{
+				login:function(){
+					alert(1)
+				}
+			}
+		})
+
+
+vue中checkbox禁用
+
+假如我们要求选项至少选择一个值，我们来通过disabled来禁止用户取消点击选项
+这里主要是通过设置hobby2的值来控制checkbox选项的选中或取消
+首先先将hobby2数组设置一个默认值
+hobby2:['游泳']
+添加input点击事件
+<input type="checkbox" v-model="hobby2" value="游泳" @click="handleClick">游泳
+handleClick:function(ev){
+					var that = this;
+					setTimeout(function(){
+						console.log('this.hobby2',ev.target.checked,that.hobby2.length,that.hobby2)
+						if(!ev.target.checked){
+							if(that.hobby2.length==1){
+								that.lastcheckval = that.hobby2[0];
+							}
+							if(that.hobby2.length==0){
+								that.hobby2.push(that.lastcheckval)
+							}
+						}
+					},1)
+				}
+
+通过获取点击事件 ev.target.checked的值判断当前点击状态是取消还是选中
+如是取消状态，则判断当前hobby2长度为0时通过push将lastcheckval最后一个值添加进去，这样就无法取消最后一个选项
+lastcheckval的值需要在hobby2数组长度为1时将选项值保存起来
+这里的如果不使用setTimeout异步，当点击选中或者取消选项时，数组hobby2中的值还是上一个选项结果，为了保证一致添加setTimeout解决该问题
+
+
+刚才我们通过控制v-model中hobby2的值来禁止用户取消最后一个选项，那如果我们要实现这样一个功能又如何做呢
+1、用户最多只能选择2个选项 （交互效果：当当前选项长度为2时，用户去选择新的选项时，将第一个选项取消，依次类推）
+在checked为false时添加如下代码，判断hobby2长度大于2时，将第一个元素删除
+if(that.hobby2.length>2){
+								that.hobby2.splice(0,1);
+							}
+
+
+自定义checkbox样式
+默认的checkbox样式十分丑陋，不同的浏览器展示效果也不一样，如果是设计出图的话，我们就需要自定义样式，
+结合vue checkbox选项禁用来自定义checkbox样式
+
+通过label标签将input包裹住通过label for绑定input id，当点击label时实际就是点击的input
+将input设置opacity: 0;不可见 ，通过给div来设置checkbox的默认样式及选中状态样式
+
+.section3 .checkboxlist{}
+		.checkboxlist label{
+			    margin-left: 10px;
+		}
+		.checkboxlist .checkbox{
+			display: inline-block;
+			width: 14px;
+			height: 14px;
+			border: 1px solid #eee;
+			    margin-right: -20px;
+		}
+		.checkboxlist .checkbox.checked{
+			background: blue;
+		}
+		.checkboxlist input{
+			opacity: 0;
+		}
+
+		checkbox选项选中状态checked类动态添加 ，判断hobby3中是否存在当前选项值来觉得是否绑定checked类
+		:class="hobby3.indexOf('游泳')!=-1?'checked':''"
+
+		完整代码
+
+<label for="游泳">
+				<div class="checkbox" :class="hobby3.indexOf('游泳')!=-1?'checked':''"></div>
+				<input type="checkbox" id="游泳" v-model="hobby3" value="游泳" @click="handleClick">游泳
+			</label>
+			<label for="健身">
+				<div class="checkbox" :class="hobby3.indexOf('健身')!=-1?'checked':''"></div>
+				<input type="checkbox" id="健身" v-model="hobby3" value="健身" @click="handleClick">健身
+			</label>
+			<label for="旅游">
+				<div class="checkbox" :class="hobby3.indexOf('旅游')!=-1?'checked':''"></div>
+				<input type="checkbox" id="旅游" v-model="hobby3" value="旅游" @click="handleClick">旅游
+			</label>
+			<label for="爬山">
+				<div class="checkbox" :class="hobby3.indexOf('爬山')!=-1?'checked':''"></div>
+				<input type="checkbox" id="爬山" v-model="hobby3" value="爬山" @click="handleClick">爬山
+			</label>
+ -->
+<body>
+	<style>
+		.section{
+			margin-top: 20px;
+		}
+		.section3 .checkboxlist{}
+		.checkboxlist label{
+			    margin-left: 10px;
+		}
+		.checkboxlist .checkbox{
+			display: inline-block;
+			width: 14px;
+			height: 14px;
+			border: 1px solid #eee;
+			    margin-right: -20px;
+		}
+		.checkboxlist .checkbox.checked{
+			background: blue;
+		}
+		.checkboxlist input{
+			opacity: 0;
+		}
+	</style>
+	<h5>checkbox用法总结</h5>
+	<div class="section section1">
+		<div>请选择你的爱好</div>
+		<input type="checkbox" name="hobby" value="游泳" disabled="true">游泳
+		<input type="checkbox" name="hobby" value="健身">健身
+		<input type="checkbox" name="hobby" value="旅游">旅游
+		<div>你已选中：<span class="res"></span></div>
+	</div>
+	<div class="section section2" id="app">
+		<div>请选择你的爱好(vue)</div>
+		<input type="checkbox" v-model="hobby2" value="游泳" @click="handleClick">游泳
+		<input type="checkbox" v-model="hobby2" value="健身" @click="handleClick">健身
+		<input type="checkbox" v-model="hobby2" value="旅游" @click="handleClick">旅游
+		<input type="checkbox" v-model="hobby2" value="爬山" @click="handleClick">爬山
+		<div>你已选中：{{hobby2}}</div>
+	</div>
+	<div class="section section3" id="app2">
+		<div>请选择你的爱好(vue 自定义样式)</div>
+		<div class="checkboxlist">
+			<label for="游泳">
+				<div class="checkbox" :class="hobby3.indexOf('游泳')!=-1?'checked':''"></div>
+				<input type="checkbox" id="游泳" v-model="hobby3" value="游泳" @click="handleClick">游泳
+			</label>
+			<label for="健身">
+				<div class="checkbox" :class="hobby3.indexOf('健身')!=-1?'checked':''"></div>
+				<input type="checkbox" id="健身" v-model="hobby3" value="健身" @click="handleClick">健身
+			</label>
+			<label for="旅游">
+				<div class="checkbox" :class="hobby3.indexOf('旅游')!=-1?'checked':''"></div>
+				<input type="checkbox" id="旅游" v-model="hobby3" value="旅游" @click="handleClick">旅游
+			</label>
+			<label for="爬山">
+				<div class="checkbox" :class="hobby3.indexOf('爬山')!=-1?'checked':''"></div>
+				<input type="checkbox" id="爬山" v-model="hobby3" value="爬山" @click="handleClick">爬山
+			</label>
+		</div>
+		<div>你已选中：{{hobby3}}</div>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+	<script>
+		$(function(){
+			$(".section1 input[type=checkbox][name=hobby]").change(function(){
+				 var obj = document.getElementsByName("hobby");
+         var check_val = [];
+         for(k in obj){
+         	if(obj[k].checked){
+         		check_val.push(obj[k].value);
+         	}
+         }
+         $(".section1 .res").text(check_val);
+			});
+		});
+		// vue
+		var vm = new Vue({
+			el: '#app',
+			data:{
+				msg:'hello',
+				hobby2:['游泳'],
+				lastcheckval:'游泳'
+			},
+			created(){
+				console.log('created')
+			},
+			methods:{
+				handleClick:function(ev){
+					var that = this;
+					setTimeout(function(){
+						console.log('this.hobby2',ev.target.checked,that.hobby2.length,that.hobby2)
+						if(!ev.target.checked){
+							if(that.hobby2.length==1){
+								that.lastcheckval = that.hobby2[0];
+							}
+							if(that.hobby2.length==0){
+								that.hobby2.push(that.lastcheckval)
+							}
+						}else{
+							if(that.hobby2.length>2){
+								that.hobby2.splice(0,1);
+							}
+						}
+					},1)
+				}
+			}
+		})
+
+		var vm2 = new Vue({
+			el: '#app2',
+			data:{
+				msg:'hello',
+				hobby3:['游泳'],
+				lastcheckval:'游泳'
+			},
+			created(){
+				console.log('created')
+			},
+			methods:{
+				handleClick:function(ev){
+					var that = this;
+					setTimeout(function(){
+						console.log('this.hobby3',ev.target.checked,that.hobby3.length,that.hobby3)
+						if(!ev.target.checked){
+							if(that.hobby3.length==1){
+								that.lastcheckval = that.hobby3[0];
+							}
+							if(that.hobby3.length==0){
+								that.hobby3.push(that.lastcheckval)
+							}
+						}else{
+							if(that.hobby3.length>2){
+								that.hobby3.splice(0,1);
+							}
+						}
+					},1)
+				}
+			}
+		})
+	</script>
+</body>
+</html>
