@@ -146,7 +146,7 @@ var cors = require('koa2-cors');
 app.use(cors());
 
 
----使用nodemon在本地开发环境下自动重启项目
+---开发部署 ，使用nodemon在本地开发环境下自动重启项目
 npm install -g nodemon
 之后用 nodemon 来代替 node 来启动应用
 nodemon app.js
@@ -154,6 +154,34 @@ nodemon app.js
 如果是在线上 我们则使用pm2来管理应用程序，
 pm2 是一个带有负载均衡功能的Node应用的进程管理器.当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载， PM2是完美的
 https://www.cnblogs.com/lxg0/p/7771229.html
+
+
+---art-template模板引擎
+
+npm install --save art-template
+npm install --save koa-art-template
+
+
+// 模板引擎
+const render = require('koa-art-template');
+
+render(app, {
+  root: path.join(__dirname, './static'),
+  extname: '.html',
+  // debug: process.env.NODE_ENV !== 'production'
+});
+
+// 使用ctx.render渲染页面 可传递数据
+router.get('/user', async (ctx, next) => {
+    ctx.render('user',{
+            data:'hello msg'
+    });
+});
+
+html中渲染数据  {{data}}
+
+更多用法查看
+https://aui.github.io/art-template/zh-cn/docs/index.html
 
 
 
