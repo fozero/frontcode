@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>d3绘制中国地图</title>
+</head>
+<!-- 
+需要用到一个json文件  china.json
+中国各省市县级 JSON 文件
+https://blog.csdn.net/lzhlzz/article/details/41347929
+ -->
+<body>
+	<!-- 
+
+		<script src="https://cdn.bootcss.com/d3/5.7.0/d3.min.js"></script>
+Uncaught TypeError: Cannot read property 'mercator' of undefined
+
+	 -->
+	
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script>
+		var width = 1000;
+        var height = 800;
+        var svg = d3.select("body")
+                    .append("svg")
+                    .attr("width",width)
+                    .attr("height",height);
+                    // 投影函数  经度纬度转换
+        var projection = d3.geo.mercator()
+                            .center([107,31])
+                            .scale(600)
+                            .translate([width/2,height/2]);
+                             // 地理路径生成器
+        var path = d3.geo.path()
+                        .projection(projection)
+                        .pointRadius(5);
+        var color = d3.scale.category20();
+        // 向服务器请求文件并绘制地图  必须是服务器
+        d3.json("http://localhost:3000/china.json",function(error,toporoot){
+            if(error)
+                return console.error(error);
+            console.log(toporoot);
+            ////////////////////////////////
+            var groups = svg.append("g");
+            groups.selectAll("path")
+                .data(toporoot.features)
+                .enter()
+                .append("path")
+                .attr("class","province")
+                .attr("d",path)
+                // .style("fill","red")
+                .style("fill",function(d,i){
+                	console.log('d',d,i)
+                    return color(i);
+                })
+                .on("click",function(d){
+                    //计算面积、中心、边界框
+                    var area = path.area(d);
+                    var centroid = path.centroid(d);
+                    var bounds = path.bounds(d);
+                    console.log("省份：" + d.properties.name);
+                    console.log("面积：" + area);
+                    console.log("中心：" + centroid);
+                    console.log(bounds);
+                    //显示中心
+                    svg.append("circle")
+                        .attr("class","centroid")
+                        .attr("cx",centroid[0])
+                        .attr("cy",centroid[1])
+                        .attr("r",8)
+                        .attr("fill","red")
+                    //显示边界框
+                    svg.append("rect")
+                        .attr("class","boundingbox")
+                        .attr("x",bounds[0][0])
+                        .attr("y",bounds[0][1])
+                        .attr("width",bounds[1][0] - bounds[0][0])
+                        .attr("height",bounds[1][1] - bounds[0][1])
+                        .attr("stroke","blue")
+                        .attr("fill","none")
+                })
+        })
+	</script>
+</body>
+</html>

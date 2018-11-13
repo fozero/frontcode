@@ -1,0 +1,162 @@
+
+
+
+
+
+------搭建koa2 本地node服务
+https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001471087582981d6c0ea265bf241b59a04fa6f61d767f6000
+
+生成package.json
+npm init  
+
+安装koa2
+npm install koa  
+
+在package.json里面定义script
+"scripts": {
+    "start": "node app.js"
+}
+
+
+启动koa服务
+npm run start
+
+然后运行 http://localhost:3000
+
+
+
+
+
+---koa middleware
+每收到一个http请求，koa就会调用通过app.use()注册的async函数，并传入ctx和next参数
+middleware的顺序很重要，也就是调用app.use()的顺序决定了middleware的顺序
+
+对于await next()，如果一个middleware没有调用，则后续的middleware将不再执行了，使用场景
+如，一个检测用户权限的middleware可以决定是否继续处理请求，还是直接返回403错误
+
+app.use(async (ctx, next) => {
+    if (await checkUserPermission(ctx)) {
+        await next();
+    } else {
+        ctx.response.status = 403;
+    }
+});
+
+ctx简写
+ctx.url相当于ctx.request.url，ctx.type相当于ctx.response.type
+
+
+
+
+---url处理 ，使用koa-router
+安装koa-router
+npm install koa-router
+
+// 注意require('koa-router')返回的是函数:
+const router = require('koa-router')();
+
+这里导入koa-router的语句最后的()是函数调用
+const router = require('koa-router')();
+相当于 
+const fn_router = require('koa-router');
+const router = fn_router();
+
+
+// add url-route:
+router.get('/hello/:name', async (ctx, next) => {
+    var name = ctx.params.name;
+    ctx.response.body = `<h1>Hello, ${name}!</h1>`;
+});
+
+router.get('/', async (ctx, next) => {
+    ctx.response.body = '<h1>Index</h1>';
+});
+
+// add router middleware:
+app.use(router.routes());
+
+
+这样我们在访问http://localhost:3000/hello/kerry时会打印hello，kerry
+
+
+
+--处理post请求
+post请求通常会发送一个表单，或者JSON，它作为request的body发送，但无论是Node.js提供的原始request对象，还是koa提供的request对象，都不提供解析request的body的功能，所以我们需要用到koa-bodyparser中间件来解析request的body
+
+安装koa-bodyparser
+npm install koa-bodyparser
+
+
+const bodyParser = require('koa-bodyparser');
+
+// 解决body 需在router之前注册到app对象上
+app.use(bodyParser());
+
+
+这样我们就可以处理post请求了
+router.get('/', async (ctx, next) => {
+    ctx.response.body = `<h1>Index</h1>
+        <form action="/signin" method="post">
+            <p>Name: <input name="name" value="koa"></p>
+            <p>Password: <input name="password" type="password"></p>
+            <p><input type="submit" value="Submit"></p>
+        </form>`;
+});
+
+router.post('/signin', async (ctx, next) => {
+    var
+        name = ctx.request.body.name || '',
+        password = ctx.request.body.password || '';
+    console.log(`signin with name: ${name}, password: ${password}`);
+    if (name === 'koa' && password === '12345') {
+        ctx.response.body = `<h1>Welcome, ${name}!</h1>`;
+    } else {
+        ctx.response.body = `<h1>Login failed!</h1>
+        <p><a href="/">Try again</a></p>`;
+    }
+});
+
+
+--代码优化
+所有的代码都放在了app.js中
+我们可以单独将所有路由放到一个js文件中，如果是复杂系统，还可以按模块建立多个路由文件，如
+user.js(处理用户管理相关url)、login.js（处理用户登录相关url）
+
+
+--静态资源服务器
+安装koa-static
+npm install koa-static
+
+const static = require('koa-static')
+const path = require('path')
+
+// 静态资源目录
+app.use(static(
+  path.join( __dirname,'./static')
+));
+
+我们在根目录下建立static文件夹，新建一个json文件，输入如下地址访问
+http://localhost:3000/china.geojson
+
+---koa2 跨域请求设置
+https://github.com/zadzbw/koa2-cors
+npm install --save koa2-cors
+
+var cors = require('koa2-cors');
+app.use(cors());
+
+
+---使用nodemon在本地开发环境下自动重启项目
+npm install -g nodemon
+之后用 nodemon 来代替 node 来启动应用
+nodemon app.js
+
+如果是在线上 我们则使用pm2来管理应用程序，
+pm2 是一个带有负载均衡功能的Node应用的进程管理器.当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载， PM2是完美的
+https://www.cnblogs.com/lxg0/p/7771229.html
+
+
+
+
+
+
