@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<!-- 
+mathjs处理js精度问题
+http://mathjs.org/docs/getting_started.html
+
+https://unpkg.com/mathjs@5.2.3/dist/math.min.js
+
+npm install mathjs
+// load math.js
+import * as math from 'mathjs'
+
+ console.log(1.1 * 100)  //  110.00000000000001
+    console.log(0.1 + 0.2)   //  0.30000000000000004
+
+    function printFn(value) {
+        const precision = 14
+        return Number(math.format(value, precision))
+    }
+    console.log(printFn(1.1 * 100))  //110
+    console.log(printFn(0.1 + 0.2))  //0.3
+
+ -->
+<body>
+	<script src="https://cdn.bootcss.com/mathjs/5.2.3/math.min.js"></script>
+	<script>
+		console.log(1.1 * 100)  //  110.00000000000001
+    	console.log(0.1 + 0.2)   //  0.30000000000000004
+    	console.log(0.5245*100)  //  52.449999999999996
+
+
+    	function printFn(value) {
+	        return Number(math.format(value, 14))
+	    }
+	    console.log(printFn(1.1 * 100))  //110
+	    console.log(printFn(0.1 + 0.2))  //0.3
+	    console.log(printFn(0.5245*100))  //52.45
+		
+	</script>
+</body>
+</html>
