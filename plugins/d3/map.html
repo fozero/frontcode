@@ -7,7 +7,38 @@
 <!-- 
 需要用到一个json文件  china.json
 中国各省市县级 JSON 文件
-https://blog.csdn.net/lzhlzz/article/details/41347929
+https://blog.csdn.net/lzhlzz/article/details/41347929\
+
+
+ 常用的事件（event）有：
+
+click  ： 鼠标单击某元素时，相当于 mousedown 和 mouseup 组合在一起
+mouseover  ： 鼠标移到某元素上
+mouseout  ： 鼠标从某元素移开
+mousemove ： 鼠标被移动
+mousedown : 鼠标按钮被按下
+mouseup : 鼠标按钮被松开
+dblclick  ：  鼠标双击
+
+
+动态绑定数据
+
+var dataset = [5, 10, 15, 20, 25 ];
+
+d3.select("body")
+    .selectAll("p")    
+    .data(dataset)  
+    .enter()
+    .append("p")
+    .text("New paragraph!");
+d3.select("body")：选择body
+.selectAll("p")： 选择body中的所有p元素，此时还没有创建p元素, 因此this returns an empty selection.
+.data(dataset)： 统计并分析数据元素，dataset中有5个元素，因此之后的每步操作都重复执行5次
+.enter()：如果数据值的个数大于对应的DOM元素的个数，enter()将为没有对应DOM元素的值创建占位符
+
+
+
+
  -->
 <body>
 	<!-- 
@@ -19,6 +50,23 @@ Uncaught TypeError: Cannot read property 'mercator' of undefined
 	
 	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script>
+        var list= [{
+          "item": "北京",
+          "count": "400",
+          "percent": 0.4
+        }, {
+          "item": "广东",
+          "count": "200",
+          "percent": 0.2
+        }, {
+          "item": "湖南",
+          "count": "100",
+          "percent": 0.1
+        }, {
+          "item": "河北",
+          "count": "300",
+          "percent": 0.3
+        }];
 		var width = 1000;
         var height = 800;
         var svg = d3.select("body")
@@ -48,37 +96,56 @@ Uncaught TypeError: Cannot read property 'mercator' of undefined
                 .append("path")
                 .attr("class","province")
                 .attr("d",path)
+                // 设置显示颜色及边框
+                .attr('stroke','white')
+                .attr('fill','lightgray')
                 // .style("fill","red")
-                .style("fill",function(d,i){
-                	console.log('d',d,i)
-                    return color(i);
+                // .style("fill",function(d,i){
+                // 	console.log('d',d,i)
+                //     return color(i);
+                // })
+                // 鼠标进入事件
+                .on("mouseover",function(d){
+                    // console.log('省份：',d.properties.name,d)
+                    list.forEach(function(ite,index){
+                     if(ite.item==d.properties.name){
+                        console.log('value',d.properties.name,ite.count,ite.percent)
+
+                     }
+                    })
+                    d3.select(this).attr("fill","yellow");
                 })
-                .on("click",function(d){
-                    //计算面积、中心、边界框
-                    var area = path.area(d);
-                    var centroid = path.centroid(d);
-                    var bounds = path.bounds(d);
-                    console.log("省份：" + d.properties.name);
-                    console.log("面积：" + area);
-                    console.log("中心：" + centroid);
-                    console.log(bounds);
-                    //显示中心
-                    svg.append("circle")
-                        .attr("class","centroid")
-                        .attr("cx",centroid[0])
-                        .attr("cy",centroid[1])
-                        .attr("r",8)
-                        .attr("fill","red")
-                    //显示边界框
-                    svg.append("rect")
-                        .attr("class","boundingbox")
-                        .attr("x",bounds[0][0])
-                        .attr("y",bounds[0][1])
-                        .attr("width",bounds[1][0] - bounds[0][0])
-                        .attr("height",bounds[1][1] - bounds[0][1])
-                        .attr("stroke","blue")
-                        .attr("fill","none")
-                })
+                .on("mouseout",function(d){
+                    d3.select(this).attr("fill","lightgray");
+                });
+                
+                // 点击事件
+                // .on("click",function(d){
+                //     //计算面积、中心、边界框
+                //     var area = path.area(d);
+                //     var centroid = path.centroid(d);
+                //     var bounds = path.bounds(d);
+                //     console.log("省份：" + d.properties.name);
+                //     console.log("面积：" + area);
+                //     console.log("中心：" + centroid);
+                //     console.log(bounds);
+                //     //显示中心
+                //     svg.append("circle")
+                //         .attr("class","centroid")
+                //         .attr("cx",centroid[0])
+                //         .attr("cy",centroid[1])
+                //         .attr("r",8)
+                //         .attr("fill","red")
+                //     //显示边界框
+                //     svg.append("rect")
+                //         .attr("class","boundingbox")
+                //         .attr("x",bounds[0][0])
+                //         .attr("y",bounds[0][1])
+                //         .attr("width",bounds[1][0] - bounds[0][0])
+                //         .attr("height",bounds[1][1] - bounds[0][1])
+                //         .attr("stroke","blue")
+                //         .attr("fill","none")
+                // })
         })
 	</script>
 </body>
