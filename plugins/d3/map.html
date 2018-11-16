@@ -10,7 +10,7 @@
 https://blog.csdn.net/lzhlzz/article/details/41347929\
 
 
- 常用的事件（event）有：
+ 1、常用的事件（event）有：
 
 click  ： 鼠标单击某元素时，相当于 mousedown 和 mouseup 组合在一起
 mouseover  ： 鼠标移到某元素上
@@ -21,7 +21,7 @@ mouseup : 鼠标按钮被松开
 dblclick  ：  鼠标双击
 
 
-动态绑定数据
+2、动态绑定数据
 
 var dataset = [5, 10, 15, 20, 25 ];
 
@@ -37,6 +37,63 @@ d3.select("body")：选择body
 .enter()：如果数据值的个数大于对应的DOM元素的个数，enter()将为没有对应DOM元素的值创建占位符
 
 
+
+3、添加tooltip
+先创建一个div，设置class及absolute定位，初始设置opacity不可见
+//添加提示框的div
+            var tooltip = d3.select("body").append("div")
+                        .attr("class","tooltip") //用于css设置类样式
+                        .style("position","absolute")
+                        .style("opacity",0);
+
+监听鼠标进入和移出事件
+
+设置tooltip left和top值 通过d3.event.pageX和d3.event.pageY获取当前鼠标移入省份的x，y值，设置opacity可见
+style("left",(d3.event.pageX)+"px")
+                                .style("top",(d3.event.pageY+20)+"px")
+                                 .style("opacity",1.0);
+
+
+// 鼠标进入事件
+                .on("mouseover",function(d){
+                    // console.log('省份：',d.properties.name,d)
+                    list.forEach(function(ite,index){
+                     if(ite.item==d.properties.name){
+                        console.log('value',d.properties.name,ite.count,ite.percent)
+                        console.log("left",(d3.event.pageX)+"px",(d3.event.pageY+20)+"px",tooltip.html('ddddd'))
+                        //设置tooltip文字
+                        tooltip.html('<ul style="margin: 0;padding: 0;width: 200px;height: 100px;background: #fff;border: 1px solid #eee;border-radius: 5px;box-sizing: border-box;"><li class="title" style="background: #eee;display: flex;justify-content: space-between;padding: 5px;">'+d.properties.name+'</li><li style="display: flex;justify-content: space-between;padding: 5px;"><span class="label">订单</span><span class="value">'+ite.percent+'</span></li><li style="display: flex;justify-content: space-between;padding: 5px;"><span class="label">占比</span><span class="value">'+ite.count+'</span></li></ul>')
+                        // tooltip.html('城市：',d.properties.name)
+                        // //设置tooltip的位置(left,top 相对于页面的距离) 
+                                .style("left",(d3.event.pageX)+"px")
+                                .style("top",(d3.event.pageY+20)+"px")
+                                .style("opacity",1.0);
+                     }
+                    })
+                    d3.select(this).attr("fill","yellow");
+                })
+                .on("mouseout",function(d){
+                    d3.select(this).attr("fill","lightgray");
+                    tooltip.style("opacity",0);
+                });
+
+
+
+动态设置省份颜色 
+groups.selectAll("path").style("fill",function(d,i){
+                                console.log('d',d,d3.select(this))
+                                    if(ite.item==d.properties.name){
+                                        // console.log('111111',d.properties,i)
+                                        d3.select(this).attr("fill","rgb(225, 225, 103)");
+                                     }
+                                    // return color(i);
+                                
+                            })
+
+                            
+
+清空内容
+d3.select("#chinaMap").selectAll("*").remove();
 
 
  -->
@@ -83,11 +140,25 @@ Uncaught TypeError: Cannot read property 'mercator' of undefined
                         .projection(projection)
                         .pointRadius(5);
         var color = d3.scale.category20();
+        
+        var that = this;
         // 向服务器请求文件并绘制地图  必须是服务器
         d3.json("http://localhost:3000/china.json",function(error,toporoot){
             if(error)
                 return console.error(error);
-            console.log(toporoot);
+            console.log("toporoot",toporoot.features);
+            //添加提示框的div
+            var tooltip = d3.select("body").append("div")
+                        .attr("class","tooltip") //用于css设置类样式
+                        .style("position","absolute")
+                        .style("opacity",0);
+                        // .style("width","200px")
+                        // .style("height","100px")
+                        // .style("border","1px solid #eee")
+                        // .style("padding","10px")
+                        // .style("border-radius","5px")
+                        // .style("background","#fff")
+                        // .append("ul")
             ////////////////////////////////
             var groups = svg.append("g");
             groups.selectAll("path")
@@ -98,25 +169,84 @@ Uncaught TypeError: Cannot read property 'mercator' of undefined
                 .attr("d",path)
                 // 设置显示颜色及边框
                 .attr('stroke','white')
-                .attr('fill','lightgray')
+                .attr('fill','rgb(230, 230, 230)')
                 // .style("fill","red")
                 // .style("fill",function(d,i){
                 // 	console.log('d',d,i)
                 //     return color(i);
                 // })
+
+                     
+
+
+                //------------------------------------2.div提示框,通过设置透明度（opacity属性）实现 显示和隐藏   
+            
+            
+            //响应事件
+                //-鼠标移入事件
+        // arcs.on("mouseover",function(d)
+        //     {   
+        //         //设置tooltip文字
+        //         tooltip.html(d.data[0]+"销售额为"+"<br/>"+d.data[1]+"百万台")
+        //         //设置tooltip的位置(left,top 相对于页面的距离) 
+        //                 .style("left",(d3.event.pageX)+"px")
+        //                 .style("top",(d3.event.pageY+20)+"px")
+        //                 .style("opacity",1.0);
+        //     })
+        //     //--鼠标移出事件
+        //     .on("mouseout",function(d)
+        //     {
+        //         tooltip.style("opacity",0.0);
+        //     });
+
+
+
                 // 鼠标进入事件
                 .on("mouseover",function(d){
+                    // console.log('d3.select(this)',d3.select(this))
                     // console.log('省份：',d.properties.name,d)
                     list.forEach(function(ite,index){
                      if(ite.item==d.properties.name){
-                        console.log('value',d.properties.name,ite.count,ite.percent)
 
-                     }
+                        console.log('value',d.properties.name,ite.count,ite.percent)
+                        console.log("left",(d3.event.pageX)+"px",(d3.event.pageY+20)+"px",tooltip.html('ddddd'))
+                        //设置tooltip文字
+                        tooltip.html('<ul style="margin: 0;padding: 0;width: 200px;height: 100px;background: #fff;border: 1px solid #eee;border-radius: 5px;box-sizing: border-box;"><li class="title" style="background: #eee;display: flex;justify-content: space-between;padding: 5px;">'+d.properties.name+'</li><li style="display: flex;justify-content: space-between;padding: 5px;"><span class="label">订单</span><span class="value">'+ite.percent+'</span></li><li style="display: flex;justify-content: space-between;padding: 5px;"><span class="label">占比</span><span class="value">'+ite.count+'</span></li></ul>')
+                        // tooltip.html('城市：',d.properties.name)
+                        // //设置tooltip的位置(left,top 相对于页面的距离) 
+                                .style("left",(d3.event.pageX)+"px")
+                                .style("top",(d3.event.pageY+20)+"px")
+                                .style("opacity",1.0);
+                        }
+                         // 省份鼠标选中色
+                        // d3.select(this).attr("fill","rgb(225, 225, 103)");
                     })
-                    d3.select(this).attr("fill","yellow");
+                    // // 省份鼠标选中色
+                        d3.select(this).attr("fill","rgb(225, 225, 103)");
                 })
                 .on("mouseout",function(d){
-                    d3.select(this).attr("fill","lightgray");
+                    console.log('d',d)
+                    // list.forEach(function(ite,index){
+                    //     if(ite.item==d.properties.name){
+                    //         console.log(111111,d3.select(this))
+                    //         d3.select(this).attr("fill","rgb(235,243,252,1)");
+                    //     }
+                    // })
+                    // d3.select(this).attr("fill","rgb(230, 230, 230)");
+                    tooltip.style("opacity",0); 
+                });
+                //  设置背景色
+                that.list.forEach(function(ite,index){
+                    // console.log('index',index)
+                    groups.selectAll("path").style("fill",function(d,i){
+                                console.log('d',d,d3.select(this))
+                                    if(ite.item==d.properties.name){
+                                        // console.log('111111',d.properties,i)
+                                        d3.select(this).attr("fill","rgb(225, 225, 103)");
+                                     }
+                                    // return color(i);
+                                
+                            })
                 });
                 
                 // 点击事件
