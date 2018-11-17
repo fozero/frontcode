@@ -3,6 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>d3绘制中国地图</title>
+    <style>
+        .label:before{
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 100%;
+            background: #4aa6fc;
+            display: inline-block;
+                margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
   <div id="chinaMap"></div>
@@ -25,7 +36,63 @@
         }, {
           "item": "河北",
           "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "山西",
+          "count": "300",
+          "percent": 0.6
+        }, {
+          "item": "海南",
+          "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "上海",
+          "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "天津",
+          "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "湖南",
+          "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "贵州",
+          "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "河南",
+          "count": "300",
           "percent": 0.3
+        }, {
+          "item": "湖北",
+          "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "黑龙江",
+          "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "新疆",
+          "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "宁夏",
+          "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "甘肃",
+          "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "云南",
+          "count": "300",
+          "percent": 0.1
+        }, {
+          "item": "江苏",
+          "count": "300",
+          "percent": 0.1
         }];
         // var width=500,height=400;
         // var svg = d3.select("#chinaMap")

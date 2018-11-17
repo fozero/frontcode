@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="app">
+		<h6>中国地图</h6>
+		<div id="chinamap"></div>
+	</div>
+	<script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.2.8/dist/g2.min.js"></script>
+	<script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.9.6/dist/data-set.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$.getJSON('http://localhost:3000/china.json', function (res) {
+			console.log('res',res)
+			var mapData = res;
+
+
+			var chart = new G2.Chart({
+	        id: 'chinamap',
+	        forceFit: true,
+	        height: 450,
+	        padding: [0, 20, 40]
+	    });
+			var ds = new DataSet();
+		  var geoDataView = ds.createView().source(mapData, {
+		    type: 'GeoJSON'
+		  }); // geoJSON 经纬度数据
+
+		  // 构造虚拟数据
+		  var userData = [];
+		  for (var i = 0; i < mapData.length; i++) {
+		    var name = mapData[i].properties.name;
+		    userData.push({
+		      name: name,
+		      value: Math.round(Math.random() * 1000)
+		    });
+		  }
+		  // 用户数据
+		  var dvData = ds.createView().source(userData);
+		  dvData.transform({
+		    type: 'geo.projection',
+		    field: 'name',
+		    // geoDataView: geoDataView,
+		    // as: ['longitude', 'latitude']
+		    projection: 'geoMercator',
+	      as: ['x', 'y', 'centroidX', 'centroidY']
+		  });
+
+		  var bgView = chart.view();
+	    bgView.source(dv);
+	    bgView.tooltip(false);
+	    bgView.polygon()
+	        .position('x*y')
+	        .style({
+	            fill: '#000088',//地图颜色
+	            stroke: '#b1b1b1',//界线颜色
+	            lineWidth: 0.5,//线粗细
+	            fillOpacity: 0.85
+	        });
+	});
+	</script>
+</body>
+</html>

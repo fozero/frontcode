@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="app">
+		<h6>中国地图</h6>
+		<div id="chinamap"></div>
+	</div>
+	<script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.2.8/dist/g2.min.js"></script>
+	<script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.9.6/dist/data-set.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$.getJSON('http://localhost:3000/china.json', function (res) {
+	    var mapData = res.mapData;
+	    var pointData = res.pointData;
+
+	    var chart = new G2.Chart({
+	        id: 'chinamap',
+	        forceFit: true,
+	        height: 450,
+	        padding: [0, 20, 40]
+	    });
+	    // force sync scales
+	    chart.scale({
+	        x: {sync: true, nice: false},
+	        y: {sync: true, nice: false}
+	    });
+	    chart.coord().reflect();
+	    chart.legend(false);
+	    chart.axis(false);
+
+	    // style the tooltip
+	    chart.tooltip({
+	        showTitle: false,
+	        containerTpl: '<div class="g2-tooltip">'
+	        + '<table class="g2-tooltip-list"></table></div>',
+	        itemTpl: '<tr data-index={index}><td style="padding: 5px; background-color:#545454">{name}</td><td style="padding: 5px; background-color:#fff;color: #000">{value}</td></tr>',
+	        'g2-tooltip': {
+	            borderRadius: '2px',
+	            backgroundColor: '#DDDDDD',
+	            padding: 0,
+	            border: '1px solid #333'
+	        }
+	    });
+
+	    // data set
+	    var ds = new DataSet();
+
+	    // draw the map
+	    var dv = ds.createView('back')
+	        .source(mapData, {
+	            type: 'GeoJSON'
+	        })
+	        .transform({
+	            type: 'geo.projection',
+	            projection: 'geoMercator',
+	            as: ['x', 'y', 'centroidX', 'centroidY']
+	        });
+	    var bgView = chart.view();
+	    bgView.source(dv);
+	    bgView.tooltip(false);
+	    bgView.polygon()
+	        .position('x*y')
+	        .style({
+	            fill: '#000088',//地图颜色
+	            stroke: '#b1b1b1',//界线颜色
+	            lineWidth: 0.5,//线粗细
+	            fillOpacity: 0.85
+	        });
+
+	    // draw the bubble plot
+	    var userData = ds.createView().source(pointData);
+	    userData.transform({
+	        type: 'map',
+	        callback: function (obj) {
+	            var projectedCoord = dv.geoProjectPosition([obj.lng * 1, obj.lat * 1], 'geoMercator');
+	            obj.x = projectedCoord[0];
+	            obj.y = projectedCoord[1];
+	            return obj;
+	        }
+	    })
+	    ;
+	    var pointView = chart.view();
+	    pointView.source(userData);
+	    pointView.point()
+	        .position('x*y')
+	        .size('name', [30, 25, 25, 20, 20])//圆的大小
+	        .label('name', {
+	            offset: 0,
+	            textStyle: {
+	                textAlign: 'center', // 文本对齐方向，可取值为： start middle end
+	                fill: '#fff', // 文本的颜色
+	                fontSize: '12', // 文本大小
+	                fontWeight: 'bold', // 文本粗细
+	            }
+	        })
+	        .shape('circle')
+	        .opacity(0.45)
+	        .color('#33FFFF')
+	        .tooltip('name*value*lng*lat');
+
+	    chart.animate(false)
+
+	    var lineData = [{"name": "沈阳", "lng": 123.38, "lat": 41.8}, {"name": "合肥", "lng": 117.27, "lat": 31.86}]
+	    var lineData1 = [{"name": "沈阳", "lng": 123.38, "lat": 41.8}, {"name": "武汉", "lng": 114.31, "lat": 30.52}]
+	    var lineData2 = [{"name": "沈阳", "lng": 123.38, "lat": 41.8}, {"name": "天津", "lng": 117.2, "lat": 39.13}]
+	    var lineData3 = [{"name": "沈阳", "lng": 123.38, "lat": 41.8}, {"name": "重庆", "lng": 106.54, "lat": 29.59}]
+
+	    var _linedata = ds.createView().source(lineData);
+	    _linedata.transform({
+	        type: 'map',
+	        callback: function (obj) {
+	            var projectedCoord = dv.geoProjectPosition([obj.lng * 1, obj.lat * 1], 'geoMercator');
+	            obj.x = projectedCoord[0];
+	            obj.y = projectedCoord[1];
+	            return obj;
+	        }
+	    })
+
+	    var _linedata1 = ds.createView().source(lineData1);
+	    _linedata1.transform({
+	        type: 'map',
+	        callback: function (obj) {
+	            var projectedCoord = dv.geoProjectPosition([obj.lng * 1, obj.lat * 1], 'geoMercator');
+	            obj.x = projectedCoord[0];
+	            obj.y = projectedCoord[1];
+	            return obj;
+	        }
+	    })
+
+	    var _linedata2 = ds.createView().source(lineData2);
+	    _linedata2.transform({
+	        type: 'map',
+	        callback: function (obj) {
+	            var projectedCoord = dv.geoProjectPosition([obj.lng * 1, obj.lat * 1], 'geoMercator');
+	            obj.x = projectedCoord[0];
+	            obj.y = projectedCoord[1];
+	            return obj;
+	        }
+	    })
+	    var _linedata3 = ds.createView().source(lineData3);
+	    _linedata3.transform({
+	        type: 'map',
+	        callback: function (obj) {
+	            var projectedCoord = dv.geoProjectPosition([obj.lng * 1, obj.lat * 1], 'geoMercator');
+	            obj.x = projectedCoord[0];
+	            obj.y = projectedCoord[1];
+	            return obj;
+	        }
+	    })
+
+	    var lineview = chart.view().source(_linedata); // 飞行路线
+	    var lineview1 = chart.view().source(_linedata1); // 飞行路线
+	    var lineview2 = chart.view().source(_linedata2); // 飞行路线
+	    var lineview3 = chart.view().source(_linedata3); // 飞行路线
+	    var link = lineview.path().position('x*y').color('x*y');
+	    var link1 = lineview1.path().position('x*y').color('x*y');
+	    var link2 = lineview2.path().position('x*y').color('x*y');
+	    var link3 = lineview3.path().position('x*y').color('x*y');
+
+	    chart.render();
+
+	    var number = 0
+	    Interval(lineview, lineview1, lineview2, lineview3, link, link1, link2, link3, number);
+
+
+	});
+
+	function Interval(lineview, lineview1, lineview2, lineview3, link, link1, link2, link3, number) {
+	    setInterval(function () {
+
+
+	        if (number % 11 == 0) {
+	            link.style({
+	                stroke: 'l(180) 0:#000000 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link1.style({
+	                stroke: 'l(180) 0:#000000 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link2.style({
+	                stroke: 'l(180) 0:#000000 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link3.style({
+	                stroke: 'l(180) 0:#000000 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	        }
+	        if (number % 11 == 1) {
+	            link.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#000000 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link1.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#000000 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link2.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#000000 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link3.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#000000 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	        }
+	        if (number % 11 == 2) {
+	            link.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#000000 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link1.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#000000 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link2.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#000000 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link3.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#000000 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	        }
+	        if (number % 11 == 3) {
+	            link.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#000000 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link1.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#000000 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link2.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#000000 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link3.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#000000 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	        }
+	        if (number % 11 == 4) {
+	            link.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#000000 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link1.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#000000 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link2.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#000000 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link3.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#000000 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	        }
+	        if (number % 11 == 5) {
+	            link.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#000000 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link1.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#000000 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link2.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#000000 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link3.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#000000 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	        }
+	        if (number % 11 == 6) {
+	            link.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#000000 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link1.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#000000 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link2.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#000000 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link3.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#000000 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	        }
+	        if (number % 11 == 7) {
+	            link.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#000000 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link1.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#000000 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link2.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#000000 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	            link3.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#000000 0.8:#ffffff 0.9:#ffffff 1:#ffffff'
+	            });
+	        }
+	        if (number % 11 == 8) {
+	            link.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#000000 0.9:#ffffff 1:#ffffff'
+	            });
+	            link1.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#000000 0.9:#ffffff 1:#ffffff'
+	            });
+	            link2.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#000000 0.9:#ffffff 1:#ffffff'
+	            });
+	            link3.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#000000 0.9:#ffffff 1:#ffffff'
+	            });
+	        }
+	        if (number % 11 == 9) {
+	            link.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#000000 1:#ffffff'
+	            });
+	            link1.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#000000 1:#ffffff'
+	            });
+	            link2.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#000000 1:#ffffff'
+	            });
+	            link3.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#000000 1:#ffffff'
+	            });
+	        }
+	        if (number % 11 == 10) {
+	            link.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#000000'
+	            });
+	            link1.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#000000'
+	            });
+	            link2.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#000000'
+	            });
+	            link3.style({
+	                stroke: 'l(180) 0:#ffffff 0.1:#ffffff 0.2:#ffffff 0.3:#ffffff 0.4:#ffffff 0.5:#ffffff 0.6:#ffffff 0.7:#ffffff 0.8:#ffffff 0.9:#ffffff 1:#000000'
+	            });
+	        }
+
+	        lineview.repaint();
+	        lineview1.repaint();
+	        lineview2.repaint();
+	        lineview3.repaint();
+	        number += 1
+	    }, 150)
+	}
+	</script>
+</body>
+</html>
