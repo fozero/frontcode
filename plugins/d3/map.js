@@ -2,7 +2,7 @@
 * @Author: fozero@126.
 * @Date:   2018-11-16 21:41:35
 * @Last Modified by:   fozero
-* @Last Modified time: 2018-11-16 22:20:33
+* @Last Modified time: 2018-11-19 14:03:00
 */
 var mapChart = mapChart || {};
 (function (root, factory) {
@@ -15,9 +15,9 @@ var mapChart = mapChart || {};
 	mapChart = mapChart || {};
 	var width=500,height=500;
 	mapChart.init = function () {
-		console.log(11111111)
+		    console.log(11111111)
         var svg = d3.select("#chinaMap")
-          .append("svg")
+          .append("svg")  
           .attr("width",width)
           .attr("height",height)
           // .style("padding-top","50px");
@@ -58,7 +58,8 @@ var mapChart = mapChart || {};
                   if(ite.item==d.properties.name){
                     d3.select(that).attr("fill","rgb(255, 225, 103)");
                     //设置tooltip文字
-                    tooltip.html('<ul style="margin: 0;padding: 0;width: 200px;line-height: 22px;color: #666;font-size: 12px;background: rgba(255,255,255,0.5);box-shadow: 0 0 8px 3px rgba(238,238,238,0.8);border-radius: 5px;box-sizing: border-box;"><li class="title" style="background: rgba(238,238,238,0.5);    border-bottom: 1px solid #eee;display: flex;justify-content: space-between;padding: 5px;">'+d.properties.name+'</li><li style="display: flex;justify-content: space-between;padding: 5px;"><span class="label label1">订单</span><span class="value">'+ite.percent+'</span></li><li style="display: flex;justify-content: space-between;padding: 5px;"><span class="label label2">占比</span><span class="value">'+ite.count+'</span></li></ul>')
+                    // tooltip.html('<ul style="margin: 0;padding: 0;width: 200px;line-height: 22px;color: #666;font-size: 12px;background: rgba(255,255,255,0.5);box-shadow: 0 0 8px 3px rgba(238,238,238,0.8);border-radius: 5px;box-sizing: border-box;"><li class="title" style="background: rgba(238,238,238,0.5);    border-bottom: 1px solid #eee;display: flex;justify-content: space-between;padding: 5px;">'+d.properties.name+'</li><li style="display: flex;justify-content: space-between;padding: 5px;"><span class="label label1">订单</span><span class="value">'+ite.percent+'</span></li><li style="display: flex;justify-content: space-between;padding: 5px;"><span class="label label2">占比</span><span class="value">'+ite.count+'</span></li></ul>')
+                    tooltip.html('<ul style="margin: 0;padding: 0;width: 200px;line-height: 22px;color: #666;font-size: 12px;background: rgba(255,255,255,0.5);box-shadow: 0 0 8px 3px rgba(238,238,238,0.8);border-radius: 5px;box-sizing: border-box;"><li class="title" style="background: rgba(238,238,238,0.5);    border-bottom: 1px solid #eee;display: flex;justify-content: space-between;padding: 5px;">'+d.properties.name+'</li><li style="display: flex;justify-content: space-between;padding: 5px;"><div><span style="width: 8px;height: 8px;border-radius: 100%;background: #4aa6fc;display: inline-block;margin-right: 5px;"></span><span>订单</span></div><span class="value">'+ite.count+'</span></li><li style="display: flex;justify-content: space-between;padding: 5px;"><div><span style="width: 8px;height: 8px;border-radius: 100%;background: #5cb85c;display: inline-block;margin-right: 5px;"></span><span>占比</span></div><span class="value">'+ite.percent+'</span></li></ul>')
                             .style("left",(d3.event.pageX)+"px")
                             .style("top",(d3.event.pageY+20)+"px")
                             .style("opacity",1.0);
@@ -68,7 +69,7 @@ var mapChart = mapChart || {};
             })
             .on("mouseout",function(d){
                 tooltip.style("opacity",0); 
-              var that = this;
+                var that = this;
                 list.forEach(function(ite,index){
                   if(ite.item==d.properties.name){
                     if(ite.percent>0.4){

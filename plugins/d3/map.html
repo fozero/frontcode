@@ -96,6 +96,49 @@ groups.selectAll("path").style("fill",function(d,i){
 d3.select("#chinaMap").selectAll("*").remove();
 
 
+---设置省份背景色，根据省份数据对应背景色深浅
+d3.select(that).attr("fill","rgb(56, 135, 224)");
+if(ite.percent>0.4){
+                      d3.select(this).attr("fill","rgb(56, 135, 224)");
+                    }else if(ite.percent>0.2){
+                      d3.select(this).attr("fill","rgb(199, 221, 246)");
+                    }else{
+                      d3.select(this).attr("fill","rgb(235, 243, 252)");
+                    }
+
+
+
+---tooltip会被创建多次，导致生成多个tooltip
+需在创建之前先清空tooltip内容
+d3.select("body").select(".tooltip").remove();
+
+同理，svg在创建之前也需清理
+d3.select("#chinaMap").selectAll("*").remove();
+
+
+--部分省份鼠标放上去无法显示tooltip
+是因为省份被tooltip遮挡 ，通过设置z-index值即可
+初始化设置z-index为-1
+            var tooltip = d3.select("body").append("div")
+                .attr("class","tooltip") //用于css设置类样式
+                .style("position","absolute")
+                .style("z-index",-1)
+                .style("opacity",0);
+
+
+鼠标进入z-index设置为9，移出时恢复z-index为-1
+                .on("mouseover",function(d){
+                tooltip.html('')
+                            .style("left",(d3.event.pageX)+"px")
+                            .style("top",(d3.event.pageY+20)+"px")
+                            .style("z-index",9)
+                            .style("opacity",1);
+              })
+                .on("mouseout",function(d){
+                  tooltip.style("z-index",-1).style("opacity",0); 
+              });
+
+
  -->
 <body>
 	<!-- 

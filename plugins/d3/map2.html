@@ -4,83 +4,121 @@
 	<meta charset="UTF-8">
 	<title>d3绘制中国地图</title>
     <style>
-        .label1:before{
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 100%;
-            background: #4aa6fc;
-            display: inline-block;
-                margin-right: 5px;
-        }
-        .label2:before{
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 100%;
-            background: #d0eae9;
-            display: inline-block;
-                margin-right: 5px;
-        }
+    .fl{float: left;}
+    .clearfix{
+      clear: both;
+    }
+    .table{
+              width: 100%;
+    text-align: center;
+    line-height: 38px;
+    border-collapse: collapse;
+    font-size: 14px;
+    }
+    .table-title{
+      background: #ddd;
+    }
+    .table-item{
+          border-bottom: 1px solid #eee;
+    }
+    .table-item td{
+          width: 30%;
+    }
+    .table-content tr:nth-child(odd){
+         background: #eee;
+    }
+    .table-content tr:hover{
+       background: #dadada;
+    }
+    .table-content{
+      max-height: 300px;
+    overflow-y: scroll;
+        border: 1px solid #eee;
+    }
     </style>
 </head>
 <body>
-  <div id="chinaMap"></div>
+  <div id="app" style="padding: 50px;">
+    <div id="chinaMap" class="fl" style="width: 50%;"></div>
+    <div class="table fl" style="width: 50%;">
+      <table class="table table-title">
+        <tr class="table-item">
+          <td>省份</td>
+          <td>订单</td>
+          <td>占比</td>
+        </tr>
+      </table>
+      <div class="table-content">
+        <table class="table">
+          <tr class="table-item" v-for="ite in list">
+            <td>{{ite.item}}</td>
+            <td>{{ite.total}}</td>
+            <td>{{ite.percent}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="math.min.js"></script>
   <script src="map.js"></script>
 	<script>
-    mapChart.init();
-        var list= [{
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        list:[{
           "item": "北京",
-          "count": "400",
+          "total": "400",
           "percent": 0.4
         }, {
           "item": "广东",
-          "count": "200",
+          "total": "200",
           "percent": 0.2
         }, {
           "item": "湖南",
-          "count": "100",
+          "total": "100",
           "percent": 0.1
         }, {
           "item": "河北",
-          "count": "300",
+          "total": "300",
           "percent": 0.1
         }, {
           "item": "山西",
-          "count": "300",
+          "total": "300",
           "percent": 0.6
         }, {
           "item": "海南",
-          "count": "300",
+          "total": "300",
           "percent": 0.1
         }, {
           "item": "上海",
-          "count": "300",
+          "total": "300",
           "percent": 0.1
         }, {
           "item": "天津",
-          "count": "300",
+          "total": "300",
           "percent": 0.1
         }, {
           "item": "湖南",
-          "count": "300",
+          "total": "300",
           "percent": 0.1
         }, {
           "item": "贵州",
-          "count": "300",
+          "total": "300",
           "percent": 0.1
         }, {
           "item": "河南",
-          "count": "300",
+          "total": "300",
           "percent": 0.3
         }, {
           "item": "湖北",
-          "count": "300",
+          "total": "300",
           "percent": 0.1
         }, {
           "item": "黑龙江",
-          "count": "300",
+          "total": "300",
           "percent": 0.1
         }, {
           "item": "新疆",
@@ -92,78 +130,120 @@
           "percent": 0.1
         }, {
           "item": "甘肃",
-          "count": "300",
+          "total": "300",
           "percent": 0.1
         }, {
           "item": "云南",
-          "count": "300",
+          "total": "300",
           "percent": 0.1
         }, {
           "item": "江苏",
-          "count": "300",
+          "total": "300",
           "percent": 0.1
-        }];
-        // var width=500,height=400;
-        // var svg = d3.select("#chinaMap")
-        //   .append("svg")
-        //   .attr("width",width)
-        //   .attr("height",height)
-        //   .style("padding-top","50px");
-        // // 投影函数  经度纬度转换
-        // var projection = d3.geo.mercator()
-        //   .center([107,31])
-        //   .scale(400)
-        //   .translate([width/2,height/2]);
-        // // 地理路径生成器
-        // var path = d3.geo.path()
-        //   .projection(projection)
-        //   .pointRadius(5);
-        // // 向服务器请求文件并绘制地图  必须是服务器
-        // d3.json("http://localhost:3000/china.json",function(error,toporoot){
-        //   if(error)
-        //       return console.error(error);
-        //   //添加提示框的div
-        //   var tooltip = d3.select("body").append("div")
-        //       .attr("class","tooltip") //用于css设置类样式
-        //       .style("position","absolute")
-        //       .style("opacity",0);
-        //   ////////////////////////////////
-        //   var groups = svg.append("g");
-        //   groups.selectAll("path")
-        //     .data(toporoot.features)
-        //     .enter()
-        //     .append("path")
-        //     .attr("class","province")
-        //     .attr("d",path)
-        //     // 设置显示颜色及边框
-        //     .attr('stroke','white')
-        //     .attr('fill','rgb(230, 230, 230)')
-        //     // 鼠标进入事件
-        //     .on("mouseover",function(d){
-        //       console.log('d',d)
-        //         list.forEach(function(ite,index){
-        //           if(ite.item==d.properties.name){
-        //             //设置tooltip文字
-        //             tooltip.html('<ul style="margin: 0;padding: 0;width: 200px;height: 100px;background: #fff;border: 1px solid #eee;border-radius: 5px;box-sizing: border-box;"><li class="title" style="background: #eee;display: flex;justify-content: space-between;padding: 5px;">'+d.properties.name+'</li><li style="display: flex;justify-content: space-between;padding: 5px;"><span class="label">订单</span><span class="value">'+ite.percent+'</span></li><li style="display: flex;justify-content: space-between;padding: 5px;"><span class="label">占比</span><span class="value">'+ite.count+'</span></li></ul>')
-        //                     .style("left",(d3.event.pageX)+"px")
-        //                     .style("top",(d3.event.pageY+20)+"px")
-        //                     .style("opacity",1.0);
-        //             }
-        //             // d3.select(this).attr("fill","rgb(225, 225, 103)");
-        //         })
-        //     })
-        //     .on("mouseout",function(d){
-        //         tooltip.style("opacity",0); 
-        //     });
-        //   //  设置背景色
-        //   list.forEach(function(ite,index){
-        //     groups.selectAll("path").style("fill",function(d,i){
-        //       if(ite.item==d.properties.name){
-        //           d3.select(this).attr("fill","rgb(235, 243, 252)");
-        //       }
-        //     })
-        //   });
-        // })
+        }]
+      },
+      created: function () {
+        console.log('created')
+        this.drawMap(this.list);
+      },
+      mounted: function () {
+        console.log('mounted')
+      },
+      methods:{
+        drawMap(data){
+          console.log('data',data)
+          let list = data || [];
+          var width=500,height=400;
+          // 每次重新绘制之前先清空画布内容  、tooltip
+          d3.select("#chinaMap").selectAll("*").remove();
+          d3.select("body").select(".tooltip").remove();
+          this.svg = d3.select("#chinaMap")
+            .append("svg")
+            .attr("width",width)
+            .attr("height",height)
+            .style("padding-top","50px");
+            // console.log('svg',this.svg)
+          // 投影函数  经度纬度转换
+          var projection = d3.geo.mercator()
+            .center([107,31])
+            .scale(400)
+            .translate([width/2,height/2]);
+          // 地理路径生成器
+          var path = d3.geo.path()
+            .projection(projection)
+            .pointRadius(5);
+          // 向服务器请求文件并绘制地图  必须是服务器
+          var that = this;
+          d3.json("http://localhost:3000/china.json",function(error,toporoot){
+            // console.log('svgss',that.svg)
+            if(error)
+                return console.error(error);
+            //添加提示框的div
+            var tooltip = d3.select("body").append("div")
+                .attr("class","tooltip") //用于css设置类样式
+                .style("position","absolute")
+                .style("z-index",-1)
+                .style("opacity",0);
+            ////////////////////////////////
+            var groups = d3.select("#chinaMap").select("svg").append("g");
+            groups.selectAll("path")
+              .data(toporoot.features)
+              .enter()
+              .append("path")
+              .attr("class","province")
+              .attr("d",path)
+              // 设置显示颜色及边框
+              .attr('stroke','white')
+              .attr('fill','rgb(230, 230, 230)')
+              // 鼠标进入事件
+              .on("mouseover",function(d){
+                // console.log('d',d)
+                var that = this;
+                list.forEach(function(ite,index){
+                  if(ite.item==d.properties.name){
+                    d3.select(that).attr("fill","rgb(255, 225, 103)");
+                    //设置tooltip文字
+                    tooltip.html('<ul style="margin: 0;padding: 0;width: 200px;line-height: 22px;color: #666;font-size: 12px;background: rgba(255,255,255,0.5);box-shadow: 0 0 8px 3px rgba(238,238,238,0.8);border-radius: 5px;box-sizing: border-box;"><li class="title" style="background: rgba(238,238,238,0.5);    border-bottom: 1px solid #eee;display: flex;justify-content: space-between;padding: 5px;">'+d.properties.name+'</li><li style="display: flex;justify-content: space-between;padding: 5px;"><div><span style="width: 8px;height: 8px;border-radius: 100%;background: #4aa6fc;display: inline-block;margin-right: 5px;"></span><span>订单</span></div><span class="value">'+ite.total+'</span></li><li style="display: flex;justify-content: space-between;padding: 5px;"><div><span style="width: 8px;height: 8px;border-radius: 100%;background: #5cb85c;display: inline-block;margin-right: 5px;"></span><span>占比</span></div><span class="value">'+Number(math.format(ite.percent*100, 14))+'%'+'</span></li></ul>')
+                            .style("left",(d3.event.pageX)+"px")
+                            .style("top",(d3.event.pageY+20)+"px")
+                            .style("z-index",9)
+                            .style("opacity",1);
+                    }
+                })
+              })
+              .on("mouseout",function(d){
+                  tooltip.style("z-index",-1).style("opacity",0); 
+                  var that = this;
+                  list.forEach(function(ite,index){
+                    if(ite.item==d.properties.name){
+                      if(ite.percent>0.4){
+                        d3.select(that).attr("fill","rgb(56, 135, 224)");
+                      }else if(ite.percent>0.2){
+                        d3.select(that).attr("fill","rgb(199, 221, 246)");
+                      }else{
+                        d3.select(that).attr("fill","rgb(235, 243, 252)");
+                      }
+                    }
+                  })
+              });
+             //  设置背景色
+            list.forEach(function(ite,index){
+              groups.selectAll("path").style("fill",function(d,i){
+                if(ite.item==d.properties.name){
+                    if(ite.percent>0.4){
+                      d3.select(this).attr("fill","rgb(56, 135, 224)");
+                    }else if(ite.percent>0.2){
+                      d3.select(this).attr("fill","rgb(199, 221, 246)");
+                    }else{
+                      d3.select(this).attr("fill","rgb(235, 243, 252)");
+                    }
+                }
+              })
+            });
+          })
+        }
+      }
+    });
 	</script>
 </body>
 </html>
