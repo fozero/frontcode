@@ -47,11 +47,10 @@
 		}
 		.sample-list.top{
 			margin-bottom: 24px;
-	    transform: translate3d(-350.444px, 0px, 0px);
+	    
 			margin-left: -650px;
 		}
 		.sample-list.bottom{
-			  transform: translate3d(308.941px, 0px, 0px);
 			  margin-left: -1350px;
 		}
 	</style>
@@ -60,10 +59,10 @@
 	<div class="containner">
 		<div class="section">section1</div>
 		<div class="section">section2</div>
-		<div class="section-sample">
+		<div class="section-sample" id="section-sample">
 			<div class="title">照片欣赏</div>
 			<div class="gallery">
-				<div class="sample-list top">
+				<div class="sample-list top" style="transform: translate3d(400px.444px, 0px, 0px);">
 					<img class="sample" src="http://www5.djicdn.com/assets/uploads/6194473e79ddbc4b42f5b313ca5b578c.jpg" alt="">
 					<img class="sample" src="http://www5.djicdn.com/assets/uploads/6194473e79ddbc4b42f5b313ca5b578c.jpg" alt="">
 					<img class="sample" src="http://www5.djicdn.com/assets/uploads/6194473e79ddbc4b42f5b313ca5b578c.jpg" alt="">
@@ -71,7 +70,7 @@
 				</div>
 			</div>
 			<div class="gallery">
-				<div class="sample-list bottom">
+				<div class="sample-list bottom" style="transform: translate3d(308.941px, 0px, 0px);">
 					<img class="sample" src="http://www5.djicdn.com/assets/uploads/a7c7fd9db2479d8107e24cb3c66a1cb3.jpg" alt="">
 					<img class="sample" src="http://www5.djicdn.com/assets/uploads/a7c7fd9db2479d8107e24cb3c66a1cb3.jpg" alt="">
 					<img class="sample" src="http://www5.djicdn.com/assets/uploads/a7c7fd9db2479d8107e24cb3c66a1cb3.jpg" alt="">
@@ -87,11 +86,13 @@
 		var scrollTop = 0;
 		var topval = 300;
 		$(window).on("scroll",function(){
-			scrollTop = $(this).scrollTop();
-			topval = topval - scrollTop;
-			console.log(111,scrollTop,topval);
-			$(".sample-list.top").css("transform","translate3d('"+topval+"', 0px, 0px)");
-			$(".sample-list.bottom").css("transform","translate3d(308.941px, 0px, 0px)");
+			var top = $('#section-sample').offset.top;
+			// scrollTop = $(this).scrollTop();
+			// topval = topval - scrollTop;
+			console.log('top',top)
+			// console.log(111,scrollTop,topval);
+			// $(".sample-list.top").css("transform","translate3d(400px, 0px, 0px)");
+			// $(".sample-list.bottom").css("transform","translate3d(308.941px, 0px, 0px)");
 		});
 	</script>
 </body>

@@ -153,7 +153,7 @@
         drawMap(data){
           console.log('data',data)
           let list = data || [];
-          var width=500,height=400;
+          var width=500,height=450;
           // 每次重新绘制之前先清空画布内容  、tooltip
           d3.select("#chinaMap").selectAll("*").remove();
           d3.select("body").select(".tooltip").remove();
@@ -161,7 +161,7 @@
             .append("svg")
             .attr("width",width)
             .attr("height",height)
-            .style("padding-top","50px");
+            // .style("padding-top","50px");
             // console.log('svg',this.svg)
           // 投影函数  经度纬度转换
           var projection = d3.geo.mercator()
