@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			html,body{
+				margin: 0;
+			}
+			.section{
+				width: 100%;
+				height: 300px;
+				background: #111;
+				color: #fff;
+				text-align: center;
+			}
+			.section-sample{
+				background: #111;
+				z-index: 100;
+				position: relative;
+				padding: 128px 0;
+			}
+			.title{
+				font-size: 40px;
+				line-height: 1.4;
+				margin: 0 auto 40px;
+				margin-bottom: 128px;
+				text-align: center;
+				color: #fff;
+			}
+			.gallery{
+				width: 100%;
+				overflow: hidden;
+			}
+			.sample-list{
+				width: 3344px;
+				height: 600px;
+				margin-left: 0;
+				transform: translate3d(-245.444px, 0px, 0px);
+			}
+			.sample-list .sample{
+				display: inline-block;
+				height: 600px;
+				width: auto;
+				margin: 0 12px;
+				cursor: -webkit-zoom-in;
+			}
+			.sample-list.top{
+				margin-bottom: 24px;
+			}
+			.sample-list.bottom{
+				margin-left: -700px;
+			}
+
+
+			/*media*/
+			@media (max-height: 1440px){
+				.sample-list.bottom{
+					margin-left: -700px;
+				}
+				.sample-list.top{
+					margin-left: -100px;
+				}
+				.sample-list{
+					height: 600px;
+				}
+				.sample-list .sample{
+					height: 600px;
+				}
+			}
+			@media (max-height: 1080px){
+				.sample-list.bottom{
+					margin-left: 0px;
+				}
+				.sample-list.top{
+					margin-left: -400px;
+				}
+				.sample-list{
+					height: 450px;
+				}
+				.sample-list .sample{
+					height: 450px;
+				}
+			}
+			@media (max-height: 900px){
+				.sample-list.bottom{
+					margin-left: -1100px;
+				}
+				.sample-list.top{
+					margin-left: -600px;
+				}
+				.sample-list{
+					height: 375px;
+				}
+				.sample-list .sample{
+					height: 375px;
+				}
+			}
+			@media (max-height: 768px){
+				.sample-list.bottom{
+					margin-left: -1350px;
+				}
+				.sample-list.top{
+					margin-left: -650px;
+				}
+				.sample-list{
+					height: 320px;
+				}
+				.sample-list .sample{
+					height: 320px;
+				}
+			}
+
+		</style>
+	</head>
+	<!--
+	判断鼠标滚动方向  上下滚动  左右滚动
+
+
+	-->
+	<body>
+		<div class="containner">
+			<div class="section">section0</div>
+			<div class="section">section0</div>
+			<div class="section">section0</div>
+			<div class="section">section0</div>
+			<div class="section">section0</div>
+			<div class="section">section1</div>
+			<div class="section">section2</div>
+			<div class="section-sample" id="section-sample">
+				<div class="title">照片欣赏</div>
+				<div class="gallery J_ga">
+					<div class="sample-list top J_top" >
+						<img class="sample" src="http://www5.djicdn.com/assets/uploads/6194473e79ddbc4b42f5b313ca5b578c.jpg" alt="">
+						<img class="sample" src="http://www5.djicdn.com/assets/uploads/6194473e79ddbc4b42f5b313ca5b578c.jpg" alt="">
+						<img class="sample" src="http://www5.djicdn.com/assets/uploads/6194473e79ddbc4b42f5b313ca5b578c.jpg" alt="">
+						<img class="sample" src="http://www5.djicdn.com/assets/uploads/6194473e79ddbc4b42f5b313ca5b578c.jpg" alt="">
+					</div>
+				</div>
+				<div class="gallery J_gb">
+					<div class="sample-list bottom J_second" >
+						<img class="sample" src="http://www5.djicdn.com/assets/uploads/a7c7fd9db2479d8107e24cb3c66a1cb3.jpg" alt="">
+						<img class="sample" src="http://www5.djicdn.com/assets/uploads/a7c7fd9db2479d8107e24cb3c66a1cb3.jpg" alt="">
+						<img class="sample" src="http://www5.djicdn.com/assets/uploads/a7c7fd9db2479d8107e24cb3c66a1cb3.jpg" alt="">
+						<img class="sample" src="http://www5.djicdn.com/assets/uploads/a7c7fd9db2479d8107e24cb3c66a1cb3.jpg" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="section">section4</div>
+			<div class="section">section5</div>
+			<div class="section">section0</div>
+			<div class="section">section0</div>
+			<div class="section">section0</div>
+			<div class="section">section0</div>
+			<div class="section">section0</div>
+			<div class="section">section0</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+      var t = 0;
+      var allHei = $('.J_gb').height() + $('.J_ga').height();
+      var start = $('.J_ga').offset().top - $(window).height()
+      var end = $('.J_ga').offset().top + allHei;
+      var moveX = 400;
+      var nowAx = $('.J_ga')
+      var allmoveHei = end-start;
+
+      var moveFun = function(forward, dis) {
+        if (dis > start && dis < end) {
+          var md = dis - start;
+          var mxd = md * moveX / allmoveHei
+          console.log(mxd, md, 'sss')
+          $('.J_ga').css('transform', 'translate3d(' + mxd + 'px, 0px, 0px)')
+          $('.J_gb').css('transform', 'translate3d(-' + mxd + 'px, 0px, 0px)')
+        }
+      }
+      $(window).scroll(function(){
+        p=$(this).scrollTop();
+        if(t<p){
+          moveFun(-1, p)
+          //下滚
+          console.log('down')
+        }else{
+          moveFun(1, p)
+          //上滚
+          console.log('up')
+        }
+        setTimeout(function(){ t = p ; },0)
+        })
+    </script>
+  </body>
+</html>
