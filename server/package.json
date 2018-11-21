@@ -1,0 +1,21 @@
+{
+  "name": "static server",
+  "version": "1.0.0",
+  "description": "static",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "author": "fozero@126.com",
+  "license": "ISC",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "koa": "^2.6.2",
+    "koa-art-template": "^1.1.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6"
+  }
+}

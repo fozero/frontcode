@@ -113,11 +113,6 @@
 
 	</style>
 </head>
-<!-- 
-判断鼠标滚动方向  上下滚动  左右滚动
-
-
- -->
 <body>
 	<div class="containner">
 		<div class="section">section0</div>
@@ -157,7 +152,7 @@
 	</div>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 	<script>
-		var t=0,scrollTop = 0,delta = 0,transval = 600,btransval = 400;
+		var t=0,scrollTop = 0,delta = 0,transval = 200,btransval = 400;
 		var windowHeight = $(this).height();
 		var startPositon=0,endPostion=0,scrollPercent=0,indicatorPosition=0;
 		var scrollFunc=function(f,scrollTop){ 
@@ -166,7 +161,7 @@
 				var top = $('#section-sample').offset().top;
 				var allhei = $('#section-sample').height();
 				startPositon = top-windowHeight;
-				endPostion = top+allhei+windowHeight;
+				endPostion = top+allhei;
 				// 只有滚动在section-sample区块位置才调用
 		    if(scrollTop>startPositon && scrollTop<endPostion){
 		    	// console.log('top',top,windowHeight,scrollTop,startPositon,endPostion)
@@ -174,12 +169,14 @@
 		    		// 当前滚动位置所占比例
 		    		scrollPercent = (scrollTop-startPositon)/(endPostion-startPositon);
 		    		var _transval = scrollPercent * transval;
-		    		var _btransval = scrollPercent * btransval;
+		    		// var _btransval = scrollPercent * btransval;
+
+		    		var _btransval = (1-scrollPercent)*btransval;
 		    		// indicatorPosition += (scrollPercent - indicatorPosition) *1;
 		    		// var _transval = indicatorPosition * transval;
-		    		console.log('scrollPercent222',scrollPercent,_transval)
+		    		console.log('scrollPercent222',scrollPercent,1-scrollPercent,_transval,_btransval)
 		    		$(".sample-list.top").css("transform","translate3d("+_transval+"px, 0px, 0px)");
-			    	$(".sample-list.bottom").css("transform","translate3d(-"+_btransval+"px, 0px, 0px)");
+			    	$(".sample-list.bottom").css("transform","translate3d("+_btransval+"px, 0px, 0px)");
 			    // }else if(event.detail){//Firefox 
 			    // 	console.log('detail',event.detail)
 		     //    if(event.detail>0){//向下滚动
