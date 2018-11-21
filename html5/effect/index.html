@@ -130,7 +130,7 @@
 		<div class="section-sample" id="section-sample">
 			<div class="title">照片欣赏</div>
 			<div class="gallery">
-				<div class="sample-list top" style="transform: translate3d(500px, 0px, 0px);">
+				<div class="sample-list top" style="transform: translate3d(600px, 0px, 0px);">
 					<img class="sample" src="http://www5.djicdn.com/assets/uploads/6194473e79ddbc4b42f5b313ca5b578c.jpg" alt="">
 					<img class="sample" src="http://www5.djicdn.com/assets/uploads/6194473e79ddbc4b42f5b313ca5b578c.jpg" alt="">
 					<img class="sample" src="http://www5.djicdn.com/assets/uploads/6194473e79ddbc4b42f5b313ca5b578c.jpg" alt="">
@@ -157,7 +157,7 @@
 	</div>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 	<script>
-		var t=0,scrollTop = 0,delta = 0,transval = -280,btransval = 400;
+		var t=0,scrollTop = 0,delta = 0,transval = 600,btransval = 400;
 		var windowHeight = $(this).height();
 		var startPositon=0,endPostion=0,scrollPercent=0,indicatorPosition=0;
 		var scrollFunc=function(f,scrollTop){ 
@@ -172,12 +172,13 @@
 		    	// if(event.wheelDelta && !Math.abs(event.deltaX)){//IE/Opera/Chrome 
 		    		// 当前滚动位置所占比例
 		    		scrollPercent = (scrollTop-startPositon)/(endPostion-startPositon);
-		    		
-		    		indicatorPosition += (scrollPercent - indicatorPosition) *1;
-		    		var _transval = indicatorPosition * transval;
-		    		console.log('scrollPercent222',scrollPercent,indicatorPosition,_transval)
-		    		$(".sample-list.top").css("transform","translate3d("+_transval+"px, 0px, 0px)")
-			    	$(".J_bga").css("transform","translate3d(-"+_transval+"px, 0px, 0px)")
+		    		var _transval = scrollPercent * transval;
+		    		var _btransval = scrollPercent * btransval;
+		    		// indicatorPosition += (scrollPercent - indicatorPosition) *1;
+		    		// var _transval = indicatorPosition * transval;
+		    		console.log('scrollPercent222',scrollPercent,_transval)
+		    		$(".sample-list.top").css("transform","translate3d("+_transval+"px, 0px, 0px)");
+			    	$(".sample-list.bottom").css("transform","translate3d(-"+_btransval+"px, 0px, 0px)");
 			    // }else if(event.detail){//Firefox 
 			    // 	console.log('detail',event.detail)
 		     //    if(event.detail>0){//向下滚动
@@ -192,11 +193,11 @@
         if(t<p){
           scrollFunc(-1, p)
           //下滚
-          console.log('down')
+          // console.log('down')
         }else{
           scrollFunc(1, p)
           //上滚
-          console.log('up')
+          // console.log('up')
         }
         setTimeout(function(){ t = p ; },0)
         })
