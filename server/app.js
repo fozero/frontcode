@@ -51,6 +51,21 @@ router.get('/user', async (ctx, next) => {
             data:'kerry'
     });
 });
+router.post('/login', async (ctx, next) => {
+    var
+        name = ctx.request.body.name || '',
+        password = ctx.request.body.password || '';
+    console.log(`signin with name: ${name}, password: ${password}`);
+    var res = {
+      code:200,
+      msg:'success',
+      data:{
+        name:'阿健',
+        age:25
+      }
+    };
+    ctx.response.body = res;
+});
 
 // add router middleware:
 app.use(router.routes());

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ul>li遍历取值  $.post捕获错误信息</title>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>足球</li>
+			<li>篮球</li>
+			<li>乒乓球</li>
+		</ul>
+	</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		load();
+		// $("ul li").click(function(){
+		// 	alert($(this).index())
+		// })
+		$("ul>li").each(function(){
+			$(this).click(function(){
+				alert($(this).index())
+			})
+		})
+	})
+	function load(){
+		// abort  always  done fail catch
+		// 从jQuery 1.5开始，所有jQuery的Ajax方法都返回一个XMLHTTPRequest对象的超集。这个通过$.post()方法返回的jQuery XHR对象，或“jqXHR”，实现了 Promise 接口，使它拥有 Promise 的所有属性，方法和行为（见Deferred 对象获取更多信息）。jqXHR.done() (表示成功), jqXHR.fail() (表示错误), 和 jqXHR.always() (表示完成, 无论是成功或错误；在jQuery 1.6 中添加) 方法接受一个函数参数，用来请求终止时被调用
+		var req = $.post("http://localhost:3000/login", { username: "John", password: "2pm" });
+		console.log('req',req)
+		req.done(function(data){
+			console.log('data',data)
+		});
+		req.fail(function(err){
+			console.log('err')
+		})
+
+		// $.post("http://localhost:3000/login", { username: "John", password: "2pm" },
+		//   function(data) {
+		//     console.log("Data Loaded: " + data);
+		//   });
+	}
+</script>
+</body>
+</html>

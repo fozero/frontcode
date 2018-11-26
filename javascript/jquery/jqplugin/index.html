@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery插件用法</title>
+</head>
+<!-- 
+	一、jQuery $.extend()用法
+
+	Query开发插件的两个方法
+	1.jQuery.extend(object);为扩展jQuery类本身.为类添加新的方法。 
+2.jQuery.fn.extend(object);给jQuery对象添加方法。
+
+jQuery.extend(object)，为jQuery类添加类方法，可以理解为添加静态方法。
+jQuery.extend({
+    min: function(a, b) {
+        return a < b ? a : b;
+    },
+    max: function(a, b) {
+        return a > b ? a : b;
+    }
+});
+jQuery.min(2, 3); //  2 
+jQuery.max(4, 5); //  5
+
+
+
+jQuery.fn.extend(object);   就是为jQuery类添加“成员函数”。jQuery类的实例才可以调用这个“成员函数”。
+如我们要开发一个插件，做一个特殊的编辑框，当它被点击时，便alert 当前编辑框里的内容。
+$.fn.extend({
+    alertWhileClick: function() {
+        $(this).click(function() {
+            alert($(this).val());
+        });
+    }
+});
+//$("#input1")是jQuery的实例，调用这个扩展方法
+$("#input1").alertWhileClick();
+
+
+jQuery.extend() 的调用并不会把方法扩展到对象的实例上，引用它的方法也需要通过jQuery类来实现，如jQuery.init()
+jQuery.fn.extend()的调用把方法扩展到了对象的prototype上，所以实例化一个jQuery对象的时候，它就具有了这些方法
+
+jQuery.fn.extend = jQuery.prototype.extend
+
+
+
+二、jquery插件开发
+https://www.cnblogs.com/Wayou/p/jquery_plugin_tutorial.html
+https://blog.csdn.net/hzaini89/article/details/75091493
+	jQuery开发插件2种方式
+1,$.extend()-在jquery命名空间即jquery本身上添加静态方法;调用,例如:$.myPlugin();而非$('ele').myPlugin();
+2,$.fn.extend()
+
+$.extend({
+    createNum:function(name){
+        return 'hello '+(name?name:'andy');
+    }
+});
+ 
+console.log($.createNum());//hello andy
+console.log($.createNum('jack'));// hello jack
+
+以上代码通过$.extend()方法想jquery添加的,直接通过$调用;这种扩展方式无法通过DOM选择器来触发,这个时候我们就需要考虑$.fn.extend()的扩展方式了
+
+
+格式
+$.fn.sayHello= function(){
+    // to do
+};
+如
+/*
+现在我们将页面中的字改变颜色
+* */
+$.fn.changeColor = function(){
+    this.css('color','red');// this 即选中的元素;当前指$('p')
+};
+// 调用如下:
+$('#ex-div p').changeColor();
+
+
+
+支持链式调用
+jQuery一个非常优雅的特性是支持链式调用，选择好DOM元素后可以不断地调用其他方法。
+要让插件不打破这种链式调用，只需return一下即可。
+$.fn.myPlugin = function() {
+    //在这里面,this指的是用jQuery选中的元素
+    this.css('color', 'red');
+    return this.each(function() {
+        //对每个元素进行操作
+        $(this).append(' ' + $(this).attr('href'));
+    }))
+}
+
+
+
+
+接下来,我们就处理参数的部分;
+比如现在我们处理字体的颜色,由用户来定义颜色,如果用户没有定义,我们就取默认值
+说明一点:
+在处理插件参数的接收上,通常使用jquery的extend方法,上面也提及过,但那是给extend方法传递单个对象的情况下,
+这个对象会合并到jquery身上,所以我们就可以在jquery身上调用新合并对象里包含的方法了,如上面的例子;
+当给extend方法传递一个以上的参数时,它会将所有到参数对象合并到第一个里.
+同时,如果对象中有同名的属性,合并后后面的参数会覆盖前面的;
+
+利用这一点,我们可以在插件里定义一个保存插件参数默认值的对象,同时将接收来的参数对象合并到默认对象上,
+最后便实现了用户指定参数使用的值,未指定的参数使用默认值;
+
+我们定义下font-size,允许插件调用的时候设置字体;
+$.fn.extend({
+    changeConts: function (options) {
+        var defaults = {
+            'color':'red',
+            'fontSize':'12px'
+        };
+        var setting = $.extend(defaults,options);
+        return this.css({
+            'color':setting.color,
+            'fontSize':setting.fontSize
+        });
+    }
+});
+//未指定字体大小的时候,默认值为12px
+$('#ex-div p').changeConts({
+    'color':'blue'
+});
+//我们来指定字体大小
+$('#ex-div p').changeConts({
+    'color':'red',
+    'fontSize':'20px'
+});
+
+
+保护好默认参数
+注意到上面代码调用extend时会将defaults的值改变，这样不好，因为它作为插件因有的一些东西应该维持原样，另外就是如果你在后续代码中还要使用这些默认值的话，当你再次访问它时它已经被用户传进来的参数更改了。
+
+一个好的做法是将一个新的空对象做为$.extend的第一个参数，defaults和用户传递的参数对象紧随其后，这样做的好处是所有值被合并到这个空对象上，保护了插件里面的默认值。
+$.fn.myPlugin = function(options) {
+    var defaults = {
+        'color': 'red',
+        'fontSize': '12px'
+    };
+    var settings = $.extend({},defaults, options);//将一个空对象做为第一个参数
+    return this.css({
+        'color': settings.color,
+        'fontSize': settings.fontSize
+    });
+}
+
+
+
+将系统变量以变量形式传递到插件内部
+var foo=function(){
+    //别人的代码
+}//注意这里没有用分号结尾
+
+//开始我们的代码。。。
+(function(){
+    //我们的代码。。
+    alert('Hello!');
+})();
+
+以上代码运行会报错 ，由于外部foo方法缺少分号，所以为了防止别人代码影响插件，最好的习惯是在前面加上分号
+var foo=function(){
+    //别人的代码
+}//注意这里没有用分号结尾
+
+//开始我们的代码。。。
+;(function(){
+    //我们的代码。。
+    alert('Hello!');
+})();
+
+
+将系统变量以参数形式传递到插件内部也是个不错的实践。
+这样做之后，window等系统变量在插件内部就有了一个局部的引用，可以提高访问速度，会有些许性能的提升
+最后我们得到一个非常安全结构良好的代码：
+;(function($,window,document,undefiend){
+    // to do
+ 
+})(jQuery,window,document);
+
+
+
+上面这个undefined，稍微有意思一点，为了得到没有被修改的undefined，我们并没有传递这个参数，但却在接收时接收了它，因为实际并没有传，所以‘undefined’那个位置接收到的就是真实的'undefined'了
+
+
+最后，写好一个插件之后会进行代码压缩混淆 以减少代码体积，增加阅读难度从而起到保护源码的作用
+通常，插件写好之后我们可以进行发布到github让别人来使用
+
+
+ -->
+<body>
+	<div class="main-container">
+		<ul>
+			<li><a href="https://www.baidu.com/1">链接1</a></li>
+			<li><a href="https://www.baidu.com/2">链接2</a></li>
+			<li><a href="https://www.baidu.com/3">链接3</a></li>
+		</ul>
+	</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="./jquery.myplugin.js"></script> -->
+<script src="./jquery.myplugin2.js"></script>
+<script>
+	$(function(){
+		// $("a").pluginName();//在a标签元素上使用插件
+		// 如未设置字体大小  则显示默认字体大小 
+		// $('a').myPlugin({
+		//     'color': '#2C9929'
+		// });
+		// 设置颜色和大小
+		$('a').myPlugin({
+		    'color': '#2C9929',
+		    'fontSize':'20'
+		});
+	});
+</script>
+</body>
+</html>

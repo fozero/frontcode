@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<!-- 
+一、es6字符串模板
+之前我们也可以使用JavaScript输出模版字符串，通常是下面这样的：
+ $("#result").append(
+        "He is <b>"+person.name+"</b>"+"and we wish to know his"+person.age+".That is all" 
+        );
+        这样的传统做法需要使用大量的“”（双引号）和 + 来拼接才能得到我们需要的模版。但是这样是十分不方便的
+
+        ES6中提供了模版字符串，用`（反引号）标识，用${}将变量括起来。
+         $("#result").append(
+        `He is <b>${person.name}</b>and we wish to know his${person.age}.that is all`
+        );
+这样的做法就简洁了很多，我们不需要再使用大量的""和+来拼接字符串和变量。
+
+1、模版字符串可以引入变量，不使用变量也是可以的
+2、在${}中的大括号里可以放入任意的JavaScript表达式，还可以进行运算，以及引用对象属性
+3、更强大的是：模版字符串还可以调用函数：
+function string(){
+    return "zzw likes es6!";
+}
+console.log(`你想说什么?
+            嗯，${string()}`);
+
+ 
+ -->
+<body>
+	<div class="main-containner">
+		<div id="result"></div>
+	</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			var person = {
+				name:'kerry',
+				age:25
+			}
+			$("#result").append(
+		        `He is <b>${person.name}</b>and we wish to know his${person.age}.that is all`
+		     );
+		})
+	</script>
+</body>
+</html>
