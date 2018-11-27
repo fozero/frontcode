@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片轮播</title>
+	<style>
+		ul,li{margin: 0;padding: 0;}
+	.clearfix:after{
+		content: "." ; 
+		display: block ;
+		height: 0 ;
+		clear: both ;
+		visibility: hidden ;
+			}
+			.swiper-containner{
+				position: relative;
+				    width: 1200px;
+				    height: 200px;
+    overflow: hidden;
+			}
+		.list{
+			position: absolute;
+			left: 200px;
+			width: 9999px;
+			height: 200px;
+			list-style: none;
+		}
+		.list .item{
+			width: 200px;
+			height: 180px;
+			float: left;
+			cursor: pointer;
+		}
+		.list .item .txt:hover{
+			border-top: 2px solid #333;
+			color: #333;
+		}
+		.list .item .txt{
+			border-top: 1px solid #dddddd;
+			height: 180px;
+			margin-right:20px;
+		}
+		.list .item.active .txt{
+			border: 2px solid #333;
+			color: #333;
+		}
+	</style>
+</head>
+<!-- https://www.tesla.com/models-->
+<body>
+	<div class="main-video" style="    width: 960px;margin: 0 auto;">
+    <video preload playsinline autoplay loop muted poster="//video.xiaopeng.com/m/auto-parking/video_01.jpg?v=1" class="banner-figure-el J_video">
+      <source src="https://video.xiaopeng.com/m/auto-parking/first.mp4" type="video/mp4">
+    </video>
+  </div>
+	<div class="swiper-containner">
+		<ul class="list J_list clearfix">
+			<li class="item active"><div class="txt">c1</div></li>
+			<li class="item"><div class="txt">c2</div></li>
+			<li class="item"><div class="txt">c3</div></li>
+			<li class="item"><div class="txt">c4</div></li>
+			<li class="item"><div class="txt">c5</div></li>
+			<li class="item"><div class="txt">c6</div></li>
+			<li class="item"><div class="txt">c7</div></li>
+			<li class="item"><div class="txt">c8</div></li>
+		</ul>
+	</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	var curIndex = 0,len=0,itemLength=0;
+	$(function(){
+		len = $(".J_list .item").length;
+		itemLength = $(".J_list .item").css("width");
+		// console.log('list.style.left',$('.J_list').css('left'))
+		autoPlay();
+		var timer = setInterval(autoPlay,2000)
+
+		$(".J_list .item").each(function(){
+			$(this).click(function(){
+				$(".J_list .item").removeClass('active');
+				$(this).addClass('active');
+				curIndex = $(this).index();
+			});
+		});
+	});
+	function autoPlay(){
+		if(curIndex<len-1){
+			curIndex++;
+		}else{
+			curIndex=0
+		}
+		if(curIndex>2 && curIndex<len){
+			var oldLeftVal = $('.J_list').css('left');
+			var newLeftVal = parseInt(oldLeftVal)-parseInt(itemLength);
+			$('.J_list').css('left',newLeftVal);
+		}else{
+			$('.J_list').css('left',itemLength);
+		}
+		$(".J_list .item").removeClass('active');
+		$(".J_list .item").eq(curIndex).addClass("active");
+		console.log('curIndex',curIndex,len,$('.J_list').css('left'))
+	}
+</script>
+</body>
+</html>
