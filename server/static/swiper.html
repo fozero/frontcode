@@ -5,19 +5,29 @@
 	<title>图片轮播</title>
 	<style>
 		ul,li{margin: 0;padding: 0;}
-	.clearfix:after{
-		content: "." ; 
-		display: block ;
-		height: 0 ;
-		clear: both ;
-		visibility: hidden ;
-			}
-			.swiper-containner{
-				position: relative;
-				    width: 1200px;
-				    height: 200px;
-    overflow: hidden;
-			}
+		.clearfix:after{
+			content: "." ; 
+			display: block ;
+			height: 0 ;
+			clear: both ;
+			visibility: hidden ;
+		}
+		.option-border{
+			position: absolute;
+			left: 200px;
+			width: 180px;
+    height: 180px;
+    border: 4px solid #333;
+    z-index: 999;
+		}
+		.swiper-containner{
+			position: relative;
+	    width: 1200px;
+	    height: 200px;
+  		overflow: hidden;
+      margin: 0 auto;
+      color:#999;
+		}
 		.list{
 			position: absolute;
 			left: 200px;
@@ -32,28 +42,31 @@
 			cursor: pointer;
 		}
 		.list .item .txt:hover{
-			border-top: 2px solid #333;
-			color: #333;
+			border-top: 4px solid #333;
+			color: #000;
 		}
 		.list .item .txt{
-			border-top: 1px solid #dddddd;
+			border-top: 4px solid #dddddd;
 			height: 180px;
 			margin-right:20px;
 		}
 		.list .item.active .txt{
-			border: 2px solid #333;
-			color: #333;
+			/*border: 4px solid #333;*/
+			border-top: 4px solid #333;
+			color: #000;
 		}
 	</style>
 </head>
 <!-- https://www.tesla.com/models-->
 <body>
 	<div class="main-video" style="    width: 960px;margin: 0 auto;">
-    <video preload playsinline autoplay loop muted poster="//video.xiaopeng.com/m/auto-parking/video_01.jpg?v=1" class="banner-figure-el J_video">
+    <video preload playsinline autoplay loop muted poster="http://video.xiaopeng.com/m/auto-parking/video_01.jpg?v=1" class="banner-figure-el J_video">
       <source src="https://video.xiaopeng.com/m/auto-parking/first.mp4" type="video/mp4">
     </video>
   </div>
+  
 	<div class="swiper-containner">
+		<div class="option-border"></div>
 		<ul class="list J_list clearfix">
 			<li class="item active"><div class="txt">c1</div></li>
 			<li class="item"><div class="txt">c2</div></li>
@@ -67,19 +80,50 @@
 	</div>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	var curIndex = 0,len=0,itemLength=0;
+	var curIndex = 0,len=0,itemLength=0,lastActiveIndex=0,$JList=null,$JListItem=null;
 	$(function(){
-		len = $(".J_list .item").length;
-		itemLength = $(".J_list .item").css("width");
-		// console.log('list.style.left',$('.J_list').css('left'))
-		autoPlay();
-		var timer = setInterval(autoPlay,2000)
-
-		$(".J_list .item").each(function(){
+		$JList = $('.J_list');
+		$JListItem = $(".J_list .item");
+		$optionBorder = $(".option-border");
+		// 元素个数
+		len = $JListItem.length;
+		// 单个item项的宽度
+		itemLength = $JListItem.css("width");
+		// setInterval(autoPlay,3000);
+		$JListItem.each(function(){
 			$(this).click(function(){
-				$(".J_list .item").removeClass('active');
-				$(this).addClass('active');
+				// 最后一个点击项
+				lastActiveIndex = curIndex;
 				curIndex = $(this).index();
+				$JListItem.removeClass('active');
+				$(this).addClass('active');
+				console.log('click curIndex',curIndex,$JList.css('left'))
+
+				// 点击当前选中位置左侧
+				if(curIndex<lastActiveIndex && curIndex>2){//下标从3开始需要向右移动偏移量
+					// 要偏移的像素
+					var oldLeftVal = $JList.css('left');
+					var offsetsize = (lastActiveIndex-curIndex)*parseInt(itemLength);
+					var newLeftVal = parseInt(oldLeftVal)+offsetsize;
+					console.log('newLeftVal',oldLeftVal,offsetsize,newLeftVal)
+					$JList.animate({'left':newLeftVal});
+				}else if(curIndex!=lastActiveIndex){
+					if(curIndex>2 && curIndex<len){
+						console.log(111111)
+						var oldLeftVal = $JList.css('left');
+						var newLeftVal = parseInt(oldLeftVal)-parseInt(itemLength);
+						$JList.animate({left:newLeftVal});
+					}else{
+						console.log(22222)
+						$JList.animate({left:itemLength});
+						
+						// 选中样式偏移
+						var borderOffset = $optionBorder.css('left');
+						var newBorderLeftVal = (curIndex-lastActiveIndex)*parseInt(itemLength)+parseInt(borderOffset);
+						$optionBorder.animate({'left':newBorderLeftVal});
+						console.log('borderOffset',borderOffset,(curIndex-lastActiveIndex)*parseInt(itemLength))
+					}
+				}
 			});
 		});
 	});
@@ -90,15 +134,15 @@
 			curIndex=0
 		}
 		if(curIndex>2 && curIndex<len){
-			var oldLeftVal = $('.J_list').css('left');
+			var oldLeftVal = $JList.css('left');
 			var newLeftVal = parseInt(oldLeftVal)-parseInt(itemLength);
-			$('.J_list').css('left',newLeftVal);
+			$JList.animate({'left':newLeftVal});
 		}else{
-			$('.J_list').css('left',itemLength);
+			$JList.animate({'left':itemLength});
 		}
-		$(".J_list .item").removeClass('active');
-		$(".J_list .item").eq(curIndex).addClass("active");
-		console.log('curIndex',curIndex,len,$('.J_list').css('left'))
+		$JListItem.removeClass('active');
+		$JListItem.eq(curIndex).addClass("active");
+		console.log('curIndex',curIndex,len,$JList.css('left'))
 	}
 </script>
 </body>
