@@ -12,17 +12,17 @@
 			clear: both ;
 			visibility: hidden ;
 		}
-		.option-border{
+		/*.option-border{
 			position: absolute;
 			left: 200px;
 			width: 180px;
     height: 180px;
     border: 3px solid #333;
     z-index: 999;
-		}
+		}*/
 		.swiper-containner{
 			position: relative;
-	    width: 1200px;
+	    width: 1000px;
 	    height: 200px;
   		overflow: hidden;
       margin: 0 auto;
@@ -30,7 +30,7 @@
 		}
 		.list{
 			position: absolute;
-			left: 200px;
+			left: 0px;
 			width: 9999px;
 			height: 200px;
 			list-style: none;
@@ -51,7 +51,7 @@
 			margin-right:20px;
 		}
 		.list .item.active .txt{
-			/*border: 4px solid #333;*/
+			border: 4px solid #333;
 			border-top: 3px solid #333;
 			color: #000;
 		}
@@ -66,7 +66,7 @@
   </div>
   
 	<div class="swiper-containner">
-		<div class="option-border"></div>
+		<!-- <div class="option-border"></div> -->
 		<ul class="list J_list clearfix">
 			<li class="item active"><div class="txt">c1</div></li>
 			<li class="item"><div class="txt">c2</div></li>
@@ -84,7 +84,6 @@
 	$(function(){
 		$JList = $('.J_list');
 		$JListItem = $(".J_list .item");
-		$optionBorder = $(".option-border");
 		// 元素个数
 		len = $JListItem.length;
 		// 单个item项的宽度
@@ -95,9 +94,6 @@
 				// 最后一个点击项
 				lastActiveIndex = curIndex;
 				curIndex = $(this).index();
-				$JListItem.removeClass('active');
-				$(this).addClass('active');
-				console.log('click curIndex',curIndex,$JList.css('left'))
 
 				// 点击当前选中位置左侧
 				if(curIndex<lastActiveIndex && curIndex>2){//下标从3开始需要向右移动偏移量
@@ -109,66 +105,46 @@
 					console.log('newLeftVal',oldLeftVal,offsetsize,newLeftVal)
 					$JList.animate({'left':newLeftVal});
 				}else if(curIndex!=lastActiveIndex){
-					if(curIndex>2 && curIndex<len){
-						
+					if(curIndex>2 && curIndex<len-2){
+						console.log('22222')
 						var oldLeftVal = $JList.css('left');
-						// var newLeftVal = parseInt(oldLeftVal)-parseInt(itemLength);
-						var newLeftVal = parseInt(oldLeftVal)-(curIndex-lastActiveIndex)*parseInt(itemLength)+(curIndex-2)*parseInt(itemLength);
-						$JList.animate({left:newLeftVal});
-						// 4  left: 0px;    5  -200px   6 -400px    200- 3*200
-						console.log(111111,oldLeftVal,curIndex-lastActiveIndex,parseInt(oldLeftVal)-(curIndex-lastActiveIndex)*parseInt(itemLength)+(curIndex-2)*parseInt(itemLength))
-
-						borderAni();
-						// if(curIndex>2){
-						// 	console.log(">2")
-						// 	$optionBorder.animate({'left':newBorderLeftVal});
-						// }
-					}else{
-						console.log(22222,curIndex)
-						$JList.animate({left:itemLength});
-
-						if(curIndex>lastActiveIndex || curIndex!=2){
-							// 选中样式偏移
-							var borderOffset = $optionBorder.css('left');
-							var newBorderLeftVal = (curIndex-lastActiveIndex)*parseInt(itemLength)+parseInt(borderOffset);
-							$optionBorder.animate({'left':newBorderLeftVal});
-							console.log('borderOffset',borderOffset,(curIndex-lastActiveIndex)*parseInt(itemLength))
+						var newLeftVal = 0;
+						if(lastActiveIndex<3){
+							newLeftVal = parseInt(oldLeftVal)-(curIndex-2)*parseInt(itemLength);
+						}else{
+							newLeftVal = parseInt(oldLeftVal)-parseInt(itemLength);
 						}
+						$JList.animate({left:newLeftVal});
+						console.log(parseInt(oldLeftVal)-(curIndex-2)*parseInt(itemLength))
 					}
 				}
+
+				if(curIndex<3){
+					$JList.animate({'left':0});
+				}
+
+				// 设置选中效果
+				$JListItem.removeClass('active');
+				$(this).addClass('active');
+				console.log('click curIndex',curIndex,$JList.css('left'))
 			});
 		});
 	});
-	function borderAni(){
-		// 只有在前三个时边框进行便宜
-		if(curIndex<3){
-			var borderOffset = $optionBorder.css('left');
-			var newBorderLeftVal = parseInt(itemLength)+parseInt(borderOffset);
-			$optionBorder.animate({'left':newBorderLeftVal});
-			console.log('borderOffset',borderOffset,newBorderLeftVal)
-		}
-		if(curIndex==0){
-			$optionBorder.animate({'left':itemLength});
-		}
-		if(curIndex>2){
-			console.log(">2",3*parseInt(itemLength))
-			$optionBorder.animate({'left':3*parseInt(itemLength)});
-		}
-		
-	}
 	function autoPlay(){
 		if(curIndex<len-1){
 			curIndex++;
 		}else{
 			curIndex=0
 		}
-		borderAni();
-		if(curIndex>2 && curIndex<len){
+		// 前3个和后3个不偏移
+		if(curIndex>2 && curIndex<len-2){
+			console.log(1111111)
 			var oldLeftVal = $JList.css('left');
 			var newLeftVal = parseInt(oldLeftVal)-parseInt(itemLength);
 			$JList.animate({'left':newLeftVal});
-		}else{
-			$JList.animate({'left':itemLength});
+		}
+		if(curIndex<3){
+			$JList.animate({'left':0});
 		}
 		$JListItem.removeClass('active');
 		$JListItem.eq(curIndex).addClass("active");
