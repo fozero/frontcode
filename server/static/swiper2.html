@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片轮播-动画-自定义选项数量</title>
+	<style>
+		ul,li{margin: 0;padding: 0;}
+		.clearfix:after{
+			content: "." ; 
+			display: block ;
+			height: 0 ;
+			clear: both ;
+			visibility: hidden ;
+		}
+		.option-border{
+			position: absolute;
+			left: 0;
+			width: 180px;
+    height: 180px;
+    border: 3px solid #333;
+    z-index: 999;
+		}
+		.swiper-containner{
+			position: relative;
+	    width: 1000px;
+	    height: 200px;
+  		overflow: hidden;
+      margin: 0 auto;
+      color:#999;
+		}
+		.list{
+			position: absolute;
+			left: 0px;
+			width: 9999px;
+			height: 200px;
+			list-style: none;
+		}
+		.list .item{
+			width: 200px;
+			height: 180px;
+			float: left;
+			cursor: pointer;
+		}
+		.list .item .txt:hover{
+			border-top: 4px solid #333;
+			color: #000;
+		}
+		.list .item .txt{
+			border-top: 3px solid #dddddd;
+			width: 180px;
+			height: 180px;
+			margin-right:20px;
+			/*margin: 0 10px;*/
+		}
+		.list .item.active .txt{
+			/*border: 3px solid #333;*/
+			border-top: 3px solid #333;
+			color: #000;
+		}
+	</style>
+</head>
+<!-- https://www.tesla.com/models-->
+<body>
+	<div class="main-video" style="    width: 960px;margin: 0 auto;">
+    <video preload playsinline autoplay loop muted poster="http://video.xiaopeng.com/m/auto-parking/video_01.jpg?v=1" class="banner-figure-el J_video">
+      <source src="https://video.xiaopeng.com/m/auto-parking/first.mp4" type="video/mp4">
+    </video>
+  </div>
+  
+	<div class="swiper-containner" id="swiper-containner">
+		<div class="option-border"></div>
+		<ul class="list J_list clearfix">
+			<li class="item active"><div class="txt">c1</div></li>
+			<li class="item"><div class="txt">c2</div></li>
+			<li class="item"><div class="txt">c3</div></li>
+			<li class="item"><div class="txt">c4</div></li>
+			<li class="item"><div class="txt">c5</div></li>
+			<li class="item"><div class="txt">c6</div></li>
+			<li class="item"><div class="txt">c7</div></li>
+			<li class="item"><div class="txt">c8</div></li>
+		</ul>
+	</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="./optionslide.plugin.js"></script>
+<script>
+	$(function(){
+		$('#swiper-containner').optionSlide({
+			'speed':1000,
+			'count':6
+		});
+	})
+	// var curIndex = 0,len=0,itemLength=0,lastActiveIndex=0,$JList=null,$JListItem=null,oldLeftVal=0,newLeftVal = 0,offsetsize=0;
+	// var oldBorderLeftVal=0,newBorderLeftVal=0,$optionBorder=null,timer = null;
+	
+	// $(function(){
+	// 	$JList = $('.J_list');
+	// 	$JListItem = $(".J_list .item");
+	// 	$optionBorder = $(".option-border");
+	// 	// 元素个数
+	// 	len = $JListItem.length;
+	// 	// 单个item项的宽度
+	// 	itemLength = $JListItem.css("width");
+	// 	startPlay();
+	// 	$JListItem.each(function(){
+	// 		$(this).click(function(){
+	// 			clearInterval(timer);
+	// 			// 最后一个点击项
+	// 			lastActiveIndex = curIndex;
+	// 			curIndex = $(this).index();
+	// 			oldLeftVal = $JList.css('left');
+	// 			// 当前不可点击
+	// 			if(curIndex==lastActiveIndex){
+	// 				return;
+	// 			}
+	// 			// 前三个
+	// 			if(curIndex<3){
+	// 				newLeftVal = 0;
+	// 			}else{
+	// 				if(curIndex<lastActiveIndex && curIndex<len-3){//点左侧->向右偏移
+	// 					console.log(1)
+	// 					offsetsize = parseInt(itemLength);
+	// 					newLeftVal = parseInt(oldLeftVal)+offsetsize;
+	// 				}else if(curIndex>lastActiveIndex){// 右侧->向左偏移
+	// 					console.log(2)
+	// 					if(curIndex>2 && curIndex<len-2){
+	// 						if(lastActiveIndex<3){
+	// 							newLeftVal = parseInt(oldLeftVal)-(curIndex-2)*parseInt(itemLength);
+	// 						}else{
+	// 							offsetsize = (curIndex-lastActiveIndex)*parseInt(itemLength)
+	// 							newLeftVal = parseInt(oldLeftVal)-offsetsize;
+	// 						}
+	// 					}
+	// 					if(curIndex==len-2 && lastActiveIndex<len-3){
+	// 						newLeftVal =parseInt(oldLeftVal)-parseInt(itemLength);
+	// 					}
+	// 				}
+	// 			}
+	// 			borderAni();
+	// 			$JList.animate({'left':newLeftVal});
+	// 			$JListItem.removeClass('active');
+	// 			$(this).addClass('active');
+	// 			startPlay();
+	// 			console.log('click curIndex',lastActiveIndex,curIndex,oldLeftVal,newLeftVal)
+	// 		});
+	// 	});
+	// });
+	// function borderAni(){
+	// 	oldBorderLeftVal = $optionBorder.css('left');
+	// 	if(curIndex==0){
+	// 		newBorderLeftVal = 0;
+	// 	}else{
+	// 		if(curIndex>lastActiveIndex){//往右
+	// 			if(curIndex>0 && curIndex<3 || curIndex>len-3){
+	// 				if(curIndex==len-2){
+	// 					newBorderLeftVal = parseInt(oldBorderLeftVal)+parseInt(itemLength);
+	// 				}else{
+	// 					newBorderLeftVal = parseInt(oldBorderLeftVal)+(curIndex-lastActiveIndex)*parseInt(itemLength);
+	// 				}
+	// 			}else{//2<curIndex<len-2
+	// 				newBorderLeftVal = 2*parseInt(itemLength);
+	// 			}
+	// 		}else{//往左
+	// 			if(curIndex<2 || curIndex>len-4){
+	// 				if(curIndex==1){
+	// 					newBorderLeftVal = parseInt(itemLength);
+	// 				}else{
+	// 					newBorderLeftVal = parseInt(oldBorderLeftVal)-(lastActiveIndex-curIndex)*parseInt(itemLength);
+	// 				}
+	// 			}else{
+	// 				newBorderLeftVal = 2*parseInt(itemLength);
+	// 			}
+	// 		}
+	// 	}
+	// 	$optionBorder.animate({'left':newBorderLeftVal});
+	// 	console.log('optionBorder',lastActiveIndex,curIndex,oldBorderLeftVal,newBorderLeftVal)
+	// }
+	// function startPlay(){
+	// 	if(timer){
+	// 		clearInterval(timer);
+	// 		timer = null;
+	// 	}
+	// 	timer = setInterval(autoPlay,3000);
+	// }
+	// function autoPlay(){
+	// 	lastActiveIndex = curIndex;
+	// 	if(curIndex<len-1){
+	// 		curIndex++;
+	// 	}else{
+	// 		curIndex=0
+	// 	}
+	// 	oldLeftVal = $JList.css('left');
+	// 	if(curIndex>2 && curIndex<len-2){// 前3个和后3个不偏移
+	// 		newLeftVal = parseInt(oldLeftVal)-parseInt(itemLength);
+	// 	}
+	// 	if(curIndex<3){
+	// 		newLeftVal = 0;
+	// 	}
+	// 	borderAni();
+	// 	$JList.animate({'left':newLeftVal});
+	// 	$JListItem.removeClass('active');
+	// 	$JListItem.eq(curIndex).addClass("active");
+	// 	console.log('curIndex',curIndex,oldLeftVal,newLeftVal)
+	// }
+</script>
+</body>
+</html>
