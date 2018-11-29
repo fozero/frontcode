@@ -48,7 +48,8 @@
 		.list .item .txt{
 			border-top: 3px solid #dddddd;
 			height: 180px;
-			margin-right:20px;
+			/*margin-right:20px;*/
+			margin: 0 10px;
 		}
 		.list .item.active .txt{
 			border: 4px solid #333;
@@ -80,7 +81,7 @@
 	</div>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	var curIndex = 0,len=0,itemLength=0,lastActiveIndex=0,$JList=null,$JListItem=null;
+	var curIndex = 0,len=0,itemLength=0,lastActiveIndex=0,$JList=null,$JListItem=null,oldLeftVal=0,newLeftVal = 0;
 	$(function(){
 		$JList = $('.J_list');
 		$JListItem = $(".J_list .item");
@@ -88,41 +89,48 @@
 		len = $JListItem.length;
 		// 单个item项的宽度
 		itemLength = $JListItem.css("width");
-		// setInterval(autoPlay,3000);
+		setInterval(autoPlay,5000);
 		$JListItem.each(function(){
 			$(this).click(function(){
 				// 最后一个点击项
 				lastActiveIndex = curIndex;
 				curIndex = $(this).index();
-
+				oldLeftVal = $JList.css('left');
 				// 点击当前选中位置左侧
 				if(curIndex<lastActiveIndex && curIndex>2){//下标从3开始需要向右移动偏移量
 					console.log('0000')
-					// 要偏移的像素
-					var oldLeftVal = $JList.css('left');
-					var offsetsize = (lastActiveIndex-curIndex)*parseInt(itemLength);
-					var newLeftVal = parseInt(oldLeftVal)+offsetsize;
-					console.log('newLeftVal',oldLeftVal,offsetsize,newLeftVal)
-					$JList.animate({'left':newLeftVal});
+					if(curIndex<len-3){
+						// 要偏移的像素
+						// var offsetsize = (lastActiveIndex-curIndex)*parseInt(itemLength);
+						var offsetsize = parseInt(itemLength);
+						newLeftVal = parseInt(oldLeftVal)+offsetsize;
+						console.log('newLeftVal',oldLeftVal,offsetsize,newLeftVal)
+						$JList.animate({'left':newLeftVal});
+					}
 				}else if(curIndex!=lastActiveIndex){
 					if(curIndex>2 && curIndex<len-2){
 						console.log('22222')
-						var oldLeftVal = $JList.css('left');
-						var newLeftVal = 0;
+						oldLeftVal = $JList.css('left');
+						// var newLeftVal = 0;
 						if(lastActiveIndex<3){
 							newLeftVal = parseInt(oldLeftVal)-(curIndex-2)*parseInt(itemLength);
 						}else{
-							newLeftVal = parseInt(oldLeftVal)-parseInt(itemLength);
+							console.log('33333')
+							var offs = (curIndex-lastActiveIndex)*parseInt(itemLength)
+							newLeftVal = parseInt(oldLeftVal)-offs;
 						}
 						$JList.animate({left:newLeftVal});
 						console.log(parseInt(oldLeftVal)-(curIndex-2)*parseInt(itemLength))
 					}
+					if(curIndex==len-2 && lastActiveIndex<len-3){
+						newLeftVal =parseInt(oldLeftVal)-parseInt(itemLength);
+						$JList.animate({left:newLeftVal});
+						console.log('44444',parseInt(oldLeftVal),newLeftVal)
+					}
 				}
-
 				if(curIndex<3){
 					$JList.animate({'left':0});
 				}
-
 				// 设置选中效果
 				$JListItem.removeClass('active');
 				$(this).addClass('active');
