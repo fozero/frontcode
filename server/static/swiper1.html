@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>图片轮播-动画</title>
+	<title>图片轮播-动画-8个</title>
 	<style>
 		ul,li{margin: 0;padding: 0;}
 		.clearfix:after{
@@ -11,6 +11,17 @@
 			height: 0 ;
 			clear: both ;
 			visibility: hidden ;
+		}
+		.main-video{
+position: relative;
+height: 500px;
+		}
+		.main-video video{
+			    position: absolute;
+    top: 0;
+    height: 500px;
+    left: 50%;
+    transform: translateX(-50%);
 		}
 		.option-border{
 			position: absolute;
@@ -57,14 +68,18 @@
 			border-top: 3px solid #333;
 			color: #000;
 		}
+
+		
 	</style>
 </head>
 <!-- https://www.tesla.com/models-->
 <body>
 	<div class="main-video" style="    width: 960px;margin: 0 auto;">
-    <video preload playsinline autoplay loop muted poster="http://video.xiaopeng.com/m/auto-parking/video_01.jpg?v=1" class="banner-figure-el J_video">
+    <!-- <video class="J_video" preload playsinline autoplay loop muted poster="http://video.xiaopeng.com/m/auto-parking/video_01.jpg?v=1" class="banner-figure-el J_video">
       <source src="https://video.xiaopeng.com/m/auto-parking/first.mp4" type="video/mp4">
-    </video>
+    </video> -->
+    <video class="J_video1" autoplay="true" muted src="https://www.tesla.com/ns_videos/models/autonomy/lane_change.mp4"></video>
+    <!-- <video class="J_video2" autoplay="true" src="https://www.tesla.com/ns_videos/models/autonomy/avoidance.mp4"></video> -->
   </div>
   
 	<div class="swiper-containner">
@@ -82,18 +97,28 @@
 	</div>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	var curIndex = 0,len=0,itemLength=0,lastActiveIndex=0,$JList=null,$JListItem=null,oldLeftVal=0,newLeftVal = 0,offsetsize=0;
+	var curIndex = 0,len=0,itemLength=0,lastActiveIndex=0,$JList=null,$JListItem=null,$JVideo1=null,oldLeftVal=0,newLeftVal = 0,offsetsize=0;
 	var oldBorderLeftVal=0,newBorderLeftVal=0,$optionBorder=null,timer = null;
+
+	var videos = ['https://www.tesla.com/ns_videos/models/autonomy/lane_change.mp4','https://www.tesla.com/ns_videos/models/autonomy/avoidance.mp4','https://www.tesla.com/ns_videos/models/autonomy/parking.mp4','https://www.tesla.com/ns_videos/models/autonomy/route.mp4','https://www.tesla.com/ns_videos/models/autonomy/route_fill.mp4','https://www.tesla.com/ns_videos/models/autonomy/summon.mp4','https://www.tesla.com/ns_videos/models/autonomy/avoidance.mp4','https://www.tesla.com/ns_videos/models/autonomy/avoidance.mp4'];
 	
 	$(function(){
+		console.log('v',$('.J_video'))
 		$JList = $('.J_list');
 		$JListItem = $(".J_list .item");
 		$optionBorder = $(".option-border");
+		$JVideo1 = $('.J_video1');
 		// 元素个数
 		len = $JListItem.length;
 		// 单个item项的宽度
 		itemLength = $JListItem.css("width");
-		startPlay();
+		// startPlay();
+		// changevideo(0);
+		// 
+		// 播放结束
+		$JVideo1.on('ended',function(){
+			autoPlay();
+		});
 		$JListItem.each(function(){
 			$(this).click(function(){
 				clearInterval(timer);
@@ -129,14 +154,20 @@
 					}
 				}
 				borderAni();
+				changevideo(curIndex);
 				$JList.animate({'left':newLeftVal});
 				$JListItem.removeClass('active');
 				$(this).addClass('active');
-				startPlay();
+				// startPlay();
 				console.log('click curIndex',lastActiveIndex,curIndex,oldLeftVal,newLeftVal)
 			});
 		});
 	});
+	// 视频播放
+	function changevideo(index){
+		$JVideo1[0].src = videos[index];
+		$JVideo1[0].play();
+	}
 	function borderAni(){
 		oldBorderLeftVal = $optionBorder.css('left');
 		if(curIndex==0){
@@ -189,6 +220,7 @@
 			newLeftVal = 0;
 		}
 		borderAni();
+		changevideo(curIndex);
 		$JList.animate({'left':newLeftVal});
 		$JListItem.removeClass('active');
 		$JListItem.eq(curIndex).addClass("active");

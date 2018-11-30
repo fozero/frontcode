@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>图片轮播-动画-自定义选项数量</title>
+	<title>图片轮播-动画-6个</title>
 	<style>
 		ul,li{margin: 0;padding: 0;}
 		.clearfix:after{
@@ -11,6 +11,17 @@
 			height: 0 ;
 			clear: both ;
 			visibility: hidden ;
+		}
+		.main-video{
+position: relative;
+height: 500px;
+		}
+		.main-video video{
+			    position: absolute;
+    top: 0;
+    height: 500px;
+    left: 50%;
+    transform: translateX(-50%);
 		}
 		.option-border{
 			position: absolute;
@@ -57,17 +68,21 @@
 			border-top: 3px solid #333;
 			color: #000;
 		}
+
+		
 	</style>
 </head>
 <!-- https://www.tesla.com/models-->
 <body>
 	<div class="main-video" style="    width: 960px;margin: 0 auto;">
-    <video preload playsinline autoplay loop muted poster="http://video.xiaopeng.com/m/auto-parking/video_01.jpg?v=1" class="banner-figure-el J_video">
+    <!-- <video class="J_video" preload playsinline autoplay loop muted poster="http://video.xiaopeng.com/m/auto-parking/video_01.jpg?v=1" class="banner-figure-el J_video">
       <source src="https://video.xiaopeng.com/m/auto-parking/first.mp4" type="video/mp4">
-    </video>
+    </video> -->
+    <video class="J_video1" autoplay="true" muted src="https://www.tesla.com/ns_videos/models/autonomy/lane_change.mp4"></video>
+    <!-- <video class="J_video2" autoplay="true" src="https://www.tesla.com/ns_videos/models/autonomy/avoidance.mp4"></video> -->
   </div>
   
-	<div class="swiper-containner" id="swiper-containner">
+	<div class="swiper-containner">
 		<div class="option-border"></div>
 		<ul class="list J_list clearfix">
 			<li class="item active"><div class="txt">c1</div></li>
@@ -76,131 +91,139 @@
 			<li class="item"><div class="txt">c4</div></li>
 			<li class="item"><div class="txt">c5</div></li>
 			<li class="item"><div class="txt">c6</div></li>
-			<li class="item"><div class="txt">c7</div></li>
-			<li class="item"><div class="txt">c8</div></li>
 		</ul>
 	</div>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<script src="./optionslide.plugin.js"></script>
 <script>
-	$(function(){
-		$('#swiper-containner').optionSlide({
-			'speed':1000,
-			'count':6
-		});
-	})
-	// var curIndex = 0,len=0,itemLength=0,lastActiveIndex=0,$JList=null,$JListItem=null,oldLeftVal=0,newLeftVal = 0,offsetsize=0;
-	// var oldBorderLeftVal=0,newBorderLeftVal=0,$optionBorder=null,timer = null;
+	var curIndex = 0,len=0,itemLength=0,lastActiveIndex=0,$JList=null,$JListItem=null,$JVideo1=null,oldLeftVal=0,newLeftVal = 0,offsetsize=0;
+	var oldBorderLeftVal=0,newBorderLeftVal=0,$optionBorder=null,timer = null;
+
+	var videos = ['https://www.tesla.com/ns_videos/models/autonomy/lane_change.mp4','https://www.tesla.com/ns_videos/models/autonomy/avoidance.mp4','https://www.tesla.com/ns_videos/models/autonomy/parking.mp4','https://www.tesla.com/ns_videos/models/autonomy/route.mp4','https://www.tesla.com/ns_videos/models/autonomy/route_fill.mp4','https://www.tesla.com/ns_videos/models/autonomy/summon.mp4','https://www.tesla.com/ns_videos/models/autonomy/avoidance.mp4','https://www.tesla.com/ns_videos/models/autonomy/avoidance.mp4'];
 	
-	// $(function(){
-	// 	$JList = $('.J_list');
-	// 	$JListItem = $(".J_list .item");
-	// 	$optionBorder = $(".option-border");
-	// 	// 元素个数
-	// 	len = $JListItem.length;
-	// 	// 单个item项的宽度
-	// 	itemLength = $JListItem.css("width");
-	// 	startPlay();
-	// 	$JListItem.each(function(){
-	// 		$(this).click(function(){
-	// 			clearInterval(timer);
-	// 			// 最后一个点击项
-	// 			lastActiveIndex = curIndex;
-	// 			curIndex = $(this).index();
-	// 			oldLeftVal = $JList.css('left');
-	// 			// 当前不可点击
-	// 			if(curIndex==lastActiveIndex){
-	// 				return;
-	// 			}
-	// 			// 前三个
-	// 			if(curIndex<3){
-	// 				newLeftVal = 0;
-	// 			}else{
-	// 				if(curIndex<lastActiveIndex && curIndex<len-3){//点左侧->向右偏移
-	// 					console.log(1)
-	// 					offsetsize = parseInt(itemLength);
-	// 					newLeftVal = parseInt(oldLeftVal)+offsetsize;
-	// 				}else if(curIndex>lastActiveIndex){// 右侧->向左偏移
-	// 					console.log(2)
-	// 					if(curIndex>2 && curIndex<len-2){
-	// 						if(lastActiveIndex<3){
-	// 							newLeftVal = parseInt(oldLeftVal)-(curIndex-2)*parseInt(itemLength);
-	// 						}else{
-	// 							offsetsize = (curIndex-lastActiveIndex)*parseInt(itemLength)
-	// 							newLeftVal = parseInt(oldLeftVal)-offsetsize;
-	// 						}
-	// 					}
-	// 					if(curIndex==len-2 && lastActiveIndex<len-3){
-	// 						newLeftVal =parseInt(oldLeftVal)-parseInt(itemLength);
-	// 					}
-	// 				}
-	// 			}
-	// 			borderAni();
-	// 			$JList.animate({'left':newLeftVal});
-	// 			$JListItem.removeClass('active');
-	// 			$(this).addClass('active');
-	// 			startPlay();
-	// 			console.log('click curIndex',lastActiveIndex,curIndex,oldLeftVal,newLeftVal)
-	// 		});
-	// 	});
-	// });
-	// function borderAni(){
-	// 	oldBorderLeftVal = $optionBorder.css('left');
-	// 	if(curIndex==0){
-	// 		newBorderLeftVal = 0;
-	// 	}else{
-	// 		if(curIndex>lastActiveIndex){//往右
-	// 			if(curIndex>0 && curIndex<3 || curIndex>len-3){
-	// 				if(curIndex==len-2){
-	// 					newBorderLeftVal = parseInt(oldBorderLeftVal)+parseInt(itemLength);
-	// 				}else{
-	// 					newBorderLeftVal = parseInt(oldBorderLeftVal)+(curIndex-lastActiveIndex)*parseInt(itemLength);
-	// 				}
-	// 			}else{//2<curIndex<len-2
-	// 				newBorderLeftVal = 2*parseInt(itemLength);
-	// 			}
-	// 		}else{//往左
-	// 			if(curIndex<2 || curIndex>len-4){
-	// 				if(curIndex==1){
-	// 					newBorderLeftVal = parseInt(itemLength);
-	// 				}else{
-	// 					newBorderLeftVal = parseInt(oldBorderLeftVal)-(lastActiveIndex-curIndex)*parseInt(itemLength);
-	// 				}
-	// 			}else{
-	// 				newBorderLeftVal = 2*parseInt(itemLength);
-	// 			}
-	// 		}
-	// 	}
-	// 	$optionBorder.animate({'left':newBorderLeftVal});
-	// 	console.log('optionBorder',lastActiveIndex,curIndex,oldBorderLeftVal,newBorderLeftVal)
-	// }
-	// function startPlay(){
-	// 	if(timer){
-	// 		clearInterval(timer);
-	// 		timer = null;
-	// 	}
-	// 	timer = setInterval(autoPlay,3000);
-	// }
-	// function autoPlay(){
-	// 	lastActiveIndex = curIndex;
-	// 	if(curIndex<len-1){
-	// 		curIndex++;
-	// 	}else{
-	// 		curIndex=0
-	// 	}
-	// 	oldLeftVal = $JList.css('left');
-	// 	if(curIndex>2 && curIndex<len-2){// 前3个和后3个不偏移
-	// 		newLeftVal = parseInt(oldLeftVal)-parseInt(itemLength);
-	// 	}
-	// 	if(curIndex<3){
-	// 		newLeftVal = 0;
-	// 	}
-	// 	borderAni();
-	// 	$JList.animate({'left':newLeftVal});
-	// 	$JListItem.removeClass('active');
-	// 	$JListItem.eq(curIndex).addClass("active");
-	// 	console.log('curIndex',curIndex,oldLeftVal,newLeftVal)
-	// }
+	$(function(){
+		console.log('v',$('.J_video'))
+		$JList = $('.J_list');
+		$JListItem = $(".J_list .item");
+		$optionBorder = $(".option-border");
+		$JVideo1 = $('.J_video1');
+		// 元素个数
+		len = $JListItem.length;
+		// 单个item项的宽度
+		itemLength = $JListItem.css("width");
+		// startPlay();
+		// changevideo(0);
+		// 
+		// 播放结束
+		$JVideo1.on('ended',function(){
+			autoPlay();
+		});
+		$JListItem.each(function(){
+			$(this).click(function(){
+				clearInterval(timer);
+				// 最后一个点击项
+				lastActiveIndex = curIndex;
+				curIndex = $(this).index();
+				oldLeftVal = $JList.css('left');
+				// 当前不可点击
+				if(curIndex==lastActiveIndex){
+					return;
+				}
+				// 前三个
+				if(curIndex<3){
+					newLeftVal = 0;
+				}else{
+					if(curIndex<lastActiveIndex && curIndex<len-3){//点左侧->向右偏移
+						console.log(1)
+						offsetsize = parseInt(itemLength);
+						newLeftVal = parseInt(oldLeftVal)+offsetsize;
+					}else if(curIndex>lastActiveIndex){// 右侧->向左偏移
+						console.log(2)
+						if(curIndex>2 && curIndex<len-2){
+							if(lastActiveIndex<3){
+								newLeftVal = parseInt(oldLeftVal)-(curIndex-2)*parseInt(itemLength);
+							}else{
+								offsetsize = (curIndex-lastActiveIndex)*parseInt(itemLength)
+								newLeftVal = parseInt(oldLeftVal)-offsetsize;
+							}
+						}
+						if(curIndex==len-2 && lastActiveIndex<len-3){
+							newLeftVal =parseInt(oldLeftVal)-parseInt(itemLength);
+						}
+					}
+				}
+				borderAni();
+				changevideo(curIndex);
+				$JList.animate({'left':newLeftVal});
+				$JListItem.removeClass('active');
+				$(this).addClass('active');
+				// startPlay();
+				console.log('click curIndex',lastActiveIndex,curIndex,oldLeftVal,newLeftVal)
+			});
+		});
+	});
+	// 视频播放
+	function changevideo(index){
+		$JVideo1[0].src = videos[index];
+		$JVideo1[0].play();
+	}
+	function borderAni(){
+		oldBorderLeftVal = $optionBorder.css('left');
+		if(curIndex==0){
+			newBorderLeftVal = 0;
+		}else{
+			if(curIndex>lastActiveIndex){//往右
+				if(curIndex>0 && curIndex<3 || curIndex>len-3){
+					if(curIndex==len-2){
+						newBorderLeftVal = parseInt(oldBorderLeftVal)+parseInt(itemLength);
+					}else{
+						newBorderLeftVal = parseInt(oldBorderLeftVal)+(curIndex-lastActiveIndex)*parseInt(itemLength);
+					}
+				}else{//2<curIndex<len-2
+					newBorderLeftVal = 2*parseInt(itemLength);
+				}
+			}else{//往左
+				if(curIndex<2 || curIndex>len-4){
+					if(curIndex==1){
+						newBorderLeftVal = parseInt(itemLength);
+					}else{
+						newBorderLeftVal = parseInt(oldBorderLeftVal)-(lastActiveIndex-curIndex)*parseInt(itemLength);
+					}
+				}else{
+					newBorderLeftVal = 2*parseInt(itemLength);
+				}
+			}
+		}
+		$optionBorder.animate({'left':newBorderLeftVal});
+		console.log('optionBorder',lastActiveIndex,curIndex,oldBorderLeftVal,newBorderLeftVal)
+	}
+	function startPlay(){
+		if(timer){
+			clearInterval(timer);
+			timer = null;
+		}
+		timer = setInterval(autoPlay,3000);
+	}
+	function autoPlay(){
+		lastActiveIndex = curIndex;
+		if(curIndex<len-1){
+			curIndex++;
+		}else{
+			curIndex=0
+		}
+		oldLeftVal = $JList.css('left');
+		if(curIndex>2 && curIndex<len-2){// 前3个和后3个不偏移
+			newLeftVal = parseInt(oldLeftVal)-parseInt(itemLength);
+		}
+		if(curIndex<3){
+			newLeftVal = 0;
+		}
+		borderAni();
+		changevideo(curIndex);
+		$JList.animate({'left':newLeftVal});
+		$JListItem.removeClass('active');
+		$JListItem.eq(curIndex).addClass("active");
+		console.log('curIndex',curIndex,oldLeftVal,newLeftVal)
+	}
 </script>
 </body>
 </html>
