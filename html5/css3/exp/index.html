@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<!-- 
+
+transition 属性是一个简写属性，用于设置四个过渡属性：
+
+transition-property
+transition-duration
+transition-timing-function
+transition-delay
+
+ -->
+<body>
+	<div class="section2">
+		<div class="c1">
+			
+		</div>
+		<style>
+			.section2 .c1{
+				width:100px;
+height:100px;
+background:blue;
+transition:width 2s;
+            /*transition:all 0.5s;*/
+			}
+			.section2 .c1:hover{
+				width:300px;
+			}
+		</style>
+	</div>
+	<div class="section1">
+		<div class="c1">
+			对号
+			<a href="#"></a>
+		</div>
+		<div class="c2">
+			叉号
+			<a href="#"></a>
+		</div>
+		<style>
+		.section1 .c1 a{ display: inline-block; width: 10px;height:5px; background: red;line-height: 0;font-size:0;vertical-align: middle;-webkit-transform: rotate(45deg);}
+	      .section1 .c1 a:after{content:'/';display:block;width: 20px;height:5px; background: red;-webkit-transform: rotate(-90deg) translateY(-50%) translateX(50%);}
+			        .c2 a{ display: inline-block; width: 20px;height:5px; background: red;line-height: 0;font-size:0;vertical-align: middle;-webkit-transform: rotate(45deg);}
+	  .section1 .c2 a:after{content:'/';display:block;width: 20px;height:5px; background: red;-webkit-transform: rotate(-90deg);}
+		</style>
+	</div>
+</body>
+</html>
