@@ -26,10 +26,81 @@
 	.J_btn_right{
 		border: 1px solid red;
 	}
+
+	/**/
+	.section2{
+		width: 375px;
+		height: 400px;
+		text-align: center;
+	}
+	.section2 .swiper-container{
+		    position: relative;
+		 width: 300px;
+       height: 400px;
+	}
+	.section2 .swiper-container .swiper-slide{
+			height: 200px;
+		}
+	.section2 .swiper-container img{
+		    width: 100%;
+    height: 100%;
+	}
+	.section2 .swiper-pagination{
+		position: absolute;
+    bottom: 30px;
+	}
+	.section2 .content{
+		/*margin-top: 10px;*/
+		position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translate(-50%);
+	}
+	/*section3*/
+	.section3{
+		width: 375px;
+		height: 400px;
+	}
+	.section3 .swiper-container img{
+		    width: 100%;
+    height: 100%;
+	}
+	.section3 .swiper3{
+		height: 400px;
+	}
+	.section3 .switch-tabs{
+	display: flex;
+	    position: absolute;
+    top: 40%;
+    z-index: 999;
+    top: 260px;
+    left: 50%;
+    transform: translate(-50%);
+	}
+	.section3 .tab-item{
+		cursor: pointer;
+		    margin-left: 20px;
+	}
+	.section3 .tab-item .color{
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		border-radius: 50px;
+	}
+	.section3 .tab-item1 .color{
+		background: red;
+	}
+	.section3 .tab-item2 .color{
+		background: blue;
+	}
+	.section3 .tab-item3 .color{
+		background: black;
+	}
 	</style>
 </head>
 <body>
-	<div class="swiper-container">
+<div class="main" style="width: 600px;">
+	<div class="swiper-container swiper1">
 	  <div class="swiper-wrapper">
 	    <div class="swiper-slide slide1">slider1</div>
 	    <div class="swiper-slide slide2">slider2</div>
@@ -38,17 +109,52 @@
 	  <div class="swiper-button-prev"></div><!--左箭头-->
       <div class="swiper-button-next"></div><!--右箭头-->
 
-      <!--自定义 
-       -->
+      <!--自定义 -->
        <div class="btns">
        	<button class="J_btn_left">left</button>
        	<button class="J_btn_right">right</button>
        </div>
 	</div>
+	<div class="section section2">
+			<div class="swiper-container swiper2">
+				<div>哈哈哈哈哈</div>
+			  <div class="swiper-wrapper">
+			    <div class="swiper-slide slide1"><img src="./img/1.png" alt=""></div>
+			    <div class="swiper-slide slide2"><img src="./img/2.png" alt=""></div>
+			    <div class="swiper-slide slide3"><img src="./img/3.png" alt=""></div>
+			  </div>
+			  <div class="content">
+			  	<div>你说的对</div>
+			  	<div>哈哈哈哈哈哈长得帅</div>
+			  </div>
+			  <div class="swiper-pagination"></div>
+			</div>
+	</div>
+	<div class="section section3">
+			<div class="swiper-container swiper3">
+			  <div class="swiper-wrapper">
+			    <div class="swiper-slide slide1"><img src="./img/1.png" alt=""></div>
+			    <div class="swiper-slide slide2"><img src="./img/2.png" alt=""></div>
+			    <div class="swiper-slide slide3"><img src="./img/3.png" alt=""></div>
+			  </div>
+			  <div class="switch-tabs">
+			  	<div class="tab-item tab-item1">
+			  		<span class="color"></span>
+			  	</div>
+			  	<div class="tab-item tab-item2">
+			  		<span class="color"></span>
+			  	</div>
+			  	<div class="tab-item tab-item3">
+			  		<span class="color"></span>
+			  	</div>
+			  </div>
+			</div>
+	</div>
+</div>
 <script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
 	<script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.min.js"></script>
 	<script>
-	var mySwiper = new Swiper('.swiper-container', {
+	var mySwiper = new Swiper('.swiper1', {
 		autoplay: false,//可选选项，自动滑动
 		centeredSlides : true,//设定为true时，active slide会居
 		slidesPerView : 1.4,//能够同时显示的slides数量
@@ -84,6 +190,82 @@
 	  $('.J_btn_right').click(function(){
 	    mySwiper.slideNext();
 	  })
+
+
+	var mySwiper2 = new Swiper('.swiper2', {
+		autoplay: false,//可选选项，自动滑动
+		centeredSlides : true,//设定为true时，active slide会居
+		slidesPerView : 1,//能够同时显示的slides数量
+		// spaceBetween : 20,//间距
+		// slidesOffsetBefore : 100,//与左边偏移量
+		loop:true,
+		speed:500,
+		initialSlide :1,//初始化时slide的索引。
+		// navigation: {
+	 //      nextEl: '.swiper-button-next',
+	 //      prevEl: '.swiper-button-prev',
+	 //    },
+	 effect : 'fade',//切换效果 
+	    pagination: { //分页器
+		    el: '.swiper-pagination',
+		  },
+		on: {//回调函数
+		    init: function(){
+		      //Swiper初始化了
+		      // alert('当前的slide序号是'+this.activeIndex);
+		      this.emit('transitionEnd');//在初始化时触发一次transitionEnd事件
+		    }, 
+		    transitionEnd: function(swiper){
+		      // alert('过渡结束');
+		    },
+		    slideNextTransitionEnd: function(){
+		      console.log('当前的slide序号是'+this.activeIndex)
+		    },
+		    slidePrevTransitionEnd: function(){
+		      console.log('当前的slide序号是'+this.activeIndex)
+		    },
+		  },
+	})
+	var mySwiper3 = new Swiper('.swiper3', {
+		autoplay: false,//可选选项，自动滑动
+		centeredSlides : true,//设定为true时，active slide会居
+		slidesPerView : 1,//能够同时显示的slides数量
+		// spaceBetween : 20,//间距
+		// slidesOffsetBefore : 100,//与左边偏移量
+		loop:false,
+		speed:500,
+		initialSlide :0,//初始化时slide的索引。
+		// navigation: {
+	 //      nextEl: '.swiper-button-next',
+	 //      prevEl: '.swiper-button-prev',
+	 //    },
+	 effect : 'fade',//切换效果 
+	    pagination: { //分页器
+		    el: '.swiper-pagination',
+		  },
+		on: {//回调函数
+		    init: function(){
+		      //Swiper初始化了
+		      // alert('当前的slide序号是'+this.activeIndex);
+		      this.emit('transitionEnd');//在初始化时触发一次transitionEnd事件
+		    }, 
+		    transitionEnd: function(swiper){
+		      // alert('过渡结束');
+		    },
+		    slideNextTransitionEnd: function(){
+		      console.log('当前的slide序号是'+this.activeIndex)
+		    },
+		    slidePrevTransitionEnd: function(){
+		      console.log('当前的slide序号是'+this.activeIndex)
+		    },
+		  },
+	})
+	$('.switch-tabs .tab-item').each(function(){
+		$(this).click(function(item){
+			console.log('$(this).index()',$(this).index())
+			 mySwiper3.slideTo($(this).index(), 1000, false);//切换到第一个slide，速度为1秒
+		})
+	});
 	</script>
 </body>
 </html>
