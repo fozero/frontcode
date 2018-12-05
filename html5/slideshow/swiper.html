@@ -132,7 +132,7 @@
 	</div>
 	<div class="section section3">
 			<div class="swiper-container swiper3">
-			  <div class="swiper-wrapper">
+			  <div class="swiper-wrapper no-swiping">
 			    <div class="swiper-slide slide1"><img src="./img/1.png" alt=""></div>
 			    <div class="swiper-slide slide2"><img src="./img/2.png" alt=""></div>
 			    <div class="swiper-slide slide3"><img src="./img/3.png" alt=""></div>
@@ -233,8 +233,10 @@
 		// spaceBetween : 20,//间距
 		// slidesOffsetBefore : 100,//与左边偏移量
 		loop:false,
-		speed:500,
+		speed:0,
 		initialSlide :0,//初始化时slide的索引。
+		noSwiping : true,//设置class禁止点击滑动  只能通过组件控制
+		noSwipingClass : 'no-swiping',//
 		// navigation: {
 	 //      nextEl: '.swiper-button-next',
 	 //      prevEl: '.swiper-button-prev',
