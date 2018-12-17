@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.main{
+		position: relative;
+		color: #fff;
+		text-align: center;
+	}
+		.block{
+			height: 800px;
+		}
+		.block1{
+			background: #333;
+		}
+		.block2{
+			background: blue;
+		}
+		.block3{
+			background: yellow;
+		}
+		.block4{
+			background: black;
+		}
+		.block5{
+			background: #222;
+		}
+		.md{
+			position: fixed;
+			bottom: 40px;
+			right: 40px;
+		}
+		.md-btn{
+			margin-top: 20px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<!-- 
+
+scrollIntoView 
+原生用法
+document.getElementById("block2").scrollIntoView();
+
+jquery
+$('.block')[0].scrollIntoView();
+ -->
+<body>
+	<div class="main">
+		<div class="md">
+			<div class="md-btn J_up">往上</div>
+			<div class="md-btn J_down">往下</div>
+		</div>
+		<div class="block block1 ">cont1</div>
+		<div class="block block2" >cont2</div>
+		<div class="block block3 active" >cont3</div>
+		<div class="block block4" >cont4</div>
+		<div class="block block5">cont5</div>
+	</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		var index = 0,len=$('.block').length,scrollTop=0;
+
+		var tblock1 = $('.block1').offset().top;
+		var tblock2 = $('.block2').offset().top;
+		var tblock3 = $('.block3').offset().top;
+		var tblock4 = $('.block4').offset().top;
+		var tblock5 = $('.block5').offset().top;
+
+		$(window).scroll(function(e){
+			scrollTop = $(this).scrollTop();
+			if(scrollTop>tblock1&&scrollTop<tblock2){
+				$('.block').removeClass('active');
+				$('.block1').addClass('active');
+			}
+			if(scrollTop>tblock2&&scrollTop<tblock3){
+				$('.block').removeClass('active');
+				$('.block2').addClass('active');
+			}
+			if(scrollTop>tblock3&&scrollTop<tblock4){
+				$('.block').removeClass('active');
+				$('.block3').addClass('active');
+			}
+			if(scrollTop>tblock4&&scrollTop<tblock5){
+				$('.block').removeClass('active');
+				$('.block4').addClass('active');
+			}
+			if(scrollTop>tblock5){
+				$('.block').removeClass('active');
+				$('.block5').addClass('active');
+			}
+		});
+
+		$('.J_up').click(function(){
+			 index = $(".block.active").index()-1;
+			if(index>0){
+				$('.block').removeClass('active');
+				$('.block').eq(index-1).addClass('active');
+				$('.block').eq(index-1)[0].scrollIntoView();
+			}
+		})
+		$('.J_down').click(function(){
+			 index = $(".block.active").index()-1;
+			if(index<len-1){
+				console.log('sss',index)
+				$('.block').removeClass('active');
+				$('.block').eq(index+1).addClass('active');
+				$('.block').eq(index+1)[0].scrollIntoView();
+			}
+		})
+	</script>
+</body>
+</html>
