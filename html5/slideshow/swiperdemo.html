@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>h5轮播效果</title>
+	<link href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css" rel="stylesheet">
+	<style>
+		.swiper-container{
+	      margin-top: 140px;
+	      
+	    }
+	    .swiper-slide{
+        width: 310px;
+        height: 194px;
+        
+      }
+      .swiper-slide img{
+          width: 310px;
+          height: 194px;
+          display: block;
+          pointer-events: none;
+        }
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="swiper-container">
+	      <div class="swiper-wrapper">
+	        <div class="swiper-slide">
+	          <img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/testdrive-pics-img01.jpg" alt="">
+	        </div>
+	        <div class="swiper-slide">
+	          <img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/testdrive-pics-img02.jpg" alt="">
+	        </div>
+	        <div class="swiper-slide">
+	          <img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/testdrive-pics-img03.jpg" alt="">
+	        </div>
+	        <div class="swiper-slide">
+	          <img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/testdrive-pics-img04.jpg" alt="">
+	        </div>
+	        <div class="swiper-slide">
+	          <img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/testdrive-pics-img05.jpg" alt="">
+	        </div>
+	        <div class="swiper-slide">
+	          <img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/testdrive-pics-img06.jpg" alt="">
+	        </div>
+	        <div class="swiper-slide">
+	          <img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/testdrive-pics-img07.jpg" alt="">
+	        </div>
+	        <div class="swiper-slide">
+	          <img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/testdrive-pics-img08.jpg" alt="">
+	        </div>
+	      </div>
+	    </div>
+	</div>
+	<script src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.min.js"></script>
+	<script>
+		new Swiper('.swiper-container', {
+		    watchSlidesProgress: true,
+		    slidesPerView: 'auto',
+		    centeredSlides: true,
+		    loop: true,
+		    loopedSlides: 21,
+		    autoplay: 3000,
+		    onProgress: function(swiper) {
+		      for (var i = 0; i < swiper.slides.length; i++) {
+		        var slide = swiper.slides.eq(i);
+		        var slideProgress = swiper.slides[i].progress;
+		        var modify = 1;
+		        if (Math.abs(slideProgress) > 1) {
+		          modify = (Math.abs(slideProgress) - 1) * 0.3 + 1;
+		        }
+		        var translate = slideProgress * modify * 30 + 'px';
+		        var scale = 1 - Math.abs(slideProgress) / 5;
+		        var zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
+		        slide.transform('translateX(' + translate + ') scale(' + scale + ')');
+		        slide.css('zIndex', zIndex);
+		        slide.css('opacity', 1);
+		        if (Math.abs(slideProgress) > 3) {
+		          slide.css('opacity', 0);
+		        }
+		      }
+		    },
+		    onSetTransition: function(swiper, transition) {
+		      for (var i = 0; i < swiper.slides.length; i++) {
+		        var slide = swiper.slides.eq(i);
+		        slide.transition(transition);
+		      }
+		    }
+		  })
+	</script>
+</body>
+</html>
