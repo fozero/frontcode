@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>tab切换</title>
+	<style>
+	.config-item.active{
+		border-bottom: 1px solid blue;
+	}
+	.block-4-item{
+		display: none;
+	}
+	.block-4-item.active{
+		display: block;
+	}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="config-tab">
+			<div class="config-title">
+				<span class="config-item active">tab1</span>
+				<span class="config-item">tab2</span>
+				<span class="config-item">tab3</span>
+			</div>
+			<div class="block-4-item active">
+				item1
+			</div>
+			<div class="block-4-item">
+				item2
+			</div>
+			<div class="block-4-item">
+				item3
+			</div>
+		</div>
+	</div>
+	
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	  $('.config-item').on('click', function () {
+	    $(this).addClass('active').siblings().removeClass('active');
+	    $('.block-4-item').eq($(this).index()).addClass('active').siblings().removeClass('active');
+	  });
+</script>
+</body>
+</html>

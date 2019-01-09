@@ -1,0 +1,78 @@
+@charset "UTF-8";
+/*
+* @Author: fozero@126.
+* @Date:   2019-01-09 18:51:55
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-01-09 19:00:15
+*/
+/*// 手风琴样式重写*/
+.cont {
+  padding: 0;
+  height: 700px;
+  background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3_index_bg2.jpg) no-repeat center;
+  background-size: auto 700px; }
+  .cont .el {
+    box-sizing: border-box;
+    background: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.2); }
+    .cont .el.s--active {
+      border-right: none; }
+      .cont .el.s--active .el__bg {
+        opacity: 1;
+        background-size: auto 700px; }
+    .cont .el:hover .el__heading {
+      transform: translateY(-20px); }
+    .cont .el:hover .icon-zhankai {
+      transform: translateY(20px);
+      opacity: 1; }
+  .cont .el__heading {
+    width: 100%;
+    padding-left: 20px;
+    font-size: 24px;
+    font-weight: 300;
+    transition: all 0.5s; }
+  .cont .icon-zhankai {
+    transition: all 0.5s;
+    position: absolute;
+    left: 10px;
+    bottom: 220px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    opacity: 0.5; }
+  .cont .el__bg {
+    transition: opacity 1s linear;
+    opacity: 0;
+    width: 100%; }
+    .cont .el__bg:after {
+      background: none; }
+    .cont .el__bg.el__bg__1 {
+      background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3-index-banner1.png) no-repeat; }
+    .cont .el__bg.el__bg__2 {
+      background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3-index-banner2.png) no-repeat; }
+    .cont .el__bg.el__bg__3 {
+      background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3-index-banner3.jpg) no-repeat; }
+    .cont .el__bg.el__bg__4 {
+      background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3-index-banner4.png) no-repeat; }
+    .cont .el__bg.el__bg__5 {
+      background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3-index-banner5.png) no-repeat; }
+  .cont .el__preview-cont {
+    background-size: auto 700px; }
+  .cont .el__content {
+    padding: 0;
+    background-size: auto 700px; }
+  .cont .el__text {
+    position: absolute;
+    bottom: 80px;
+    left: 80px;
+    width: 500px; }
+  .cont .el__text__title {
+    font-size: 20px; }
+  .cont .el__text__desc {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #c9c9c9;
+    font-weight: 300; }
+  .cont .el__close-btn {
+    width: 40px;
+    height: 40px; }

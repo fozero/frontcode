@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../lib/accordion/style.css">
+	<style>
+		/*// 手风琴样式重写*/
+		.cont {
+		  padding: 0;
+		  height: 700px;
+		  background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3_index_bg2.jpg) no-repeat center;
+		  background-size: auto 700px;
+		  .el {
+		    box-sizing: border-box;
+		    background: none;
+		    border-right: 1px solid rgba($color: #fff, $alpha: .2);
+		    &.s--active {
+		      border-right: none;
+		      .el__bg {
+		        opacity: 1;
+		        background-size: auto 700px;
+		      }
+		    }
+		    &:hover {
+		      .el__heading {
+		        transform: translateY(-20px);
+		      }
+		      .icon-zhankai {
+		        transform: translateY(20px);
+		        opacity: 1;
+		      }
+		    }
+		    // &:hover:after {
+		    //   content: '';
+		    //   position: absolute;
+		    //   width: 100%;
+		    //   height: 100%;
+		    //   left: 0;
+		    //   bottom: 0;
+		    //   right: 0;
+		    //   top: 0;
+		    //   background-color: rgba(255,255,255,.2);
+		    // }
+		  }
+		  .el__heading {
+		    width: 100%;
+		    padding-left: 20px;
+		    font-size: 24px;
+		    font-weight: 300;
+		    transition: all 0.5s;
+		  }
+		  .icon-zhankai {
+		    transition: all 0.5s;
+		    position: absolute;
+		    left: 10px;
+		    bottom: 220px;
+		    color: #fff;
+		    font-size: 40px;
+		    cursor: pointer;
+		    opacity: 0.5;
+		  }
+		  .el__bg {
+		    transition: opacity 1s linear;
+		    opacity: 0;
+		    width: 100%;
+		    &:after {
+		      background: none;
+		    }
+		    &.el__bg__1 {
+		      background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3-index-banner1.png) no-repeat;
+		    }
+		    &.el__bg__2 {
+		      background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3-index-banner2.png) no-repeat;
+		    }
+		    &.el__bg__3 {
+		      background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3-index-banner3.jpg) no-repeat;
+		    }
+		    &.el__bg__4 {
+		      background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3-index-banner4.png) no-repeat;
+		    }
+		    &.el__bg__5 {
+		      background: url(https://s01.xiaopeng.com/www/1.0.9/pc/img/g3/g3-index-banner5.png) no-repeat;
+		    }
+		  }
+		  .el__preview-cont {
+		    background-size: auto 700px;
+		  }
+		  .el__content {
+		    padding: 0;
+		    background-size: auto 700px;
+		  }
+		  .el__text {
+		    position: absolute;
+		    bottom: 80px;
+		    left: 80px;
+		    width: 500px;
+		  }
+		  .el__text__title {
+		    font-size: 20px;
+		  }
+		  .el__text__desc {
+		    margin-top: 20px;
+		    font-size: 14px;
+		    color: #c9c9c9;
+		    font-weight: 300;
+		  }
+		  .el__close-btn {
+		    width: 40px;
+		    height: 40px;
+		  }
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="block-7 cont s--inactive">
+
+		    <div class="cont__inner">
+
+		      <div class="el">
+		        <div class="el__overflow">
+		          <div class="el__inner">
+		            <div class="el__bg el__bg__1"></div>
+		            <div class="el__preview-cont">
+		              <h2 class="el__heading">
+		                光剑LED日间行车灯
+		              </h2>
+		              <i class="icon icon-zhankai"></i>
+		            </div>
+		            <div class="el__content">
+		              <div class="el__text">
+		                <p class="el__text__title">
+		                  光剑LED日间行车灯
+		                </p>
+		                <p class="el__text__desc">
+		                  从科幻电影中获取灵感，搭配极简的前脸造型，营造出科技与运动感。
+		                </p>
+		              </div>
+		              <div class="el__close-btn"></div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+
+
+		      <div class="el">
+		        <div class="el__overflow">
+		          <div class="el__inner">
+		            <div class="el__bg el__bg__2"></div>
+		            <div class="el__preview-cont">
+		              <h2 class="el__heading">
+		                一体式钻石矩阵LED尾灯
+		              </h2>
+		              <i class="icon icon-zhankai"></i>
+		            </div>
+		            <div class="el__content">
+		              <div class="el__text">
+		                <p class="el__text__title">
+		                  一体式钻石矩阵LED尾灯
+		                </p>
+		                <p class="el__text__desc">
+		                  通过在反光碗上运用钻石切割手法，让尾灯整体造型在简洁的同时<br>
+		                  又实现了复杂的点亮效果，在不同角度都给人以强烈的视觉冲击。
+		                </p>
+		              </div>
+		              <div class="el__close-btn"></div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+
+
+		      <div class="el">
+		        <div class="el__overflow">
+		          <div class="el__inner">
+		            <div class="el__bg el__bg__3"></div>
+		            <div class="el__preview-cont">
+		              <h2 class="el__heading">
+		                1.889㎡全景式前挡风玻璃
+		              </h2>
+		              <i class="icon icon-zhankai"></i>
+		            </div>
+		            <div class="el__content">
+		              <div class="el__text">
+		                <p class="el__text__title">
+		                  1.889㎡全景式前挡风玻璃
+		                </p>
+		                <p class="el__text__desc">
+		                  坐拥1.889㎡开阔视野，无论是摩天大楼还是蓝天白云，尽收眼底。行业领先的99.4%紫外线阻隔，骄阳似火也不怕被黑。
+		                </p>
+		              </div>
+		              <div class="el__close-btn"></div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+
+
+		      <div class="el">
+		        <div class="el__overflow">
+		          <div class="el__inner">
+		            <div class="el__bg el__bg__4"></div>
+		            <div class="el__preview-cont">
+		              <h2 class="el__heading">
+		                15.6英寸悬浮触控大屏
+		              </h2>
+		              <i class="icon icon-zhankai"></i>
+		            </div>
+		            <div class="el__content">
+		              <div class="el__text">
+		                <p class="el__text__title">
+		                  15.6英寸悬浮触控大屏
+		                </p>
+		                <p class="el__text__desc">
+		                  极简的交互方式，一切以方便驾乘者的使用为核心，动动手指就能控制整车。搭载先进的自感光调节和防炫目抗反射涂层，白天看得见，夜晚不刺眼。
+		                </p>
+		              </div>
+		              <div class="el__close-btn"></div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+
+
+		      <div class="el">
+		        <div class="el__overflow">
+		          <div class="el__inner">
+		            <div class="el__bg el__bg__5"></div>
+		            <div class="el__preview-cont">
+		              <h2 class="el__heading">
+		                NAPPA真皮一体式运动座椅
+		              </h2>
+		              <i class="icon icon-zhankai"></i>
+		            </div>
+		            <div class="el__content">
+		              <div class="el__text">
+		                <p class="el__text__title">
+		                  NAPPA真皮一体式运动座椅
+		                </p>
+		                <p class="el__text__desc">
+		                  在高速行驶以及入弯出弯时，能更好的支撑和保护身体。高品质NAPPA真皮包裹，细腻的触感，亲密无间。
+		                </p>
+		              </div>
+		              <div class="el__close-btn"></div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+
+		    </div>
+
+		  </div>
+	</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		  var $cont=document.querySelector('.cont');var $elsArr=[].slice.call(document.querySelectorAll('.el'));var $closeBtnsArr=[].slice.call(document.querySelectorAll('.el__close-btn'));setTimeout(function(){$cont.classList.remove('s--inactive');},200);$elsArr.forEach(function($el){$el.addEventListener('click',function(){if(this.classList.contains('s--active'))return;$cont.classList.add('s--el-active');this.classList.add('s--active');});});$closeBtnsArr.forEach(function($btn){$btn.addEventListener('click',function(e){e.stopPropagation();$cont.classList.remove('s--el-active');document.querySelector('.el.s--active').classList.remove('s--active');});});
+	</script>
+</body>
+</html>
