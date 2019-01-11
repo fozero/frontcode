@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>nprogress</title>
+	<link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
+</head>
+<body>
+	<div class="main">
+		ddddss
+
+	</div>
+	<script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+	<script>
+		NProgress.start();
+	      window.onload = function () {
+	        NProgress.done();
+	      }
+	      setTimeout(function () {
+	        NProgress.done();
+	      }, 5000);
+	</script>
+</body>
+</html>
