@@ -1,0 +1,47 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-01-11 20:06:57
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-01-12 13:20:04
+*/
+*{
+	box-sizing: border-box;;
+}
+html,body{
+	height: 100%;
+}
+.containner{
+	width: 100%;
+	height: 100%;
+	background: url('./img/bg.jpg');
+	background-size:100%;
+		padding-top: 180px;
+		color: #fff;
+	.title{
+		text-align: center;
+		font-size: 40px;
+	}
+	.luckuser{
+		margin-top: 50px;
+		.slot{
+			width: 200px;
+			height: 200px;
+			border-radius: 200px;
+			// background: url(http://www.jsdaima.com/Upload/1486617283/1.jpg) no-repeat;
+			background-size: 200px auto;
+			margin: 0 auto;
+		}
+	}
+	.start-btn{
+		text-align: center;
+		margin-top: 30px;
+		.item-btn{
+			text-decoration: none;
+			display: none;
+			color: #fff;
+			&.active{
+				display: block;
+			}
+		}
+	}
+}
