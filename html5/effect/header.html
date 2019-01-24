@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>手机端网站头部导航，动画显示隐藏</title>
+	<style>
+	html,body{
+		background: #eee;
+		margin: 0;
+		padding: 0;
+	}
+	ul,li{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+		.header{
+			background: #fff;
+			height: 48px;
+			line-height: 48px;
+			padding-left: 20px;
+			border-bottom: 1px solid #eee;
+		}
+		.header .menu-btn{}
+		.header .menu-btn.is-active .open{
+			display: none;
+		}
+		.header .menu-btn.is-active .close{
+			display: block;
+		}
+		.header .menu-btn .open{
+			display: block;
+		}
+		.header .menu-btn .close{
+			display: none;
+		}
+		.header-pop{
+			background: #fff;
+			padding: 20px;
+			transform: translateY(-120%);
+			transition: transform .5s ease-in-out;
+		}
+		.header-pop.active{
+			transform: translateY(0);
+		}
+		.header-pop .list{}
+		.header-pop .list .item{
+			border-bottom: 1px solid #eee;
+			height: 48px;
+			line-height: 48px;
+		}
+		.header-pop .list .item a{
+			display: flex;
+			position: relative;
+			width: 100%;
+			height: 48px;
+		}
+		.header-pop .list .item.active{
+			height: 150px;
+		}
+		.header-pop .list .item.active .nav-list{
+			display: block;
+		}
+		.header-pop .nav-list{
+			display: none;
+			padding-left: 20px;
+		}
+		/*.header-pop .list .item .nav-title{
+			    display: flex;
+			position: relative;
+			width: 100%;
+			height: 48px;
+		}*/
+
+		.header-pop .list .item .nav-title .arrow{
+			    position: absolute;
+			    top: 20px;
+			    right: 10px;
+			    transition: 0.5s all;
+			    transform-origin: center;
+			    display: inline-block;
+			border-top: 1px solid #BBBBBB;
+    		border-right: 1px solid #BBBBBB;
+    		width: 8px;
+    		height: 8px;
+    		transform: rotate(135deg);
+		}
+		.header-pop .list .item .nav-title .arrow.active{
+			transform: rotate(-45deg);
+		}
+		.J_fristNav{
+			transition: all 0.5s ease-in-out;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="header">
+			<div class="menu-btn J_menu_btn">
+				<span class="open">open</span>
+				<span class="close">close</span>
+			</div>
+		</div>
+		<div class="header-pop J_header_pop">
+			<ul class="list">
+				<li class="item">	<a href="http://www.baidu.com">首页</a></li>
+				<li class="item">城市</li>
+				<li class="item J_fristNav">
+					<a class="nav-title">
+						我的<span class="arrow"></span>
+					</a>
+					<ul class="nav-list">
+						<li><a href="http://www.baidu.com">地址</a></li>
+						<li><a href="http://www.baidu.com">资料</a></li>
+					</ul>
+				</li>
+				<li class="item">健康</li>
+				<li class="item">生活</li>
+			</ul>
+		</div>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$('.J_menu_btn').on('click',function(){
+			if($(this).hasClass('is-active')){
+				$(this).removeClass('is-active');
+				$('.J_header_pop').removeClass('active');
+			}else{
+				$(this).addClass('is-active');
+				$('.J_header_pop').addClass('active');
+			}
+		})
+		$('.header-pop .J_fristNav').on('click',function(){
+			$(this).toggleClass('active');
+    		$(this).find('.arrow').toggleClass('active');
+			// if($(this).hasClass('active')){
+			// 	$(this).removeClass('active');
+			// }else{
+			// 	$(this).addClass('active').siblings().removeClass('active');
+			// }
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>amd</title>
+</head>
+<body>
+	<div class="main">
+		hel
+	</div>
+	<!-- data-cfg-corelib指定核心库 ，将覆盖原有的-->
+	<script src="./lib/do.min.js" data-cfg-corelib="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		// global module config
+      	define.ns('AM');
+		define.config({'jquery': '$', 'config': 'AM.config'});
+		// utils
+        Do.add('utils', {path: './utils.js',type: 'js'});
+        // base
+        Do.add('base', {path: './base.js',type: 'js',requires:['utils']});
+        // 定义全局模块
+        Do.global('base');
+
+
+		Do.add('page/a', {path: './a.js', type: 'js',requires:['utils']});
+		Do('page/a',function(){
+			// alert(a)
+		});
+		Do.add('page/b', {path: './b.js', type: 'js'});
+		Do('page/b');
+	</script>
+</body>
+</html>
