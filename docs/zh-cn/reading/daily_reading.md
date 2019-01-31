@@ -36,6 +36,17 @@
 - 面试者面试过程中是否紧张看出面试者的心理素质和抗压能力
 
 
+### 19.1.28
+
+[Vue.js 组件精讲](https://juejin.im/book/5bc844166fb9a05cd676ebca/section/5c079adfe51d451da152d49f)
+
+
+### 19.1.29
+
+[如何开发一套基于Vue的组件库](https://www.jianshu.com/p/a89666d591a4?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
+
+[Vue组件库的那些事儿，你都知道吗？](https://www.cnblogs.com/zhuanzhuanfe/p/7516745.html)
+
 # 2019-2
 # 2019-3
 # 2019-4
