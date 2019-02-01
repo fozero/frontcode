@@ -8,9 +8,9 @@ import * as serviceWorker from './serviceWorker';
 // index.js入口文件
 
 let data = [
- {id: 0, text: '天气不错哦!!!', complete: false},
- {id: 1, text: '天气不错哦!!!', complete: false},
- {id: 2, text: '出去玩啊!!!', complete: true},
+ {id: 0, text: '吃饭唱歌打豆豆1', complete: false},
+ {id: 1, text: '吃饭唱歌打豆豆2', complete: false},
+ {id: 2, text: '吃饭唱歌打豆豆3', complete: true},
 ]
 
 ReactDOM.render(<App data={data}/>, document.getElementById('root'));
