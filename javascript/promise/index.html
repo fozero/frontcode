@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var getUserInfo = function() {
+		    return new Promise(function(resolve) {
+		        setTimeout(function() {
+		            var user = {name: 'Kerry Wu', age: 31};
+		            resolve(user);
+		        }, 3000);
+		    });
+		};
+	    this.getUserInfo().then(function(userInfo) {
+	        console.log('userInfo',userInfo);//{ name: 'Hanmeimei', age: 31 }
+	    });
+
+
+
+
+// Promise.all的用法  Promise.all()接收一个数组为参数，当数组的所有Promise都为resolve的状态时，Promise.all()才会成功；若有一个失败，都会被认为是失败的。
+	 //    var p1 = Promise.resolve('a');
+		//  var p2 = Promise.resolve('b');
+		//  var p3 = Promise.resolve('c');
+		// Promise.all([p1,p2,p3]).then(function(value) {
+		//     console.log('value',value);
+		// })
+		
+
+		var p1 = new Promise((resolve, reject) => {
+	        resolve('hello');
+	    })
+	    .then(result => result)
+	    .catch(e => e);
+
+	var p2 = new Promise((resolve, reject) => {
+	        throw new Error('报错了');
+	    })
+	    .then(result => result)
+	    .catch(e => e);
+
+	Promise.all([p1,p2])
+	    .then(function(value) {
+	        console.log('value',value);
+	    })
+	    .catch(function(re) {
+	        console.log('re',re);
+	    })
+	</script>
+</body>
+</html>

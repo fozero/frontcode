@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise.all合并请求</title>
+</head>
+<body>
+	<script>
+		function getURL(URL) {
+		    return new Promise(function (resolve, reject) {
+		        var req = new XMLHttpRequest();
+		        req.open('GET', URL, true);
+		        req.onload = function () {
+		            if (req.status === 200) {
+		                resolve(req.responseText);
+		            } else {
+		                reject(new Error(req.statusText));
+		            }
+		        };
+		        req.onerror = function () {
+		            reject(new Error(req.statusText));
+		        };
+		        req.send();
+		    });
+		}
+		function getComment() {
+            return getURL('http://azu.github.io/promises-book/json/comment.json').then(res=>JSON.parse(res));
+        }
+        function getPeople() {
+            return getURL('http://azu.github.io/promises-book/json/people.json').then(res=>JSON.parse(res));
+        }
+        // 合并请求
+		Promise.all([getComment(), getPeople()]).then(function (value) {
+		    console.log(value);
+		}).catch(function(error){
+		    console.log(error);
+		});
+
+	</script>
+</body>
+</html>
