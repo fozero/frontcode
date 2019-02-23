@@ -1,0 +1,26 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-02-22 01:20:24
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-02-22 01:36:58
+*/
+
+// 清除浮动
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+// 链接
+@mixin colorlink($normal, $hover, $visited){
+	color: $normal;
+	  &:hover { color: $hover; }
+	  &:visited { color: $visited; }
+}
+
+@mixin size($size:50px){
+	font-size: $size;
+}

@@ -1,0 +1,61 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-02-21 22:49:17
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-02-22 01:37:39
+*/
+/*
+* @Author: fozero@126.
+* @Date:   2019-02-21 22:59:07
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-02-22 01:34:47
+*/
+/*
+* @Author: fozero@126.
+* @Date:   2019-02-21 23:35:49
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-02-22 01:37:01
+*/
+/*
+* @Author: fozero@126.
+* @Date:   2019-02-22 01:20:24
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-02-22 01:36:58
+*/
+.containner {
+  background: #eee;
+  color: #000; }
+  .containner .banner {
+    background: red; }
+  .containner a {
+    color: red; }
+    .containner a:hover {
+      color: blue; }
+  .containner .title {
+    font-size: 20px; }
+  .containner .list {
+    list-style: none; }
+    .containner .list::after {
+      display: block;
+      clear: both;
+      content: ""; }
+    .containner .list .item {
+      float: left;
+      width: 80px;
+      color: blue; }
+      .containner .list .item:hover {
+        color: red; }
+      .containner .list .item:visited {
+        color: green; }
+  .containner .bg-1 {
+    background: url(brand_day_review1.jpg) no-repeat center/1560px auto; }
+  .containner .bg-2 {
+    background: url(brand_day_review2.jpg) no-repeat center/1560px auto; }
+  .containner .bg-3 {
+    background: url(brand_day_review3.jpg) no-repeat center/1560px auto; }
+  .containner .bg-4 {
+    background: url(brand_day_review4.jpg) no-repeat center/1560px auto; }
+  .containner .bg-5 {
+    background: url(brand_day_review5.jpg) no-repeat center/1560px auto; }
+
+/*# sourceMappingURL=index.css.map */

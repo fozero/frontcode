@@ -1,0 +1,53 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-02-21 22:49:17
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-02-22 01:37:39
+*/
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+.containner{
+	background: #eee;
+	color:$black;
+	.banner{
+		background: red;
+	}
+	a{
+		color:red;
+		&:hover{
+			color:blue;
+		}
+	}
+
+	.title{
+		// @include size();
+		@include size(20px);
+	}
+
+
+	.list{
+		list-style: none;
+		@include clearfix();
+		.item{
+			float: left;
+			width: 80px;
+			// @include colorlink(blue,red,green);
+			@include colorlink(
+				$normal: blue,
+			      $visited: green,
+			      $hover: red
+			);
+		}
+	}
+
+	// 
+	// 
+	@for $i from 1 through 5
+	{
+	    .bg-#{$i}
+	    {
+	      background: url(brand_day_review#{$i}.jpg) no-repeat center / 1560px auto;
+	    }
+	}
+}

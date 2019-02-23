@@ -1,0 +1,25 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-02-22 01:27:28
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-02-22 01:43:49
+*/
+// 在此文件中通过@import将所有子文件导入进来
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+
+@import 'components/buttons';
+@import 'components/footer';
+@import 'components/header';
+
+@import 'pages/about';
+@import 'pages/blog';
+@import 'pages/post';
+
+@import 'layout/responsive';
+
+body{
+	color:$black;
+	@include size(30px);
+}
