@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ul li动态添加数据高度自适应</title>
+	<style>
+	.clearfix:after{
+		content: '';
+		display:block;        
+  		height:0;  
+		clear:both;
+	}
+		ul{list-style: none;padding: 0;margin: 0;
+			    height: auto;
+			    min-height: 200px;
+		}
+		ul>li{
+			float: left;
+			margin-right: 20px;
+		}
+		ul>li img{
+			width: 400px;
+			height: 300px;
+		}
+	</style>
+</head>
+<!-- 
+1、设置ulheight: auto;min-height: 200px;
+2、使用clearfix清除浮动
+ -->
+<body>
+	<div class="main">
+		<h3>解决动态增加ul li数量后，高度自适应问题</h3>
+		<ul class="list clearfix">
+			<li>
+				<img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/pengmetta-sh.jpg" alt="">
+				<div>北京购物中心</div>
+			</li>
+			<li><img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/pengmetta-sh.jpg" alt=""><div>北京购物中心</div></li>
+		</ul>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			var html='';
+			for(var i=0;i<20;i++){
+				html+='<li><img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/pengmetta-sh.jpg" alt=""><div>北京购物中心</div></li>'
+			}
+			$('.list').html(html);
+		})
+	</script>
+</body>
+</html>
