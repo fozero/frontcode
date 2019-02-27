@@ -17,15 +17,32 @@
 第二步，按照顺序，将每个元素与"基准"进行比较，形成两个子集，一个"小于45"，另一个"大于等于45"。
 第三步，对两个子集不断重复第一步和第二步，直到所有子集只剩下一个元素为止。
 
+
+1、Math.floor 向下取整  如 
+Math.floor( 45.95); // 45 
+Math.floor( 45.05); // 45 
+
+
+2、arr.splice()  splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目（会改变原始数组）
+var arr = [1,6,5,8,2,3,7,4];
+arr.splice(2,1)[0]   //5     第一个参数表示要删除项目的index下标  ，第二个参数表示要删除的项目数量  如果是0，则不会删除项目
+注意：splice() 方法与 slice() 方法的作用是不同的，splice() 方法会直接对数组进行修改
+
+3、concat方法
+concat() 方法用于连接两个或多个数组。
+该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。
+var a = [1,2,3]; 
+a.concat([4,6])  //[1, 2, 3, 4, 6]
+
 */
 var quickSort = function(arr) {
 	// 检查数组的元素个数，如果小于等于1，就返回
 　　if (arr.length <= 1) { return arr; }
 // 选择"基准"（pivot），并将其与原数组分离，再定义两个空数组，用来存放一左一右的两个子集
-　　var pivotIndex = Math.floor(arr.length / 2);
+　　var left = [],
+　　    right = [],
+	   pivotIndex = Math.floor(arr.length / 2);
 　　var pivot = arr.splice(pivotIndex, 1)[0];
-　　var left = [];
-　　var right = [];
 // 遍历  小于"基准"的元素放入左边的子集，大于基准的元素放入右边的子集
 　　for (var i = 0; i < arr.length; i++){
 　　　　if (arr[i] < pivot) {
