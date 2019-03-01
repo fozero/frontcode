@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>img标签图片变形问题</title>
+	<style>
+	
+	.clearfix:after{
+		display: block;
+		content: "";
+		clear: both;
+	}
+	ul>li{
+		margin-top: 20px;
+		margin-left: 20px;
+		float: left;
+	}
+	ul{list-style: none;padding: 0;margin: 0;}
+	
+	</style>
+</head>
+<!-- 
+
+img图片变形问题
+
+1、使用absolute绝对定位
+.list1>li .pic{
+				position: relative;
+				width: 300px;
+					height: 300px;
+					border: 1px solid #ddd;
+			}
+				.list1>li .pic img{
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					margin: auto;
+					max-width: 300px;
+					max-height: 300px;
+				}
+2、设置图片宽度，图片水平垂直居中
+
+.list2>li .pic{
+				width: 300px;
+					height: 300px;
+					border: 1px solid #ddd;
+					overflow:hidden;
+					    display: table-cell;
+    vertical-align: middle;
+			}
+				.list2>li .pic img{
+					max-width: 100%;
+    display: block;
+    margin: 0 auto;
+				}
+
+ -->
+<body>
+	<div class="main">
+		<div>img图片变形问题</div>
+		list1s
+		<style>
+			.list1>li .pic{
+				position: relative;
+				width: 300px;
+					height: 300px;
+					border: 1px solid #ddd;
+			}
+				.list1>li .pic img{
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					margin: auto;
+					max-width: 300px;
+					max-height: 300px;
+				}
+		</style>
+		<ul class="list1 clearfix">
+			<li>
+				<div class="pic">
+					<img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/pengmetta-sh.jpg" alt="">
+				</div>
+			</li>
+			<li>
+				<div class="pic">
+					<img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/pengmetta-sh.jpg" alt="">
+				</div>
+			</li>
+		</ul>
+		list2
+		<style>
+			.list2>li .pic{
+				width: 300px;
+					height: 300px;
+					border: 1px solid #ddd;
+					overflow:hidden;
+					    display: table-cell;
+    vertical-align: middle;
+			}
+				.list2>li .pic img{
+					max-width: 100%;
+    display: block;
+    margin: 0 auto;
+				}
+		</style>
+		<ul class="list2 clearfix">
+			<li>
+				<div class="pic">
+					<img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/pengmetta-sh.jpg" alt="">
+				</div>
+			</li>
+			<li>
+				<div class="pic">
+					<img src="https://s01.xiaopeng.com/www/1.0.9/pc/img/pengmetta-sh.jpg" alt="">
+				</div>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
