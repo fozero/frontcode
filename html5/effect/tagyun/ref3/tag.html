@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>bubble</title>
+<link rel="stylesheet" href="http://www.jq22.com/demo/bubble201811122348/css/Bubble.css">
+<script type="text/javascript" src="http://www.jq22.com/demo/bubble201811122348/js/Bubble.js"></script>
+<style>
+	  body{background-color: #252525}	
+  </style>
+</head>
+<body>
+<div class="wrapper">
+<div class="tagcloud">
+
+<a class="b01 co01" href="#">TaoBao</a>
+<a class="b02 co02" href="#">Suning</a>
+<a class="b03 co05" href="#">Juhuasuan</a>
+<a class="b04 co02" href="#">Today</a>
+<a class="b03 co05" href="#">NetEase</a>
+<a class="b02 co06" href="#">Fallow fish</a>
+<a class="b03 co07" href="#">Tmall</a>
+<a class="b04 co01" href="#">Dangdang</a>
+<a class="b03 co02" href="#">Net No. 1</a>
+<a class="b04 co03" href="#">Mogujie</a>
+<a class="b03 co04" href="#">Where</a>
+<a class="b04 co05" href="#">Booking</a>
+<a class="b04 co06" href="#">Train </a>
+<a class="b02 co07" href="#">Hornet's</a>
+<a class="b03 co01" href="#">bubble</a>
+<a class="b04 co02" href="#">bubble</a>
+<a class="b01 co01" href="#">bubble</a>
+<a class="b03 co06" href="#">bubble</a>
+<a class="b03 co05" href="#">bubble</a>
+<a class="b04 co06" href="#">bubble</a>
+</div>
+</div>
+<script type="text/javascript">
+    /*3D标签云*/
+    tagcloud({
+        selector: ".tagcloud",  //元素选择器
+        fontsize: 16,       //基本字体大小, 单位px
+        radius: 140,         //滚动半径, 单位px 页面宽度和高度的五分之一
+        mspeed: "slow",   //滚动最大速度, 取值: slow, normal(默认), fast
+        ispeed: "slow",   //滚动初速度, 取值: slow, normal(默认), fast
+        direction: 135,     //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
+        keep: false          //鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
+    });
+</script>
+</body>
+</html>

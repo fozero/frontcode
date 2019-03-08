@@ -1,0 +1,70 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>3D标签云</title>
+  <!-- <script type="text/javascript" src="http://www.17sucai.com/preview/1160620/2018-05-11/tagCloud/tagcloud.js"></script> -->
+  <script type="text/javascript" src="tagcloud.js"></script>
+  <style type="text/css">
+    .fl{ float: left; }
+    .fr{ float: right; }
+    .wrapper{ width: 1200px; height: 300px; margin: 0 auto; }
+    .wrapper p{ padding-top: 150px; line-height: 27px; color: #999; font-size: 14px; text-align: center;  }
+    .tagcloud { position: relative; margin-top:-150px; }
+    .tagcloud a{ position: absolute;  top: 0; left: 0;  display: block; padding: 11px 30px; color: #333; font-size: 16px; border: 1px solid #e6e7e8; border-radius: 18px; background-color: #f2f4f8; text-decoration: none; white-space: nowrap;
+      -o-box-shadow: 6px 4px 8px 0 rgba(151,142,136,.34);
+      -ms-box-shadow: 6px 4px 8px 0 rgba(151,142,136,.34);
+      -moz-box-shadow: 6px 4px 8px 0 rgba(151,142,136,.34);
+      -webkit-box-shadow: 6px 4px 8px 0 rgba(151,142,136,.34);
+      box-shadow: 6px 4px 8px 0 rgba(151,142,136,.34);
+      -ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135, Color='#000000')";/*兼容ie7/8*/
+      filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=125, Strength=9);
+      /*strength是阴影大小，direction是阴影方位，单位为度，可以为负数，color是阴影颜色 （尽量使用数字）使用IE滤镜实现盒子阴影的盒子必须是行元素或以行元素显示（block或inline-block;）*/
+    }
+    .tagcloud a:hover{ color: #3385cf; }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <p>没有发现任何关注内容<br/>此处为您显示检索历史</p>
+    <div class="tagcloud fl">
+      <a href="#">文献综述</a>
+      <a href="#">对外投资</a>
+      <a href="#">机器人</a>
+      <a href="#">区块链</a>
+      <a href="#">科技创新</a>
+      <!-- <a href="#">计算机科学</a>
+      <a href="#">自动驾驶</a>
+      <a href="#">研究价值</a>
+      <a href="#">模式识别</a>
+      <a href="#">自然语言处理</a> -->
+    </div>
+    <!-- <div class="tagcloud fr">
+      <a href="#">大数据时代</a>
+      <a href="#">一带一路</a>
+      <a href="#">智能控制</a>
+      <a href="#">人工智能神经网络</a>
+      <a href="#">计算机科学</a>
+      <a href="#">自动驾驶</a>
+    </div> -->
+</div><!--wrapper-->
+
+<script type="text/javascript">
+    /*3D标签云*/
+    tagcloud({
+        selector: ".tagcloud",  //元素选择器
+        fontsize: 16,       //基本字体大小, 单位px
+        radius: 100,         //滚动半径, 单位px
+        mspeed: "normal",   //滚动最大速度, 取值: slow, normal(默认), fast
+        ispeed: "normal",   //滚动初速度, 取值: slow, normal(默认), fast
+        direction: 135,     //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
+        keep: false          //鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
+    });
+</script>
+</body>
+</html>

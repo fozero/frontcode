@@ -1,0 +1,622 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>标签云</title>
+
+
+<script type="text/javascript">
+	/**
+	http://www.oleou.com/a/jishu/2014/0613/290.html
+	**/
+	function TagCould(container,options){
+		this.radius = 150;
+		this.dtr = Math.PI/180;
+		this.d = 500;
+
+		this.mcList = [];
+		this.active = false;
+		this.lasta = 1;
+		this.lastb = 1;
+		this.distr = true;
+		this.tspeed = 5;
+		this.size = 250;
+
+		this.mouseX = 0;
+		this.mouseY = 0;
+
+		this.howElliptical = 1;
+
+		this.aA = null;
+		this.oDiv = null;
+		
+		this.container = container;
+		
+		options = options || {};
+		for(var p in options){
+			this[p] = options[p];
+		}
+	}
+	
+	TagCould.prototype.start = function(){
+		var i = 0, oTag = null, self = this;
+	
+		this.oDiv = typeof this.container == "string" ? document.getElementById(this.container) : this.container;
+		
+		this.aA = this.oDiv.getElementsByTagName('a');
+		
+		for(i = 0; i < this.aA.length; i++){
+			oTag={};
+			
+			oTag.offsetWidth = this.aA[i].offsetWidth;
+			oTag.offsetHeight = this.aA[i].offsetHeight;
+			
+			this.mcList.push(oTag);
+		}
+		
+		this.sineCosine( 0,0,0 );
+		
+		this.positionAll();
+
+		
+		// document.addEventListener('mouseover',function(){
+		// 	self.active = true;
+		// }, false);
+		
+		// document.addEventListener('mouseout',function(){
+		// 	self.active = false;
+		// }, false);
+		
+		// document.addEventListener('mousemove',function(evt){
+		// 	//var oEvent=window.event || evt;
+		// 	self.onmove(window.event || evt);
+		// }, false);
+		
+		// document.addEventListener('touchstart',function(){
+		// 	self.active = true;
+		// }, false);
+		// document.addEventListener('touchmove',function(evt){
+		// 	self.onmove(window.event || evt);
+		// }, false);
+		// document.addEventListener('touchend',function(){
+		// 	self.active = false;
+		// }, false);
+		
+		setInterval(function(){
+			self.update();
+		}, 30);
+
+	}
+	
+	TagCould.prototype.onmove = function(oEvent){
+		//var oEvent=window.event || evt;
+		oEvent.preventDefault();  
+		
+		if(oEvent.touches && oEvent.touches.length > 0){
+			oEvent.clientX = oEvent.touches[0].clientX;
+			oEvent.clientY = oEvent.touches[0].clientY;
+		}
+
+		this.mouseX = oEvent.clientX - (this.oDiv.offsetLeft + this.oDiv.offsetWidth / 2);
+		this.mouseY = oEvent.clientY - (this.oDiv.offsetTop + this.oDiv.offsetHeight / 2);
+		
+		this.mouseX /= 5;
+		this.mouseY /= 5;
+	}
+	
+	TagCould.prototype.update = function(){
+		var a,b;
+
+		// a = (-Math.min( Math.max( -this.mouseY, -this.size ), this.size ) / this.radius ) * this.tspeed;
+		// 	b = (Math.min( Math.max( -this.mouseX, -this.size ), this.size ) / this.radius ) * this.tspeed;
+		
+		console.log('active',this.active)
+		if(this.active){
+			a = (-Math.min( Math.max( -this.mouseY, -this.size ), this.size ) / this.radius ) * this.tspeed;
+			b = (Math.min( Math.max( -this.mouseX, -this.size ), this.size ) / this.radius ) * this.tspeed;
+		}
+		else{
+			a = this.lasta * 0.98;
+			b = this.lastb * 0.98;
+		}
+		
+		this.lasta = a;
+		this.lastb = b;
+		
+		if(Math.abs(a)<=0.01 && Math.abs(b)<=0.01){
+			console.log(111111)
+			return;
+		}
+		
+		var c=0;
+		this.sineCosine(a,b,c);
+		for(var j = 0; j < this.mcList.length; j++){
+			var rx1 = this.mcList[j].cx,
+				ry1 = this.mcList[j].cy * this.ca + this.mcList[j].cz * (-this.sa),
+				rz1 = this.mcList[j].cy * this.sa + this.mcList[j].cz * this.ca,
+				rx2 = rx1 * this.cb + rz1 * this.sb,
+				ry2 = ry1,
+				rz2 = rx1 * (-this.sb) + rz1 * this.cb,
+				rx3 = rx2 * this.cc + ry2 * (-this.sc),
+				ry3 = rx2 * this.sc + ry2 * this.cc,
+				rz3 = rz2;
+			
+			this.mcList[j].cx = rx3;
+			this.mcList[j].cy = ry3;
+			this.mcList[j].cz = rz3;
+			
+			var per = this.d / (this.d + rz3);
+			
+			this.mcList[j].x = ( this.howElliptical * rx3 * per ) - ( this.howElliptical * 2 );
+			this.mcList[j].y = ry3 * per;
+			this.mcList[j].scale = per;
+			this.mcList[j].alpha = per;
+			
+			this.mcList[j].alpha = (this.mcList[j].alpha - 0.6) * ( 10 / 6 );
+		}
+		
+		this.doPosition();
+		this.depthSort();
+	}
+
+	TagCould.prototype.depthSort = function(){
+		var i=0,aTmp=[];
+		
+		for(i=0;i<this.aA.length;i++){
+			aTmp.push(this.aA[i]);
+		}
+		
+		aTmp.sort(
+			function (vItem1, vItem2){
+				if(vItem1.cz > vItem2.cz){
+					return -1;
+				}
+				else if(vItem1.cz < vItem2.cz){
+					return 1;
+				}
+				else{
+					return 0;
+				}
+			}
+		);
+		
+		for(i=0;i<aTmp.length;i++){
+			aTmp[i].style.zIndex=i;
+		}
+	}
+
+	TagCould.prototype.positionAll = function (){
+		var phi = 0,theta = 0,max = this.mcList.length,i = 0,aTmp = [],
+			oFragment = document.createDocumentFragment();
+		
+		//随机排序
+		for(i=0;i<this.aA.length;i++){
+			aTmp.push(this.aA[i]);
+		}
+		
+		aTmp.sort(
+			function (){
+				return Math.random()<0.5?1:-1;
+			}
+		);
+		
+		for(i=0;i<aTmp.length;i++){
+			oFragment.appendChild(aTmp[i]);
+		}
+		
+		this.oDiv.appendChild(oFragment);
+		
+		for( var i=1; i< max+1; i++){
+			if( this.distr ){
+				phi = Math.acos(-1+(2*i-1)/max);
+				theta = Math.sqrt(max*Math.PI)*phi;
+			}
+			else{
+				phi = Math.random() * (Math.PI);
+				theta = Math.random() * (2*Math.PI);
+			}
+			//坐标变换
+			this.mcList[i-1].cx = this.radius * Math.cos(theta) * Math.sin(phi);
+			this.mcList[i-1].cy = this.radius * Math.sin(theta) * Math.sin(phi);
+			this.mcList[i-1].cz = this.radius * Math.cos(phi);
+			
+			this.aA[i-1].style.left = this.mcList[i-1].cx + this.oDiv.offsetWidth/2 - this.mcList[i-1].offsetWidth/2+'px';
+			this.aA[i-1].style.top = this.mcList[i-1].cy + this.oDiv.offsetHeight/2 - this.mcList[i-1].offsetHeight/2+'px';
+		}
+	}
+
+	TagCould.prototype.doPosition = function(){
+		var l = this.oDiv.offsetWidth / 2,t = this.oDiv.offsetHeight / 2;
+		for(var i=0; i < this.mcList.length; i++){
+			this.aA[i].style.left = this.mcList[i].cx + l - this.mcList[i].offsetWidth / 2+'px';
+			this.aA[i].style.top = this.mcList[i].cy + t - this.mcList[i].offsetHeight / 2+'px';
+			
+			this.aA[i].style.fontSize = Math.ceil(12 * this.mcList[i].scale / 2) + 8 + 'px';
+			
+			this.aA[i].style.filter = "alpha(opacity=" + 100 * this.mcList[i].alpha + ")";
+			this.aA[i].style.opacity = this.mcList[i].alpha;
+		}
+	}
+
+	TagCould.prototype.sineCosine = function( a, b, c){
+		this.sa = Math.sin(a * this.dtr);
+		this.ca = Math.cos(a * this.dtr);
+		this.sb = Math.sin(b * this.dtr);
+		this.cb = Math.cos(b * this.dtr);
+		this.sc = Math.sin(c * this.dtr);
+		this.cc = Math.cos(c * this.dtr);
+	}
+	
+	window.onload = function(){
+		var tagCloud = new TagCould("div1",{});
+		tagCloud.start();
+	}
+
+</script>
+<script>
+/*var radius = 150;
+var dtr = Math.PI/180;
+var d=500;
+
+var mcList = [];
+var active = false;
+var lasta = 1;
+var lastb = 1;
+var distr = true;
+var tspeed=5;
+var size=250;
+
+var mouseX=0;
+var mouseY=0;
+
+var howElliptical=1;
+
+var aA=null;
+var oDiv=null;
+
+window.onload=function ()
+{
+	var i=0;
+	var oTag=null;
+	
+	oDiv=document.getElementById('div1');
+	
+	aA=oDiv.getElementsByTagName('a');
+	
+	for(i=0;i<aA.length;i++)
+	{
+		oTag={};
+		
+		oTag.offsetWidth=aA[i].offsetWidth;
+		oTag.offsetHeight=aA[i].offsetHeight;
+		
+		mcList.push(oTag);
+	}
+	
+	sineCosine( 0,0,0 );
+	
+	positionAll();
+	
+	oDiv.onmouseover = function ()
+	{
+		active=true;
+	};
+	
+	oDiv.onmouseout=function ()
+	{
+		active=false;
+	};
+	
+	oDiv.onmousemove=function (ev)
+	{
+		var oEvent=window.event || ev;
+		
+		mouseX=oEvent.clientX-(oDiv.offsetLeft+oDiv.offsetWidth/2);
+		mouseY=oEvent.clientY-(oDiv.offsetTop+oDiv.offsetHeight/2);
+		
+		mouseX/=5;
+		mouseY/=5;
+	};
+	
+	setInterval(update, 30);
+	
+	document.addEventListener('touchstart',function(){
+		console.log("touchstart");
+		active=true;
+	}, false);
+    document.addEventListener('touchmove',function(ev){
+		var oEvent=window.event || ev;
+		oEvent.preventDefault();
+		
+		oEvent.clientX = oEvent.touches[0].clientX;
+		oEvent.clientY = oEvent.touches[0].clientY;
+		
+		mouseX=oEvent.clientX-(oDiv.offsetLeft+oDiv.offsetWidth/2);
+		mouseY=oEvent.clientY-(oDiv.offsetTop+oDiv.offsetHeight/2);
+		
+		mouseX/=5;
+		mouseY/=5;
+	}, false);
+    document.addEventListener('touchend',function(){
+		console.log("touchend");
+		active=false;
+	}, false);
+};
+
+function update()
+{
+	var a;
+	var b;
+	
+	if(active)
+	{
+		a = (-Math.min( Math.max( -mouseY, -size ), size ) / radius ) * tspeed;
+		b = (Math.min( Math.max( -mouseX, -size ), size ) / radius ) * tspeed;
+	}
+	else
+	{
+		a = lasta * 0.98;
+		b = lastb * 0.98;
+	}
+	
+	lasta=a;
+	lastb=b;
+	
+	if(Math.abs(a)<=0.01 && Math.abs(b)<=0.01)
+	{
+		return;
+	}
+	
+	var c=0;
+	sineCosine(a,b,c);
+	for(var j=0;j<mcList.length;j++)
+	{
+		var rx1=mcList[j].cx;
+		var ry1=mcList[j].cy*ca+mcList[j].cz*(-sa);
+		var rz1=mcList[j].cy*sa+mcList[j].cz*ca;
+		
+		var rx2=rx1*cb+rz1*sb;
+		var ry2=ry1;
+		var rz2=rx1*(-sb)+rz1*cb;
+		
+		var rx3=rx2*cc+ry2*(-sc);
+		var ry3=rx2*sc+ry2*cc;
+		var rz3=rz2;
+		
+		mcList[j].cx=rx3;
+		mcList[j].cy=ry3;
+		mcList[j].cz=rz3;
+		
+		per=d/(d+rz3);
+		
+		mcList[j].x=(howElliptical*rx3*per)-(howElliptical*2);
+		mcList[j].y=ry3*per;
+		mcList[j].scale=per;
+		mcList[j].alpha=per;
+		
+		mcList[j].alpha=(mcList[j].alpha-0.6)*(10/6);
+	}
+	
+	doPosition();
+	depthSort();
+}
+
+function depthSort()
+{
+	var i=0;
+	var aTmp=[];
+	
+	for(i=0;i<aA.length;i++)
+	{
+		aTmp.push(aA[i]);
+	}
+	
+	aTmp.sort
+	(
+		function (vItem1, vItem2)
+		{
+			if(vItem1.cz>vItem2.cz)
+			{
+				return -1;
+			}
+			else if(vItem1.cz<vItem2.cz)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+	);
+	
+	for(i=0;i<aTmp.length;i++)
+	{
+		aTmp[i].style.zIndex=i;
+	}
+}
+
+function positionAll()
+{
+	var phi=0;
+	var theta=0;
+	var max=mcList.length;
+	var i=0;
+	
+	var aTmp=[];
+	var oFragment=document.createDocumentFragment();
+	
+	//随机排序
+	for(i=0;i<aA.length;i++)
+	{
+		aTmp.push(aA[i]);
+	}
+	
+	aTmp.sort
+	(
+		function ()
+		{
+			return Math.random()<0.5?1:-1;
+		}
+	);
+	
+	for(i=0;i<aTmp.length;i++)
+	{
+		oFragment.appendChild(aTmp[i]);
+	}
+	
+	oDiv.appendChild(oFragment);
+	
+	for( var i=1; i<max+1; i++){
+		if( distr )
+		{
+			phi = Math.acos(-1+(2*i-1)/max);
+			theta = Math.sqrt(max*Math.PI)*phi;
+		}
+		else
+		{
+			phi = Math.random()*(Math.PI);
+			theta = Math.random()*(2*Math.PI);
+		}
+		//坐标变换
+		mcList[i-1].cx = radius * Math.cos(theta)*Math.sin(phi);
+		mcList[i-1].cy = radius * Math.sin(theta)*Math.sin(phi);
+		mcList[i-1].cz = radius * Math.cos(phi);
+		
+		aA[i-1].style.left=mcList[i-1].cx+oDiv.offsetWidth/2-mcList[i-1].offsetWidth/2+'px';
+		aA[i-1].style.top=mcList[i-1].cy+oDiv.offsetHeight/2-mcList[i-1].offsetHeight/2+'px';
+	}
+}
+
+function doPosition()
+{
+	var l=oDiv.offsetWidth/2;
+	var t=oDiv.offsetHeight/2;
+	for(var i=0;i<mcList.length;i++)
+	{
+		aA[i].style.left=mcList[i].cx+l-mcList[i].offsetWidth/2+'px';
+		aA[i].style.top=mcList[i].cy+t-mcList[i].offsetHeight/2+'px';
+		
+		aA[i].style.fontSize=Math.ceil(12*mcList[i].scale/2)+8+'px';
+		
+		aA[i].style.filter="alpha(opacity="+100*mcList[i].alpha+")";
+		aA[i].style.opacity=mcList[i].alpha;
+	}
+}
+
+function sineCosine( a, b, c)
+{
+	sa = Math.sin(a * dtr);
+	ca = Math.cos(a * dtr);
+	sb = Math.sin(b * dtr);
+	cb = Math.cos(b * dtr);
+	sc = Math.sin(c * dtr);
+	cc = Math.cos(c * dtr);
+}*/
+</script>
+<style type="text/css">
+
+body {	
+	/*background: #000 url(index.png) no-repeat center 230px;*/
+}
+#div1 {
+	position:relative; width:0%; height:500px; margin:0 auto ; 
+}
+#div1 a {
+	position:absolute; top:0px; left:0px; font-family: Microsoft YaHei; 
+	color:#000; 
+	font-weight:bold; 
+	text-decoration:none; 
+	padding: 3px 6px; 
+}
+#div1 a:hover {border: 1px solid #eee; background: #ccc; }
+#div1 .blue {color:blue;}
+#div1 .red {color:red;}
+#div1 .yellow {color:yellow;}
+
+p { font: 16px Microsoft YaHei; text-align: center; color: #ba0c0c; }
+p a { font-size: 14px; color: #ba0c0c; }
+p a:hover { color: red; }
+
+</style>
+</head>
+<body>
+<div id="div1">
+            
+            
+            
+         
+            <a href="http://www.oleou.com/tags/中国/" class="tagc1">中国</a>
+            
+            <a href="http://www.oleou.com/tags/金融/" class="tagc2">金融</a>
+            
+            <a href="http://www.oleou.com/tags/营销/" class="tagc1">营销</a>
+            
+            <a href="http://www.oleou.com/tags/服务/" class="tagc2">服务</a>
+            
+            <a href="http://www.oleou.com/tags/家电/" class="tagc1">家电</a>
+            
+            <a href="http://www.oleou.com/tags/兰州/" class="tagc1">兰州</a>
+            
+            <a href="http://www.oleou.com/tags/管道/" class="tagc1">管道</a>
+            
+            <a href="http://www.oleou.com/tags/维修/" class="tagc2">维修</a>
+            
+            <a href="http://www.oleou.com/tags/电脑/" class="tagc2">电脑</a>
+            
+            <a href="http://www.oleou.com/tags/路由器/" class="tagc2">路由器</a>
+            
+            <a href="http://www.oleou.com/tags/无线/" class="tagc2">无线</a>
+            
+            <a href="http://www.oleou.com/tags/tp link/" class="tagc1">tp link</a>
+            
+            <a href="http://www.oleou.com/tags/桥接/" class="tagc2">桥接</a>
+            
+            <a href="http://www.oleou.com/tags/设置/" class="tagc2">设置</a>
+            
+            <a href="http://www.oleou.com/tags/2003/" class="tagc2">2003</a>
+            
+            <a href="http://www.oleou.com/tags/端口/" class="tagc1">端口</a>
+            
+            <a href="http://www.oleou.com/tags/windows/" class="tagc2">windows</a>
+            
+            <a href="http://www.oleou.com/tags/远程/" class="tagc2">远程</a>
+            
+            <a href="http://www.oleou.com/tags/用友/" class="tagc2">用友</a>
+            
+            <a href="http://www.oleou.com/tags/软件/" class="tagc2">软件</a>
+            
+            <a href="http://www.oleou.com/tags/对方科目/" class="tagc2">对方科目</a>
+            
+            <a href="http://www.oleou.com/tags/调整单/" class="tagc2">调整单</a>
+            
+            <a href="http://www.oleou.com/tags/出库类别/" class="tagc1">出库类别</a>
+            
+            <a href="http://www.oleou.com/tags/操作/" class="tagc1">操作</a>
+            
+            <a href="http://www.oleou.com/tags/恢复/" class="tagc2">恢复</a>
+            
+            <a href="http://www.oleou.com/tags/sql/" class="tagc2">sql</a>
+            
+            <a href="http://www.oleou.com/tags/导入/" class="tagc2">导入</a>
+            
+            <a href="http://www.oleou.com/tags/分享/" class="tagc6">分享</a>
+            
+            <a href="http://www.oleou.com/tags/效果/" class="tagc2">效果</a>
+            
+            <a href="http://www.oleou.com/tags/兼容/" class="tagc1">兼容</a>
+            
+            <a href="http://www.oleou.com/tags/域名/" class="tagc2">域名</a>
+            
+
+
+
+            
+
+            
+
+</div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+        .barrager{width:800px;background:#fff;margin:0 auto;height:500px;overflow:hidden;position:relative;}
+        .barrager div{position:absolute;}
+        .addBarrager{border:1px solid #d5d5d5;height:75px;width:800px;margin:0 auto 30px;-webkit-border-radius: 20px;-moz-border-radius:20px;border-radius: 20px;}
+        .addBarrager input{height:38px;margin-top:20px;margin-left:2%;width:70%;text-indent:30px;border:none;line-height:38px;font-size:20px;}
+        .addBarrager .submit{height:38px;background:#fff;font-size:20px;font-family: "微软雅黑";width:25%;margin-top:20px;border-left:1px solid #d5d5d5;}
+ 
+    </style>
+</head>
+<body>
+<div class="barrager">
+    <div><span>我的女神</span></div>
+    <div><span>温婉而雅</span></div>
+    <div><span>温柔美丽</span></div>
+    <div><span>温柔美丽</span></div>
+    <div><span>温柔美丽</span></div>
+    <div><span>我最爱的叶老师</span></div>
+    <div><span>气质型</span></div>
+    <div><span>风趣幽默</span></div>
+    <div><span>风趣幽默</span></div>
+</div>
+<div class="addBarrager clearfix">
+    <input type="text" maxlength="10" autocomplete="off" class="fl barVal" placeholder="描述你对TA的印象 限10个字">
+    <button class="submit fr">发布</button>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(".barrager").barrager()
+    });
+    (function () {
+        var Barrager = function (ele,options) {
+            var defaults = {
+                color:["#ff9999","#35d2f4","#9ee353","#9d77ff","#4785d9","#ff9333","#5bdea8","#51befc"],
+                wrap:ele
+            };
+            this.settings = $.extend({},defaults,options||{});
+            this._init();
+            this.bindEven();
+        };
+        Barrager.prototype = {
+            _init:function () {
+                var item = $(this.settings.wrap).find("div");
+                for(var i = 0;i<item.length;i++){
+                    item.eq(i).css({
+                        top:this.getReandomTop()+"px",
+                        color:this.getReandomColor(),
+                        fontSize:this.getReandomSize()+"px"
+                    });
+                    item.eq(i).css({
+                        right:-item.eq(i).width()
+                    })
+                }
+                this.randomTime(0);
+            },
+            bindEven:function () {
+                var _this = this;
+                $(".addBarrager .submit").on('click',function () {
+                    _this._click(_this);
+                });
+            },
+            getReandomColor:function () {
+                var max = this.settings.color.length;
+                var randomNum = Math.floor(Math.random()*max);
+                return this.settings.color[randomNum];
+            },
+            getReandomTop:function () {
+                var top = (Math.random()*450).toFixed(1);
+                return top;
+            },
+            getReandomSize:function () {
+                var size = (12+Math.random()*28);
+                return size;
+            },
+            getReandomTime:function () {
+                var time = Math.floor((8+Math.random()*10));
+                return time*1000;
+            },
+            randomTime:function (n) {
+                var obj = $(this.settings.wrap).find("div");
+                var _this = this;
+                var len = obj.length;
+                if(n>=len){
+                    n=0;
+                }
+                setTimeout(function () {
+                    n++;
+                    _this.randomTime(n)
+                },1000);
+                var item = obj.eq(n),_w = item.outerWidth(!0);
+                item.animate({
+                    left:-_w
+                },_this.getReandomTime(),"linear",function () {
+                    item.css({right:-_w,left:""});
+                    _this.randomTime(n)
+                });
+            },
+            _click:function (obj) {
+                var _this = obj;
+                var _val = $(".barVal");
+                if(_val.val() == ""){
+                    alert("请描述你对TA的印象！");
+                    return false;
+                }
+                $(_this.settings.wrap).append("<div><span class='new'>"+_val.val()+"</span></div>");
+                _this._init();
+                _val.val("");
+            }
+        };
+        $.fn.barrager = function (opt) {
+            var bger = new Barrager(this,opt);
+        }
+    })(jQuery);
+</script>
+</body>
+</html>
