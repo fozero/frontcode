@@ -1,7 +1,7 @@
 var radius = 90;
 var d = 200;
 // var dtr = Math.PI / 180;
-var dtr = Math.PI / 100;
+var dtr = Math.PI / 120;
 var mcList = [];
 var lasta = 1;
 var lastb = 1;
