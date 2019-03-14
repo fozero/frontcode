@@ -2,7 +2,7 @@
 * @Author: fozero@126.
 * @Date:   2019-03-13 11:37:18
 * @Last Modified by:   fozero
-* @Last Modified time: 2019-03-13 15:06:44
+* @Last Modified time: 2019-03-14 10:55:46
 */
 ;(function($,window,document,undefiend){
         var radius = 90;
@@ -48,19 +48,18 @@
 			// console.log('mcList',mcList)
 			this.sineCosine( 0,0,0 );
 			this.positionAll();
-			this.preUpdate();
-			// (function () {
-		 //            update();
-		 //            setTimeout(arguments.callee, 40);
-		 //        })();
+			// this.preUpdate();
+			var that = this;
+			(function () {
+		            that.update();
+		            setTimeout(arguments.callee, 40);
+		        })();
 	    },
 	    preUpdate:function(){
+	    	console.log(1111111111)
 	    	// var that = this;
-	    	new TagsCloud().update();
-	    	 // setTimeout(arguments.callee, 40);
-	    	// setTimeout(function(){
-	    	// 	that.update();
-	    	// },40);
+	    	// new TagsCloud().update();
+	    	// setTimeout(arguments.callee, 3000);
 	    },
 	    update:function(){
 	    	var a, b, c = 0;
