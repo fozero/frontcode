@@ -1,0 +1,249 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-03-28 01:58:26
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-03-30 16:38:49
+*/
+html, body {
+  padding: 0;
+  margin: 0; }
+
+@-webkit-keyframes fade_move_down {
+  0% {
+    top: 4%; }
+  25% {
+    top: 15%; }
+  50% {
+    top: 30%; }
+  75% {
+    top: 50%; }
+  100% {
+    top: 70%; } }
+
+@keyframes fade_move_down {
+  0% {
+    top: 4%; }
+  25% {
+    top: 15%; }
+  50% {
+    top: 30%; }
+  75% {
+    top: 50%; }
+  100% {
+    top: 70%; } }
+
+@-webkit-keyframes btnline_move_right {
+  0% {
+    left: 0%; }
+  25% {
+    left: 15%; }
+  50% {
+    left: 30%; }
+  70% {
+    left: 45%; }
+  100% {
+    left: 60%; } }
+
+@keyframes btnline_move_right {
+  0% {
+    left: 0%; }
+  25% {
+    left: 15%; }
+  50% {
+    left: 30%; }
+  70% {
+    left: 45%; }
+  100% {
+    left: 60%; } }
+
+.test-containner {
+  position: relative;
+  width: 100%;
+  height: 216.533vw;
+  background: url("../img/ai-test-bg.jpg") no-repeat;
+  background-size: 100%;
+  content: 'viewport-units-buggyfill; height: 216.533vw'; }
+  .test-containner .test-logo {
+    position: absolute;
+    left: 50%;
+    top: 29.067vw;
+    -webkit-transform: translate(-50%);
+            transform: translate(-50%);
+    width: 18vw;
+    height: 4vw;
+    background: url("../img/ai-test-logo.png") no-repeat;
+    background-size: 100%;
+    content: 'viewport-units-buggyfill; top: 29.067vw; width: 18vw; height: 4vw'; }
+  .test-containner .test-photo {
+    position: relative;
+    width: 96.8vw;
+    height: 127.333vw;
+    top: 38.667vw;
+    content: 'viewport-units-buggyfill; width: 96.8vw; height: 127.333vw; top: 38.667vw'; }
+    .test-containner .test-photo .p1 {
+      position: absolute;
+      left: 50%;
+      top: 6vw;
+      -webkit-transform: translateX(-48%);
+              transform: translateX(-48%);
+      width: 88.8vw;
+      height: 114.667vw;
+      background: url("../img/ai-test-pbg1.png") no-repeat;
+      background-size: 100%;
+      z-index: 1;
+      content: 'viewport-units-buggyfill; top: 6vw; width: 88.8vw; height: 114.667vw'; }
+    .test-containner .test-photo .p2-face {
+      position: absolute;
+      left: 50%;
+      top: 26vw;
+      -webkit-transform: translateX(-48%);
+              transform: translateX(-48%);
+      z-index: 2;
+      content: 'viewport-units-buggyfill; top: 26vw'; }
+      .test-containner .test-photo .p2-face .face1 {
+        width: 49.867vw;
+        height: 60vw;
+        background: url("../img/ai-test-face1.png") no-repeat;
+        background-size: 100%;
+        content: 'viewport-units-buggyfill; width: 49.867vw; height: 60vw'; }
+      .test-containner .test-photo .p2-face .face2 {
+        width: 49.867vw;
+        height: 60vw;
+        background: url("../img/ai-test-face2.png") no-repeat;
+        background-size: 100%;
+        display: none;
+        content: 'viewport-units-buggyfill; width: 49.867vw; height: 60vw'; }
+      .test-containner .test-photo .p2-face .face3 {
+        width: 49.867vw;
+        height: 60vw;
+        background: url("../img/ai-test-face3.png") no-repeat;
+        background-size: 100%;
+        display: none;
+        content: 'viewport-units-buggyfill; width: 49.867vw; height: 60vw'; }
+      .test-containner .test-photo .p2-face .face4 {
+        width: 49.867vw;
+        height: 60vw;
+        background: url("../img/ai-test-pbg2.png") no-repeat;
+        background-size: 100%;
+        display: none;
+        content: 'viewport-units-buggyfill; width: 49.867vw; height: 60vw'; }
+    .test-containner .test-photo .p2-photo {
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-48%);
+              transform: translateX(-48%);
+      width: 88.8vw;
+      height: 114.267vw;
+      top: 6.4vw;
+      border-radius: 6.667vw;
+      z-index: 2;
+      background: url("../img/ai-test-pic1.jpeg") no-repeat;
+      background-size: cover;
+      display: none;
+      content: 'viewport-units-buggyfill; width: 88.8vw; height: 114.267vw; top: 6.4vw; border-radius: 6.667vw'; }
+    .test-containner .test-photo .p3 {
+      position: absolute;
+      left: 50%;
+      top: 6vw;
+      -webkit-transform: translateX(-48%);
+              transform: translateX(-48%);
+      width: 88.8vw;
+      height: 114.267vw;
+      background: url("../img/ai-test-pbg3.png") no-repeat;
+      background-size: 100%;
+      z-index: 3;
+      content: 'viewport-units-buggyfill; top: 6vw; width: 88.8vw; height: 114.267vw'; }
+    .test-containner .test-photo .p4 {
+      position: absolute;
+      left: 50%;
+      top: 6vw;
+      -webkit-transform: translateX(-48%);
+              transform: translateX(-48%);
+      width: 88.933vw;
+      height: 24vw;
+      background: url("../img/ai-test-pbg4.png") no-repeat;
+      background-size: 100%;
+      z-index: 4;
+      -webkit-animation: fade_move_down infinite linear 2s;
+              animation: fade_move_down infinite linear 2s;
+              content: 'viewport-units-buggyfill; top: 6vw; width: 88.933vw; height: 24vw'; }
+    .test-containner .test-photo .p5 {
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-48%);
+              transform: translateX(-48%);
+      width: 96.8vw;
+      height: 127.333vw;
+      background: url("../img/ai-test-pbg5.png") no-repeat;
+      background-size: 100%;
+      z-index: 5;
+      content: 'viewport-units-buggyfill; width: 96.8vw; height: 127.333vw'; }
+    .test-containner .test-photo .block-name {
+      position: absolute;
+      bottom: -1.333vw;
+      left: 50%;
+      -webkit-transform: translate(-48%);
+              transform: translate(-48%);
+      width: 47.067vw;
+      height: 16.133vw;
+      background: url("../img/ai-test-namebg.png") no-repeat;
+      background-size: 100%;
+      z-index: 6;
+      content: 'viewport-units-buggyfill; bottom: -1.333vw; width: 47.067vw; height: 16.133vw'; }
+      .test-containner .test-photo .block-name .field-name {
+        width: 47.067vw;
+        background: none;
+        border: none;
+        padding: 5.6vw 5.333vw;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 3.733vw;
+        color: #b9fffb;
+        content: 'viewport-units-buggyfill; width: 47.067vw; padding: 5.6vw 5.333vw; font-size: 3.733vw'; }
+    .test-containner .test-photo .start-btn {
+      position: absolute;
+      bottom: -17.867vw;
+      left: 50%;
+      -webkit-transform: translate(-48%);
+              transform: translate(-48%);
+      width: 43.733vw;
+      height: 14vw;
+      line-height: 14vw;
+      text-align: center;
+      background: url("../img/ai-test-startbg.png") no-repeat;
+      background-size: 100%;
+      font-size: 5.067vw;
+      color: #b9fffb;
+      overflow: hidden;
+      z-index: 99;
+      content: 'viewport-units-buggyfill; bottom: -17.867vw; width: 43.733vw; height: 14vw; line-height: 14vw; font-size: 5.067vw'; }
+      .test-containner .test-photo .start-btn .start-btn-cont {
+        position: relative; }
+        .test-containner .test-photo .start-btn .start-btn-cont .btn-line {
+          position: absolute;
+          top: 0.8vw;
+          left: 0;
+          width: 14.533vw;
+          height: 12.933vw;
+          background: url("../img/ai-test-startline.png") no-repeat;
+          background-size: 100%;
+          opacity: 0.5;
+          -webkit-animation: btnline_move_right infinite linear 1s;
+                  animation: btnline_move_right infinite linear 1s;
+                  content: 'viewport-units-buggyfill; top: 0.8vw; width: 14.533vw; height: 12.933vw'; }
+  .test-containner .test-support {
+    width: 100%;
+    font-size: 2.933vw;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    bottom: 28vw;
+    content: 'viewport-units-buggyfill; font-size: 2.933vw; bottom: 28vw'; }
+  .test-containner .xiaop {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60.933vw;
+    background: url("../img/ai-test-xiaop.png") no-repeat;
+    background-size: 100%;
+    content: 'viewport-units-buggyfill; height: 60.933vw'; }

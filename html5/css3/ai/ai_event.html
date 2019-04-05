@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="./public/m/css/ai-event-5a44f55788.css">
+</head>
+<body>
+<!-- loading加载 -->
+<div class="loading-containner J_loading_containner">
+  <div class="loading">
+    <div class="avatar">
+      <span class="line"></span>
+    </div>
+    <div class="progress">
+      <div class="progress-num J_progress_num">0%</div>
+      <div class="progress-bar J_progress_bar">
+        <span class="progress-bg"></span>
+        <span class="progress-active J_progress_act"></span>
+      </div>
+    </div>
+    <p class="loading-txt J_loading_txt">智能人脸识别系统</p>
+  </div>
+</div>
+<!-- ai测试 -->
+<div class="test-containner hide J_test_containner">
+  <div class="test-logo"></div>
+  <div class="test-photo">
+    <div class="p1"></div>
+    <div class="p2-face J_face">
+      <div class="face face1"></div>
+      <div class="face face2"></div>
+      <div class="face face3"></div>
+      <div class="face face4"></div>
+    </div>
+    <div class="p2-photo J_photo"></div>
+    <div class="p3"></div>
+    <div class="p4"></div>
+    <div class="p5"></div>
+    <div class="block-name">
+      <input class="field-name J_name" type="text" maxlength="8" placeholder="输入您的姓名">
+    </div>
+    <div class="start-btn J_upload_btn">
+      <div class="start-btn-cont">
+        <span class="btn-txt J_upload_txt">开始测试</span>
+        <span class="btn-line"></span>
+      </div>
+    </div>
+  </div>
+  <div class="test-support">*小鹏AI人脸识别平台提AI技术支持*</div>
+  <div class="xiaop"></div>
+</div>
+<!-- ai测试结果 -->
+<div class="res-containner hide J_res_containner" id="shareBody">
+  <div class="res-logo"></div>
+  <div class="res-cont">
+    <div class="title">极客情绪报告</div>
+    <div class="name J_name_txt">正能量极客唐艺昕</div>
+    <div class="chart" id="chart"></div>
+    <div class="res-txt J_res_txt">车展很累，你总能微笑面对。你相信学会告别，才能有更好的相逢。</div>
+  </div>
+  <div class="save-tip">
+    长按保存图片
+  </div>
+  <div class="qrcode">
+    <img class="qrcode-img" src="/public/m/img/ai-test-res-qrcode.png" alt="">
+    <p class="qrcode-txt">长按二维码<br />获取情绪报告</p>
+  </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
+<script src="https://cdn.bootcss.com/echarts/4.1.0/echarts.min.js"></script>
+<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script>
+	var vConsole = new VConsole();
+    function getTestResTxt(emotion){
+      var resObj = {};
+      switch (emotion) {
+        case 'Angry':
+          resObj.res_txt = 'Angry沉迷工作无法自拔，跑遍车展，霸占步数排行榜，事业即人生！';
+          resObj.res_type = 'Angry极客';
+          resObj.emotion = '生气';
+          break;
+        case 'Disgust':
+          resObj.res_txt = 'Disgust沉迷工作无法自拔，跑遍车展，霸占步数排行榜，事业即人生！';
+          resObj.res_type = 'Disgust极客';
+          resObj.emotion = '厌恶';
+          break;
+        case 'Fear':
+          resObj.res_txt = 'Fear沉迷工作无法自拔，跑遍车展，霸占步数排行榜，事业即人生！';
+          resObj.res_type = 'Fear极客';
+          resObj.emotion = '害怕';
+          break;
+        case 'Happy':
+          resObj.res_txt = 'Happy沉迷工作无法自拔，跑遍车展，霸占步数排行榜，事业即人生！';
+          resObj.res_type = 'Happy极客';
+          resObj.emotion = '高兴';
+          break;
+        case 'Sad':
+          resObj.res_txt = 'Sad沉迷工作无法自拔，跑遍车展，霸占步数排行榜，事业即人生！';
+          resObj.res_type = 'Sad极客';
+          resObj.emotion = '悲伤';
+          break;
+        case 'Surprise':
+          resObj.res_txt = 'Surprise沉迷工作无法自拔，跑遍车展，霸占步数排行榜，事业即人生！';
+          resObj.res_type = 'Surprise极客';
+          resObj.emotion = '惊奇';
+          break;
+        case 'Neutral':
+          resObj.res_txt = 'Neutral沉迷工作无法自拔，跑遍车展，霸占步数排行榜，事业即人生！';
+          resObj.res_type = 'Neutral极客';
+          resObj.emotion = '中性的';
+          break;
+      }
+      return resObj;
+    }
+    /**page1 loading加载页 **/
+    var progress_w = parseFloat($('.J_progress_bar').css('width'));
+    var loadingTxt = ['智能人脸识别系统', 'AI语言技术', '人工智能', '小p你好'];
+    // 进度条 百分比显示
+    var progressInterval = setInterval(function () {
+      var progress_act_w = parseFloat($('.J_progress_act').css('width'));
+      progress_act_w += 4;
+      if (progress_act_w >= progress_w) {
+        $('.J_progress_act').addClass('progress_over');
+        progress_act_w = progress_w;
+        clearInterval(progressInterval);
+        setTimeout(() => {
+          $('.J_loading_containner').hide();
+          $('.J_test_containner').show();
+          srollTop();
+        }, 500);
+      }
+      $('.J_progress_act').css('width', progress_act_w + 'px');
+      $('.J_progress_num').text(parseInt(progress_act_w * 100 / progress_w) + '%');
+    }, 60);
+    var loadingTxtInterval = setInterval(function () {
+      if ($('.J_progress_num').text() == '100%') {
+        clearInterval(loadingTxtInterval);
+      }
+      $('.J_loading_txt').text(loadingTxt[Math.floor(Math.random() * loadingTxt.length)]);// 随机显示文案
+    }, 400)
+
+
+
+    /**page2 ai测试页面 **/
+    // 表情展示
+    var faceList = $('.J_face').find('.face');
+    var current = 0;
+    var len = faceList.length;
+    var setFaceImage = function () {
+      current++;
+      if(current>=len){
+        current = 0;
+      }
+      faceList.eq(current).show().siblings().hide();
+    };
+    var faceInterval = setInterval(setFaceImage, 500);
+
+    // 图片上传
+    let that = this;
+    $('.J_upload_btn').click(function () {
+      let name = $('.J_name').val();
+      if(!name){
+        return alert('请输入姓名');
+      }
+      let isTest = true;
+      if(isTest){
+        clearInterval(faceInterval);
+        // 测试环境演示
+        $('.J_face').hide();
+        $('.J_photo').show();
+        $('.J_upload_txt').text('重新上传');
+        setTimeout(() => {
+          // location.href = 'test_result.html'
+          $('.J_test_containner').hide();
+          $('.J_res_containner').show();
+          srollTop();
+          var class_name = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral'];
+          var score = [0.4624, 0.1150, 0.0019, 0.0260, 0.0043, 0.0043, 0.3861];
+          chartInit(class_name, score);
+        }, 1000);
+        return;
+      }
+
+      // 选择手机图片
+      wx.chooseImage({
+        count: 1, // 默认9
+        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function (res) {
+          var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+          // 获取本地图片
+          wx.getLocalImgData({
+            localId: res.localIds[0], // 图片的localID
+            success: function (res) {
+              var base64Url = localIds[0];//andorid可以使用该localId显示图片 ios不支持
+              var localData = res.localData; // localData是图片的base64数据，可以用img标签显示
+              var u = navigator.userAgent;
+              var isAndroid = u.indexOf("Android") > -1 || u.indexOf("Adr") > -1;
+              if(!isAndroid){
+                base64Url = localData;
+              }
+              $('.J_photo').show();
+              $('.J_face').hide();
+              $('.J_photo').css('background-image','url('+ base64Url+')' );
+              $('.J_upload_txt').text('重新上传');
+              // 上传图片到后台
+              // window.XP.showLoader();
+              let url = 'http://39.104.173.41:10109/upload/images';
+              $.ajax({
+                url: url,
+                type: "POST",
+                data: { 
+                  file: localData,
+                  name: name
+                },
+                timeout: 10000,
+                dataType: "json",
+                success: function (result) {
+                  // window.XP.hideLoader();
+                  console.log('data', result)
+                  if(result.code==200){
+                    var class_name = result.data.class_name;
+                    var emotion = result.data.emotion;
+                    var imgname = result.data.imgname;
+                    var score = result.data.score;
+                    var testResult = getTestResTxt(emotion)
+                    $('.J_res_txt').text(testResult.res_txt);
+                    $('.J_name_txt').text(`${testResult.res_type}${imgname}`);
+                    $('.J_test_containner').hide();
+                    $('.J_res_containner').show();
+                    srollTop();
+                    chartInit(class_name, score);
+                  }
+                },
+                error: function (err) { 
+                  // window.XP.hideLoader();
+                  console.log('err', JSON.stringify(err))
+                }
+              });
+            }
+          });
+        }
+      });
+    })
+
+    // 滚动到顶部
+    function srollTop(){
+      window.scrollTo(0, 0);
+    }
+
+    /**page3 ai测试结果页面 **/
+    function chartInit(class_name, score){
+      var myChart = echarts.init(document.getElementById('chart'));
+      option = {
+        tooltip: {},
+        radar: {
+          name: {
+            textStyle: {
+              color: '#95fcff',
+              borderRadius: 15,
+              padding: [1, 1]
+            },
+            fontSize: 13
+          },
+          indicator: [
+            { name: getTestResTxt(class_name[0]).emotion, max: 1 },
+            { name: getTestResTxt(class_name[1]).emotion, max: 1 },
+            { name: getTestResTxt(class_name[2]).emotion, max: 1 },
+            { name: getTestResTxt(class_name[3]).emotion, max: 1 },
+            { name: getTestResTxt(class_name[4]).emotion, max: 1 },
+            { name: getTestResTxt(class_name[5]).emotion, max: 1 },
+            { name: getTestResTxt(class_name[6]).emotion, max: 1 }
+          ],
+          axisLine: {            // 坐标轴线
+            show: true,       // 默认显示，属性show控制显示与否
+            lineStyle: {
+              color: '#ccddef' // 图表背景网格线的颜色
+            }
+          },
+          splitArea: {
+            show: true,
+            areaStyle: {
+              color: ["#fefeff", "#f2f7fc"]  // 图表背景网格的颜色
+            }
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              width: 1,
+              color: '#ccddef' // 图表背景网格线的颜色
+            }
+          }
+        },
+        series: [{
+          name: 'ai心情',
+          type: 'radar',
+          silent: true,
+          itemStyle: {
+            normal: {
+              color: '#4a95c7'
+            }
+          },
+          data: [
+            {
+              value: score,
+              name: 'ai心情'
+            }
+          ]
+        }]
+      };
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+      // 渲染完成事件。 当渲染动画停止时触发。
+      // window.XP.showLoader();
+      myChart.on('finished', function () {
+        var element = document.getElementById("shareBody");
+
+        var w = $("#shareBody").width();
+        var h = $("#shareBody").height();
+        //要将 canvas 的宽高设置成容器宽高的 2 倍
+        var canvas = document.createElement("canvas");
+        var scale = window.devicePixelRatio;
+        console.log('scale', scale)
+        // var scale = 2;
+        canvas.width = w * scale;
+        canvas.height = h * scale;
+        canvas.style.width = w + "px";
+        canvas.style.height = h + "px";
+        // var context = canvas.getContext("2d");
+        //然后将画布缩放，将图像放大两倍画到画布上
+        // context.scale(scale, scale);
+
+        canvas.getContext("2d").scale(scale, scale);
+        // imageSmoothingEnabled Canvas 2D API 用来设置图片是否平滑的属性，true表示图片平滑（默认值），false表示图片不平滑，默认的改变大小的算法会造成图片模糊并且破坏图片原有的像素。 如果那样的话，设置属性值为false。
+
+        var options = {
+          backgroundColor: null,
+          // allowTaint: true,
+          useCORS: true,
+          logging: false,
+          canvas: canvas,
+        };
+        html2canvas(element, options).then(canvas => {
+          // 关闭抗锯齿
+          var context = canvas.getContext("2d");
+          context.mozImageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.msImageSmoothingEnabled = false;
+          context.imageSmoothingEnabled = false;
+          var image = new Image();
+          image.crossOrigin = "anonymous";  // This enables CORS
+          var url = canvas.toDataURL("image/png"); //base64数据
+          image.src = url;
+          image.style.width = '100%';
+          document.body.innerHTML = '';
+          // window.XP.hideLoader();
+          document.body.appendChild(image);
+        });
+      });
+    }
+</script>
+</body>
+</html>

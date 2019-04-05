@@ -1,0 +1,111 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-03-28 21:14:07
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-03-29 11:28:59
+*/
+html, body {
+  padding: 0;
+  margin: 0; }
+
+.res-containner {
+  position: relative;
+  width: 100%;
+  height: 193.067vw;
+  background: url("../img/ai-test-res-bg.jpg") no-repeat;
+  background-size: 100%;
+  padding-top: 10.667vw;
+  box-sizing: border-box;
+  content: 'viewport-units-buggyfill; height: 193.067vw; padding-top: 10.667vw'; }
+  .res-containner .res-logo {
+    position: absolute;
+    left: 4vw;
+    top: 3.733vw;
+    width: 18vw;
+    height: 4vw;
+    background: url("../img/ai-test-logo.png") no-repeat;
+    background-size: 100%;
+    content: 'viewport-units-buggyfill; left: 4vw; top: 3.733vw; width: 18vw; height: 4vw'; }
+  .res-containner .res-cont {
+    position: relative;
+    width: 100%;
+    height: 133.333vw;
+    background: url("../img/ai-test-res-cont-bg.png") no-repeat;
+    background-size: 100%;
+    content: 'viewport-units-buggyfill; height: 133.333vw'; }
+    .res-containner .res-cont .chart {
+      position: absolute;
+      top: 10.667vw;
+      left: 50%;
+      -webkit-transform: translate(-50%);
+              transform: translate(-50%);
+              content: 'viewport-units-buggyfill; top: 10.667vw'; }
+    .res-containner .res-cont .title {
+      position: absolute;
+      top: -5.067vw;
+      left: 50%;
+      -webkit-transform: translate(-50%);
+              transform: translate(-50%);
+      width: 54.4vw;
+      height: 18.533vw;
+      line-height: 18.533vw;
+      text-align: center;
+      background: url("../img/ai-test-res-titlebg.png") no-repeat;
+      background-size: 100%;
+      font-size: 5.867vw;
+      color: #5df9ff;
+      font-weight: 500;
+      content: 'viewport-units-buggyfill; top: -5.067vw; width: 54.4vw; height: 18.533vw; line-height: 18.533vw; font-size: 5.867vw'; }
+    .res-containner .res-cont .name {
+      position: absolute;
+      bottom: -2.667vw;
+      left: 50%;
+      -webkit-transform: translate(-50%);
+              transform: translate(-50%);
+      width: 49.2vw;
+      height: 16.933vw;
+      line-height: 16.933vw;
+      text-align: center;
+      background: url("../img/ai-test-res-namebg.png") no-repeat;
+      background-size: 100%;
+      font-size: 4vw;
+      color: #fff;
+      content: 'viewport-units-buggyfill; bottom: -2.667vw; width: 49.2vw; height: 16.933vw; line-height: 16.933vw; font-size: 4vw'; }
+    .res-containner .res-cont .res-txt {
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translate(-50%);
+              transform: translate(-50%);
+      top: 83.333vw;
+      width: 77.067vw;
+      height: 30.667vw;
+      background: url("../img/ai-test-res-txt-bg.png") no-repeat;
+      background-size: 100%;
+      font-size: 5.6vw;
+      color: #fff;
+      padding: 4vw;
+      content: 'viewport-units-buggyfill; top: 83.333vw; width: 77.067vw; height: 30.667vw; font-size: 5.6vw; padding: 4vw'; }
+  .res-containner .save-tip {
+    position: absolute;
+    right: 2vw;
+    bottom: 23.733vw;
+    font-size: 3.2vw;
+    color: #fff;
+    width: 3.2vw;
+    content: 'viewport-units-buggyfill; right: 2vw; bottom: 23.733vw; font-size: 3.2vw; width: 3.2vw'; }
+  .res-containner .qrcode {
+    position: absolute;
+    left: 2vw;
+    bottom: 5.333vw;
+    width: 22.933vw;
+    content: 'viewport-units-buggyfill; left: 2vw; bottom: 5.333vw; width: 22.933vw'; }
+    .res-containner .qrcode .qrcode-txt {
+      font-size: 2.8vw;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      content: 'viewport-units-buggyfill; font-size: 2.8vw'; }
+    .res-containner .qrcode .qrcode-img {
+      width: 22.933vw;
+      height: 22.667vw;
+      content: 'viewport-units-buggyfill; width: 22.933vw; height: 22.667vw'; }

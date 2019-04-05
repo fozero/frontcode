@@ -1,0 +1,229 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-03-28 01:58:26
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-03-30 16:38:49
+*/
+html,body{
+	padding: 0;margin: 0;
+}
+@keyframes fade_move_down {
+ 0% {
+	top: 4%;
+	}
+	25% {
+	top: 15%;
+	}
+ 50% {
+	top: 30%;
+	}
+	75% {
+	top: 50%;
+	}
+ 100% {
+	top: 70%;
+	}
+}
+@keyframes btnline_move_right {
+ 0% {
+	left:0%;
+	}
+	25% {
+	left:15%;
+	}
+ 50% {
+	left:30%;
+	}
+	70% {
+	left:45%;
+	}
+ 100% {
+	left:60%;
+	}
+}
+
+.test-containner{
+	position: relative;
+	width: 100%;
+	height: 1624px;
+	background: url('ai-test-bg.jpg') no-repeat;
+	background-size: 100%;
+	.test-logo{
+		position: absolute;
+		left: 50%;
+		top: 218px;
+		transform: translate(-50%);
+		width: 135px;
+		height: 30px;
+		background: url('ai-test-logo.png') no-repeat;
+		background-size: 100%;
+	}
+	.test-photo{
+		position: relative;
+		width: 726px;
+		height: 955px;
+		top: 290px;
+		.p1{
+			position: absolute;
+			    left: 50%;
+			    top: 45px;
+    transform: translateX(-48%);
+			width: 666px;
+			height: 860px;
+			background: url('ai-test-pbg1.png') no-repeat;
+			background-size: 100%;
+			z-index: 1;
+		}
+		.p2-face{
+			position: absolute;
+			    left: 50%;
+			    top: 195px;
+    transform: translateX(-48%);
+			// width: 374px;
+			// height: 450px;
+			// background: url('ai-test-pbg2.png') no-repeat;
+			// background-size: 100%;
+			z-index: 2;
+			.face1{
+		        width: 374px;
+		        height: 450px;
+		        background: url('ai-test-face1.png') no-repeat;
+		        background-size: 100%;
+		      }
+		      .face2{
+		        width: 374px;
+		        height: 450px;
+		        background: url('ai-test-face2.png') no-repeat;
+		        background-size: 100%;
+		        display: none;
+		      }
+		      .face3{
+		        width: 374px;
+		        height: 450px;
+		        background: url('ai-test-face3.png') no-repeat;
+		        background-size: 100%;
+		        display: none;
+		      }
+		      .face4{
+		        width: 374px;
+		        height: 450px;
+		        background: url('ai-test-pbg2.png') no-repeat;
+		        background-size: 100%;
+		        display: none;
+		      }
+		}
+		.p2-photo{
+			position: absolute;
+			    left: 50%;
+    transform: translateX(-48%);
+			width: 666px;
+    height: 857px;
+    top: 48px;
+    border-radius: 50px;
+    z-index: 2;
+    background: url('ai-test-pic1.jpeg') no-repeat;
+			background-size: cover;
+			display: none;
+		}
+		.p3{
+			position: absolute;
+			    left: 50%;
+			    top: 45px;
+    transform: translateX(-48%);
+			width: 666px;
+			height: 857px;
+			background: url('ai-test-pbg3.png') no-repeat;
+			background-size: 100%;
+			z-index: 3;
+		}
+		.p4{
+			position: absolute;
+			    left: 50%;
+			    top: 45px;
+    transform: translateX(-48%);
+			width: 667px;
+			height: 180px;
+			background: url('ai-test-pbg4.png') no-repeat;
+			background-size: 100%;
+			z-index: 4;
+			animation: fade_move_down infinite linear 2s;
+		}
+		.p5{
+			position: absolute;
+			    left: 50%;
+    transform: translateX(-48%);
+			width: 726px;
+			height: 955px;
+			background: url('ai-test-pbg5.png') no-repeat;
+			background-size: 100%;
+			z-index: 5;
+		}
+		.block-name{
+			position: absolute;
+			bottom: -10px;
+			left: 50%;
+			transform: translate(-48%);
+			width: 353px;
+			height: 121px;
+			background: url('ai-test-namebg.png') no-repeat;
+			background-size: 100%;
+			z-index: 6;
+			.field-name{
+				width: 353px;
+				background: none;
+			    border: none;
+			    padding: 42px 40px;
+			    box-sizing: border-box;
+			    text-align: center;
+				font-size: 28px;
+				color: #b9fffb;
+			}
+		}
+		.start-btn{
+			position: absolute;
+			bottom: -134px;
+			left: 50%;
+			transform: translate(-48%);
+			width: 328px;
+			height: 105px;
+			line-height: 105px;
+			text-align: center;
+			background: url('ai-test-startbg.png') no-repeat;
+			background-size: 100%;
+			font-size: 38px;
+			color: #b9fffb;
+			overflow: hidden;
+			z-index: 99;
+			.start-btn-cont{
+				position: relative;
+				.btn-line{
+					position: absolute;
+					top: 6px;
+    				left: 0;
+					width: 109px;
+					height: 97px;
+					background: url('ai-test-startline.png') no-repeat;
+					background-size: 100%;
+					opacity: 0.5;
+					animation: btnline_move_right infinite linear 1s;
+				}
+			}
+		}
+	}
+	.test-support{
+		width: 100%;
+		font-size: 22px;
+		color: #fff;
+		text-align: center;
+		position: absolute;
+		bottom: 210px;
+	}
+	.xiaop{
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: 457px;
+		background: url('ai-test-xiaop.png') no-repeat;
+		background-size: 100%;
+	}
+}

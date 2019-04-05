@@ -1,0 +1,439 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-04-03 16:26:25
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-04-03 16:36:40
+*/
+$url:'/';
+html,body{
+	padding: 0;
+	margin: 0;
+}
+.hide{
+  display: none;
+}
+input::-webkit-input-placeholder{
+    color: #b9fffb;
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color: #b9fffb;
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color: #b9fffb;
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+    color: #b9fffb;
+}
+// loading
+.loading-containner{
+	position: relative;
+	width: 100%;
+	height: 1448px;
+	background: #353993 url($url+'ai-enter-bg.jpg') no-repeat;
+  background-size: 100%;
+	.loading{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		color: #59f6ff;
+		.avatar{
+			position: relative;
+			width: 141px;
+			height: 131px;
+			background: url($url+'ai-enter-avatar.png');
+			background-size: 141px 131px;
+			margin: 0 auto;
+			.line{
+				position:absolute;
+				top: 0;
+				left: 0;
+				width: 140px;
+				height: 12px;
+				background: url($url+'ai-enter-loading.png') no-repeat;
+				background-size: 140px 12px;
+				animation: loading_move_down infinite linear 2s;
+			}
+		}
+		.progress{
+			margin-top: 10px;
+			.progress-num{
+				text-align: center;
+				font-size: 14px;
+			}
+			.progress-bar{
+				position: relative;
+				border: 1px solid #0a1d6b;
+        border-radius: 10px;
+        width: 354px;
+        height: 14px;
+        margin-top: 8px;
+				.progress-bg{
+					position:absolute;
+					top: 0;
+					left: 0;
+					width: 354px;
+          height: 10px;
+          border-radius: 8px;
+					background: #1d37a0;
+				}
+				.progress-active{
+					position:absolute;
+					top: 0;
+					left: 0;
+					height: 10px;
+					width: 0%;
+					background: #59f6ff;
+					border-top-left-radius: 12px;
+					border-bottom-left-radius: 12px;
+					&.progress_over{
+						border-radius: 12px;
+					}
+				}
+			}
+		}
+		.loading-txt{
+			text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+		}
+	}
+}
+// ai测试
+.test-containner{
+	position: relative;
+	width: 750px;
+	height: 1448px;
+	background: url($url+'ai-test-bg.jpg') no-repeat;
+	background-size: 750px 1448px;
+	.test-logo{
+		position: absolute;
+		left: 50%;
+		top: 42px;
+		transform: translate(-50%);
+		width: 135px;
+		height: 30px;
+		background: url($url+'ai-test-logo.png') no-repeat;
+		background-size: 100%;
+	}
+	.test-photo{
+		position: relative;
+		width: 726px;
+		height: 955px;
+		top: 100px;
+		.p1{
+			position: absolute;
+			    left: 50%;
+			    top: 45px;
+    transform: translateX(-48%);
+			width: 666px;
+			height: 860px;
+			background: url($url+'ai-test-pbg1.png') no-repeat;
+			background-size: 100%;
+			z-index: 1;
+		}
+		.p2-face{
+			position: absolute;
+			    left: 50%;
+			    top: 195px;
+    transform: translateX(-48%);
+      z-index: 2;
+      .face1{
+        width: 374px;
+        height: 450px;
+        background: url($url+'ai-test-face1.png') no-repeat;
+        background-size: 100%;
+      }
+      .face2{
+        width: 374px;
+        height: 450px;
+        background: url($url+'ai-test-face2.png') no-repeat;
+        background-size: 100%;
+        display: none;
+      }
+      .face3{
+        width: 374px;
+        height: 450px;
+        background: url($url+'ai-test-face3.png') no-repeat;
+        background-size: 100%;
+        display: none;
+      }
+      .face4{
+        width: 374px;
+        height: 450px;
+        background: url($url+'ai-test-pbg2.png') no-repeat;
+        background-size: 100%;
+        display: none;
+      }
+		}
+		.p2-photo{
+			position: absolute;
+			    left: 50%;
+    transform: translateX(-48%);
+		width: 666px;
+    height: 857px;
+    top: 48px;
+    border-radius: 50px;
+    z-index: 2;
+    background: url($url+'ai-test-pic1.jpeg') no-repeat;
+    background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      display: none;
+		}
+		.p3{
+			position: absolute;
+			    left: 50%;
+			    top: 45px;
+    transform: translateX(-48%);
+			width: 666px;
+			height: 857px;
+			background: url($url+'ai-test-pbg3.png') no-repeat;
+			background-size: 100%;
+			z-index: 3;
+		}
+		.p4{
+			position: absolute;
+			    left: 50%;
+			    top: 45px;
+    transform: translateX(-48%);
+			width: 667px;
+			height: 180px;
+			background: url($url+'ai-test-pbg4.png') no-repeat;
+			background-size: 100%;
+			z-index: 4;
+			animation: test_move_down infinite linear 2s;
+		}
+		.p5{
+			position: absolute;
+			    left: 50%;
+    transform: translateX(-48%);
+			width: 726px;
+			height: 955px;
+			background: url($url+'ai-test-pbg5.png') no-repeat;
+			background-size: 100%;
+			z-index: 5;
+		}
+		.block-name{
+			position: absolute;
+			bottom: -10px;
+			left: 50%;
+			transform: translate(-48%);
+			width: 353px;
+			height: 121px;
+			background: url($url+'ai-test-namebg.png') no-repeat;
+			background-size: 100%;
+			z-index: 6;
+			.field-name{
+				width: 353px;
+				background: none;
+			    border: none;
+			    padding: 42px 40px;
+			    box-sizing: border-box;
+			    text-align: center;
+				font-size: 28px;
+				color: #b9fffb;
+			}
+		}
+		.start-btn{
+			position: absolute;
+			bottom: -134px;
+			left: 50%;
+			transform: translate(-48%);
+			width: 328px;
+			height: 105px;
+			line-height: 105px;
+			text-align: center;
+			background: url('ai-test-startbg.png') no-repeat;
+			background-size: 100%;
+			font-size: 38px;
+			color: #b9fffb;
+			overflow: hidden;
+			z-index: 99;
+			.start-btn-cont{
+				position: relative;
+				.btn-line{
+					position: absolute;
+					top: 6px;
+    				left: 0;
+					width: 109px;
+					height: 97px;
+					background: url('ai-test-startline.png') no-repeat;
+					background-size: 100%;
+					opacity: 0.5;
+					animation: btnline_move_right infinite linear 1s;
+				}
+			}
+		}
+	}
+	.test-support{
+		width: 100%;
+		font-size: 22px;
+		color: #fff;
+		text-align: center;
+		position: absolute;
+		bottom: 210px;
+	}
+	.xiaop{
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: 457px;
+		background: url('ai-test-xiaop.png') no-repeat;
+		background-size: 100%;
+	}
+}
+// ai测试结果
+.res-containner{
+	position: relative;
+	width: 100%;
+	height: 1448px;
+	background: url($url+'ai-test-res-bg.jpg') no-repeat;
+	background-size: 100%;
+  box-sizing: border-box;
+	.res-logo{
+		position: absolute;
+		left: 30px;
+		top: 28px;
+		width: 135px;
+		height: 30px;
+		background: url($url+'ai-test-logo.png') no-repeat;
+		background-size: 100%;
+	}
+	.res-cont{
+    // position: relative;
+    position: absolute;
+    top: 80px;
+		width: 100%;
+    height: 1000px;
+    background: url($url+'ai-test-res-cont-bg.png') no-repeat;
+    background-size: 100%;
+		.chart{
+			position: absolute;
+      top: 130px;
+      left: 50%;
+      transform: translate(-50%);
+			width: 600px;
+			height: 500px;
+		}
+	    .title{
+	    	position: absolute;
+	    	top: -38px;
+	    	left: 50%;
+	    	transform: translate(-50%);
+	    	width: 408px;
+	    	height: 139px;
+	    	line-height: 139px;
+	    	text-align: center;
+	    	background: url($url+'ai-test-res-titlebg.png') no-repeat;
+	    	background-size: 100%;
+	    	font-size: 44px;
+	    	color: #5df9ff;
+	    	font-weight: 500;
+	    }
+	    .name{
+	    	position: absolute;
+	    	bottom: -20px;
+	    	left: 50%;
+	    	transform: translate(-50%);
+	    	width: 369px;
+	    	height: 127px;
+	    	line-height: 127px;
+	    	text-align: center;
+	    	background: url($url+'ai-test-res-namebg.png') no-repeat;
+	    	background-size: 100%;
+	    	font-size: 30px;
+	    	color: #fff;
+	    }
+	    .res-txt{
+	    	position: absolute;
+	    	left: 50%;
+	    	transform: translate(-50%);
+	    	top: 625px;
+	    	width: 578px;
+	    	height: 230px;
+	    	background: url($url+'ai-test-res-txt-bg.png') no-repeat;
+        background-size: 578px 230px;
+	    	font-size: 42px;
+	    	color: #fff;
+        padding: 20px;
+        word-wrap:break-word;
+	    }
+	}
+	.save-tip{
+		position: absolute;
+    right: 15px;
+    top: 1096px;
+		// bottom: 178px;
+		font-size: 24px;
+		color: #fff;
+		width: 24px;
+	}
+	.qrcode{
+		position: absolute;
+		left: 15px;
+		bottom: 40px;
+		width: 172px;
+		.qrcode-txt{
+			font-size: 21px;
+			color: #fff;
+			text-align: center;
+			margin: 0;
+		}
+		.qrcode-img{
+			width: 172px;
+			height: 170px;
+		}
+	}
+}
+@keyframes loading_move_down {
+ 0% {
+	top: 0%;
+	}
+	25% {
+	top: 25%;
+	}
+ 50% {
+	top: 50%;
+	}
+	75% {
+	top: 75%;
+	}
+ 100% {
+	top: 90%;
+	}
+}
+@keyframes test_move_down {
+ 0% {
+	top: 4%;
+	}
+	25% {
+	top: 15%;
+	}
+ 50% {
+	top: 30%;
+	}
+	75% {
+	top: 50%;
+	}
+ 100% {
+	top: 70%;
+	}
+}
+@keyframes btnline_move_right {
+ 0% {
+	left:0%;
+	}
+	25% {
+	left:15%;
+	}
+ 50% {
+	left:30%;
+	}
+	70% {
+	left:45%;
+	}
+ 100% {
+	left:60%;
+	}
+}

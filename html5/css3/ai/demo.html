@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="./public/m/css/demo-585a71ad43.css">
+</head>
+<body>
+
+	<div class="demo" id="demo">
+		<div class="pic"></div>
+		<canvas class="chart" id="chart"></canvas>
+		<h1>小鹏汽车订单已过万台，六城八店同步开业，展现交付信心</h1>
+		<p>
+			继小鹏G3“双12”上市引起消费者关注后，小鹏汽车在新年到来之际宣布又一重要动作。12月27日，位于北京、广州、深圳、东莞、武汉、杭州六城CBD的小鹏汽车体验中心正式开始对外营业。小鹏汽车董事长兼CEO何小鹏、首席营销官熊青云等分别在各个城市门店主持见证了开业仪式，宣示小鹏汽车在扎实稳健、有质量的产品交付进程中，逐步完成了服务运营体系中的又一块重要的拼图。何小鹏在广州高德置地体验中心表示：小鹏G3现在的销量情况非常好，整体订单已经过万台，但接下来更重要的是把品质、交付做好，这一定是小鹏汽车最核心的事情。
+<!-- <h1>专属GEEK-PARK文化空间，六城八店同时开业</h1> -->
+作为小鹏汽车广州旗舰店，小鹏汽车广州高德置地体验中心占地550平方米，其店面融入绿色自然的设计元素，更是针对广州地区融入了本土的人文特色，为用户打造了一个生机勃勃的GEEK-PARK文化空间。而其他多城门店也有类似的特色，传递着小鹏汽车开放、多变、融合、生活的社群文化理念。
+
+小鹏汽车体验中心不是一个单纯的线下体验店或销售服务网点，而是一个与小鹏汽车用户、粉丝互动沟通的综合体，在这里用户可以最直观、高效、舒适地享受产品体验、专业顾问、陪伴试驾等服务，切身感受小鹏汽车以“鹏友为先”构建的服务生态。
+
+小鹏汽车八家门店自此前试营业以来，到如今正式对外营业，经历了小鹏G3上市交付前后的两个阶段，六城八店同时开业，标志着小鹏汽车“鹏友+”服务计划的正式落地，完善了其服务体系发展的重要一步。2019年春节前，小鹏汽车将在北上广深杭等一二线城市完成十五家线下体验中心和服务中心的布局，并在2019年实现覆盖近30个城市70家门店，持续为“鹏友”提供更易触达的线下体验。何小鹏表示：小鹏汽车将把4S店拆成两个“2S”，第一个“2S”也就是体验中心，会在CBD等人流中心主要体现销售、展示、数据的功能，而第二个“2S”就是服务中心，即是交付、维修、保养、零配件等，会放到城市周边区域更大的位置，集中起来帮助所有的用户来做好后面的事情。
+		</p>
+	</div>
+
+<script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.3.7/f2.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script>
+	var recentOneMonth = [{
+	  name: '喜悦值',
+	  value: 6.5
+	}, {
+	  name: '敬业值',
+	  value: 9.5
+	}, {
+	  name: '愤怒值',
+	  value: 9
+	}, {
+	  name: '智慧值',
+	  value: 6
+	}, {
+	  name: '悲伤值',
+	  value: 6
+	}];
+	var chart = new F2.Chart({
+	  id: 'chart',
+	  pixelRatio: window.devicePixelRatio,
+	  width: 300,
+	  height: 280,
+	  padding: 'auto'
+	});
+
+	chart.source(recentOneMonth, {
+	  value: {
+	    min: 0,
+	    max: 10
+	  }
+	});
+	chart.coord('polar',{
+	  transposed: false,
+	});
+	chart.tooltip(false); // 关闭 tooltip
+	chart.axis('value', {
+	  grid: {
+	    lineDash: null
+	  },
+	  label: null,
+	  line: null
+	});
+	chart.axis('name', {
+		label:{
+			fill:'#95fcff',
+			fontSize:'13'
+		},
+	  grid: {
+	    lineDash: null
+	  }
+	});
+	// 面积
+	chart.area().position('name*value').color('#FE5C5B').style({
+	  fillOpacity: 0.2
+	}).animate({
+	  appear: {
+	    animation: 'groupWaveIn'
+	  }
+	});
+	chart.line().position('name*value').color('#4a95c7').size(3).animate({
+	  appear: {
+	    animation: 'groupWaveIn'
+	  }
+	});
+	chart.point().position('name*value').color('#fff').style({
+	  stroke: '#4a95c7',
+	  lineWidth: 2
+	}).animate({
+	  appear: {
+	    delay: 100
+	  }
+	});
+	chart.render();
+</script>
+<script>
+
+
+
+$(function(){  
+	// 截图不全问题，但如果有canves的时候 这种方式不能对canves截图
+        var targetDom = $("#demo");  
+        var copyDom = targetDom.clone();  
+        copyDom.width(targetDom.width() + "px");  
+        copyDom.height(targetDom.height() + "px");  
+        $('body').append(copyDom);  
+        html2canvas(copyDom, {  
+            allowTaint: true,  
+            taintTest: false,  
+            onrendered : function(canvas) {  
+            imgData = canvas.toDataURL(type);  
+          }  
+        });  
+    })  
+	// window.onload = function(){
+	// 	html2canvas(document.body).then(canvas => {
+	// 		// $('#resContainner').hide();
+	// 	    document.body.appendChild(canvas)
+	// 	});
+	// }
+</script>
+</body>
+</html>

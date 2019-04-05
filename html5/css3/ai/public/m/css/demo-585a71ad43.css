@@ -1,0 +1,12 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-03-28 19:59:13
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-03-29 14:55:48
+*/
+.demo .pic {
+  width: 49.867vw;
+  height: 60vw;
+  background: url("../img/pic1.jpeg") no-repeat;
+  background-size: 100%;
+  content: 'viewport-units-buggyfill; width: 49.867vw; height: 60vw'; }

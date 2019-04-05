@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#capture{
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div id="capture" style="padding: 10px; background: #f5da55">
+		    <h4 style="color: #000; ">Hello world!</h4>
+		</div>
+
+	</div>
+	<script src="../lib/html2canvas.js"></script>
+	<script>
+		html2canvas(document.querySelector("#capture")).then(canvas => {
+		    document.body.appendChild(canvas)
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-03-27 16:43:46
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-03-28 01:15:14
+*/
+html, body {
+  padding: 0;
+  margin: 0; }
+
+@-webkit-keyframes fade_move_down {
+  0% {
+    top: 0%; }
+  25% {
+    top: 25%; }
+  50% {
+    top: 50%; }
+  75% {
+    top: 75%; }
+  100% {
+    top: 90%; } }
+
+@keyframes fade_move_down {
+  0% {
+    top: 0%; }
+  25% {
+    top: 25%; }
+  50% {
+    top: 50%; }
+  75% {
+    top: 75%; }
+  100% {
+    top: 90%; } }
+
+.ai-containner {
+  position: relative;
+  width: 100%;
+  height: 216.533vw;
+  background: url("../img/ai-enter-bg.jpg") no-repeat;
+  background-size: 100%;
+  content: 'viewport-units-buggyfill; height: 216.533vw'; }
+  .ai-containner .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    color: #59f6ff; }
+    .ai-containner .loading .avatar {
+      position: relative;
+      width: 18.8vw;
+      height: 17.467vw;
+      background: url("../img/ai-enter-avatar.png");
+      background-size: 18.8vw 17.467vw;
+      margin: 0 auto;
+      content: 'viewport-units-buggyfill; width: 18.8vw; height: 17.467vw; background-size: 18.8vw 17.467vw'; }
+      .ai-containner .loading .avatar .line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 18.667vw;
+        height: 1.6vw;
+        background: url("../img/ai-enter-loading.png") no-repeat;
+        background-size: 18.667vw 1.6vw;
+        -webkit-animation: fade_move_down infinite linear 2s;
+                animation: fade_move_down infinite linear 2s;
+                content: 'viewport-units-buggyfill; width: 18.667vw; height: 1.6vw; background-size: 18.667vw 1.6vw'; }
+    .ai-containner .loading .progress {
+      margin-top: 1.333vw;
+      content: 'viewport-units-buggyfill; margin-top: 1.333vw'; }
+      .ai-containner .loading .progress .progress-num {
+        text-align: center;
+        font-size: 1.867vw;
+        content: 'viewport-units-buggyfill; font-size: 1.867vw'; }
+      .ai-containner .loading .progress .progress-bar {
+        position: relative;
+        border: 1px solid #0a1d6b;
+        border-radius: 1.333vw;
+        width: 47.2vw;
+        height: 1.6vw;
+        margin-top: 1.067vw;
+        content: 'viewport-units-buggyfill; border-radius: 1.333vw; width: 47.2vw; height: 1.6vw; margin-top: 1.067vw'; }
+        .ai-containner .loading .progress .progress-bar .progress-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 47.2vw;
+          height: 1.6vw;
+          background: #1d37a0;
+          content: 'viewport-units-buggyfill; width: 47.2vw; height: 1.6vw'; }
+        .ai-containner .loading .progress .progress-bar .progress-active {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 1.6vw;
+          width: 0%;
+          background: #59f6ff;
+          border-top-left-radius: 1.333vw;
+          border-bottom-left-radius: 1.333vw;
+          content: 'viewport-units-buggyfill; height: 1.6vw; border-top-left-radius: 1.333vw; border-bottom-left-radius: 1.333vw'; }
+          .ai-containner .loading .progress .progress-bar .progress-active.progress_over {
+            border-radius: 1.333vw;
+            content: 'viewport-units-buggyfill; border-radius: 1.333vw'; }
+    .ai-containner .loading .loading-txt {
+      text-align: center;
+      font-size: 2.4vw;
+      content: 'viewport-units-buggyfill; font-size: 2.4vw'; }

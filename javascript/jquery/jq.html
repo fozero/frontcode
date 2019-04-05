@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<title>ul>li遍历取值  $.post捕获错误信息</title>
 </head>
 <body>
@@ -11,6 +12,7 @@
 			<li>篮球</li>
 			<li>乒乓球</li>
 		</ul>
+		<div class="" onclick="getData();">获取数据</div>
 	</div>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -42,6 +44,28 @@
 		//     console.log("Data Loaded: " + data);
 		//   });
 	}
+
+	function getData(){
+		let url = 'test';
+              $.ajax({
+                url: url, 
+                type: "post",
+                data:{
+                  // file: localData,
+                  // name: 'file.jpg',
+                },
+                success: function (res) {
+                  console.log(11,res)
+                },
+                error:function(err){
+                  console.log('err1111111',JSON.stringify(err))
+                }
+              });
+	}
+
+
+
+
 </script>
 </body>
 </html>

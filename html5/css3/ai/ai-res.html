@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="./public/m/css/ai-res-0377634de7.css">
+</head>
+<body>
+	<div class="res-containner" id="shareBody" onclick="savePic();">
+		<div class="res-logo"></div>
+		<div class="res-cont">
+			<div class="title">极客情绪报告</div>
+			<div class="name">正能量极客阿健</div>
+			<canvas class="chart" id="chart"></canvas>
+			<div class="res-txt">
+				车展很累，你总能微笑面对。你相信学会告别，才能有更好的相逢。 
+			</div>
+		</div>
+		<div class="save-tip">
+			长按保存图片
+		</div>
+		<div class="qrcode">
+			<img class="qrcode-img" src="/public/m/img/ai-test-res-qrcode.png" alt="">
+			<p class="qrcode-txt">长按二维码<br/>获取情绪报告</p>
+		</div>
+	</div>
+	<!-- <div class="J_save" onclick="savePic();">生成图片</div> -->
+<script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.3.7/f2.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<!-- 解决截图模糊问题 -->
+<!-- <script src="/public/m/lib/html2canvas.js"></script> -->
+<script>
+	var recentOneMonth = [{
+	  name: '喜悦值',
+	  value: 6.5
+	}, {
+	  name: '敬业值',
+	  value: 9.5
+	}, {
+	  name: '愤怒值',
+	  value: 9
+	}, {
+	  name: '智慧值',
+	  value: 6
+	}, {
+	  name: '悲伤值',
+	  value: 6
+	}];
+	var chart = new F2.Chart({
+	  id: 'chart',
+	  pixelRatio: window.devicePixelRatio,
+	  width: 300,
+	  height: 280,
+	  padding: 'auto'
+	});
+
+	chart.source(recentOneMonth, {
+	  value: {
+	    min: 0,
+	    max: 10
+	  }
+	});
+	chart.coord('polar',{
+	  transposed: false,
+	});
+	chart.tooltip(false); // 关闭 tooltip
+	chart.axis('value', {
+	  grid: {
+	    lineDash: null
+	  },
+	  label: null,
+	  line: null
+	});
+	chart.axis('name', {
+		label:{
+			fill:'#95fcff',
+			fontSize:'13'
+		},
+	  grid: {
+	    lineDash: null
+	  }
+	});
+	// 面积
+	chart.area().position('name*value').color('#FE5C5B').style({
+	  fillOpacity: 0.2
+	}).animate({
+	  appear: {
+	    animation: 'groupWaveIn'
+	  }
+	});
+	chart.line().position('name*value').color('#4a95c7').size(3).animate({
+	  appear: {
+	    animation: 'groupWaveIn'
+	  }
+	});
+	chart.point().position('name*value').color('#fff').style({
+	  stroke: '#4a95c7',
+	  lineWidth: 2
+	}).animate({
+	  appear: {
+	    delay: 100
+	  }
+	});
+	chart.render();
+	// window.onload = function(){
+	// 	html2canvas(document.querySelector("#resContainner")).then(canvas => {
+	// 		$('#resContainner').hide();
+	// 	    document.body.appendChild(canvas)
+	// 	});
+	// }
+</script>
+<script>
+	setTimeout(function () {
+	    var w = $("#shareBody").width();
+	    var h = $("#shareBody").height();
+
+	    //要将 canvas 的宽高设置成容器宽高的 2 倍
+	    var canvas = document.createElement("canvas");
+	    canvas.width = w * 2;
+	    canvas.height = h * 2;
+	    canvas.style.width = w + "px";
+	    canvas.style.height = h + "px";
+	    var context = canvas.getContext("2d");
+	    //然后将画布缩放，将图像放大两倍画到画布上
+	    context.scale(2, 2);
+
+	    html2canvas(document.querySelector("#shareBody"), {
+	      canvas: canvas,
+	      onrendered: function (canvas) {
+	        var url = canvas.toDataURL("image/png"); //base64数据
+	        var image = new Image();
+	        image.src = url;
+	        image.style.width = '100%';
+	        document.body.innerHTML = '';
+	        // document.body.innerHTML = '<img src="' + url + '"/>';
+	        document.body.appendChild(image);
+	        document.title = '整个页面已经是图片了~~';
+	        $("#shareBody img").css({"width": "100%", "height": "100%"})
+	        // alert(document.body.innerHTML)
+	      }
+	    });
+	    
+	    // getCanvasImg($('#shareBody'));
+	  }, 3000);
+
+
+
+	function savePic(){
+		console.log('availWidth',window.screen.availWidth)
+		console.log('availHeight',window.screen.availHeight)
+
+		const w = $('body').outerWidth(),
+          h = $('body').outerHeight();
+		console.log('scrollWidth',w)
+		console.log('scrollHeight',h)
+		// html2canvas(document.body,{
+		// 	allowTaint: true,
+  //       	taintTest: false,
+		// 	width:$('body').outerWidth(),
+		// 	height:$('body').outerHeight(),
+		// 	windowWidth:$('body').outerWidth(),
+		// 	windowHeight:$('body').outerHeight(),
+		// 	x:0,
+		// 	y:window.pageYOffset,
+		// 	// dpi: window.devicePixelRatio,
+		// 	onrendered: function(canvas) {
+  //           	// const dataUrl = canvas.toDataURL("image/png", 1.0),
+	 //            //       newImg = document.createElement("img");
+	 //            // newImg.src = dataUrl;
+	 //            // console.log('dataUrl',dataUrl)
+	 //            // $('body').empty().append(newImg);
+	 //            // newImg.style.width = '100%';
+
+	 //            document.body.appendChild(canvas)
+	 //        }
+		// });
+		html2canvas(document.querySelector("#resContainner")).then(canvas => {
+			$('#resContainner').hide();
+		    document.body.appendChild(canvas)
+		});
+	}
+</script>
+</body>
+</html>

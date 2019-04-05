@@ -1,0 +1,98 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-03-27 16:43:46
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-03-28 01:15:14
+*/
+html,body{
+	padding: 0;margin: 0;
+}
+@keyframes fade_move_down {
+ 0% {
+	top: 0%;
+	}
+	25% {
+	top: 25%;
+	}
+ 50% {
+	top: 50%;
+	}
+	75% {
+	top: 75%;
+	}
+ 100% {
+	top: 90%;
+	}
+}
+.ai-containner{
+	position: relative;
+	width: 100%;
+	height: 1624px;
+	background: url('ai-enter-bg.jpg') no-repeat;
+	background-size: 100%;
+	.loading{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		color: #59f6ff;
+		.avatar{
+			position: relative;
+			width: 141px;
+			height: 131px;
+			background: url('ai-enter-avatar.png');
+			background-size: 141px 131px;
+			margin: 0 auto;
+			.line{
+				position:absolute;
+				top: 0;
+				left: 0;
+				width: 140px;
+				height: 12px;
+				background: url('ai-enter-loading.png') no-repeat;
+				background-size: 140px 12px;
+				animation: fade_move_down infinite linear 2s;
+			}
+		}
+		.progress{
+			margin-top: 10px;
+			.progress-num{
+				text-align: center;
+				font-size: 14px;
+			}
+			.progress-bar{
+				position: relative;
+				border: 1px solid #0a1d6b;
+					border-radius: 10px;
+				width: 354px;
+					height: 12px;
+					margin-top: 8px;
+				.progress-bg{
+					position:absolute;
+					top: 0;
+					left: 0;
+					width: 354px;
+					height: 12px;
+					background: #1d37a0;
+				}
+				.progress-active{
+					position:absolute;
+					top: 0;
+					left: 0;
+					height: 12px;
+					width: 0%;
+					background: #59f6ff;
+					border-top-left-radius: 10px;
+					border-bottom-left-radius: 10px;
+					&.progress_over{
+						border-radius: 10px;
+					}
+				}
+			}
+		}
+		.loading-txt{
+			text-align: center;
+			font-size: 18px;
+		}
+	}
+}

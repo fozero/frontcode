@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="./public/m/css/ai-f69f934769.css">
+</head>
+<body>
+	<div class="ai-containner">
+		<div class="loading">
+			<div class="avatar">
+				<span class="line"></span>
+			</div>
+			<div class="progress">
+				<div class="progress-num J_progress_num">0%</div>
+				<div class="progress-bar J_progress_bar">
+					<span class="progress-bg"></span>
+					<span class="progress-active J_progress_act"></span>
+				</div>
+			</div>
+			<p class="loading-txt J_loading_txt">智能人脸识别系统</p>
+		</div>
+	</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	var progress_w = parseFloat($('.J_progress_bar').css('width'));
+	var loadingTxt = ['智能人脸识别系统','AI语言技术','人工智能','小p你好'];
+
+	// 进度条 百分比显示
+	var progressInterval = setInterval(function(){
+		var progress_act_w = parseFloat($('.J_progress_act').css('width'));
+		progress_act_w+=4;
+		if(progress_act_w>=progress_w){
+			$('.J_progress_act').addClass('progress_over');
+			progress_act_w = progress_w;
+			clearInterval(progressInterval);
+			location.href='./pretest.html';
+		}
+		$('.J_progress_act').css('width',progress_act_w+'px');
+		$('.J_progress_num').text(parseInt(progress_act_w*100/progress_w)+'%');
+	},60);
+	var loadingTxtInterval = setInterval(function(){
+		if($('.J_progress_num').text()=='100%'){
+			clearInterval(loadingTxtInterval);
+		}
+		$('.J_loading_txt').text(loadingTxt[Math.floor(Math.random() * loadingTxt.length)]);// 随机显示文案
+	},400)
+</script>
+</body>
+</html>

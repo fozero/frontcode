@@ -1,0 +1,108 @@
+/*
+* @Author: fozero@126.
+* @Date:   2019-03-28 21:14:07
+* @Last Modified by:   fozero
+* @Last Modified time: 2019-03-30 01:46:47
+*/
+html,body{
+	padding: 0;margin: 0;
+}
+.res-containner{
+	position: relative;
+	width: 100%;
+	height: 1448px;
+	background: url('ai-test-res-bg.jpg') no-repeat;
+	background-size: 100%;
+	padding-top: 80px;
+	box-sizing: border-box;
+	.res-logo{
+		position: absolute;
+		left: 30px;
+		top: 28px;
+		width: 135px;
+		height: 30px;
+		background: url('ai-test-logo.png') no-repeat;
+		background-size: 100%;
+	}
+	.res-cont{
+		position: relative;
+		width: 100%;
+	height: 1000px;
+	background: url('ai-test-res-cont-bg.png') no-repeat;
+	background-size: 100%;
+		.chart{
+			position: absolute;
+		    top: 130px;
+		    left: 50%;
+		    transform: translate(-50%);
+			width: 600px;
+			height: 500px;
+		}
+	    .title{
+	    	position: absolute;
+	    	top: -38px;
+	    	left: 50%;
+	    	transform: translate(-50%);
+	    	width: 408px;
+	    	height: 139px;
+	    	line-height: 139px;
+	    	text-align: center;
+	    	background: url('ai-test-res-titlebg.png') no-repeat;
+	    	background-size: 100%;
+	    	font-size: 44px;
+	    	color: #5df9ff;
+	    	font-weight: 500;
+	    }
+	    .name{
+	    	position: absolute;
+	    	bottom: -20px;
+	    	left: 50%;
+	    	transform: translate(-50%);
+	    	width: 369px;
+	    	height: 127px;
+	    	line-height: 127px;
+	    	text-align: center;
+	    	background: url('ai-test-res-namebg.png') no-repeat;
+	    	background-size: 100%;
+	    	font-size: 30px;
+	    	color: #fff;
+	    }
+	    .res-txt{
+	    	position: absolute;
+	    	left: 50%;
+	    	transform: translate(-50%);
+	    	top: 625px;
+	    	width: 578px;
+	    	height: 230px;
+	    	background: url('ai-test-res-txt-bg.png') no-repeat;
+	    	background-size: 100%;
+	    	font-size: 42px;
+	    	color: #fff;
+	    	padding: 30px;
+	    }
+	}
+	.save-tip{
+		position: absolute;
+		right: 15px;
+		bottom: 178px;
+		font-size: 24px;
+		color: #fff;
+		width: 24px;
+	}
+	.qrcode{
+		position: absolute;
+		left: 15px;
+		bottom: 40px;
+		width: 172px;
+		.qrcode-txt{
+			font-size: 21px;
+			color: #fff;
+			text-align: center;
+			margin: 0;
+		}
+		.qrcode-img{
+			width: 172px;
+			height: 170px;
+		}
+	}
+}

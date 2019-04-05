@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>h5手机拍照选择相册</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<style>
+    .photo{
+        width: 300px;
+    }
+    .photo2{
+        
+    }
+</style>
+</head>
+<!-- 
+ capture="camera"
+multiple
+     -->
+    <body>
+        调用摄像头
+        <input class="J_file" type="file" accept="image/*" multiple>
+        <img class="photo J_img" src="" alt="">
+        <div class="photo2"></div>
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
+        <script src="/public/m/lib/exif.js"></script>
+        <script src="https://cdn.bootcss.com/exif-js/2.3.0/exif.min.js"></script>
+        <script type="text/javascript">
+            var vConsole = new VConsole();
+            function blobToDataURL(blob) {
+                        var a = new FileReader();
+                         a.readAsDataURL(blob);//读取文件保存在result中
+                        a.onload = function (e) {
+                        var getRes = e.target.result;//读取的结果在result中
+                        }
+
+                    }
+
+
+                $('.J_file').on('change',function(){   
+
+                    var imgSize = this.files[0].size;  //b
+                    var imgName = this.files[0].name;
+                    var imgSrcI = getObjectURL(this.files[0]);
+
+
+                    // var objUrl = $(this)[0].files[0]
+
+                    // var base64url = blobToDataURL(objUrl);
+                    // 
+                    var reader=new FileReader();
+                    reader.readAsDataURL(this.files[0])
+                    reader.onload=function(e){
+                      console.log('reader', reader.result);  //或者 e.target.result都是一样的，都是base64码
+                      $('.J_img').attr('src',reader.result);
+                    }  
+
+                    console.log('imgSize',imgSize,imgName,imgSrcI )
+
+                    // $('.J_img').attr('src',imgSrcI);
+
+
+                    
+
+
+
+                    // 解决图片旋转90度问题
+                    // EXIF.getData('https://www.xiaopeng.com/public/ai/ai-test-bg.jpg', function(){
+                    //   // EXIF.getAllTags(this);
+                    //   // console.log('Orientation')
+                    //   // console.log('Orientation',EXIF.getTag(this, 'Orientation'))
+                    // });
+
+
+
+                    // canvas对图片进行缩放
+                    // let canvas = document.createElement('canvas')
+                    // let context = canvas.getContext('2d')
+                    // canvas.width = targetWidth
+                    // canvas.height = targetHeight
+
+
+
+                    
+                })
+
+
+                // 获取本地图片url
+                function getObjectURL(file) {
+                    var url = null ;
+                    if (window.createObjectURL!=undefined) { // basic
+                        url = window.createObjectURL(file) ;
+                    } else if (window.URL!=undefined) { // mozilla(firefox)
+                        url = window.URL.createObjectURL(file) ;
+                    } else if (window.webkitURL!=undefined) { // webkit or chrome
+                        url = window.webkitURL.createObjectURL(file) ;
+                    }
+                    return url ;
+                }
+        </script>
+    </body>
+</html>

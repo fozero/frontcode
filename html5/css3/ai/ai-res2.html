@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="./public/m/css/ai-res2-b2c0f09ae5.css">
+</head>
+<body>
+	<div class="res-containner" id="shareBody">
+		<div class="res-logo"></div>
+		<div class="res-cont">
+			<div class="title">极客情绪报告</div>
+			<div class="name">正能量极客阿健</div>
+			<div class="chart" id="chart"></div>
+			<div class="res-txt">
+				车展很累，你总能微笑面对。你相信学会告别，才能有更好的相逢。 
+			</div>
+		</div>
+		<div class="save-tip">
+			长按保存图片
+		</div>
+		<div class="qrcode">
+			<img class="qrcode-img" src="/public/m/img/ai-test-res-qrcode.png" alt="">
+			<p class="qrcode-txt">长按二维码<br/>获取情绪报告</p>
+		</div>
+	</div>
+<!-- <script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.3.7/f2.min.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/echarts/4.1.0/echarts.min.js"></script>
+<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script>
+	var myChart = echarts.init(document.getElementById('chart'));
+    option = {
+      // title: {
+      //     text: '基础雷达图'
+      // },
+      tooltip: {},
+      // legend: {
+      //     data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
+      // },
+      radar: {
+        // shape: 'circle',
+        name: {
+          textStyle: {
+            color: '#95fcff',
+            borderRadius: 15,
+            padding: [1, 1]
+          }
+        },
+        indicator: [
+          { name: '喜悦值', max: 10 },
+          { name: '敬业值', max: 10 },
+          { name: '愤怒值', max: 10 },
+          { name: '智慧值', max: 10 },
+          { name: '悲伤值', max: 10 }
+        ],
+        axisLine: {            // 坐标轴线
+          show: true,       // 默认显示，属性show控制显示与否
+          lineStyle: {
+            color: '#ccddef' // 图表背景网格线的颜色
+          }
+        },
+        splitArea: {
+          show: true,
+          areaStyle: {
+            color: ["#fefeff", "#f2f7fc"]  // 图表背景网格的颜色
+          }
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            width: 1,
+            color: '#ccddef' // 图表背景网格线的颜色
+          }
+        }
+      },
+      series: [{
+        name: 'ai心情',
+        type: 'radar',
+        silent: true,
+        itemStyle: {
+          normal: {
+            color: '#4a95c7'
+          }
+        },
+        data: [
+          {
+            value: [6.5, 9.5, 9, 6, 6],
+            name: 'ai心情'
+          }
+        ]
+      }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    // 渲染结束事件。不代表渲染动画停止
+    // myChart.on('rendered', function () {
+    //     alert('ok')
+    // });
+    // 渲染完成事件。 当渲染动画停止时触发。
+    myChart.on('finished', function () {
+      var element = document.getElementById("shareBody");
+
+      var w = $("#shareBody").width();
+      var h = $("#shareBody").height();
+      //要将 canvas 的宽高设置成容器宽高的 2 倍
+      var canvas = document.createElement("canvas");
+      var scale = window.devicePixelRatio;
+      console.log('scale', scale)
+      // var scale = 2;
+      canvas.width = w * scale;
+      canvas.height = h * scale;
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+      // var context = canvas.getContext("2d");
+      //然后将画布缩放，将图像放大两倍画到画布上
+      // context.scale(scale, scale);
+
+      canvas.getContext("2d").scale(scale, scale);
+      // imageSmoothingEnabled Canvas 2D API 用来设置图片是否平滑的属性，true表示图片平滑（默认值），false表示图片不平滑，默认的改变大小的算法会造成图片模糊并且破坏图片原有的像素。 如果那样的话，设置属性值为false。
+      
+      var options = {
+        // scale: scale,
+        backgroundColor: null,
+        // allowTaint: true,
+        useCORS: true,
+        logging: false,
+        canvas: canvas,
+      };
+      html2canvas(element,options).then(canvas => {
+        // 关闭抗锯齿
+        var context = canvas.getContext("2d");
+        context.mozImageSmoothingEnabled = false;
+        context.webkitImageSmoothingEnabled = false;
+        context.msImageSmoothingEnabled = false;
+        context.imageSmoothingEnabled = false;
+        var image = new Image();
+        image.crossOrigin = "anonymous";  // This enables CORS
+        var url = canvas.toDataURL("image/png"); //base64数据
+        image.src = url;
+        image.style.width = '100%';
+        document.body.innerHTML = '';
+        // window.XP.hideLoader();
+        document.body.appendChild(image);
+      });
+    });
+</script>
+</body>
+</html>
