@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/**
+		 * 倒计时计算距离2020年还剩余xx天xx小时xx分钟xx秒
+		 * @Author   fozero@126.com
+		 * @DateTime 2019-06-17T11:00:35+0800
+		 * @return   {[type]}                 [description]
+		 */
+		function counter(){
+			var date = new Date();
+			var year = date.getFullYear();
+			var date2 = new Date(year, 11,31,23,59,59);
+			/*转换成秒*/
+		    var time = (date2 - date) / 1000;
+		    var day = Math.floor(time / (24* 60* 60))
+		    var hour = Math.floor(time % (24* 60* 60) / (60* 60))
+		    var minute = Math.floor(time % (24* 60* 60) % (60* 60) / 60);
+		    var second = Math.floor(time % (24* 60* 60) % (60* 60) % 60);
+		    var str = year + "年还剩"+ day + "天"+ hour + "时"+ minute + "分"+ second + "秒";
+		    console.log(str)
+		}
+		setInterval('counter()',1000);
+	</script>
+</body>
+</html>

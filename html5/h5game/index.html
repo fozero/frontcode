@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no, email=no"/><!--忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>game</title>
+</head>
+<body>
+    <div class="containner" id="game-containner">
+        game
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="javascript" src="/public/m/lib/hilo-standalone.min.js" ></script>
+    <script>
+        //资源预加载
+        //这里可以加开始显示loading动画的逻辑
+        var queue = new Hilo.LoadQueue();
+        var resources = [
+            {id:'ball',type:'png',src:_ball,noCache:false,crossOrigin:'anonymous'},
+            {id:'ball2',type:'png',src:_ball2,noCache:false,crossOrigin:'anonymous'},
+        ];
+        queue.add(resources);
+        queue.on('complete',function(e) {
+            //资源加载完成后的逻辑，比如隐藏loading
+        });
+        queue.start();
+
+
+        //创建舞台
+        var stage = new Hilo.Stage({
+            renderType:'canvas',
+            container: document.getElementById('game-container'),
+            width: 480,
+            height: 320
+        });
+
+        // 启用事件交互 请用手指事件监听
+        stage.enableDOMEvent(Hilo.event.POINTER_START, true);
+        stage.enableDOMEvent(Hilo.event.POINTER_MOVE, true);
+        stage.enableDOMEvent(Hilo.event.POINTER_END, true);
+
+
+        // 创建定时器 不断刷新渲染页面动画
+        var ticker = new Hilo.Ticker(100);
+        ticker.addTick(stage);
+        ticker.addTick(Hilo.Tween);
+        ticker.start();
+
+
+        // 添加舞台元素
+        var ballImg = queue.getContent('ball');
+        ball = new Hilo.Bitmap({
+            image:ballImg,
+            x:ballX,
+            y:ballY,
+            width:trueBallWidth,
+            height:trueBallHeight
+        });
+        stage.addChild(ball);
+
+
+        // 监听触摸事件
+        // 用户开始触摸舞台时记录一下触摸点的坐标，触摸结束后再记录一下此时触摸点的坐标，通过这两个坐标计算出手指滑动的方向，从而控制球往哪个方向抛出
+        stage.on(Hilo.event.POINTER_START,function(e)
+            // e.preventDefault();
+            currentEvent = e.changedTouches[0].identifier;
+            startTouchXList[currentEvent] = e.changedTouches[0].clientX;
+            startTouchYList[currentEvent] = e.changedTouches[0].clientY;
+            endTouchXList[currentEvent] = e.changedTouches[0].clientX;
+            endTouchYList[currentEvent] = e.changedTouches[0].clientY;
+        });
+
+        stage.on(Hilo.event.POINTER_MOVE,function(e)
+            // e.preventDefault();
+            currentEvent = e.changedTouches[0].identifier;
+            endTouchXList[currentEvent] = e.changedTouches[0].clientX;
+            endTouchYList[currentEvent] = e.changedTouches[0].clientY;
+        });
+
+        stage.on(Hilo.event.POINTER_END,function(e)
+            // e.preventDefault();
+            endTouchXList[currentEvent] = e.changedTouches[0].clientX;
+            endTouchYList[currentEvent] = e.changedTouches[0].clientY;
+            //抛球
+            throwBall(startTouchXList[currentEvent],startTouchYList[currentEvent],endTouchXList[currentEvent],endTouchYList[currentEvent]);
+        });
+
+
+        
+
+        function throwBall(){
+            //动画实现
+            //实现球飞出的动画，用Hilo.Tween.to方法来控制tmpBall对象移动。
+            var tmpBall = new Hilo.Bitmap({
+                image:ballImg,
+                x:ballX,
+                y:ballY-5,
+                width:trueBallWidth,
+                height:trueBallHeight
+            });
+            stage.addChild(tmpBall);
+            //球飞出
+            Hilo.Tween.to(tmpBall,{
+                x:endPoint.x,
+                y:endPoint.y,
+                width:trueBallWidth/percent,
+                height:trueBallWidth/percent
+            },{
+                duration:ballSpeed,
+                delay:0,
+                ease:Hilo.Ease.Linear.EaseNone,
+                onComplete:function() {
+              });
+        }
+    </script>
+</body>
+</html>

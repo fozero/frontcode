@@ -51,21 +51,59 @@
 
 //背景图懒加载
 (function(){//立即执行函数、
-	    var imgList = [],delay,time = 250,offset = 0;
-	    function _loadImg(){//执行图片加载
-	        for(var i = 0,len = imgList.length; i < len; i++){
-	            if(_isShow(imgList[i]) && !imgList[i].isLoad){
-	            	// console.log('imgList[i]',imgList[i])
-	            	imgList[i].isLoad = true;
-	            	// 图片 背景图
-	                if(imgList[i].getAttribute('data-type')==="img"){
-	                	imgList[i].src = imgList[i].getAttribute('data-src');
-	                }else if(imgList[i].getAttribute('data-type')==="bg"){
-	                	imgList[i].style.backgroundImage="url('"+imgList[i].getAttribute('data-src')+"')";
-	                }
-	            }
-	        }
-	    };
+	    var imgList = [],delay,offset = 0;
+	    // 函数节流
+	    // js有些事件例如resize，mousemove等是会不间断触发的，例如我们简单的一个scroll事件
+ // 我们需要在滚动的时候去做一些事情，如上图可见，我们只是简单的console，在一次滚动过程中函数即执行了将近20次，如果这个函数有更为复杂的方法，比如操作dom或者其他交互，会严重影响性能。为了避免这个问题，我们一般会使用定时器来对函数进行节流。
+
+ //   函数节流的基本思想是设置一个定时器，在指定时间间隔内运行代码时清楚上一次的定时器，并设置另一个定时器，知道函数请求停止并超过时间间隔才会执行。
+	    // function _delay(){
+	    //     clearTimeout(delay);
+	    //     delay = setTimeout(() => {
+	    //         _loadImg();
+	    //     },1000)
+	    // };
+	    // function _loadImg(){//执行图片加载
+	    // 	console.log(1)
+	    //     for(let i = 0,len = imgList.length; i < len; i++){
+	    //         if(_isShow(imgList[i]) && !imgList[i].isLoad){
+	    //         	imgList[i].isLoad = true;
+	    //         	// 图片 背景图
+	    //             if(imgList[i].getAttribute('data-type')==="img"){
+	    //             	imgList[i].src = imgList[i].getAttribute('data-src');
+	    //             }else if(imgList[i].getAttribute('data-type')==="bg"){
+	    //             	imgList[i].style.backgroundImage="url('"+imgList[i].getAttribute('data-src')+"')";
+	    //             }
+	    //         }
+	    //     }
+	    // };
+
+
+	    // 函数节流
+	    function throttle(fn,time){
+	    	clearTimeout(delay);
+	        delay = setTimeout(() => {
+	            fn && fn();
+	        },time)
+	    }
+	    function _loadImg(){
+	    	throttle(()=>{
+	    		for(let i = 0,len = imgList.length; i < len; i++){
+		            if(_isShow(imgList[i]) && !imgList[i].isLoad){
+		            	imgList[i].isLoad = true;
+		            	// 图片 背景图
+		                if(imgList[i].getAttribute('data-type')==="img"){
+		                	imgList[i].src = imgList[i].getAttribute('data-src');
+		                }else if(imgList[i].getAttribute('data-type')==="bg"){
+		                	imgList[i].style.backgroundImage="url('"+imgList[i].getAttribute('data-src')+"')";
+		                }
+		            }
+		        }
+	    	},250)
+	    }
+
+
+
 	    function _isShow(el){//判断img是否出现在可视窗口
 	        var coords = el.getBoundingClientRect();
 	        return coords.top <= document.documentElement.clientHeight+parseInt(offset);
