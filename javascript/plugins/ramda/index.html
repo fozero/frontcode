@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  h
+    <script src="https://cdn.bootcss.com/ramda/0.26.0/ramda.min.js"></script>
+  <script>
+    var arr = [{categoryNo:99,name:'a1',isPromo:true},{categoryNo:101,name:'a2',isPromo:true},{categoryNo:100,name:'a3',isPromo:true}];
+    console.log('ddd filter',R.filter(R.prop('isPromo'), arr))
+    console.log('ddd sort',R.sort(
+        R.ascend(R.prop('categoryNo')),
+        R.filter(R.prop('isPromo'),arr)
+      ))
+
+
+    
+    </script>
+</body>
+</html>

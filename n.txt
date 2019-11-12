@@ -1,0 +1,478 @@
+
+vue、webpack、作品、简历修改
+
+
+
+
+
+
+65/24 = 2.5
+
+
+
+--------start
+问题总结
+1、官网
+
+安全、自动驾驶页面轮播滚动特效
+产品站图片相册滚动特效
+
+2、小鹏AI情绪报告
+手机浏览器input file选择图片后，图片旋转问题
+1、使用exif获取图片方向
+2、通过图片方向使用canvas进行图片旋转
+3、转化成base64图片返回
+
+
+使用html2canvas生成分享图片时图片模糊
+
+解决：
+1、将 canvas 的宽高设置成容器宽高的 2 倍
+2、然后将画布缩放，将图像放大两倍画到画布上
+3、关闭抗锯齿
+
+
+canvas图片跨域问题
+解决：将图片转化成base64进行显示
+
+
+
+3、h5小游戏
+4、数据平台
+
+--------end
+
+
+
+
+
+
+
+
+
+egg日志存放目录
+/root/logs/nodejs-love
+
+
+---vuex在mpvue中的用法 
+
+---mpvue中的生命周期
+
+
+
+---小程序storage丢失
+
+
+在请求接口时，提示用户不存在，跳转到登录
+
+用户登录时返回token到前端，保存到本地，每次请求接口时传到后台进行比对
+接口权限校验，检查是否携带token，不存在则返回错误码，提示登录
+
+
+服务端生成token保存到缓存中，并设置过期时间，每次接口请求携带token，后端对token进行校验，不通过则抛出异常
+https://www.jianshu.com/p/154a540cb728
+https://www.jianshu.com/p/7c87592f8029
+https://blog.csdn.net/rolan1993/article/details/79637855
+
+
+
+token构造  egg-jwt
+egg-jwt是基于jsonwebtoken来实现的，具体方法可以参考jsonwebtoken的
+https://www.npmjs.com/package/jsonwebtoken
+
+npm i egg-jwt --save
+
+
+配置  /config/config.default.js
+
+exports.jwt = {
+  secret: "123456"
+};
+
+
+使用  /config/plugin.js
+exports.jwt = {
+  enable: true,
+  package: "egg-jwt"
+};
+
+主要方法：jwt.sign和jwt.verify
+jwt.sign用于构造token，jwt.verify用于解析token
+
+// 通过特定规则将token保存到redis中（sessionid保存在redis中作为key存在,openid和session_key作为value值），并返回token给客户端
+      // 构造token   exp设置过期时间
+      let token = this.app.jwt.sign({ openid: openid,session_key:session_key});
+      result2[0]['token']= token;
+      console.log('token',token);//token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVuaWQiOiJvbE9jZjVkVUJNLU1jQm5UU1MySWVhaVVRVEZRIiwic2Vzc2lvbl9rZXkiOiJYb0xrTnJyNGs3d0VqeC9UWTZWcUJnPT0iLCJpYXQiOjE1NTI5MjgyOTZ9.uYUDlxakgCQBol3hOGDb2ZTnjdVAJpVEfJ_zybs7bTU
+
+      // 解析token
+      let decoded = this.app.jwt.verify(token);
+      console.log('token decoded',decoded);//token decoded { openid: 'olOcf5dUBM-McBnTSS2IeaiUQTFQ',session_key: 'XoLkNrr4k7wEjx/TY6VqBg==',iat: 1552928296 }
+
+
+
+以上我们返回token给客户端 ，客户端对token进行本地储存，然后在每次请求接口的时候携带这个token值，我们可以把这个值通过header参数传递到后端
+
+header: {
+        'content-type': 'application/json', // 默认值
+        'token': wx.getStorageSync("token")//每次请求的时候携带token用于验证
+      },
+
+
+
+在后端通过打印request的值 可以看到以下内容，就包括了我们带过去的token
+
+ctx.request { method: 'POST',
+  url: '/api/wxLogin',
+  header: 
+   { host: '192.168.31.91:7001',
+     connection: 'keep-alive',
+     'content-length': '215',
+     pragma: 'no-cache',
+     'cache-control': 'no-cache',
+     origin: 'http://127.0.0.1:24574',
+     'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.02.1902010 MicroMessenger/6.7.3 Language/zh_CN webview/ token/9ca00de1baa1cbf129332d9cb9e5ad63',
+     token: '',
+     'content-type': 'application/json',
+     accept: '*/*',
+     referer: 'https://servicewechat.com/wx90c1d9669ed9603f/devtools/page-frame.html',
+     'accept-encoding': 'gzip, deflate' } }
+
+
+
+但是我们如果在每个接口中去解析token以及对token进行验证的话，那我们的代码无疑会增加很多沉余代码，最好的方式就是编写一个中间件专门用于处理该token的校验，然后在需要的接口中单独去使用它。
+
+egg中间件的写法可参考https://eggjs.org/zh-cn/basics/middleware.html
+
+1、先在 middleware下新建一个checktoken.js文件
+通过在这里验证token，如果是空则抛出异常，redis中不存在也会抛出异常
+// app/middlewarechecktoken.js
+module.exports = () => {
+  return async function checktoken(ctx, next) {
+    await next();
+    console.log('ctx',ctx.request,ctx.request.header.token);
+    // 拿到token之后 对token进行校验  
+    // 1、token为空则返回异常  1001  登录失效 请重新登录   
+    // 2、如果在redis中不存在，则表示登录信息已过期 重新登录 1002 
+    let token = ctx.request.header.token;
+    if(!token){
+      ctx.body = {"code":1001,"msg":"登录失效 请重新登录","data":null};
+    }
+  };
+};
+
+
+2、之后我们就可以使用这个中间件了
+
+2.1、在应用中使用中间件
+config.default.js中配置middleware
+
+// add your config here  配置中间件
+  config.middleware = ['checktoken'];
+
+2.2、在路由中使用中间件
+
+  const checktoken = app.middleware.checktoken();
+   app.router.get('/api/getUserList',checktoken,app.controller.userController.getUserList);
+
+
+
+
+
+---
+
+微信登录流程
+
+
+场景1，用户从小程序点击进入
+
+1、在首页monuted初始化方法检查用户是否已授权 
+2、没有授权则跳转到授权页面  ，已授权则检查session是否失效 
+3、用户点击授权获取用户信息通过code换取openid请求登录，检查是否存在用户，不存在则对用户进行注册返回用户信息
+4、微信登录成功后将用户信息保存到vuex中，更新用户资料时通过更新vuex用户数据
+5、在需要用到用户信息的时候直接从vuex中获取
+
+
+场景2，用户通过页面分享进入
+
+1、统一分享入口，分享时跳转到首页，通过参数形式将要分享的页面传递过来
+2、首页执行场景1的流程
+
+
+
+---mpvue vuex状态持久化
+vuex-persistedstate
+https://github.com/robinvdvleuten/vuex-persistedstate
+
+npm install --save vuex-persistedstate
+
+
+在store中加入以下代码
+
+import Vue from 'vue';
+import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';//引入createPersistedState
+import userinfo from './modules/userinfo';
+
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+    // 分模块
+    modules: {
+        userinfo
+    },
+    plugins: [
+        createPersistedState({//使用createPersistedState
+            storage: {
+                getItem: key => wx.getStorageSync(key),
+                setItem: (key, value) =>
+                    wx.setStorageSync(key, value),
+                removeItem: key => wx.clearStorage()
+            },
+        }),
+    ],
+})
+
+
+之后可以通过storage看到vuex保存的值
+
+
+---vuex状态响应式 
+参考阅读https://blog.csdn.net/l354002675/article/details/79275731
+https://juejin.im/post/5aa782db5188255574595ea4
+
+我们通过vuex存储数据时，当在很多地方用到vuex状态时，我们修改了某个状态，那么相应的每个使用它的地方都会得到改变，即vuex状态响应式
+
+那如果我们使用的是localstorage存储时，需要刷新页面才会改变。
+
+但使用vuex时，无法对数据做持久化储存，此时我们可以通过使用localstorage和vuex来保证
+
+
+例如 ：
+
+
+ADD_LOGIN_USER (state,data) {  //登入，保存状态
+        sessionStorage.setItem("username", data);  //添加到sessionStorage
+        sessionStorage.setItem("isLogin",true);
+        state.username=data,             //同步的改变store中的状态
+        state.isLogin=true
+    },
+    SIGN_OUT (state) {   //退出，删除状态
+        sessionStorage.removeItem("username");  //移除sessionStorage
+        sessionStorage.removeItem("isLogin");
+        state.username=''                //同步的改变story中的状态
+        state.isLogin=false
+    }
+
+
+
+
+
+
+----小程序获取手机号
+
+https://blog.csdn.net/z69183787/article/details/79475188
+https://blog.csdn.net/dt1991524/article/details/81384198
+https://blog.csdn.net/weixin_41818665/article/details/79509792
+
+
+
+
+
+---小程序路由拦截
+
+http://callmesoul.cn/xiao-cheng-xu-kai-fa-zhi-er-lu-you-lan-jie-she-ji/
+https://www.jianshu.com/p/04dce2ffd68f
+
+分享的时候分享页面的path填写第一个页面路由例如/pages/login,在把你当前页面的路由作为一个参数一起传过去
+onShareAppMessage(res) {
+      let fromPath='/pages/activity'
+      return {
+        title: 'xxxxx！',
+        path: '/pages/login?fromPath='+fromPath,
+        imageUrl:xxxxx,
+        success: (res) => {
+          xxxxxx
+        }
+      }
+    }
+
+
+分享的页面也要参数，分享的path就会有两个??
+
+/pages/login?fromPath=/pages/activity?activityId=1
+我们需要一个把问号转码的函数转码了再传过去，第一个页面获得页面后解码再跳转即可
+
+let fromPath='/pages/activity?activityId=2'
+      fromPath=encodeURIComponent(fromPath);
+
+在第一个页面使用对应函数解码即可：
+      onLoad(params){
+    if(params.fromPath){
+            let fromPath=decodeURIComponent(params.fromPath);
+            ///do somethings...
+   }
+}
+
+---
+
+在小程序app.vue的onLaunch方法中无法跳转到新页面
+
+onLaunch() {
+    console.log("onlaunch");
+    wx.navigateTo({
+      url: "pages/auth/main"
+    });
+  },
+
+
+  原因 ：
+  app onLaunch被调用的时候页面可能还没有被初始化，解决办法是在首页跳转或者加个延迟
+
+
+---app、公众号和小程序实现用户账号统一
+https://blog.csdn.net/fanhu6816/article/details/80017645
+
+实现不同应用的用户账号统一使用的是unionid,在微信开放平台进行绑定之后，每种应用的unionid都是相同的，但是获取到的用户的openid是不同，openid只是在应用（同一个公众号或者小程序）内是唯一的，所以不能用openid，而是用unionid。
+
+
+--日期计算星座
+
+https://www.cnblogs.com/ctmf/p/9274630.html
+
+var date = new Date(2017,1,12);
+//设置日期
+function getHoroscope(date) {
+  var c = ['摩羯','水瓶','双鱼','白羊','金牛','双子','巨蟹','狮子','处女','天秤','天蝎','射手','摩羯']
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  var startMonth = month - (day - 14 < '865778999988'.charAt(month));
+  return c[startMonth]
+}
+getHoroscope(date);
+//水瓶
+
+
+
+---js typeof
+
+typeof用于判断类型
+输入类型-》返回类型
+String -》"string"
+Number -》"number"
+Boolean -》"boolean"
+Undefined -》"undefined"
+Object -》"object"
+function函数对象	 -》"function"
+Symbol(ES6新增) -》"symbol"
+宿主对象(由JS环境提供) -》"Implementation-dependent"
+
+例如
+typeof 1-》“number”
+
+
+另外还有instanceof，也可以判断类型 ，使用场景不太一样
+https://www.ibm.com/developerworks/cn/web/1306_jiangjj_jsinstanceof/index.html
+判断一个变量的类型尝尝会用 typeof 运算符，在使用 typeof 运算符时采用引用类型存储值会出现一个问题，无论引用的是什么类型的对象，它都返回 "object"。
+与 typeof 方法不同的是，instanceof 方法要求开发者明确地确认对象为某特定类型
+
+
+
+
+
+
+
+---mysql
+
+插入语句
+insert into tb_user1 values (1, 'user11');
+insert into tb_user1 (id,name) values (1, 'user11');
+
+
+分页查询
+有两种方式可以实现分页功能 ，limit和offset
+1、使用limit，第一个表示从第几条记录开始，后面参数表示取几条记录
+select * from student limit 9,4
+
+
+例如，根据前台传递过来的参数执行sql分页查询
+pageSize  每页显示条数
+pageNum 要查询的页
+select * from student limit (pageNum-1)*pageSize,pageSize
+
+2、使用offset
+
+slect * from student limit 4 offset 9
+4表示返回4行，9表示从表的第十行开始
+
+根据以上定义的pageSize每页显示条数 ，pageNum 要查询的页
+slect * from student limit pageSize offset (pageNum-1)*pageSize
+
+
+
+
+
+
+
+
+----微信小程序评论框支持输入法emoji提交
+
+因为编码方式不同，数据库是使用utf-8字符，而emoji是其他字符集，所以在保存到数据库时候如果不做处理会报错 
+
+解决办法 
+在保存时使用escape进行编码，显示时进行解码即可
+content: escape(this.content),
+item.content = unescape(item.content);
+
+
+参考
+小程序评论板块加入emoji表情
+https://blog.csdn.net/qq_33744228/article/details/80335440
+js实现基于Base64的编码及解码
+https://blog.csdn.net/weixin_42420703/article/details/81384901
+js 中编码（encode）和解码（decode）的三种方法
+https://www.cnblogs.com/luckyuns/p/6396701.html
+
+
+
+
+
+----
+
+微信小程序七牛图片上传（多张图片循环上传）
+https://blog.csdn.net/xiao1215fei/article/details/82284253
+
+
+
+
+
+微信小程序获取位置信息
+https://blog.csdn.net/weixin_41951698/article/details/80780263
+
+
+1、getlocation获取当前位置
+2、openLocation打开地图标记位置
+3、chooseLocation选择位置
+
+
+app.json中配置权限信息
+"permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+
+
+
+
+
+
+七牛云上传图片时无法上传
+
+最后发现是没有设置upload合法域名
+
+将以下七牛云的域名添加到合法域名列表中即可
+https://up.qbox.me
+
+
+配置完之后如没有生效，可以清楚缓存数据重新编译下

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>search</title>
+    <style>
+      .filed {
+        width: 100px;
+        border: 1px solid red;
+        border-radius: 2px;
+        padding: 5px 10px;
+      }
+      .filed-active {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input
+        class="filed"
+        placeholder="搜索"
+        type="text"
+        onfocus="handleFocus();"
+        onblur="handleBlur();"
+      />
+    </div>
+    <script>
+      function handleFocus() {
+        document.querySelector(".filed").classList.add("filed-active");
+      }
+      function handleBlur() {
+        document.querySelector(".filed").classList.remove("filed-active");
+      }
+    </script>
+  </body>
+</html>

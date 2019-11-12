@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>linear-gradient背景渐变</title>
+    <style>
+      .container {
+      }
+      .box {
+        width: 100px;
+        height: 80px;
+      }
+      .block1 {
+      }
+      .block1 .content {
+        background: -webkit-linear-gradient(top, #fff, #000);
+      }
+      .block2 .content {
+        background: -webkit-linear-gradient(top right, #fff, #000);
+      }
+      .block3 .content {
+        background: -webkit-linear-gradient(0deg, #fff, #000);
+      }
+      .block4 .content {
+        background: -webkit-linear-gradient(top, #fff, red, #000, red);
+      }
+      .block5 .content {
+        /* 指定红色从50%开始出现渐变 */
+        background: -webkit-linear-gradient(red 50%, green, blue);
+      }
+      .block6 .content {
+        width: 200px;
+        background: -webkit-linear-gradient(
+          90deg,
+          red 20px,
+          green 80px,
+          blue 100px
+        );
+      }
+    </style>
+  </head>
+  <!-- 
+    linear-gradient线性渐变
+    1、简单用法
+语法 ：linear-gradient(起点，开始颜色，结束颜色);
+渐变起点有很多种写法，使用top，right，bottom，left中的一个来指定渐变的起点
+如：background:linear-gradient(top,#fff,#000);
+
+2、复杂一点的，使用top与left或者right组合，也可以使用bottom与left或者
+right组合来改变渐变起点
+如：background:-webkit-linear-gradient(top right,#fff,#000);
+
+3、使用角度来设置渐变的起点
+如：background: -webkit-linear-gradient(0deg, #fff, #000);
+0deg->left
+90deg->buttom
+180deg->right
+360deg->left
+
+4、在起点颜色和终点颜色之间可以添加更多颜色。
+ background:-webkit-linear-gradient(top,#fff,red,#000,red);
+
+ 5、除此之外，还可以给每一种颜色指点渐变的位置
+ 在你想修改的颜色后面加上渐变的位置就可以了
+background:-webkit-linear-gradient(red 50% ,green,blue);
+
+参考https://www.cnblogs.com/zhanglun/p/3325008.html
+   -->
+  <body>
+    <div class="container">
+      <div>linear-gradient线性渐变</div>
+      <div class="block1">
+        <div class="title">渐变效果1</div>
+        <div class="box content"></div>
+      </div>
+      <div class="block2">
+        <div class="title">渐变效果2</div>
+        <div class="box content"></div>
+      </div>
+      <div class="block3">
+        <div class="title">渐变效果3</div>
+        <div class="box content"></div>
+      </div>
+      <div class="block4">
+        <div class="title">渐变效果4</div>
+        <div class="box content"></div>
+      </div>
+      <div class="block5">
+        <div class="title">渐变效果5</div>
+        <div class="box content"></div>
+      </div>
+      <div class="block6">
+        <div class="title">渐变效果6</div>
+        <div class="box content"></div>
+      </div>
+    </div>
+  </body>
+</html>

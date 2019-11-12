@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+ 
+	<head>
+		<meta charset="UTF-8">
+		<title>使用slice实现前端分页</title>
+	</head>
+ <!-- slice() 方法可从已有的数组中返回选定的元素。 -->
+	<body>
+		<ul id="ul">
+ 
+		</ul>
+		<button onclick="pre()" id="first">上一页</button>
+		<button onclick="next()" id="last">下一页</button>
+		<script>
+			var arr = [
+				"当你走进这欢乐场",
+				"背上所有的梦与想",
+				"各色的脸上各色的妆",
+				"没人记得你的模样",
+				"三巡酒过你在角落",
+				"固执的唱着苦涩的歌",
+				"听他在喧嚣里被淹没",
+				"你拿起酒杯对自己说",
+				"一杯敬朝阳，一杯敬月光",
+				"唤醒我的向往，温柔了寒窗",
+				"于是可以不回头的逆风飞翔",
+				"不怕心头有雨，眼底有霜",
+				"一杯敬故乡，一杯敬远方",
+				"守着我的善良，催着我成长",
+				"所以南北的路从此不再漫长",
+				'灵魂不再无处安放',
+				'一杯敬明天，一杯敬过往',
+				"支撑我的身体，厚重了肩膀",
+				"虽然从不相信所谓山高水长",
+				'人生苦短何必念念不忘',
+				"一杯敬自由，一杯敬死亡",
+				'宽恕我的平凡，驱散了迷惘',
+				"好吧天亮之后总是潦草离场",
+				"清醒的人最荒唐",
+				"好吧天亮之后总是潦草离场",
+				"清醒的人最荒唐"
+			];
+ 
+			var arr2 = arr.slice(0, 2) //[0,2)
+			var arr4 = arr.slice(2, 4) //[0,2)
+			
+			var page = 1;
+ 
+			function next() {
+				var content = arr.slice(0 + 2 * (page - 1), 2 + 2 * (page - 1));
+				document.getElementById("ul").innerHTML = "";
+				for(var i = 0; i < content.length; i++) {
+					document.getElementById("ul").innerHTML += content[i]+"<br/>"
+				}
+				page++;
+				console.log(page)
+				if(page == (arr.length/2)) {
+					document.querySelector("#last").disabled = "disabled";
+					document.querySelector("#first").disabled = "";
+				}else{
+					document.querySelector("#first").disabled = "";
+					document.querySelector("#last").disabled = "";
+				}
+			}
+ 
+			function pre() {
+				var content = arr.slice(0 + 2 * (page - 1), 2 + 2 * (page - 1));//slice(a,b)是前闭后开[a,b)
+				document.getElementById("ul").innerHTML = "";
+				for(var i = 0; i < content.length; i++) {
+					document.getElementById("ul").innerHTML += content[i]+"<br/>"
+				}
+				page--;
+				if(page == 1) {
+					document.querySelector("#first").disabled = "disabled";
+					document.querySelector("#last").disabled = "";
+				}else{
+					document.querySelector("#first").disabled = "";
+					document.querySelector("#last").disabled = "";
+				}
+			}
+			next()
+			pre()
+ 
+			
+		</script>
+	</body>
+ 
+</html>

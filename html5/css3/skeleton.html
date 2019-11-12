@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>skeleton骨架屏动画效果</title>
+    <style>
+      @keyframes shine-avatar {
+        0% {
+          background-position: -100px;
+        }
+        40%,
+        100% {
+          background-position: 140px;
+        }
+      }
+      @keyframes shine-lines {
+        0% {
+          background-position: -100px;
+        }
+        40%,
+        100% {
+          background-position: 140px;
+        }
+      }
+
+      .container {
+        height: 100vh;
+      }
+      .post {
+        width: 220px;
+        height: 80px;
+      }
+      .avatar {
+        float: left;
+        width: 52px;
+        height: 52px;
+        margin: 8px;
+        background-color: #ccc;
+        border-radius: 25%;
+        animation: shine-avatar 2s infinite ease-out;
+        background-image: linear-gradient(
+          90deg,
+          #f4f4f4 0px,
+          rgba(229, 229, 229, 0.8) 40px,
+          #f4f4f4 80px
+        );
+        background-size: 600px;
+      }
+      .line {
+        float: left;
+        width: 140px;
+        height: 16px;
+        margin-top: 12px;
+        border-radius: 7px;
+        background-color: #ddd;
+        animation: shine-lines 2s infinite ease-out;
+        background-image: linear-gradient(
+          90deg,
+          #f4f4f4 0px,
+          rgba(229, 229, 229, 0.8) 40px,
+          #f4f4f4 80px
+        );
+        background-size: 600px;
+      }
+    </style>
+  </head>
+  <!-- 
+/*基本用法*/
+            background-image: linear-gradient(red, yellow, blue, green);
+            background-image: linear-gradient(rgba(255, 0, 0, .2), yellow, blue, green);
+ 
+            /*控制颜色渐变的方向
+                to right -- 从左向右
+                to top -- 从下到上
+                to left -- 从右到左
+                to bottom --- 从上到下（默认值）
+            */
+            background-image: linear-gradient(to right, red, yellow, blue, green);
+            background-image: linear-gradient(to top, red, yellow, blue, green);
+            background-image: linear-gradient(to left, red, yellow, blue, green);
+            background-image: linear-gradient(to bottom, red, yellow, blue, green);
+ 
+ 
+            /*0deg = to top -- 从下到上*/
+            background-image: linear-gradient(0deg, red, yellow, blue, green);
+            /*基于0度顺时针旋转45deg*/
+            background-image: linear-gradient(45deg, red, yellow, blue, green);
+            /*基于0度逆时针旋转45deg*/
+            background-image: linear-gradient(-45deg, red, yellow, blue, green);
+   -->
+  <body>
+    <div class="container">
+      <div class="post">
+        <div class="avatar"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </body>
+</html>

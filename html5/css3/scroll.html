@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.bootcss.com/Swiper/4.5.0/css/swiper.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .header {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        white-space: nowrap;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -webkit-overflow-scrolling: touch;
+        text-align: justify;
+        background: #f78361;
+        padding: 0px 5px;
+        box-sizing: border-box;
+      }
+      .header a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 10px;
+      }
+      .header::-webkit-scrollbar {
+        display: none;
+      }
+      p {
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header" class="header">
+      <a href="#">Menu1</a>
+      <a href="#">Menu2</a>
+      <a href="#">Menu3</a>
+      <a href="#">Menu4</a>
+      <a href="#">Menu5</a>
+      <a href="#">Menu6</a>
+      <a href="#">Menu7</a>
+      <a href="#">Menu8</a>
+      <a href="#">Menu9</a>
+    </div>
+    <div class="content">
+      这是内容<br />
+      这是内容<br />
+      这是内容<br />
+      这是内容<br />
+    </div>
+    <p></p>
+    <div>
+      解决overflow-x：scroll 移动端无法隐藏滚动条的问题
+    </div>
+    <div>
+      方式1 使用外层div进行包裹 通过设置height高度（遮盖滚动条）和overflow:
+      hidden，对scroll的container设置padding-bottom: 50px;将滚动条下移
+    </div>
+    <div class="category-nav">
+      <ul class="nav-list">
+        <li class="nav-item">item1</li>
+        <li class="nav-item">item2</li>
+        <li class="nav-item">item3</li>
+        <li class="nav-item">item4</li>
+        <li class="nav-item">item5</li>
+        <li class="nav-item">item6</li>
+        <li class="nav-item">item7</li>
+        <li class="nav-item">item8</li>
+        <li class="nav-item">item9</li>
+        <li class="nav-item">item10</li>
+      </ul>
+    </div>
+    <style>
+      .category-nav {
+        height: 92px;
+        overflow: hidden;
+      }
+      .nav-list {
+        list-style: none;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin: 0;
+        padding-left: 34px;
+        padding-right: 34px;
+        padding-bottom: 50px;
+        /* 解决ios手机页面滑动卡顿问题 */
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-item {
+        width: 56px;
+        height: 56px;
+        background: #eee;
+        margin: 10px;
+        display: inline-block;
+      }
+    </style>
+    <div>方式2 ：使用swiper，设置模式freeMode: true</div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">slider1</div>
+        <div class="swiper-slide">slider2</div>
+        <div class="swiper-slide">slider3</div>
+        <div class="swiper-slide">slider4</div>
+        <div class="swiper-slide">slider5</div>
+        <div class="swiper-slide">slider6</div>
+        <div class="swiper-slide">slider7</div>
+        <div class="swiper-slide">slider8</div>
+        <div class="swiper-slide">slider9</div>
+        <div class="swiper-slide">slider10</div>
+        <div class="swiper-slide">slider11</div>
+      </div>
+    </div>
+    <style>
+      .swiper-container {
+        width: 100%;
+        height: 80px;
+      }
+      .swiper-slide {
+        width: 56px;
+        height: 56px;
+        background: #eee;
+        margin: 10px;
+      }
+    </style>
+    <script src="https://cdn.bootcss.com/Swiper/4.5.0/js/swiper.min.js"></script>
+    <script>
+      var mySwiper = new Swiper(".swiper-container", {
+        slidesPerView: "auto",
+        freeMode: true,
+        spaceBetween: 0
+      });
+    </script>
+  </body>
+</html>

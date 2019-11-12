@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>observe数据劫持</title>
+</head>
+<!-- 
+通过OBject.observeProperty数据劫持对象
+ -->
+<body>
+	<div class="main">
+		
+	</div>
+	<script src="./observe.js"></script>
+	<script>
+		var data = {
+		  a: 'hello',
+		  obj:{
+		  	name:'阿健',
+		  	age:22
+		  }
+		}
+		observe(data);
+	</script>
+</body>
+</html>
